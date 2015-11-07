@@ -12,14 +12,14 @@ var mongoose = require('mongoose');
 require("./models/User");
 require("./config/passport");
 
-// var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
-// console.log(database);
-// mongoose.connect(database, function(err){
-// 	console.log("Connect");
-// 	if(err) return console.log('error connecting to %s', database);
-// 	console.log('connected to %s', database);
-// });
-mongoose.connect("mongodb://localhost/app");
+var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
+console.log(database);
+mongoose.connect(database, function(err){
+	console.log("Connect");
+	if(err) return console.log('error connecting to %s', database);
+	console.log('connected to %s', database);
+});
+// mongoose.connect("mongodb://localhost/app");
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
