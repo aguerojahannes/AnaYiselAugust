@@ -23,7 +23,7 @@ router.get('/auth/linkedin',
 
 router.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
   successRedirect: '/',
-  failureRedirect: '/'
+  failureRedirect: '/signin'
 }));
 
 
