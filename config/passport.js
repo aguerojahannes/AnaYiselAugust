@@ -19,8 +19,8 @@ passport.use(new LocalStrategy(function(username, password, done){
 
 
 passport.use(new LinkedInStrategy({
-  clientID: env.CLIENTID || process.env['linkedin.CLIENTID'],
-  clientSecret: env.CLIENTSECRET || process.env['linkedin.CLIENTSECRET'],
+  clientID: "75qd8voyucpxtq", // env.CLIENTID || process.env['linkedin.CLIENTID'],
+  clientSecret: "JEZ516oAC8ARyDgR", //env.CLIENTSECRET || process.env['linkedin.CLIENTSECRET'],
   callbackURL: env.CALLBACKURL || process.env['linkedin.CALLBACKURL'],
   // callbackURL: "/auth/linkedin/callback",  // write http://localhost:3000/auth/linkedin/callback
   scope: ['r_emailaddress', 'r_basicprofile', 'w_share'],
