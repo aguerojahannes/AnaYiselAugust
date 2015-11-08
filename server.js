@@ -48,7 +48,7 @@ app.get('/', function(req, res) {
 });
 
 // Use Routes
-app.use("/user", userRoutes);
+app.use("/api/user", userRoutes);
 
 
 // Handle Errors

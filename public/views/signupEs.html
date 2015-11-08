@@ -1,0 +1,34 @@
+<div> <!-- inside the Global Controller on index-->
+
+<form ng-submit="glob.signUpEs()">
+<h1>Registrar</h1>
+	<md-input-container>
+		<label>Nombre Completo</label>
+		<input ng-model="glob.user.fullName" type="text" ng-required="true"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Username</label>
+		<input ng-model="glob.user.username" type="text"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Correo Electrónico</label>
+		<input ng-model="glob.user.email" type="text" ng-required="true"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Numero de Celular</label>
+		<input ng-model="glob.user.phoneNumber" type="text"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Contraseña</label>
+		<input ng-model="glob.user.password" type="text" ng-required="true"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Confirmar Contraseña</label>
+		<input ng-model="glob.user.confirmPassword" type="text" ng-required="true"/>
+	</md-input-container>
+	<div ng-show="!(glob.user.password === glob.user.confirmPassword)">Las contraseñas deben ser iguales.</div>
+
+	<md-button type="submit" ng-disabled="!glob.user.fullName || !glob.user.email || !glob.user.password || !(glob.user.password === glob.user.confirmPassword)">Registrar</md-button>
+/</form>
+
+</div>
