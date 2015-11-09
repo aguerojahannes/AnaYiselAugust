@@ -45,6 +45,6 @@
 		      }]
 		    });
 		$urlRouterProvider.otherwise('/');
-		// $httpProvider.Interceptors.push("AuthInterceptor");
+		// $httpProvider.Interceptors.push("AuthInterceptor");   // UN COMMENT WHEN Oauth works
 	}
 })();

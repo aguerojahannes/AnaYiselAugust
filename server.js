@@ -15,16 +15,16 @@ require("./models/Request");
 require("./models/Circle");
 require("./config/passport");
 
-mongoose.connect("mongodb://localhost/app");
+// mongoose.connect("mongodb://localhost/app");
 
 
-// var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
-// console.log(database);
-// mongoose.connect(database, function(err){
-// 	console.log("Connect");
-// 	if(err) return console.log('error connecting to %s', database);
-// 	console.log('connected to %s', database);
-// });
+var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
+console.log(database);
+mongoose.connect(database, function(err){
+	console.log("Connect");
+	if(err) return console.log('error connecting to %s', database);
+	console.log('connected to %s', database);
+});
 
 
 
