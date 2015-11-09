@@ -30,12 +30,20 @@ router.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
 
 
 // SIGN IN
-router.post('/signIn', function(res, req, next){
+router.post('/signIn', function(req, res, next){
+ console.log("req.body.email: " + req.body.email); // successful
     passport.authenticate('local', function(err, user){
         if(err) return next(err);
         res.send(user.createToken());
     })(req, res, next);
 });
 
+createToken = function(){
+   return jwt.sign({
+      _id: this._id,
+      username: this.username,
+      email: this.email
+   }, "ThisIsASecretCode");
+};
 
 module.exports = router;

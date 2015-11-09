@@ -10,17 +10,9 @@
 		}).state('SignUp',{
 			url: '/signup',
 			templateUrl: 'views/signup.html'
-		})
-		.state('Profile',{
-			url: '/profile',
-			templateUrl: 'views/profile.html'
 		}).state('SignUpEs',{
 			url: '/registrar',
 			templateUrl: 'views/signupEs.html'
-		})
-		.state('ProfileEs',{
-			url: '/perfil',
-			templateUrl: 'views/profileEs.html'
 		}).state('SignIn',{
 			url: '/SignIn',
 			templateUrl: 'views/signIn.html'
@@ -36,8 +28,15 @@
 		       	 UF.setLoggedinUserToRootScope();
 		        	$state.go("QuestionsFeed");
 		      }]
-		    });
+		}).state('Profile',{
+			url: '/profile',
+			templateUrl: 'views/profile.html'
+		})
+		.state('ProfileEs',{
+			url: '/perfil',
+			templateUrl: 'views/profileEs.html'
+		});
 		$urlRouterProvider.otherwise('/');
-		// $httpProvider.Interceptors.push("AuthInterceptor");
+		$httpProvider.Interceptors.push("AuthInterceptor");
 	}
 })();

@@ -28,13 +28,14 @@
 
 		//SIGN IN
 		o.signIn = function(user){
+			console.log("user.email: " + user.email);
 			var q = $q.defer();
-			$http.post('api/user/signIn', user).then(function(res){
+			$http.post('/api/user/signIn', user).then(function(res){
 				setToken(res.data);
 				setUser();
-				var user = o.getUser();
-				o.status.username = user.username;
-				o.status._id = user._id;
+				// var user = o.getUser();
+				// o.status.username = user.username;
+				// o.status._id = user._id;
 				q.resolve(res.data);
 			});
 			return q.promise;

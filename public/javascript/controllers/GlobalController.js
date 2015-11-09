@@ -5,7 +5,6 @@
 
 	function GlobalController(GlobalFactory, $state, $stateParams) {
 		var glob = this;
-
 		glob.user = {};
 
 // SIGN UP
@@ -24,6 +23,7 @@
 //SIGN IN
 		glob.signIn = function() {
 			GlobalFactory.signIn(glob.user).then(function(){
+				console.log("made it back to controller.")
 				$state.go('Profile');
 			});
 		};
