@@ -36,15 +36,15 @@
 			templateUrl: 'views/signInEs.html'
 		}).state("LinkedInAuth", {
 		      	url: '/auth/token/:token',
-		    	template: "<h1>Authenticating</h1>",
+		    		template: "<h1>Authenticating</h1>",
 		      	controller: ['$rootScope', "$stateParams", '$state', 'UserFactory', function($rootScope, $stateParams, $state, UF) {
 		        	var vm = this;
-		       	 localStorage.setItem("token", $stateParams.token);
-		       	 UF.setLoggedinUserToRootScope();
-		        	$state.go("QuestionsFeed");
+			       	 localStorage.setItem("token", $stateParams.token);
+			       	 UF.setLoggedinUserToRootScope();
+			        	$state.go("Profile");
 		      }]
 		    });
 		$urlRouterProvider.otherwise('/');
-		$httpProvider.Interceptors.push("AuthInterceptor");
+		// $httpProvider.Interceptors.push("AuthInterceptor");
 	}
 })();

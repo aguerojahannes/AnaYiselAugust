@@ -7,6 +7,8 @@
 		var glob = this;
 		glob.user = {};
 
+//RESET PASSWORD 
+
 // SIGN UP
 		glob.signUp = function() {
 			GlobalFactory.signUp(glob.user).then(function(){
