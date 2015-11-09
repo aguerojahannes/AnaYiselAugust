@@ -8,7 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
-<body ng-controller="GlobalController as nav">
+
+<body ng-controller="GlobalController as glob">
 
 	<ui-view></ui-view>
 
@@ -36,9 +37,12 @@
 
 	<!-- Global Src -->
 	<script src="/javascript/app.js"></script>
+
 	<!-- Factories -->
 	<script src="/javascript/services/GlobalFactory.js"></script>
 	<script src="/javascript/services/HomeFactory.js"></script>
+	<script src="/javascript/services/AuthInterceptor.js"></script>
+
 	<!-- Controllers -->
 	<script src="/javascript/controllers/GlobalController.js"></script>
 	<script src="/javascript/controllers/HomeController.js"></script>

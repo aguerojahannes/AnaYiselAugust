@@ -15,15 +15,17 @@ require("./models/Request");
 require("./models/Circle");
 require("./config/passport");
 
+mongoose.connect("mongodb://localhost/app");
+
+
 // var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
-//
 // console.log(database);
 // mongoose.connect(database, function(err){
 // 	console.log("Connect");
 // 	if(err) return console.log('error connecting to %s', database);
 // 	console.log('connected to %s', database);
 // });
-mongoose.connect("mongodb://localhost/app");
+
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +42,6 @@ app.set('view options', {
 
 //middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
 passport.initialize();
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -60,6 +61,8 @@ app.use("/user", userRoutes);
 app.use("/contacts", contactsRoutes);
 app.use("/circles", circlesRoutes);
 app.use("/requests", requestsRoutes);
+app.use("/api/user", userRoutes);
+
 
 
 // Handle Errors

@@ -1,0 +1,19 @@
+<!-- GLOBAL CONTROLLER  -->
+<h1 style="color : Black" class="md-toolbar-tools" >Sign In</h1>
+          <form ng-submit="glob.signIn()">
+               <md-input-container>
+                 <label> Email </label>
+                 <input ng-model="glob.user.email" type="text" ng-required="true">
+               </md-input-container>
+               <md-input-container>
+                 <label> Password</label>
+                 <input ng-model="glob.user.password" type="password" ng-required="true">
+               </md-input-container>
+               <!-- Sign in, Close nav, register Buttons: Submit and Register -->
+                    <div style="text-align: center">
+                      <!-- <md-button ng-click="nav.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
+                      <md-button type="submit"> Sign In </md-button>
+                      <md-button ui-sref="ResetPassword"> Forgot Password? <md-button>
+                       <h5 ng-if= "nav.user.username && nav.user.password !(nav.user.username = nav.user.password)" style="color: orange; text-align: center;" >Sorry, Usename & Password must mastch!</h5> -->
+                    </div>
+             </form>
