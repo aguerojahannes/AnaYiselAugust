@@ -41,10 +41,10 @@
 		        	var vm = this;
 		       	 localStorage.setItem("token", $stateParams.token);
 		       	 UF.setLoggedinUserToRootScope();
-		        	$state.go("QuestionsFeed");
+		        	$state.go("Profile");
 		      }]
 		    });
 		$urlRouterProvider.otherwise('/');
-		$httpProvider.Interceptors.push("AuthInterceptor");
+		// $httpProvider.Interceptors.push("AuthInterceptor");
 	}
 })();
