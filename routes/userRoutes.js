@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var passport = require('passport');
 
+// SIGN UP
 router.post('/signUp', function(req, res, next){
 	var user = new User(req.body);
 	user.setPassword(req.body.password);
@@ -14,6 +15,7 @@ router.post('/signUp', function(req, res, next){
 	});
 });
 
+// SIGN UP WITH 3RD PARTY SERVICE
 router.get('/auth/linkedin',
   passport.authenticate('linkedin', {state: '/token'}),
   function(req, res){
@@ -25,6 +27,15 @@ router.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
   successRedirect: '/',
   failureRedirect: '/signin'
 }));
+
+
+// SIGN IN
+router.post('/signIn', function(res, req, next){
+    passport.authenticate('local', function(err, user){
+        if(err) return next(err);
+        res.send(user.createToken());
+    })(req, res, next);
+});
 
 
 module.exports = router;

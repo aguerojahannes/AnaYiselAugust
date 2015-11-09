@@ -8,7 +8,7 @@
 
 		glob.user = {};
 
-// SIGN UP - english, spanish
+// SIGN UP
 		glob.signUp = function() {
 			GlobalFactory.signUp(glob.user).then(function(){
 				$state.go("Profile");
@@ -21,7 +21,17 @@
 			});
 		};
 
-// LOGIN
+//SIGN IN
+		glob.signIn = function() {
+			GlobalFactory.signIn(glob.user).then(function(){
+				$state.go('Profile');
+			});
+		};
+		glob.signInEs = function() {
+			GlobalFactory.signIn(glob.user).then(function(){
+				$state.go('ProfileEs');
+			});
+		};
 
 
 // LOGOUT

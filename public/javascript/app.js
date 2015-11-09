@@ -3,7 +3,7 @@
 	angular.module('app', ['ui.router', 'ngMaterial'])
 	.config(Config);
 
-	function Config($stateProvider, $urlRouterProvider) {
+	function Config($stateProvider, $urlRouterProvider, $httpProvider) {
 		$stateProvider.state('Home',{
 			url: '/',
 			templateUrl: 'views/home.html'
@@ -21,6 +21,12 @@
 		.state('ProfileEs',{
 			url: '/perfil',
 			templateUrl: 'views/profileEs.html'
+		}).state('SignIn',{
+			url: '/SignIn',
+			templateUrl: 'views/signIn.html'
+		}).state('SignInEs',{
+			url: '/SignInEs',
+			templateUrl: 'views/signInEs.html'
 		}).state("LinkedInAuth", {
 		      	url: '/auth/token/:token',
 		    	template: "<h1>Authenticating</h1>",
@@ -32,5 +38,6 @@
 		      }]
 		    });
 		$urlRouterProvider.otherwise('/');
+		// $httpProvider.Interceptors.push("AuthInterceptor");
 	}
 })();
