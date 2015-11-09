@@ -6,8 +6,8 @@ var mongoose = require("mongoose");
 var User = mongoose.model("User");
 
 
-passport.use(new LocalStrategy(function(username, password, done){
-   User.findOne({username: username}, function(err, user){
+passport.use(new LocalStrategy(function(email, password, done){
+   User.findOne({email: email}, function(err, user){
       if(err) return done(err);
       if(!user) return done("Could not find user in the database.");
       if(!user.checkPassword(password)) return done("Incorrect password.");
@@ -15,14 +15,21 @@ passport.use(new LocalStrategy(function(username, password, done){
    });
 }));
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 // may need to use local token?
 passport.use(new LinkedInStrategy({
-  clientID: "75qd8voyucpxtq", // env.CLIENTID || process.env['linkedin.CLIENTID'],
-  clientSecret: "JEZ516oAC8ARyDgR", //env.CLIENTSECRET || process.env['linkedin.CLIENTSECRET'],
-  callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback", // env.CALLBACKURL || process.env['linkedin.CALLBACKURL'],
-  // callbackURL: "/auth/linkedin/callback",  // write http://localhost:3000/auth/linkedin/callback
-  scope: ['r_emailaddress', 'r_basicprofile', 'w_share'],
-  state: true
+  clientID: "75qd8voyucpxtq",
+  clientSecret: "JEZ516oAC8ARyDgR",
+  callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
+  scope: ['r_emailaddress', 'r_basicprofile'],
+  // state: true
 }, function(accessToken, refreshToken, profile, done) {
   // asynchronous verification, for effect...
   process.nextTick(function () {
@@ -34,10 +41,3 @@ passport.use(new LinkedInStrategy({
   });
 }));
 
-// passport.serializeUser(function(user, done) {
-//   done(null, user);
-// });
-
-// passport.deserializeUser(function(user, done) {
-//   done(null, user);
-// });

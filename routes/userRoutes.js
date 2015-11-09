@@ -15,7 +15,7 @@ router.post('/signUp', function(req, res, next){
 });
 
 router.get('/auth/linkedin',
-  passport.authenticate('linkedin'),
+  passport.authenticate('linkedin', {state: '/token'}),
   function(req, res){
     // The request will be redirected to LinkedIn for authentication, so this
     // function will not be called.

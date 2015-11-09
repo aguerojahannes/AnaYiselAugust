@@ -12,6 +12,7 @@ var mongoose = require('mongoose');
 require("./models/User");
 require("./config/passport");
 
+
 var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
 console.log(database);
 mongoose.connect(database, function(err){
@@ -35,7 +36,6 @@ app.set('view options', {
 
 //middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
 passport.initialize();
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
