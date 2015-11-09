@@ -10,16 +10,21 @@ var port = process.env.PORT || 3000;
 var passport = require('passport');
 var mongoose = require('mongoose');
 require("./models/User");
+require("./models/Contact");
+require("./models/Request");
+require("./models/Circle");
 require("./config/passport");
 
-var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
-console.log(database);
-mongoose.connect(database, function(err){
-	console.log("Connect");
-	if(err) return console.log('error connecting to %s', database);
-	console.log('connected to %s', database);
-});
-// mongoose.connect("mongodb://localhost/app");
+// var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
+//
+// console.log(database);
+// mongoose.connect(database, function(err){
+// 	console.log("Connect");
+// 	if(err) return console.log('error connecting to %s', database);
+// 	console.log('connected to %s', database);
+// });
+mongoose.connect("mongodb://localhost/app");
+
 
 app.set('views', path.join(__dirname, 'views'));
 //set the view engine that will render HTML from the server to the client
@@ -40,6 +45,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 var userRoutes = require('./routes/userRoutes');
+var contactsRoutes = require('./routes/contactsRoutes');
+var circlesRoutes = require('./routes/circlesRoutes');
+var requestsRoutes = require('./routes/requestsRoutes');
 
 
 //on homepage load, render the index page
@@ -49,6 +57,9 @@ app.get('/', function(req, res) {
 
 // Use Routes
 app.use("/user", userRoutes);
+app.use("/contacts", contactsRoutes);
+app.use("/circles", circlesRoutes);
+app.use("/requests", requestsRoutes);
 
 
 // Handle Errors

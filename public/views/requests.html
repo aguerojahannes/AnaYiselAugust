@@ -1,0 +1,8 @@
+<div ng-controller="RequestsController as vm" id="requests" class="container">
+<h1>REQUESTS PAGE</h1>
+<div ng-repeat="contact in vm.contacts" class="contact">
+  <p>{{ contact.firstName }}  {{ contact.lastName }}</p>
+  <p>{{ contact.email }}</p>
+  <button type="button" class="btn btn-danger" ng-click="vm.deleteContact(contact._id);">Delete</button>
+</div>
+</div>

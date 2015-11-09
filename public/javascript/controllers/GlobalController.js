@@ -4,7 +4,7 @@
 	.controller('GlobalController', GlobalController);
 
 	function GlobalController(GlobalFactory, $state, $stateParams) {
-		var glob = this;
+		var nav = this;
 
 
 	}

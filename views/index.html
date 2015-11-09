@@ -3,13 +3,29 @@
 <head>
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/angular-material/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
-<body>
+<body ng-controller="GlobalController as nav">
 
 	<ui-view></ui-view>
+
+	<nav>
+			<div class="col-xs-3 navlink" ui-sref="Home">
+				<p>Home</p>
+			</div>
+			<div class="col-xs-3 navlink" ui-sref="Contacts">
+				<p>Contacts</p>
+			</div>
+			<div class="col-xs-3 navlink" ui-sref="Circles">
+			  <p>Circles</p>
+			</div>
+			<div class="col-xs-3 navlink" ui-sref="Requests">
+				<p>Requests</p>
+			</div>
+	</nav>
 
 	<!-- Ext Libs -->
 	<script src="angular/angular.min.js"></script>
@@ -22,7 +38,12 @@
 	<script src="/javascript/app.js"></script>
 	<!-- Factories -->
 	<script src="/javascript/services/GlobalFactory.js"></script>
+	<script src="/javascript/services/HomeFactory.js"></script>
 	<!-- Controllers -->
 	<script src="/javascript/controllers/GlobalController.js"></script>
+	<script src="/javascript/controllers/HomeController.js"></script>
+	<script src="/javascript/controllers/RequestsController.js"></script>
+	<script src="/javascript/controllers/CirclesController.js"></script>
+	<script src="/javascript/controllers/ContactsController.js"></script>
 </body>
 </html>
