@@ -1,0 +1,29 @@
+<div ng-controller="ContactsController as vm" id="contacts" class="container">
+<h1>Edit Contact</h1>
+
+<form ng-submit="vm.saveContact(vm.tempContact);">
+  <input type="text" placeholder="First Name" ng-model="vm.tempContact.firstName" />
+  <input type="text" placeholder="Last Name" ng-model="vm.tempContact.lastName" />
+  <input type="email" placeholder="Email Address" ng-model="vm.tempContact.email" />
+  <div>
+    <input type="checkbox" class="inline" ng-model="extras" >
+    <label class="inline">Extra Information</label>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <input type="text" ng-disabled="!extras" placeholder="Profile Picture" ng-model="vm.tempContact.profilePic" />
+      <input type="text" ng-disabled="!extras" placeholder="Phone Number" ng-model="vm.tempContact.phone" />
+      <input type="text" ng-disabled="!extras" placeholder="Skype" ng-model="vm.tempContact.skype" />
+    </div>
+    <div class="col-sm-6">
+      <input type="text" ng-disabled="!extras" placeholder="LinkedIn Profile Url" ng-model="vm.tempContact.linkedIn" />
+      <input type="text" ng-disabled="!extras" placeholder="Facebook Url" ng-model="vm.tempContact.facebook" />
+      <input type="text" ng-disabled="!extras" placeholder="Google+ Url" ng-model="vm.tempContact.google" />
+    </div>
+    <textarea ng-disabled="!extras" ng-model="vm.tempContact.bio" placeholder="Bio"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Save Contact</button>
+  <button type="button" class="btn btn-danger" ui-sref="Contacts" ng-click="vm.tempContact = {};">Cancel</button>
+</form>
+
+</div>

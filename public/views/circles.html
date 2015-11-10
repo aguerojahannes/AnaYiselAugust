@@ -1,10 +1,17 @@
-<div ng-controller="CirclesController as vm" id="circles">
+<div ng-controller="CirclesController as vm" id="circles" class="container">
 <h1>CIRCLES PAGE</h1>
-<h3>Babysitters</h3>
-<div style="height: 20em; width: 20em; border-radius: 50%; background-color: rgba(0,0,0,.1); margin: 0 auto;"></div>
-<div ng-repeat="contact in vm.contacts" class="circle">
-  <p>{{ contact.firstName }}  {{ contact.lastName }}</p>
-  <p>{{ contact.email }}</p>
-  <button type="button" class="btn btn-danger" ng-click="vm.deleteContact(contact._id);">Delete</button>
-</div>
+<button type="button" class="btn btn-success" ui-sref="AddCircle">Add Circle</button>
+<hr>
+<div class="">
+  <br>
+  <h3>Babysitters</h3>
+  <br>
+  <br>
+  <div style="height: 20em; width: 20em; border-radius: 50%; background-color: rgba(0,0,0,.1); margin: 0 auto;"></div>
+  <div ng-repeat="contact in vm.contacts" class="circle">
+    <p>{{ contact.firstName }}  {{ contact.lastName }}</p>
+    <p>{{ contact.email }}</p>
+    <button type="button" class="btn btn-success" ng-click="">Add</button>
+  </div>
+  </div>
 </div>

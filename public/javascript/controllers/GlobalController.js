@@ -3,7 +3,7 @@
 	angular.module('app')
 	.controller('GlobalController', GlobalController);
 
-	function GlobalController(GlobalFactory, $state, $stateParams) {
+	function GlobalController(GlobalFactory, $state, $stateParams, $scope) {
 		var glob = this;
 		glob.user = {};
 //--------------- ADD THIS TO CHECK -----------------
@@ -32,6 +32,9 @@
 			GlobalFactory.logout();
 			$state.go('SignUp');
 		};
+
+		// Bring State To Document
+		$scope.$state = $state;
 
 // SIGN UP
 		glob.signUp = function() {
@@ -62,6 +65,9 @@
 			});
 		};
 
+
+
+// LOGOUT
 
 	}
 })();

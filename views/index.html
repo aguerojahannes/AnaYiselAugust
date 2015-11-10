@@ -13,17 +13,20 @@
 
 	<ui-view></ui-view>
 
-	<nav>
-			<div class="col-xs-3 navlink" ui-sref="Home">
-				<p>Home</p>
+	<nav ng-show="$state.current.name != 'Home'">
+		<div class="col-xs-4 navlink" ui-sref="Home">
+			<p>Home</p>
+		</div>
+			<div class="col-xs-2 navlink" ui-sref="Dashboard">
+				<p>Dashboard</p>
 			</div>
-			<div class="col-xs-3 navlink" ui-sref="Contacts">
+			<div class="col-xs-2 navlink" ui-sref="Contacts">
 				<p>Contacts</p>
 			</div>
-			<div class="col-xs-3 navlink" ui-sref="Circles">
+			<div class="col-xs-2 navlink" ui-sref="Circles">
 			  <p>Circles</p>
 			</div>
-			<div class="col-xs-3 navlink" ui-sref="Requests">
+			<div class="col-xs-2 navlink" ui-sref="Requests">
 				<p>Requests</p>
 			</div>
 	</nav>
