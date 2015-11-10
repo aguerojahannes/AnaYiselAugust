@@ -8,7 +8,7 @@
 	function HomeFactory($http, $q) {
 		var o = {};
 		o.contacts = [];
-
+		o.tempContact = {};
 
 
 		/* -------------------- Contacts ---------------------------*/
@@ -36,6 +36,15 @@
 		o.deleteContact = function(id) {
 			var q = $q.defer();
 			$http.delete('/contacts/' + id).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
+
+		/* Save Contact */
+		o.saveContact = function(contact) {
+			var q = $q.defer();
+			$http.put('/contacts', contact).then(function(res) {
 				q.resolve(res.data);
 			});
 			return q.promise;

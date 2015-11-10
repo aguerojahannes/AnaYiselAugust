@@ -8,14 +8,35 @@
 			url: '/',
 			templateUrl: 'views/home.html'
 		}).state('Contacts',{
-			url: '/',
+			url: '/contacts',
 			templateUrl: 'views/contacts.html'
+		}).state('AddContact',{
+			url: '/addcontact',
+			templateUrl: 'views/addContact.html'
+		}).state('EditContact',{
+			url: '/editcontact',
+			templateUrl: 'views/editContact.html'
+		}).state('Dashboard',{
+			url: '/dashboard',
+			templateUrl: 'views/dashboard.html'
 		}).state('Circles',{
-			url: '/',
+			url: '/circles',
 			templateUrl: 'views/circles.html'
+		}).state('AddCircle',{
+			url: '/addcircle',
+			templateUrl: 'views/addCircle.html'
+		}).state('EditCircle',{
+			url: '/editcircle',
+			templateUrl: 'views/editCircle.html'
 		}).state('Requests',{
-			url: '/',
+			url: '/requests',
 			templateUrl: 'views/requests.html'
+		}).state('AddRequest',{
+			url: '/addrequest',
+			templateUrl: 'views/addRequest.html'
+		}).state('EditRequest',{
+			url: '/editrequest',
+			templateUrl: 'views/editRequest.html'
 		}).state('SignUp',{
 			url: '/signup',
 			templateUrl: 'views/signup.html'

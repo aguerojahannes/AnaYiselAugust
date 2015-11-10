@@ -1,20 +1,18 @@
 
-<div ng-controller="HomeController as vm" id="home" class="container">
-<h1>HOME PAGE</h1>
-<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-</div>
+<div id="home" class="container"> <!-- inside the global controller on Index -->
+  <h1>HOME PAGE</h1>
+  <div class="col-sm-6">
+    <img src="http://a5.mzstatic.com/us/r30/Purple7/v4/77/31/4e/77314e10-98b9-80b3-a3b0-66a092c4975a/icon175x175.png" alt="English" />
+    <md-button ui-sref="SignIn">Sign In</md-button>
+    <md-button ui-sref="SignUp">Register</md-button>
+    <md-button href="/api/user/auth/linkedin">LinkedIn</md-button>
+  </div>
 
-<div> <!-- inside the global controller on index -->
+  <div class="col-sm-6">
+    <img src="http://s10.postimg.org/rb9biq6np/image.png" alt="Spanish" />
+    <md-button ui-sref="SignInEs">Iniciar Sesión</md-button>
+    <md-button ui-sref="SignUpEs">Registrar</md-button>
+    <md-button href="/api/user/auth/linkedin">LinkedIn Español</md-button>
 
-	<md-button ui-sref="SignUp">Sign Up</md-button>
-	<md-button href="/api/user/auth/linkedin">Linked In</md-button>
-	<md-button ui-sref="SignUpEs">Registrar</md-button>
-	<md-button href="/api/user/auth/linkedin">Linked In Español</md-button>
-	<md-button ui-sref="SignInEs">Sign In</md-button>
-	<md-button ui-sref="SignInEs">Iniciar Sesión</md-button>
-
-
+  </div>
 </div>

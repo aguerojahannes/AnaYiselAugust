@@ -6,6 +6,7 @@
 	function ContactsController(HomeFactory, $state, $stateParams) {
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
+		vm.tempContact = HomeFactory.tempContact;
 
 		// Get Contacts
 		vm.getContacts = function() {
@@ -20,9 +21,9 @@
 			vm.newContact.createdOn = new Date();
 			vm.newContact.username = new Date();
 			HomeFactory.addContact(vm.newContact).then(function(res){
-				alert("Contact Added");
 				vm.newContact = {};
 				vm.getContacts();
+				$state.go("Contacts");
 			});
 		};
 
@@ -32,6 +33,21 @@
 				vm.getContacts();
 			});
 		};
+
+		// Edit Contact
+		vm.editContact = function(contact) {
+				HomeFactory.tempContact = contact;
+				$state.go('EditContact');
+		};
+
+		// Save Contact
+		vm.saveContact = function(contact) {
+			HomeFactory.saveContact(contact).then(function(res) {
+				vm.getContacts();
+				$state.go("Contacts");
+			});
+		};
+
 
 	}
 })();
