@@ -3,13 +3,13 @@
 	angular.module('app')
 	.controller('CirclesController', CirclesController);
 
-	function CirclesController(HomeFactory, $state, $stateParams) {
+	function CirclesController(CirclesFactory, $state, $stateParams) {
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
 		vm.circles = HomeFactory.circles;
 
-		HomeFactory.getContacts().then(function(res) {
-				vm.contacts = HomeFactory.contacts;
+		CirclesFactory.getContacts().then(function(res) {
+				vm.contacts = CirclesFactory.contacts;
 		});
 
 
