@@ -9,7 +9,7 @@
 		if(getToken()){
 			setUser();
 		}
-		
+
 //FORGOT PASSWORD? SEND EMAIL
 			o.forgot = function(user) {
 					var q = $q.defer() ;
@@ -21,15 +21,15 @@
 				} ;
 
 
-	// //Update PASSWORD
-	// 	o.resetPassword = function(editedUser) {
-	// 		var q = $q.defer();
-	// 		$http.put('/api/user/resetPassword' + editedUser.id, editedUser).success(
-	// 			function(res){
-	// 				q.resolve(res);
-	// 			});
-	// 			return q.promise;
-	// 		}
+	//Update PASSWORD
+		o.resetPassword = function(editedUser) {
+			var q = $q.defer();
+			$http.put('/api/user/resetPassword/' + editedUser.id, editedUser).success(
+				function(res){
+					q.resolve(res);
+				});
+				return q.promise;
+			}
 
 //------------------LOGOUT------------------------------
 		o.logout = function() {

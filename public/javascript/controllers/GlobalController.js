@@ -19,13 +19,13 @@
 			}) ;
 		};
 
-// //UPDATE PASSWORD (LIKE EDIT)
-// 		glob.resetPassword = function(){
-// 			glob.user.id = $stateParams.id ;
-// 			GlobalFactory.resetPassword(glob.user).then(function(res){
-// 				$state.go('Home');
-// 			});
-// 		};
+//-----------UPDATE PASSWORD (LIKE EDIT)------------------
+		glob.resetPassword = function(){
+			glob.user.id = $stateParams.id ;
+			GlobalFactory.resetPassword(glob.user).then(function(res){
+				$state.go('Home');
+			});
+		};
 
 //Logout
 		glob.logout = function(){
