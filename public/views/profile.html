@@ -1,1 +1,15 @@
-profile
+<!-- what controller?-->
+<div ng-controller="ProfileController as vm">Profile
+	<div class="profile" layout>
+	  <div style="border:1px">
+	  	<img src="img.jpg" width="150px"/>
+	  	<img src="{{ profile.profilePic }}"/>
+	  </div>
+	  <div>
+		  <p>{{ profile.firstName || "first name"}} {{ profile.lastName || "last name"}}</p>
+		  <p>{{ profile.skills }}</p>
+		  <md-button type="button" ng-click="vm.editProfile();">Edit Profile</md-button>
+	  </div>
+	</div>
+
+</div>

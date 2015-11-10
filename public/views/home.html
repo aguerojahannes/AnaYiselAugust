@@ -1,23 +1,17 @@
-<!-- inside the global controller on index -->
-<div id="home" class="container">
-<h1>HOME PAGE</h1>
-<div layout>
-	<div flex>
-		<h4>English</h4>
-		<md-button ui-sref="SignUp">Sign Up</md-button></br>
-		<!-- <md-button href="/api/user/auth/linkedin">Sign Up with Linked In</md-button></br> -->
-		<md-button ui-sref="SignIn">Sign In</md-button></br>
-		<md-button ng-click="glob.logout()" >Logout</md-button>
+<div id="home" class="container"> <!-- inside the global controller on Index -->
+  <h1>HOME PAGE</h1>
+  <div class="col-sm-6">
+    <img src="http://a5.mzstatic.com/us/r30/Purple7/v4/77/31/4e/77314e10-98b9-80b3-a3b0-66a092c4975a/icon175x175.png" alt="English" />
+    <md-button ui-sref="SignIn">Sign In</md-button>
+    <md-button ui-sref="SignUp">Register</md-button>
+    <md-button href="/api/user/auth/linkedin">LinkedIn</md-button>
+  </div>
 
-	</div>
-	<div flex>
-		<h4>Español</h4>
-		<md-button ui-sref="SignUpEs">Registrar</md-button></br>
-		<!-- <md-button href="/api/user/auth/linkedin">Linked In Español</md-button></br> -->
-		<md-button ui-sref="SignInEs">Iniciar Sesión</md-button></br>
-		<md-button ng-click="glob.logout()" >Cerrar Sesión</md-button>
-	</div>
-</div>
+  <div class="col-sm-6">
+    <img src="http://s10.postimg.org/rb9biq6np/image.png" alt="Spanish" />
+    <md-button ui-sref="SignInEs">Iniciar Sesión</md-button>
+    <md-button ui-sref="SignUpEs">Registrar</md-button>
+    <md-button href="/api/user/auth/linkedin">LinkedIn Español</md-button>
 
-
+  </div>
 </div>

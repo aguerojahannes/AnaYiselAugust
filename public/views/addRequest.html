@@ -1,0 +1,22 @@
+<div ng-controller="RequestsController as vm" id="requests" class="container">
+<h1>ADD REQUESTS PAGE</h1>
+
+<form ng-submit="vm.addContact(vm.newContact);">
+  <input type="text" placeholder="First Name" ng-model="vm.newContact.firstName" />
+  <input type="text" placeholder="Last Name" ng-model="vm.newContact.lastName" />
+  <input type="email" placeholder="Email Address" ng-model="vm.newContact.email" />
+  Extra Information
+  <input type="checkbox" ng-model="extras" >
+  <div ng-show="extras">
+    <input type="text" ng-disabled="!extras" placeholder="Profile Picture" ng-model="vm.newContact.profilePic" />
+    <input type="text" ng-disabled="!extras" placeholder="Phone Number" ng-model="vm.newContact.phone" />
+    <input type="text" ng-disabled="!extras" placeholder="Skype" ng-model="vm.newContact.skype" />
+    <input type="text" ng-disabled="!extras" placeholder="LinkedIn Profile Url" ng-model="vm.newContact.linkedIn" />
+    <input type="text" ng-disabled="!extras" placeholder="Facebook Url" ng-model="vm.newContact.facebook" />
+    <textarea ng-disabled="!extras" ng-model="vm.newContact.bio" placeholder="Bio"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Save Request</button>
+  <button type="button" class="btn btn-danger" ui-sref="Requests" ng-click="vm.newContact = {};">Cancel</button>
+</form>
+
+</div>

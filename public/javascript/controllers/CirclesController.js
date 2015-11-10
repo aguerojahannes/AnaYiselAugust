@@ -12,6 +12,7 @@
 				vm.contacts = HomeFactory.contacts;
 		});
 
+
 		// // Get Circles
 		// vm.getCircles = function() {
 		// 	HomeFactory.getContacts().then(function(res){

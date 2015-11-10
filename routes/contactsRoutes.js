@@ -21,6 +21,14 @@ router.post('/', function(req, res, next) {
   });
 });
 
+// Edit Contact
+router.put('/', function(req, res, next) {
+  Contact.update({_id: req.body._id}, req.body, function (err, result) {
+    if(err) return next(err);
+    res.send(result);
+  });
+});
+
 // Delete Contact
 router.delete('/:id', function(req, res, next) {
   Contact.remove({_id: req.params.id}, function(err, result) {
@@ -28,6 +36,5 @@ router.delete('/:id', function(req, res, next) {
     res.send(result);
   });
 });
-
 
 module.exports = router;
