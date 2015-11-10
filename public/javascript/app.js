@@ -29,11 +29,17 @@
 			url: '/perfil',
 			templateUrl: 'views/profileEs.html'
 		}).state('SignIn',{
-			url: '/SignIn',
+			url: '/signIn',
 			templateUrl: 'views/signIn.html'
 		}).state('SignInEs',{
-			url: '/SignInEs',
+			url: '/signInEs',
 			templateUrl: 'views/signInEs.html'
+		}).state('ForgotPassword',{
+			url: '/forgotPassword',
+			templateUrl: 'views/forgotPassword.html'
+		}).state('ResetPassword',{
+			url: '/resetPassword',
+			templateUrl: 'views/resetPassword.html'
 		}).state("LinkedInAuth", {
 		      	url: '/auth/token/:token',
 		    		template: "<h1>Authenticating</h1>",
@@ -45,6 +51,6 @@
 		      }]
 		    });
 		$urlRouterProvider.otherwise('/');
-		// $httpProvider.Interceptors.push("AuthInterceptor");   // UN COMMENT WHEN Oauth works
+		$httpProvider.interceptors.push("AuthInterceptor");   // UN COMMENT WHEN Oauth works
 	}
 })();

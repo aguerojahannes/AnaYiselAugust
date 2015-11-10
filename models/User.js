@@ -3,8 +3,8 @@ var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 
 var UserSchema = new mongoose.Schema({
-  fullName: {type: String, required: true, unique: false},
-  username: String, // probably not going to use
+  firstName: {type: String, required: true, unique: false},
+  lastName: {type: String, required: true, unique: false},
   email: {type: String, lowercase: true, trim: true, unique: true, required: true},
   passwordHash: String,
   salt: String,
@@ -31,7 +31,7 @@ UserSchema.methods.checkPassword = function(password){
    return (passwordHash === this.passwordHash);
 };
 
-console.log("above createToken()");
+// console.log("above createToken()");
 UserSchema.methods.createToken = function(){
    return jwt.sign({
       _id: this._id,
