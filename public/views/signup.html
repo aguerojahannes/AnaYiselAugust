@@ -3,32 +3,32 @@
 <form ng-submit="glob.signUp()">
 <h1>Sign Up</h1>
 	<md-input-container>
-		<label>Full Name</label>
-		<input ng-model="glob.user.fullName" type="text" ng-required="true"/>
+		<label>First Name *</label>
+		<input ng-model="glob.user.firstName" type="text" ng-required="true"/>
 	</md-input-container>
-<!-- 	<md-input-container>
-		<label>Username</label>
-		<input ng-model="glob.user.username" type="text"/>
-	</md-input-container> -->
 	<md-input-container>
-		<label>Email Address</label>
-		<input ng-model="glob.user.email" type="text" ng-required="true"/>
+		<label>Last Name *</label>
+		<input ng-model="glob.user.lastName" type="text" ng-required="true"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Email Address *</label>
+		<input ng-model="glob.user.email" type="text" ng-required="true" placeholder="You will sign in with your email address."/>
 	</md-input-container>
 	<md-input-container>
 		<label>Phone Number</label>
 		<input ng-model="glob.user.phoneNumber" type="text"/>
 	</md-input-container>
 	<md-input-container>
-		<label>Password</label>
+		<label>Password *</label>
 		<input ng-model="glob.user.password" type="text" ng-required="true"/>
 	</md-input-container>
 	<md-input-container>
-		<label>Confirm Password</label>
+		<label>Confirm Password *</label>
 		<input ng-model="glob.user.confirmPassword" type="text" ng-required="true"/>
 	</md-input-container>
 	<div ng-show="!(glob.user.password === glob.user.confirmPassword)">Your passwords must match.</div>
 
-	<md-button type="submit" ng-disabled="!glob.user.fullName || !glob.user.email || !glob.user.password || !(glob.user.password === glob.user.confirmPassword)">Sign Up</md-button>
-/</form>
+	<md-button type="submit" ng-disabled="!glob.user.firstName || !glob.user.lastName || !glob.user.email || !glob.user.password || !(glob.user.password === glob.user.confirmPassword)">Sign Up</md-button>
+</form>
 
 </div>

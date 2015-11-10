@@ -29,22 +29,28 @@
 			url: '/perfil/:id',
 			templateUrl: 'views/profileEs.html'
 		}).state('SignIn',{
-			url: '/SignIn',
+			url: '/signIn',
 			templateUrl: 'views/signIn.html'
 		}).state('SignInEs',{
-			url: '/SignInEs',
+			url: '/signInEs',
 			templateUrl: 'views/signInEs.html'
+		}).state('ForgotPassword',{
+			url: '/forgotPassword',
+			templateUrl: 'views/forgotPassword.html'
+		}).state('ResetPassword',{
+			url: '/resetPassword',
+			templateUrl: 'views/resetPassword.html'
 		}).state("LinkedInAuth", {
 		      	url: '/auth/token/:token',
-		    	template: "<h1>Authenticating</h1>",
+		    		template: "<h1>Authenticating</h1>",
 		      	controller: ['$rootScope', "$stateParams", '$state', 'UserFactory', function($rootScope, $stateParams, $state, UF) {
 		        	var vm = this;
-		       	 localStorage.setItem("token", $stateParams.token);
-		       	 UF.setLoggedinUserToRootScope();
-		        	$state.go("Profile");
+			       	 localStorage.setItem("token", $stateParams.token);
+			       	 UF.setLoggedinUserToRootScope();
+			        	$state.go("Profile");
 		      }]
 		    });
 		$urlRouterProvider.otherwise('/');
-		// $httpProvider.Interceptors.push("AuthInterceptor");
+		$httpProvider.interceptors.push("AuthInterceptor");   // UN COMMENT WHEN Oauth works
 	}
 })();

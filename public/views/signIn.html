@@ -13,7 +13,9 @@
                     <div style="text-align: center">
                       <!-- <md-button ng-click="glob.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
                       <md-button type="submit"> Sign In </md-button>
-                      <md-button ui-sref="ResetPassword"> Forgot Password? </md-button>
-                       <h5 ng-if= "glob.user.username && glob.user.password !(glob.user.username = glob.user.password)" style="color: orange; text-align: center;" >Sorry, Usename & Password must match!</h5> 
                     </div>
              </form>
+
+             <div>
+               <md-button ui-sref="ForgotPassword"> Forgot Password? </md-button>
+             </div>
