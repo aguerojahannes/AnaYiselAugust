@@ -59,7 +59,7 @@
 			url: '/forgotPassword',
 			templateUrl: 'views/forgotPassword.html'
 		}).state('ResetPassword',{
-			url: '/resetPassword',
+			url: '/resetPassword/:id',
 			templateUrl: 'views/resetPassword.html'
 		}).state("LinkedInAuth", {
 		      	url: '/auth/token/:token',

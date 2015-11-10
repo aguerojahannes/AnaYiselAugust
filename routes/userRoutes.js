@@ -9,7 +9,7 @@ var nodemailer = require('nodemailer') ;
 
 //---------------ADD THIS TO WORK WITH RESET PASSWORD ------------------
 // var async = require('async');
-// var crypto = require('crypto');
+var crypto = require('crypto');
 
 var auth = jwt({
 	userProperty: "payload",
@@ -30,10 +30,10 @@ router.post('/forgot', function(req, res, next) {
 	var rand, mailOptions, host, link ;
 
 	rand = Math.floor((Math.random() * 100) + 54) ;
-	email = req.body.username ;
+	email = req.body.email ;
 
 	// Look for user on db
-	User.findOne({ username : email }, function(err, user) {
+	User.findOne({ email : email }, function(err, user) {
 		if(err) console.log(err) ;
 		if(err) return res.status(500).send({ err: "Issues with the server" }) ;
 		if(!user) {
@@ -41,7 +41,9 @@ router.post('/forgot', function(req, res, next) {
 		}
 
 		host = req.get('host') ;
-		link = 'http://' + host + '/#/PasswordReset/' + user._id ;
+		link = 'http://' + host + '/#/resetPassword/' + user._id ;
+		console.log("user._id: " + user._id);
+
 
 		mailOptions = {
 			to: email,
@@ -62,22 +64,25 @@ router.post('/forgot', function(req, res, next) {
 }) ;
 //---------------------------- END NODEMAIL FORGOT PASSWORD ----------------
 
-// //RESET PASSWORD
-// router.put('/resetPassword/:id', function(req, res) {
-// 	User.findOne({ _id : req.body.id }, function(err, user) {
-// 		if(err) console.log(err) ;
-// 		if(err) return res.status(500).send({ err: "Issues with the server" }) ;
-// 		if (!user) {
-// 			return res.send("Error: Not found.") ;
-// 		}
-// 		user.setPassword(req.body.password) ;
-// 		User.update({ _id: req.body.id }, user)
-// 		.exec(function(err, user) {
-// 			if(err) ;
-// 			if(!user) ;
-// 			res.send(user) ;
-// 		}) ;
-// 	}) ;
+
+//-----------------RESET PASSWORD--------------------------
+router.put('/resetPassword/:id', function(req, res) {
+	User.findOne({ _id : req.body.id }, function(err, user) {
+		if(err) console.log(err);
+		if(err) return res.status(500).send({ err: "Issues with the server" });
+		if (!user) {
+			return res.send("Error: Not found.");
+		}
+		console.log(req.body);
+		user.setPassword(req.body.password);
+		User.update({ _id: req.body.id }, user)
+		.exec(function(err, user) {
+			if(err);
+			if(!user);
+			res.send(user);
+		})
+		});
+	});
 
 
 //---------------------- SIGN UP WITH 3RD PARTY SERVICE----------------------
@@ -104,6 +109,7 @@ router.post('/signUp', function(req, res, next){
 		res.send(result.createToken());
 	});
 });
+
 //-------------------------- SIGN IN -------------------------------
 router.post('/signIn', function(req, res, next){
 	// console.log("req.body.email: " + req.body.email); // successful
