@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 3000;
 var passport = require('passport');
+var session = require('express-session');
 var mongoose = require('mongoose');
 require("./models/User");
 require("./models/Contact");
@@ -15,16 +16,15 @@ require("./models/Request");
 require("./models/Circle");
 require("./config/passport");
 
-// mongoose.connect("mongodb://localhost/app");
-
-
-var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
-console.log(database);
-mongoose.connect(database, function(err){
-	console.log("Connect");
-	if(err) return console.log('error connecting to %s', database);
-	console.log('connected to %s', database);
-});
+// DATABASE CONNECTION
+mongoose.connect("mongodb://localhost/anayiselaugust");
+// var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
+// console.log(database);
+// mongoose.connect(database, function(err){
+// 	console.log("Connect");
+// 	if(err) return console.log('error connecting to %s', database);
+// 	console.log('connected to %s', database);
+// });
 
 
 
@@ -40,11 +40,14 @@ app.set('view options', {
 	layout: false
 });
 
-//middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
-passport.initialize();
+// MIDDLEWARE
+app.use(session({ secret: 'session secret key', cookie: {secure: false} })); // if using http on routes, true is fine. making sure links match on callback url.
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+// ROUTE LINKS
 var userRoutes = require('./routes/userRoutes');
 var contactsRoutes = require('./routes/contactsRoutes');
 var circlesRoutes = require('./routes/circlesRoutes');
@@ -57,7 +60,7 @@ app.get('/', function(req, res) {
 });
 
 // Use Routes
-app.use("/user", userRoutes);
+// app.use("/user", userRoutes);
 app.use("/contacts", contactsRoutes);
 app.use("/circles", circlesRoutes);
 app.use("/requests", requestsRoutes);

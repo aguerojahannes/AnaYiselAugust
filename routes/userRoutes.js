@@ -4,12 +4,13 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var jwt = require('express-jwt');
 var passport = require('passport');
+var linkedIn = require("passport-linkedin-oauth2");
 var nodemailer = require('nodemailer') ;
 
 
 //---------------ADD THIS TO WORK WITH RESET PASSWORD ------------------
 // var async = require('async');
-// var crypto = require('crypto');
+var crypto = require('crypto');
 
 var auth = jwt({
 	userProperty: "payload",
@@ -30,10 +31,10 @@ router.post('/forgot', function(req, res, next) {
 	var rand, mailOptions, host, link ;
 
 	rand = Math.floor((Math.random() * 100) + 54) ;
-	email = req.body.username ;
+	email = req.body.email ;
 
 	// Look for user on db
-	User.findOne({ username : email }, function(err, user) {
+	User.findOne({ email : email }, function(err, user) {
 		if(err) console.log(err) ;
 		if(err) return res.status(500).send({ err: "Issues with the server" }) ;
 		if(!user) {
@@ -41,7 +42,9 @@ router.post('/forgot', function(req, res, next) {
 		}
 
 		host = req.get('host') ;
-		link = 'http://' + host + '/#/PasswordReset/' + user._id ;
+		link = 'http://' + host + '/#/resetPassword/' + user._id ;
+		console.log("user._id: " + user._id);
+
 
 		mailOptions = {
 			to: email,
@@ -62,36 +65,45 @@ router.post('/forgot', function(req, res, next) {
 }) ;
 //---------------------------- END NODEMAIL FORGOT PASSWORD ----------------
 
-// //RESET PASSWORD
-// router.put('/resetPassword/:id', function(req, res) {
-// 	User.findOne({ _id : req.body.id }, function(err, user) {
-// 		if(err) console.log(err) ;
-// 		if(err) return res.status(500).send({ err: "Issues with the server" }) ;
-// 		if (!user) {
-// 			return res.send("Error: Not found.") ;
-// 		}
-// 		user.setPassword(req.body.password) ;
-// 		User.update({ _id: req.body.id }, user)
-// 		.exec(function(err, user) {
-// 			if(err) ;
-// 			if(!user) ;
-// 			res.send(user) ;
-// 		}) ;
-// 	}) ;
+
+//-----------------RESET PASSWORD--------------------------
+router.put('/resetPassword/:id', function(req, res) {
+	User.findOne({ _id : req.body.id }, function(err, user) {
+		if(err) console.log(err);
+		if(err) return res.status(500).send({ err: "Issues with the server" });
+		if (!user) {
+			return res.send("Error: Not found.");
+		}
+		console.log(req.body);
+		user.setPassword(req.body.password);
+		User.update({ _id: req.body.id }, user)
+		.exec(function(err, user) {
+			if(err);
+			if(!user);
+			res.send(user);
+		})
+		});
+	});
 
 
 //---------------------- SIGN UP WITH 3RD PARTY SERVICE----------------------
-router.get('/auth/linkedin',
-  passport.authenticate('linkedin', {state: '/token'}),
-  function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
-  });
 
-router.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-  successRedirect: '/',
-  failureRedirect: '/'
-}));
+// this is the check to see if we have proper linkedin credentials
+router.get('/auth/linkedin',
+  passport.authenticate('linkedin', {scope: ["r_basicprofile", "r_emailaddress"]})); // this is a callback
+console.log("Made it after the first get");
+
+// result 
+router.get('/auth/linkedin/callback', 
+	passport.authenticate('linkedin', {failureRedirect: '/'}),
+	function(req, res){
+		if(req.user){
+			req.user.createToken(); // generating token
+			res.redirect("/#/profile/" + req.user._id);
+		} else {
+			res.send("You are not authenticated.");
+		}
+	});
 
 
 // -------------------------SIGN UP---------------------------------------
@@ -104,6 +116,7 @@ router.post('/signUp', function(req, res, next){
 		res.send(result.createToken());
 	});
 });
+
 //-------------------------- SIGN IN -------------------------------
 router.post('/signIn', function(req, res, next){
 	// console.log("req.body.email: " + req.body.email); // successful
