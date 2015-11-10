@@ -7,6 +7,7 @@
 		var o = {};
 		o.contacts = [];
 		o.tempContact = {};
+		o.tempRequest = {};
 
 
 		/* -------------------- Contacts ---------------------------*/
@@ -73,6 +74,45 @@
 		o.deleteContact = function(id) {
 			var q = $q.defer();
 			$http.delete('/contacts/' + id).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
+
+		/* -------------------- Requests ---------------------------*/
+
+		/* Get Requests */
+		o.getRequests = function() {
+			var q = $q.defer();
+			$http.get('/requests').then(function(res) {
+				o.requests = res.data;
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
+
+		/* Add Request */
+		o.addRequest = function(request) {
+			var q = $q.defer();
+			$http.post('/requests', request).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
+
+		/* Delete Request */
+		o.deleteRequest = function(id) {
+			var q = $q.defer();
+			$http.delete('/requests/' + id).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
+
+		/* Save Request */
+		o.saveRequest = function(request) {
+			var q = $q.defer();
+			$http.put('/requests', request).then(function(res) {
 				q.resolve(res.data);
 			});
 			return q.promise;

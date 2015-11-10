@@ -1,1 +1,22 @@
-<h1>EDIT REQUEST</h1>
+<div ng-controller="RequestsController as vm" id="requests" class="container">
+<h1>Edit Request</h1>
+
+<form ng-submit="vm.saveRequest(vm.tempRequest);">
+  <label>Who Can See My Request?</label>
+  <select>
+   <option>Everyone</option>
+   <option>Contacts Only</option>
+   <option>Babysitters Only</option>
+   <option>Select People...</option>
+  </select>
+  <input type="text" placeholder="Title" ng-model="vm.tempRequest.title" />
+  <textarea ng-model="vm.tempRequest.body" placeholder="Comments"></textarea>
+  <br>
+  <input type="text" placeholder="Skills" ng-model="vm.tempRequest.skills" />
+  <br>
+  <button type="submit" class="btn btn-success">Save Request</button>
+  <button type="button" class="btn btn-danger" ui-sref="Requests" ng-click="vm.tempRequest = {};">Cancel</button>
+</form>
+
+</div>
+>>>>>>> fc98cccb5d3e845bddcc82a0bd4aa2ce18e8c164

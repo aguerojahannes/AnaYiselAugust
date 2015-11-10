@@ -2,10 +2,10 @@
 <h1>REQUESTS PAGE</h1>
 <button type="button" ui-sref="AddRequest" class="btn btn-success">Add Request</button>
 <hr>
-<div ng-repeat="contact in vm.contacts" class="contact">
-  <p>{{ contact.firstName }}  {{ contact.lastName }}</p>
-  <p>{{ contact.email }}</p>
-  <button type="button" class="btn btn-warning edit" ui-sref="EditRequest">Edit</button>
-  <button type="button" class="btn btn-danger delete" ng-click="vm.deleteContact(contact._id);">Delete</button>
+<div ng-repeat="request in vm.requests" class="contact">
+  <p>{{ request.title }}</p>
+  <p>{{ request.body }}</p>
+  <button type="button" class="btn btn-warning edit" ng-click="vm.editRequest(request);">Edit</button>
+  <button type="button" class="btn btn-danger delete" ng-click="vm.deleteRequest(request._id);">Delete</button>
 </div>
 </div>

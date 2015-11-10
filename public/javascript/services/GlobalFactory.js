@@ -75,7 +75,6 @@
 		      var user = JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 		      o.status.username = user.username;
 		      o.status._id = user._id;
-		      console.log(o.status);
 		    }
 		    function removeUser(){
 		      o.status.username = null;
