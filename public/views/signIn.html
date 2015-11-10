@@ -11,9 +11,9 @@
                </md-input-container>
                <!-- Sign in, Close nav, register Buttons: Submit and Register -->
                     <div style="text-align: center">
-                      <!-- <md-button ng-click="nav.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
+                      <!-- <md-button ng-click="glob.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
                       <md-button type="submit"> Sign In </md-button>
-                      <md-button ui-sref="ResetPassword"> Forgot Password? <md-button>
-                       <h5 ng-if= "nav.user.username && nav.user.password !(nav.user.username = nav.user.password)" style="color: orange; text-align: center;" >Sorry, Usename & Password must mastch!</h5> -->
+                      <md-button ui-sref="ResetPassword"> Forgot Password? </md-button>
+                       <h5 ng-if= "glob.user.username && glob.user.password !(glob.user.username = glob.user.password)" style="color: orange; text-align: center;" >Sorry, Usename & Password must match!</h5> 
                     </div>
              </form>

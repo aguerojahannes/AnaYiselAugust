@@ -20,13 +20,13 @@
 			url: '/signup',
 			templateUrl: 'views/signup.html'
 		}).state('Profile',{
-			url: '/profile',
+			url: '/profile/:id',
 			templateUrl: 'views/profile.html'
 		}).state('SignUpEs',{
 			url: '/registrar',
 			templateUrl: 'views/signupEs.html'
 		}).state('ProfileEs',{
-			url: '/perfil',
+			url: '/perfil/:id',
 			templateUrl: 'views/profileEs.html'
 		}).state('SignIn',{
 			url: '/SignIn',
