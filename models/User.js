@@ -11,14 +11,43 @@ var UserSchema = new mongoose.Schema({
   profilePic: String,
   phoneNumber: String,
   language: String,
-  linkedIn: String,
-  facebook: String,
-  google: String,
+  linkedIn: {
+    id: String,
+    token: String,
+    email: String,
+    firstName: String,
+    lastName: String,
+    photo: String,
+    summary: String,
+    profileUrl: String,
+  },
+  linkedInUrl: String,
+  facebook: {
+    id: String,
+    token: String,
+    email: String,
+    firstName: String,
+    lastName: String,
+    photo: String,
+    summary: String,
+    profileUrl: String,
+  },
+  google: {
+    id: String,
+    token: String,
+    email: String,
+    firstName: String,
+    lastName: String,
+    photo: String,
+    summary: String,
+    profileUrl: String,
+  },
   jobTitle: String,
   keyword: [{name: String, description: String}],
   bio: String,
   circles: Array,
-  friends: Array
+  friends: Array,
+  joined: String
 });
 
 UserSchema.methods.setPassword = function(password){

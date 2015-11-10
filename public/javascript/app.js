@@ -61,16 +61,17 @@
 		}).state('ResetPassword',{
 			url: '/resetPassword/:id',
 			templateUrl: 'views/resetPassword.html'
-		}).state("LinkedInAuth", {
-		      	url: '/auth/token/:token',
-		    		template: "<h1>Authenticating</h1>",
-		      	controller: ['$rootScope', "$stateParams", '$state', 'UserFactory', function($rootScope, $stateParams, $state, UF) {
-		        	var vm = this;
-			       	 localStorage.setItem("token", $stateParams.token);
-			       	 UF.setLoggedinUserToRootScope();
-			        	$state.go("Profile");
-		      }]
-		    });
+		});
+		// .state("LinkedInAuth", {
+		//       	url: '/auth/token/:token',
+		//     		template: "<h1>Authenticating</h1>",
+		//       	controller: ['$rootScope', "$stateParams", '$state', 'UserFactory', function($rootScope, $stateParams, $state, UF) {
+		//         	var vm = this;
+		// 	       	 localStorage.setItem("token", $stateParams.token);
+		// 	       	 UF.setLoggedinUserToRootScope();
+		// 	        	$state.go("Profile");
+		//       }]
+		//     });
 		$urlRouterProvider.otherwise('/');
 		$httpProvider.interceptors.push("AuthInterceptor");   // UN COMMENT WHEN Oauth works
 	}

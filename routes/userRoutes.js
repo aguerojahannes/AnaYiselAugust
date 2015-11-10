@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var jwt = require('express-jwt');
 var passport = require('passport');
+var linkedIn = require("passport-linkedin-oauth2");
 var nodemailer = require('nodemailer') ;
 
 
@@ -86,17 +87,23 @@ router.put('/resetPassword/:id', function(req, res) {
 
 
 //---------------------- SIGN UP WITH 3RD PARTY SERVICE----------------------
-router.get('/auth/linkedin',
-  passport.authenticate('linkedin', {state: '/token'}),
-  function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this
-    // function will not be called.
-  });
 
-router.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-  successRedirect: '/',
-  failureRedirect: '/signin'
-}));
+// this is the check to see if we have proper linkedin credentials
+router.get('/auth/linkedin',
+  passport.authenticate('linkedin', {scope: ["r_basicprofile", "r_emailaddress"]})); // this is a callback
+console.log("Made it after the first get");
+
+// result 
+router.get('/auth/linkedin/callback', 
+	passport.authenticate('linkedin', {failureRedirect: '/'}),
+	function(req, res){
+		if(req.user){
+			req.user.createToken(); // generating token
+			res.redirect("/#/profile/" + req.user._id);
+		} else {
+			res.send("You are not authenticated.");
+		}
+	});
 
 
 // -------------------------SIGN UP---------------------------------------

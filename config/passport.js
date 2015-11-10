@@ -1,6 +1,6 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
-// var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+var LinkedInStrategy = require('passport-linkedin').Strategy;
 var env = require("dotenv");
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
@@ -16,28 +16,97 @@ passport.use(new LocalStrategy({usernameField: 'email'} ,function(email, passwor
 }));
 
 // //--------------- LINKEDIN STRATEGY - AUTHENTICATION------------------------
-// passport.serializeUser(function(user, done) {
-//   done(null, user);
-// });
-//
-// passport.deserializeUser(function(user, done) {
-//   done(null, user);
-// });
-//
-// // may need to use local token? don't think so.
-// passport.use(new LinkedInStrategy({
-//   clientID: "75qd8voyucpxtq",
-//   clientSecret: "JEZ516oAC8ARyDgR",
-//   callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
-//   scope: ['r_emailaddress', 'r_basicprofile'],
-//   // state: true
-// }, function(accessToken, refreshToken, profile, done) {
-//   // asynchronous verification, for effect...
-//   process.nextTick(function () {
-//     // To keep the example simple, the user's LinkedIn profile is returned to
-//     // represent the logged-in user. In a typical application, you would want
-//     // to associate the LinkedIn account with a user record in your database,
-//     // and return that user instead.
-//     return done(null, profile);
-//   });
-// }));
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+// may need to use local token? don't think so.
+passport.use(new LinkedInStrategy({
+	// athenticating my app, telling linked in who we are as the developers
+  consumerKey: "75qd8voyucpxtq",
+  consumerSecret: "JEZ516oAC8ARyDgR",
+  callbackURL: "/api/user/auth/linkedin/callback", // going to the routes
+  // state: true,
+  profileFields: ['id', 'first-name', 'last-name', 'email-address', 'summary', 'picture-urls::(original)', 'public-profile-url'],
+  // state: true,
+  // passReqToCallback: true
+}, function(accessToken, refreshToken, profile, done) {
+  // process.nextTicket is a Node.js function for asynchronous verification
+  // Waits for data to come back before continuing
+  console.log("Made it above the process.nextTick()");
+  process.nextTick(function () {
+    // Information for access our database. Whatever is return will be store in profile. Returns err is it cannot connect.
+    User.findOne({
+      'linkedIn.id': profile.id
+    }, function(err, user) {
+        if (err) {
+          console.log('DEBUG: Error connecting');
+
+          return done(err);
+        }
+        if (user) {
+          console.log('DEBUG: Current user');
+          console.log('profile.emails[0].value: ' + profile.emails[0].value);
+
+          return done(null, user);
+        }
+        // Else no user is found. We need to create a new user.
+        else {
+        	console.log("DEBUG: New User.");
+        	console.log("profile: " + profile);
+        	console.log("profile.id: " + profile.id);
+
+          var newUser = new User();
+          // console.log("newUser: " + newUser);
+
+          newUser.linkedIn.id = profile.id;
+          newUser.linkedIn.token = accessToken;
+
+          newUser.linkedIn.name = profile.name.givenName;
+          newUser.linkedIn.lastName = profile.name.familyName;
+
+          newUser.firstName = newUser.linkedIn.name;
+          newUser.lastName = newUser.linkedIn.lastName;
+
+          newUser.linkedIn.email = profile.emails[0].value;
+
+          // setting username to email from linkedIn
+          newUser.email = newUser.linkedIn.email;
+
+          // Photo
+          // Photo returned by linkedIn is 200x2000, because of picture.type(large) in profileFrields above.
+	// console.log(profile.pictureUrls);
+	// newUser.linkedin.photo = profile.pictureUrls.values[0] ;
+	// newUser.pic = newUser.linkedin.photo;
+	// Getting bigger photo URL from linkedin
+	// Sending size 300x300.
+	console.log("profile.publicProfileUrl: " + profile.publicProfileUrl); //undefined
+          newUser.linkedIn.profileUrl = profile.publicProfileUrl;
+          newUser.linkedInUrl = newUser.linkedIn.profileUrl;
+
+          newUser.linkedIn.summary = profile.summary;
+          console.log("profile again: " + profile);
+          // newUser.summary = newUser.linkedIn.summary;
+
+          // Created stores date created in the database.
+          newUser.joined = new Date();
+          console.log("newUser: " + newUser);
+
+          // Save the newUser to the database.
+          newUser.save(function(err) {
+            if (err)
+              throw err;
+            // Otherwise return done, no error and newUser.
+            return done(null, newUser);
+          })
+        }
+      });
+
+
+});
+}));
+
