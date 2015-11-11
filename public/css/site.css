@@ -1,6 +1,7 @@
 /* Fonts */
-
-
+/* We Will Delete These Later When We Decide What We Want */
+@import url(https://fonts.googleapis.com/css?family=Righteous);
+@import url(https://fonts.googleapis.com/css?family=Poppins);
 
 /* Globals */
 
@@ -10,21 +11,30 @@ body {
   margin: 0;
   padding: 0;
   padding-bottom: 15vh;
-  background: url("https://i.ytimg.com/vi/hPCotoawhk0/maxresdefault.jpg");
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#beeb9f+0,79bd8f+100 */
+  background: #beeb9f; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #beeb9f 0%, #79bd8f 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg,  #beeb9f 0%,#79bd8f 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg,  #beeb9f 0%,#79bd8f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#beeb9f', endColorstr='#79bd8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   background-size: cover;
   background-attachment: fixed;
   overflow-y: auto;
   overflow-x: hidden;
+  color: #00A388;
+  font-family: 'Poppins', sans-serif;
 }
-
-
+hr {
+    border-color: #FFFF9D;
+}
 
 /* Headings */
 
 h1 {
   margin: 0;
   padding: 1em 0;
-  color: red;
+  color: #FF6138;
+  font-family: 'Righteous', cursive;
 }
 
 
@@ -48,11 +58,11 @@ nav {
   width: 100%;
   bottom: 0;
   margin: 0;
-  box-shadow: 0px 0px 25px rgba(0,0,0,.2);
+  border-top: solid 4px #FFFF9D;
   text-align: center;
 }
 .navlink {
-  background: rgba(0,0,0,.7);
+  background: #00A388;
   box-shadow: inset 0px 0px 50px rgba(0,0,0,.2);
   color: white;
   height: 12.5vh;
@@ -60,7 +70,7 @@ nav {
   cursor: pointer;
 }
 .navlink:hover {
-  background: rgba(0,0,0,.5);
+  background: #79BD8F;
 }
 .navlink img {
   position: relative;
@@ -69,20 +79,18 @@ nav {
 }
 
 
-
-<<<<<<< HEAD
-=======
 /* User Bar */
 #userbar {
-  background-color: rgba(0,0,0,.7);
+  background-color: #00A388;
   box-shadow: 0px 0px 10px rgba(0,0,0,.1);
   color: white;
   text-align: right;
-  height: 2.5vh;
-  padding: .25em 1em 0 0;
+  height: 3vh;
+  padding: .5em 1em 0 0;
+  border-bottom: solid 4px #FFFF9D;
 }
 #userbar a {
-  color: red;
+  color: #FFFF9D;
 }
 #userbar a:hover {
   text-decoration: none;
@@ -90,8 +98,6 @@ nav {
 }
 
 
-
->>>>>>> fc98cccb5d3e845bddcc82a0bd4aa2ce18e8c164
 /* Home */
 
 #home {
@@ -132,23 +138,20 @@ nav {
 }
 .contact {
   background: rgba(0,0,0,.1);
+  margin: 1em auto;
   padding: 1em 0;
-  color: #333;
+  color: #FFFF9D;
   position: relative;
   text-align: left;
-<<<<<<< HEAD
+}
+.contact:hover {
+  background: rgba(0,0,0,.2);
 }
 .contact img {
   position: relative;
-  max-height: 15vh;
-  max-width: 15vw;
-=======
->>>>>>> fc98cccb5d3e845bddcc82a0bd4aa2ce18e8c164
-}
-.contact img {
-  position: relative;
-  max-height: 15vh;
-  max-width: 15vw;
+  max-height: 10vh;
+  max-width: 10vw;
+  margin: 0 auto;
 }
 
 
@@ -177,6 +180,7 @@ nav {
   width: 15em;
   height: 15em;
   margin: 2.5%;
+  color: #FFFF9D;
   border-radius: 50%;
   background: rgba(0,0,0,.1);
 }
