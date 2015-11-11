@@ -69,9 +69,6 @@ nav {
 }
 
 
-
-<<<<<<< HEAD
-=======
 /* User Bar */
 #userbar {
   background-color: rgba(0,0,0,.7);
@@ -90,8 +87,6 @@ nav {
 }
 
 
-
->>>>>>> fc98cccb5d3e845bddcc82a0bd4aa2ce18e8c164
 /* Home */
 
 #home {
@@ -136,14 +131,7 @@ nav {
   color: #333;
   position: relative;
   text-align: left;
-<<<<<<< HEAD
-}
-.contact img {
-  position: relative;
-  max-height: 15vh;
-  max-width: 15vw;
-=======
->>>>>>> fc98cccb5d3e845bddcc82a0bd4aa2ce18e8c164
+
 }
 .contact img {
   position: relative;
