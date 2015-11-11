@@ -9,13 +9,15 @@
     <label class="inline">Extra Information</label><br>
     <input type="checkbox" class="inline" ng-model="extras" >
   </div>
+
   <div class="row" ng-show="extras">
-    <div class="col-sm-6">
+      <input type="text" placeholder="Job Title" ng-model="vm.newContact.title" />
+    <div class="col-xs-6">
       <input type="text" ng-disabled="!extras" placeholder="Profile Picture" ng-model="vm.newContact.profilePic" />
       <input type="text" ng-disabled="!extras" placeholder="Phone Number" ng-model="vm.newContact.phone" />
       <input type="text" ng-disabled="!extras" placeholder="Skype" ng-model="vm.newContact.skype" />
     </div>
-    <div class="col-sm-6">
+    <div class="col-xs-6">
       <input type="text" ng-disabled="!extras" placeholder="LinkedIn Profile Url" ng-model="vm.newContact.linkedIn" />
       <input type="text" ng-disabled="!extras" placeholder="Facebook Url" ng-model="vm.newContact.facebook" />
       <input type="text" ng-disabled="!extras" placeholder="Google+ Url" ng-model="vm.newContact.google" />

@@ -20,11 +20,22 @@
   </div>
   <div class="col-xs-9">
     <h3>{{ contact.firstName }}  {{ contact.lastName }}</h3>
-    <p>{{ contact.email }}</p>
-    <p>{{ contact.phone }}</p>
+    <h4>{{ contact.title }}</h4>
+    <p>{{ contact.skills }}</p>
+    <p>{{ contact.bio }}</p>
+
+    <div class="socialIcons">
+      <img ng-if="contact.linkedIn" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png" alt="LinkedIn Icon" />
+      <img ng-if="contact.facebook" src="http://www.iconarchive.com/download/i49146/yootheme/social-bookmark/social-facebook-box-blue.ico" alt="Facebook Icon" />
+      <img ng-if="contact.google" src="http://vignette4.wikia.nocookie.net/markiplier/images/7/7e/Google%2B_Icon.png/revision/latest?cb=20150104105518" alt="Google+ Icon" />
+      <br>
+      <img ng-if="contact.skype" src="http://findicons.com/files/icons/727/leopard/128/skype.png" alt="Skype Icon" />
+      <img ng-if="contact.email" src="http://www.kozmikanafor.com/wp-content/uploads/2000/12/email-icon.png" alt="Email Icon" />
+      <img ng-if="contact.phone" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Phone-icon.png" alt="Phone Icon" />
+    </div>
   </div>
-  <button type="button" class="btn btn-warning edit" ng-click="vm.editContact(contact);">Edit</button>
-  <button type="button" class="btn btn-danger delete" ng-click="vm.deleteContact(contact._id);">Delete</button>
+  <img src="http://s9.postimg.org/42jxt0jb3/edit.png" class="edit" ng-click="vm.editContact(contact);" alt="Edit Icon" />
+  <img src="http://s9.postimg.org/4e1e5rzr3/delete.png" class="delete" ng-click="vm.deleteContact(contact._id);" alt="Delete Icon" />
 </div>
 
 

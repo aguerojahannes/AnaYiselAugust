@@ -12,6 +12,7 @@ var ContactSchema = new mongoose.Schema({
   linkedIn: String,
   facebook: String,
   google: String,
+  title: String,
   bio: String
 
 });

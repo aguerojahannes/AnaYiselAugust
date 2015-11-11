@@ -6,8 +6,8 @@
 <div ng-repeat="request in vm.requests | filter:searchRequests" class="request">
   <h3>{{ request.title }}</h3>
   <p>{{ request.body }}</p>
-  <p>{{ request.privacy }}</p>
-  <button type="button" class="btn btn-warning edit" ng-click="vm.editRequest(request);">Edit</button>
-  <button type="button" class="btn btn-danger delete" ng-click="vm.deleteRequest(request._id);">Delete</button>
+  <p class="small"><em>{{ request.privacy }}</em></p>
+  <img src="http://s9.postimg.org/42jxt0jb3/edit.png" class="edit" ng-click="vm.editRequest(request);" alt="Edit Icon" />
+  <img src="http://s9.postimg.org/4e1e5rzr3/delete.png" class="delete" ng-click="vm.deleteRequest(request._id);" alt="Delete Icon" />
 </div>
 </div>
