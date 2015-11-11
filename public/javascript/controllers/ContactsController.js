@@ -20,6 +20,12 @@
 		vm.addContact = function() {
 			vm.newContact.createdOn = new Date();
 			vm.newContact.username = new Date();
+
+			// If No ProfilePic, Assign Default Picture
+			if(!vm.newContact.profilePic) {
+				vm.newContact.profilePic = "https://www.k-state.edu/hcs/images/anonymous_silhouette.jpg";
+			}
+
 			HomeFactory.addContact(vm.newContact).then(function(res){
 				vm.newContact = {};
 				vm.getContacts();
@@ -42,6 +48,12 @@
 
 		// Save Contact
 		vm.saveContact = function(contact) {
+
+			// If No ProfilePic, Assign Default Picture
+			if(!contact.profilePic) {
+				contact.profilePic = "https://www.k-state.edu/hcs/images/anonymous_silhouette.jpg";
+			}
+
 			HomeFactory.saveContact(contact).then(function(res) {
 				vm.getContacts();
 				$state.go("Contacts");

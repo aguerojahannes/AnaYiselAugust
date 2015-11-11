@@ -8,7 +8,7 @@
 		vm.contacts = HomeFactory.contacts;
 		vm.circles = HomeFactory.circles;
 		vm.requests = HomeFactory.requests;
-		vm.newRequest = {};
+		vm.newRequest = { privacy: 'Global' };
 		vm.tempRequest = HomeFactory.tempRequest;
 
 		// Grab Contacts When Page Loads
@@ -28,7 +28,7 @@
 		vm.addRequest = function (request) {
 			request.$username_1 = new Date();
 			HomeFactory.addRequest(request).then(function(res){
-				vm.newRequest = {};
+				vm.newRequest = { privacy: 'Global'};
 				vm.getRequests();
 				$state.go("Requests");
 			});

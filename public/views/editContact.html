@@ -6,10 +6,10 @@
   <input type="text" placeholder="Last Name" ng-model="vm.tempContact.lastName" />
   <input type="email" placeholder="Email Address" ng-model="vm.tempContact.email" />
   <div>
+    <label class="inline">Extra Information</label><br>
     <input type="checkbox" class="inline" ng-model="extras" >
-    <label class="inline">Extra Information</label>
   </div>
-  <div class="row">
+  <div class="row" ng-show="extras">
     <div class="col-sm-6">
       <input type="text" ng-disabled="!extras" placeholder="Profile Picture" ng-model="vm.tempContact.profilePic" />
       <input type="text" ng-disabled="!extras" placeholder="Phone Number" ng-model="vm.tempContact.phone" />

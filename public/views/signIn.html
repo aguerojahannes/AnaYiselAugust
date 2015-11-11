@@ -1,21 +1,24 @@
 <!-- GLOBAL CONTROLLER  -->
-<h1 style="color : Black" class="md-toolbar-tools" >Sign In</h1>
-          <form ng-submit="glob.signIn()">
-               <md-input-container>
-                 <label> Email </label>
-                 <input ng-model="glob.user.email" type="text" ng-required="true">
-               </md-input-container>
-               <md-input-container>
-                 <label> Password</label>
-                 <input ng-model="glob.user.password" type="password" ng-required="true">
-               </md-input-container>
-               <!-- Sign in, Close nav, register Buttons: Submit and Register -->
-                    <div style="text-align: center">
-                      <!-- <md-button ng-click="glob.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
-                      <md-button type="submit"> Sign In </md-button>
-                    </div>
-             </form>
-
-             <div>
-               <md-button ui-sref="ForgotPassword"> Forgot Password? </md-button>
-             </div>
+<div class="container">
+  <h1 style="color: black;" class="md-toolbar-tools" >Sign In</h1>
+            <form ng-submit="glob.signIn()">
+                 <md-input-container>
+                   <label> Email </label>
+                   <input ng-model="glob.user.email" type="text" ng-required="true">
+                 </md-input-container>
+                 <md-input-container>
+                   <label> Password</label>
+                   <input ng-model="glob.user.password" type="password" ng-required="true">
+                 </md-input-container>
+                 <!-- Sign in, Close nav, register Buttons: Submit and Register -->
+                      <div style="text-align: center">
+                        <!-- <md-button ng-click="glob.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
+                        <md-button type="submit"> Sign In </md-button>
+                      </div>
+               </form>
+               <hr>
+               <div class="text-center">
+                 <md-button ui-sref="ForgotPassword"> Forgot Password? </md-button>
+                 <md-button ui-sref="Home" ng-click="glob.user = {};"> Cancel </md-button>
+               </div>
+</div>

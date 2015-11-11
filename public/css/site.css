@@ -27,6 +27,12 @@ body {
 hr {
     border-color: #FFFF9D;
 }
+::selection {
+  background: rgba(0,0,0,.1); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: rgba(0,0,0,.1); /* Gecko Browsers */
+}
 
 /* Headings */
 
@@ -36,16 +42,62 @@ h1 {
   color: #FF6138;
   font-family: 'Righteous', cursive;
 }
-
+h3 {
+  margin-top: 0;
+}
 
 
 /* Inputs */
 
 input {
   display: block;
+  outline: none;
+  border: none;
+  padding: .5em;
+  background: rgba(0,0,0,.1);
+  color: white;
 }
 textarea {
   display: block;
+  outline: none;
+  border: none;
+  background: rgba(0,0,0,.1);
+  color: white;
+}
+.btn-danger {
+  background: #FF6138;
+}
+.btn-danger:hover {
+  background: #D6512F;
+}
+.btn-warning {
+  background: #FFFF9D;
+  color: #00A388;
+  border: none;
+}
+.btn-warning:hover {
+  background: #DEDE89;
+  color: #00A388;
+}
+.btn-success {
+  background: #B7E39A;
+  color: green;
+}
+.btn-success:hover {
+  background: #79BD8F;
+  color: #FFFF9D;
+}
+::-webkit-input-placeholder {
+   color: #FFFF9D;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: #FFFF9D;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFFF9D;
+}
+:-ms-input-placeholder {
+   color: #FFFF9D;
 }
 
 
@@ -79,6 +131,8 @@ nav {
 }
 
 
+
+
 /* User Bar */
 #userbar {
   background-color: #00A388;
@@ -98,6 +152,8 @@ nav {
 }
 
 
+
+
 /* Home */
 
 #home {
@@ -113,11 +169,15 @@ nav {
 
 
 
+
+
 /* Dashboard */
 
 #dashboard {
   text-align: center;
 }
+
+
 
 
 
@@ -137,6 +197,7 @@ nav {
   resize: none;
 }
 .contact {
+  width: 50%;
   background: rgba(0,0,0,.1);
   margin: 1em auto;
   padding: 1em 0;
@@ -201,7 +262,17 @@ nav {
   height: 15vh;
   resize: none;
 }
-
+.request {
+  background: rgba(0,0,0,.1);
+  margin: 1em auto;
+  padding: 1em;
+  color: #FFFF9D;
+  position: relative;
+  text-align: left;
+}
+.request:hover {
+  background: rgba(0,0,0,.2);
+}
 
 
 /* Classes */
@@ -219,5 +290,9 @@ nav {
   top: 1em;
   right: 7em;
 }
+.searchBar {
+  width: 75%;
+}
+
 
 /* Ids */

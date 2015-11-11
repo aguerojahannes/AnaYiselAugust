@@ -61,7 +61,8 @@
 				setToken(res.data);
 				setUser();
 				var user = o.getUser();
-				o.status.username = user.username;
+				console.log(user);
+				o.status.username = user.email;
 				o.status._id = user._id;
 				q.resolve(res.data);
 			});
@@ -69,11 +70,10 @@
 		};
 
 
-
 //--------------------------------------------------------
 		function setUser(){
 		      var user = JSON.parse(urlBase64Decode(getToken().split('.')[1]));
-		      o.status.username = user.username;
+		      o.status.username = user.email;
 		      o.status._id = user._id;
 		    }
 		    function removeUser(){

@@ -2,9 +2,11 @@
 <h1>REQUESTS PAGE</h1>
 <button type="button" ui-sref="AddRequest" class="btn btn-success">Add Request</button>
 <hr>
-<div ng-repeat="request in vm.requests" class="contact">
-  <p>{{ request.title }}</p>
+<input type="text" ng-model="searchRequests" class="searchBar" placeholder="Search Requests"/>
+<div ng-repeat="request in vm.requests | filter:searchRequests" class="request">
+  <h3>{{ request.title }}</h3>
   <p>{{ request.body }}</p>
+  <p>{{ request.privacy }}</p>
   <button type="button" class="btn btn-warning edit" ng-click="vm.editRequest(request);">Edit</button>
   <button type="button" class="btn btn-danger delete" ng-click="vm.deleteRequest(request._id);">Delete</button>
 </div>
