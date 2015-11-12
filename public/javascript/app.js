@@ -7,6 +7,9 @@
 		$stateProvider.state('Home',{
 			url: '/',
 			templateUrl: 'views/home.html'
+		}).state('Account',{
+			url: '/account/:id',
+			templateUrl: 'views/account.html'
 		}).state('Contacts',{
 			url: '/contacts',
 			templateUrl: 'views/contacts.html'

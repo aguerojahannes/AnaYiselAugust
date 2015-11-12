@@ -70,7 +70,9 @@
 		};
 
 
-//--------------------------------------------------------
+
+//-------------------TOKEN------------------------------
+
 		function setUser(){
 		      var user = JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 		      o.status.username = user.email;
@@ -111,6 +113,16 @@
 			o.getUser = function() {
 		      return JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 		    };
+
+//-------- USER CRUD--------------------------------------------
+			
+	o.deleteAccount = function(userId){
+		var q = $q.defer();
+		$http.delete("/api/user/", userId).then(function(res){
+			q.resolve(res.data);
+		});
+		return q.promise;
+		}
 
 
 
