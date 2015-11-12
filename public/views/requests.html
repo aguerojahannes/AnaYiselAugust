@@ -1,11 +1,18 @@
 <div ng-controller="RequestsController as vm" id="requests" class="container">
-<h1>REQUESTS PAGE</h1>
+<h1>View Requests</h1>
 <button type="button" ui-sref="AddRequest" class="btn btn-success">Add Request</button>
 <hr>
-<div ng-repeat="request in vm.requests" class="contact">
-  <p>{{ request.title }}</p>
+<br>
+<input type="text" ng-model="searchRequests" class="searchBar" placeholder="Search Requests"/>
+<br>
+<div ng-repeat="request in vm.requests | filter:searchRequests" class="request">
+  <h3>{{ request.title }}</h3>
   <p>{{ request.body }}</p>
-  <button type="button" class="btn btn-warning edit" ng-click="vm.editRequest(request);">Edit</button>
-  <button type="button" class="btn btn-danger delete" ng-click="vm.deleteRequest(request._id);">Delete</button>
+  <div class="visibility">
+    <img src="http://www.cedar-health.com/assets/images/ethos-icons/ethos-attention-eye-icon.png" alt="Visibility Icon" />
+    <p class="small inline"><em>{{ request.privacy }}</em></p>
+  </div>
+  <img src="http://s9.postimg.org/42jxt0jb3/edit.png" class="edit" ng-click="vm.editRequest(request);" alt="Edit Icon" />
+  <img src="http://s9.postimg.org/4e1e5rzr3/delete.png" class="delete" ng-click="vm.deleteRequest(request._id);" alt="Delete Icon" />
 </div>
 </div>

@@ -8,7 +8,8 @@
 		vm.profile = {firstName: "Ana", lastName: "last name!", skills: "all these things", bio: "biohere"};
 
 
-
+		// On Load Scroll Window To Top
+		window.scrollTo(0, 0);
 
 
 	}

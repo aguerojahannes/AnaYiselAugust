@@ -4,48 +4,133 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins);
 
 /* Globals */
-
+html {
+  padding: 0;
+  margin: 0;
+}
 body {
   width: 100%;
   height: auto;
   margin: 0;
-  padding: 0;
   padding-bottom: 15vh;
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#beeb9f+0,79bd8f+100 */
-  background: #beeb9f; /* Old browsers */
-  background: -moz-linear-gradient(45deg,  #beeb9f 0%, #79bd8f 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(45deg,  #beeb9f 0%,#79bd8f 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(45deg,  #beeb9f 0%,#79bd8f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#beeb9f', endColorstr='#79bd8f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: url("http://s24.postimg.org/spbpdevh1/image.jpg");
   background-size: cover;
   background-attachment: fixed;
   overflow-y: auto;
   overflow-x: hidden;
-  color: #00A388;
+  color: #fff;
   font-family: 'Poppins', sans-serif;
 }
 hr {
-    border-color: #FFFF9D;
+    border-color: #fff;
 }
+::selection {
+  background: rgba(0,0,0,.1); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: rgba(0,0,0,.1); /* Gecko Browsers */
+}
+label {
+  color: white;
+}
+
+
 
 /* Headings */
 
 h1 {
   margin: 0;
   padding: 1em 0;
-  color: #FF6138;
+  color: #FFFF9D;
   font-family: 'Righteous', cursive;
 }
-
+h3 {
+  margin-top: 0;
+    font-family: 'Righteous', cursive;
+  color: white;
+}
+h4 {
+  font-style: italic;
+  color: #FFFF9D;
+}
 
 
 /* Inputs */
 
 input {
   display: block;
+  outline: none;
+  border: none;
+  padding: .5em;
+  background: rgba(0,0,0,.1);
+  color: white;
 }
 textarea {
   display: block;
+  outline: none;
+  border: none;
+  background: rgba(0,0,0,.1);
+  color: white;
+}
+select {
+  outline: none;
+  border: none;
+  background: rgba(0,0,0,.1);
+  height: 2.5em;
+  padding: .25em;
+  color: white;
+}
+select option {
+  background: #00A388;
+  color: white;
+}
+.btn {
+  border-radius: 1em;
+}
+.btn-danger {
+  background: #B24427;
+}
+.btn-danger:hover {
+  background: #7F301C;
+}
+.btn-warning {
+  background: #FFFF9D;
+  color: #00A388;
+  border: none;
+}
+.btn-warning:hover {
+  background: #DEDE89;
+  color: #00A388;
+}
+.btn-success {
+  background: #FF6138;
+  color: white;
+  border: none;
+}
+.btn-success:hover {
+  background: #D6512F;
+  color: #fff;
+  border: none;
+}
+::-webkit-input-placeholder {
+   color: #FFFF9D;
+   font-style: italic;
+   font-weight: 100;
+}
+:-moz-placeholder { /* Firefox 18- */
+   color: #FFFF9D;
+   font-style: italic;
+   font-weight: 100;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFFF9D;
+   font-style: italic;
+   font-weight: 100;
+}
+:-ms-input-placeholder {
+   color: #FFFF9D;
+   font-style: italic;
+   font-weight: 100;
 }
 
 
@@ -53,24 +138,68 @@ textarea {
 
 /* Navigation */
 
+#desktopNav {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: none;
+  padding: 0;
+  position: fixed;
+  height: 5vh;
+  background: url("http://s24.postimg.org/spbpdevh1/image.jpg");
+  background-size: cover;
+  z-index: 999999;
+  box-shadow: 0px 0px 35px rgba(0,0,0,.2);
+  top: 0;
+}
+#desktopNav img {
+  max-height: 2em;
+  max-width: 2em;
+}
+.desknav {
+  position: relative;
+  height: 5vh;
+  margin: 0;
+  padding: 1em;
+}
+.desknav p {
+  margin: 0;
+  padding: 0;
+}
+.desknav img {
+  margin: 0;
+  padding: 0;
+}
+.desknav:hover {
+  cursor: pointer;
+  background: rgba(0,0,0,.2);
+}
+
+
+
+
+
 nav {
   position: fixed;
   width: 100%;
   bottom: 0;
   margin: 0;
-  border-top: solid 4px #FFFF9D;
   text-align: center;
+  border-top: solid 2px #fff;
 }
 .navlink {
-  background: #00A388;
-  box-shadow: inset 0px 0px 50px rgba(0,0,0,.2);
+  background: #79BD8F;
+  box-shadow: inset 0px 0px 150px rgba(0,0,0,.3), 0px -10px 30px rgba(0,0,0,.1);
+  border-left: solid 1px #fff;
+  border-right: solid .25px #fff;
   color: white;
   height: 12.5vh;
   position: relative;
   cursor: pointer;
 }
 .navlink:hover {
-  background: #79BD8F;
+  background: #00A388;
 }
 .navlink img {
   position: relative;
@@ -79,15 +208,19 @@ nav {
 }
 
 
+
+
 /* User Bar */
 #userbar {
-  background-color: #00A388;
-  box-shadow: 0px 0px 10px rgba(0,0,0,.1);
+  display: none;
+  background: rgba(0,0,0,.1);
+  /*background: #79BD8F;*/
+  box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
   color: white;
   text-align: right;
-  height: 3vh;
-  padding: .5em 1em 0 0;
-  border-bottom: solid 4px #FFFF9D;
+  height: 4vh;
+  padding: 1em 0 0 0;
+  border-bottom: solid 2px #00A388;
 }
 #userbar a {
   color: #FFFF9D;
@@ -96,6 +229,8 @@ nav {
   text-decoration: none;
   color: white;
 }
+
+
 
 
 /* Home */
@@ -113,11 +248,15 @@ nav {
 
 
 
+
+
 /* Dashboard */
 
 #dashboard {
   text-align: center;
 }
+
+
 
 
 
@@ -127,7 +266,7 @@ nav {
   text-align: center;
 }
 #contacts input, #contacts textarea {
-  width: 75%;
+  width: 100%;
   height: 2em;
   margin: 1em auto;
   font-size: 1.5em;
@@ -137,10 +276,12 @@ nav {
   resize: none;
 }
 .contact {
+  width: 100%;
+  height: auto;
   background: rgba(0,0,0,.1);
   margin: 1em auto;
   padding: 1em 0;
-  color: #FFFF9D;
+  color: #fff;
   position: relative;
   text-align: left;
 }
@@ -151,9 +292,19 @@ nav {
   position: relative;
   max-height: 10vh;
   max-width: 10vw;
-  margin: 0 auto;
+  margin: .5em auto;
 }
-
+.socialIcons {
+  position: absolute;
+  top: 3em;
+  right: 1em;
+}
+.socialIcons img {
+  max-height: 2em;
+  max-width: 2em;
+  margin: .25em 0;
+  cursor: pointer;
+}
 
 
 
@@ -192,7 +343,7 @@ nav {
   text-align: center;
 }
 #requests input, #requests textarea {
-  width: 75%;
+  width: 100%;
   height: 2em;
   margin: 1em auto;
   font-size: 1.5em;
@@ -201,7 +352,21 @@ nav {
   height: 15vh;
   resize: none;
 }
-
+.request {
+  background: rgba(0,0,0,.1);
+  margin: 1em auto;
+  padding: 1em;
+  color: #FFFF9D;
+  position: relative;
+  text-align: left;
+}
+.request:hover {
+  background: rgba(0,0,0,.2);
+}
+.request img {
+  max-width: 1.5em;
+  max-height: 1.5em;
+}
 
 /* Account */
 #account {
@@ -230,15 +395,46 @@ nav {
 .inline {
   display: inline;
 }
-.delete {
+img.delete {
   position: absolute;
   top: 1em;
+  right: 1.5em;
+  max-height: 1.5em;
+  max-width: 1.5em;
+}
+img.edit {
+  position: absolute;
+  top: 1em;
+  right: 4em;
+  max-height: 1.5em;
+  max-width: 1.5em;
+}
+.visibility {
+  position: absolute;
+  top: 3em;
   right: 1em;
 }
-.edit {
-  position: absolute;
-  top: 1em;
-  right: 7em;
+.searchBar {
+  width: 75% !important;
+  padding: 1.5em 1em;
 }
 
+
 /* Ids */
+
+
+/* Responsive Fixes */
+@media (min-width: 868px) {
+  nav {
+    display: none;
+  }
+  #desktopNav {
+    display: block;
+  }
+  #userbar {
+    display: block;
+  }
+  body {
+    padding-top: 5vh;
+  }
+}

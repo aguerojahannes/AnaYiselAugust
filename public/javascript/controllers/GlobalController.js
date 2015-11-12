@@ -13,6 +13,9 @@
 		console.log(glob.status);
 //------------------------------------------------------
 
+		// On Load Scroll Window To Top
+		window.scrollTo(0, 0);
+
 // FORGOT PASSWORD? SEND EMAIL TO UPDATE
 		glob.forgot = function() {
 			GlobalFactory.forgot(glob.user).then(function() {
