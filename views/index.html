@@ -39,7 +39,16 @@
 				You have a new notification!
 			</div>
 			<div class="col-sm-6">
-				{{ glob.status.username }} <span style="margin: .5em 1em;">|</span> <a href="#" ui-sref="Account({id: glob.status._id})">Account</a> <span style="margin: .5em .5em;">/</span> <a href="#" ng-click="glob.logout();">Log Out</a>
+				<select>
+				   <option value="Global">{{ glob.status.username }}</option>
+				   <option value="Contacts">My Profile</option>
+				   <option value="Babysitters">My Account</option>
+				   <option value="Logout">Logout</option>
+				</select>
+					{{ glob.status.username }} <span style="margin: .5em 1em;">|</span> 
+					<a href="#" ui-sref="Account({id: glob.status._id})">Account</a> 
+					<span style="margin: .5em .5em;">/</span> 
+					<a href="#" ng-click="glob.logout();">Log Out</a>
 			</div>
 		</div>
 	</div>

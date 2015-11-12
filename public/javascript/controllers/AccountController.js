@@ -70,8 +70,7 @@
 		
 		vm.deleteAccount = function(){
 			GlobalFactory.deleteAccount($stateParams.id).then(function(res){
-				vm.deleted = res.data;
-				
+				console.log("delete res: " + res);
 				// close modal
 				// open toast
 				$state.go("SignUp");
