@@ -22,7 +22,8 @@
 		vm.showConfirmDelete = function(){
 			vm.confirmDelete = "confirm"
 		};
-vm.showConfirmDelete = function(ev){
+
+// vm.showConfirmDelete = function(ev){
 		// 	// open modal
 		// 	vm.confirm = $mdDialog.confirm()
 		// 	          .title('Would you like to delete your debt?')
@@ -65,7 +66,7 @@ vm.showConfirmDelete = function(ev){
 		//   vm.answer = function(answer) {
 		//     $mdDialog.hide(answer);
 		//   };
-
+// };
 		
 		vm.deleteAccount = function(){
 			GlobalFactory.deleteAccount($stateParams.id).then(function(res){
@@ -74,7 +75,7 @@ vm.showConfirmDelete = function(ev){
 				// close modal
 				// open toast
 				$state.go("SignUp");
-			})
+			});
 		};
 
 	}

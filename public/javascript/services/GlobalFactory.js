@@ -120,7 +120,7 @@
 		var q = $q.defer();
 		$http.delete("/api/user/", userId).then(function(res){
 			q.resolve(res.data);
-		})l;
+		});
 		return q.promise;
 		}
 
