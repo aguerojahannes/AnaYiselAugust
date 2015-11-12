@@ -31,6 +31,9 @@ hr {
 label {
   color: white;
 }
+
+
+
 /* Headings */
 
 h1 {
@@ -66,6 +69,9 @@ textarea {
   border: none;
   background: rgba(0,0,0,.1);
   color: white;
+}
+.btn {
+  border-radius: 1em;
 }
 .btn-danger {
   background: #B24427;
@@ -121,13 +127,14 @@ nav {
   width: 100%;
   bottom: 0;
   margin: 0;
-  border-top: solid 4px #fff;
   text-align: center;
+  border-top: solid 2px #fff;
 }
 .navlink {
   background: #00A388;
   box-shadow: inset 0px 0px 150px rgba(0,0,0,.3), 0px -10px 30px rgba(0,0,0,.1);
-  border: solid 4px white;
+  border-left: solid 1px white;
+  border-right: solid .25px white;
   color: white;
   height: 12.5vh;
   position: relative;
@@ -153,7 +160,7 @@ nav {
   text-align: right;
   height: 4vh;
   padding: .75em 1em 0 0;
-  border-bottom: solid 4px #fff;
+  border-bottom: solid 2px #fff;
 }
 #userbar a {
   color: #FFFF9D;
