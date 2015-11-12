@@ -1,11 +1,11 @@
 <div ng-controller="ContactsController as vm" id="contacts" class="container">
 <h1>View Contacts</h1>
 <div class="row">
-  <div class="col-xs-6 text-left">
+  <div class="col-xs-4 text-left">
       <button type="button" ui-sref="AddContact" class="btn btn-success">Add Contact</button>
   </div>
-  <div class="col-xs-6 text-right">
-    <label>Sync Contacts Via:</label>
+  <div class="col-xs-8 text-right">
+    <label>Sync Contacts Via: &nbsp;</label>
     <button type="button" ui-sref="AddContact" class="btn btn-success">LinkedIn</button>
     <button type="button" ui-sref="AddContact" class="btn btn-success">Facebook</button>
     <button type="button" ui-sref="AddContact" class="btn btn-success">Google+</button>
@@ -13,7 +13,9 @@
 </div>
 
 <hr>
+<br>
 <input type="text" ng-model="searchContacts" class="searchBar" placeholder="Search Contacts"/>
+<br>
 <div ng-repeat="contact in vm.contacts | filter:searchContacts" class="row contact">
   <div class="col-xs-3">
     <img ng-src="{{contact.profilePic}}" alt="Profile Picture" class="img img-responsive" />

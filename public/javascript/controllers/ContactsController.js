@@ -8,6 +8,9 @@
 		vm.contacts = HomeFactory.contacts;
 		vm.tempContact = HomeFactory.tempContact;
 
+		// On Load Scroll Window To Top
+		window.scrollTo(0, 0);
+
 		// Get Contacts
 		vm.getContacts = function() {
 			HomeFactory.getContacts().then(function(res){

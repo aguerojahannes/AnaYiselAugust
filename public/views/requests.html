@@ -1,8 +1,10 @@
 <div ng-controller="RequestsController as vm" id="requests" class="container">
-<h1>REQUESTS PAGE</h1>
+<h1>View Requests</h1>
 <button type="button" ui-sref="AddRequest" class="btn btn-success">Add Request</button>
 <hr>
+<br>
 <input type="text" ng-model="searchRequests" class="searchBar" placeholder="Search Requests"/>
+<br>
 <div ng-repeat="request in vm.requests | filter:searchRequests" class="request">
   <h3>{{ request.title }}</h3>
   <p>{{ request.body }}</p>

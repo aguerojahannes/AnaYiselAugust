@@ -11,6 +11,9 @@
 		vm.newRequest = { privacy: 'Global' };
 		vm.tempRequest = HomeFactory.tempRequest;
 
+		// On Load Scroll Window To Top
+		window.scrollTo(0, 0);
+
 		// Grab Contacts When Page Loads
 		HomeFactory.getContacts().then(function(res) {
 				vm.contacts = HomeFactory.contacts;

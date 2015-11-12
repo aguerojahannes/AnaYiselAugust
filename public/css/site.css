@@ -4,12 +4,14 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins);
 
 /* Globals */
-
+html {
+  padding: 0;
+  margin: 0;
+}
 body {
   width: 100%;
   height: auto;
   margin: 0;
-  padding: 0;
   padding-bottom: 15vh;
   background: url("http://s24.postimg.org/spbpdevh1/image.jpg");
   background-size: cover;
@@ -20,7 +22,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 hr {
-    border-color: #FFFF9D;
+    border-color: #fff;
 }
 ::selection {
   background: rgba(0,0,0,.1); /* WebKit/Blink Browsers */
@@ -70,6 +72,18 @@ textarea {
   background: rgba(0,0,0,.1);
   color: white;
 }
+select {
+  outline: none;
+  border: none;
+  background: rgba(0,0,0,.1);
+  height: 2.5em;
+  padding: .25em;
+  color: white;
+}
+select option {
+  background: #00A388;
+  color: white;
+}
 .btn {
   border-radius: 1em;
 }
@@ -91,10 +105,12 @@ textarea {
 .btn-success {
   background: #FF6138;
   color: white;
+  border: none;
 }
 .btn-success:hover {
   background: #D6512F;
   color: #fff;
+  border: none;
 }
 ::-webkit-input-placeholder {
    color: #FFFF9D;
@@ -122,6 +138,48 @@ textarea {
 
 /* Navigation */
 
+#desktopNav {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: none;
+  padding: 0;
+  position: fixed;
+  height: 5vh;
+  background: url("http://s24.postimg.org/spbpdevh1/image.jpg");
+  background-size: cover;
+  z-index: 999999;
+  box-shadow: 0px 0px 35px rgba(0,0,0,.2);
+  top: 0;
+}
+#desktopNav img {
+  max-height: 2em;
+  max-width: 2em;
+}
+.desknav {
+  position: relative;
+  height: 5vh;
+  margin: 0;
+  padding: 1em;
+}
+.desknav p {
+  margin: 0;
+  padding: 0;
+}
+.desknav img {
+  margin: 0;
+  padding: 0;
+}
+.desknav:hover {
+  cursor: pointer;
+  background: rgba(0,0,0,.2);
+}
+
+
+
+
+
 nav {
   position: fixed;
   width: 100%;
@@ -131,17 +189,17 @@ nav {
   border-top: solid 2px #fff;
 }
 .navlink {
-  background: #00A388;
+  background: #79BD8F;
   box-shadow: inset 0px 0px 150px rgba(0,0,0,.3), 0px -10px 30px rgba(0,0,0,.1);
-  border-left: solid 1px white;
-  border-right: solid .25px white;
+  border-left: solid 1px #fff;
+  border-right: solid .25px #fff;
   color: white;
   height: 12.5vh;
   position: relative;
   cursor: pointer;
 }
 .navlink:hover {
-  background: #79BD8F;
+  background: #00A388;
 }
 .navlink img {
   position: relative;
@@ -154,13 +212,15 @@ nav {
 
 /* User Bar */
 #userbar {
-  background: #00A388;
+  display: none;
+  background: rgba(0,0,0,.1);
+  /*background: #79BD8F;*/
   box-shadow: inset 0px 0px 50px rgba(0,0,0,.3);
   color: white;
   text-align: right;
   height: 4vh;
-  padding: .75em 1em 0 0;
-  border-bottom: solid 2px #fff;
+  padding: 1em 0 0 0;
+  border-bottom: solid 2px #00A388;
 }
 #userbar a {
   color: #FFFF9D;
@@ -334,8 +394,26 @@ img.edit {
   right: 1em;
 }
 .searchBar {
-  width: 75%;
+  width: 75% !important;
+  padding: 1.5em 1em;
 }
 
 
 /* Ids */
+
+
+/* Responsive Fixes */
+@media (min-width: 868px) {
+  nav {
+    display: none;
+  }
+  #desktopNav {
+    display: block;
+  }
+  #userbar {
+    display: block;
+  }
+  body {
+    padding-top: 5vh;
+  }
+}

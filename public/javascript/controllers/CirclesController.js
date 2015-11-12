@@ -8,9 +8,13 @@
 		vm.contacts = HomeFactory.contacts;
 		vm.circles = HomeFactory.circles;
 
+		// On Load Get Contacts
 		HomeFactory.getContacts().then(function(res) {
 				vm.contacts = HomeFactory.contacts;
 		});
+
+		// On Load Scroll Window To Top
+		window.scrollTo(0, 0);
 
 
 		// // Get Circles
