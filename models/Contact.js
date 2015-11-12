@@ -12,8 +12,8 @@ var ContactSchema = new mongoose.Schema({
   linkedIn: String,
   facebook: String,
   google: String,
-  bio: String
-
+  bio: String,
+//  businessCardPic: String       //ADD BUSINESS CARD PHOTO IN THE SCHEMA.
 });
 
 mongoose.model('Contact', ContactSchema);

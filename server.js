@@ -61,9 +61,9 @@ app.get('/', function(req, res) {
 
 // Use Routes
 // app.use("/user", userRoutes);
-app.use("/contacts", contactsRoutes);
-app.use("/circles", circlesRoutes);
-app.use("/requests", requestsRoutes);
+app.use("/api/contacts", contactsRoutes);
+app.use("/api/circles", circlesRoutes);
+app.use("/api/requests", requestsRoutes);
 app.use("/api/user", userRoutes);
 
 
