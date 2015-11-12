@@ -3,11 +3,11 @@
 
 <form ng-submit="vm.addRequest(vm.newRequest);">
   <label>Who Can See My Request?</label>
-  <select>
-   <option>Everyone</option>
-   <option>Contacts Only</option>
-   <option>Babysitters Only</option>
-   <option>Select People...</option>
+  <select ng-model="vm.newRequest.privacy">
+   <option value="Global">Everyone</option>
+   <option value="Contacts">Contacts Only</option>
+   <option value="Babysitters">Babysitters Only</option>
+   <option value="Select">Select People...</option>
   </select>
   <input type="text" placeholder="Title" ng-model="vm.newRequest.title" />
   <textarea ng-model="vm.newRequest.body" placeholder="Comments"></textarea>
@@ -16,7 +16,6 @@
   <br>
   <button type="submit" class="btn btn-success">Save Request</button>
   <button type="button" class="btn btn-danger" ui-sref="Requests" ng-click="vm.newRequest = {};">Cancel</button>
->>>>>>> fc98cccb5d3e845bddcc82a0bd4aa2ce18e8c164
 </form>
 
 </div>

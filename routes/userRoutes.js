@@ -93,8 +93,8 @@ router.get('/auth/linkedin',
   passport.authenticate('linkedin', {scope: ["r_basicprofile", "r_emailaddress"]})); // this is a callback
 console.log("Made it after the first get");
 
-// result 
-router.get('/auth/linkedin/callback', 
+// result
+router.get('/auth/linkedin/callback',
 	passport.authenticate('linkedin', {failureRedirect: '/'}),
 	function(req, res){
 		if(req.user){
@@ -127,6 +127,18 @@ router.post('/signIn', function(req, res, next){
         res.send(user.createToken());
     })(req, res, next);
 });
+
+
+// ------------- ACCOUNT ROUTES ----------------------------
+router.delete("/:id", function(req, res, next){
+	User.remove({_id: req.params.id}, function(err, result){
+		if(err) return next(err);
+		res.send(result);
+	console.log("result: " + result);
+
+	});
+});
+
 
 
 module.exports = router;

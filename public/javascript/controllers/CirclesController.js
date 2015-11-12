@@ -9,6 +9,7 @@
 		//vm.circle = CirclesFactory.circles;
 		//vm.contacts = CirclesFactory.contacts;
 
+
 //----------ADD CONTACT IN CIRCLE (NEW O EXISTING).--------------------
 		// vm.addContactCircle = function() {
 		// 	vm.newContact.createdOn = new Date();
@@ -30,6 +31,15 @@
 		// CirclesFactory.getContacts().then(function(res) {
 		// 		vm.contacts = CirclesFactory.contacts;
 		// });
+
+		// On Load Get Contacts
+		HomeFactory.getContacts().then(function(res) {
+				vm.contacts = HomeFactory.contacts;
+		});
+
+
+		// On Load Scroll Window To Top
+		window.scrollTo(0, 0);
 
 
 		// // Get Circles

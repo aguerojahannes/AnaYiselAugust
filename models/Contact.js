@@ -14,6 +14,11 @@ var ContactSchema = new mongoose.Schema({
   google: String,
   bio: String,
 //  businessCardPic: String       //ADD BUSINESS CARD PHOTO IN THE SCHEMA.
+
+  title: String,
+  bio: String
+
+
 });
 
 mongoose.model('Contact', ContactSchema);

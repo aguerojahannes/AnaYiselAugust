@@ -1,4 +1,7 @@
 <!-- what controller?-->
+
+<p> this page is the user's public profile page. it includes. it is different from their account page where they can access their profile, but also access other settings, and delete their acct, and logout and change their password.</p
+
 <div ng-controller="ProfileController as vm">Profile
 	<div class="profile" layout>
 	  <div style="border:1px">
@@ -6,10 +9,12 @@
 	  	<img src="{{ profile.profilePic }}"/>
 	  </div>
 	  <div>
-		  <p>{{ profile.firstName || "first name"}} {{ profile.lastName || "last name"}}</p>
-		  <p>{{ profile.skills }}</p>
+		  <p>{{ vm.profile.firstName || "first name"}} {{ vm.profile.lastName || "last name"}}</p>
+		  <p>{{ vm.profile.skills }}</p>
 		  <md-button type="button" ng-click="vm.editProfile();">Edit Profile</md-button>
 	  </div>
 	</div>
 
 </div>
+
+

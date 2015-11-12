@@ -13,6 +13,9 @@
 		console.log(glob.status);
 //------------------------------------------------------
 
+		// On Load Scroll Window To Top
+		window.scrollTo(0, 0);
+
 // FORGOT PASSWORD? SEND EMAIL TO UPDATE
 		glob.forgot = function() {
 			GlobalFactory.forgot(glob.user).then(function() {
@@ -32,13 +35,13 @@
 // REGISTER
 		glob.signUp = function() {
 			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("Profile");
+				$state.go("Dashboard");
 			});
 		};
 
 		glob.signUpEs = function() {
 			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("ProfileEs");
+				$state.go("Dashboard");
 			});
 		};
 
@@ -49,12 +52,12 @@
 
 			GlobalFactory.signIn(glob.user).then(function(){
 				console.log("made it back to controller.")
-				$state.go('Dashboard');
+				$state.go('Dashboard', {id: glob.status._id});
 			});
 		};
 		glob.signInEs = function() {
 			GlobalFactory.signIn(glob.user).then(function(){
-				$state.go('Dashboard');
+				$state.go('Dashboard', {id: glob.user._id});
 			});
 		};
 

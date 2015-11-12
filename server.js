@@ -60,6 +60,7 @@ app.get('/', function(req, res) {
 });
 
 // Use Routes
+
 // app.use("/user", userRoutes);
 app.use("/api/contacts", contactsRoutes);
 app.use("/api/circles", circlesRoutes);

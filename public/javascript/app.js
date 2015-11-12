@@ -16,7 +16,11 @@
 			templateUrl: 'views/dashboard.html'
 		})
 //---------------- CONTACTS STATES ------------------------
-		.state('Contacts',{
+
+		.state('Account',{
+			url: '/account/:id',
+			templateUrl: 'views/account.html'
+		}).state('Contacts',{
 			url: '/contacts',
 			templateUrl: 'views/contacts.html'
 		})
