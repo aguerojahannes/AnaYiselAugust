@@ -5,7 +5,7 @@
   <input type="text" placeholder="First Name" ng-model="vm.tempContact.firstName" />
   <input type="text" placeholder="Last Name" ng-model="vm.tempContact.lastName" />
   <input type="email" placeholder="Email Address" ng-model="vm.tempContact.email" />
-  <div>
+  <div ng-init="extras = true">
     <label class="inline">Extra Information</label><br>
     <input type="checkbox" class="inline" ng-model="extras" >
   </div>
