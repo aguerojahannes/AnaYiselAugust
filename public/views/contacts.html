@@ -25,13 +25,13 @@
     <p>{{ contact.bio }}</p>
 
     <div class="socialIcons">
-      <img ng-if="contact.linkedIn" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png" alt="LinkedIn Icon" />
-      <img ng-if="contact.facebook" src="http://www.iconarchive.com/download/i49146/yootheme/social-bookmark/social-facebook-box-blue.ico" alt="Facebook Icon" />
-      <img ng-if="contact.google" src="http://vignette4.wikia.nocookie.net/markiplier/images/7/7e/Google%2B_Icon.png/revision/latest?cb=20150104105518" alt="Google+ Icon" />
+      <a href="callto://"><img ng-if="contact.phone" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Phone-icon.png" alt="Phone Icon" /></a>
+      <a href="mailto:"><img ng-if="contact.email" src="http://www.kozmikanafor.com/wp-content/uploads/2000/12/email-icon.png" alt="Email Icon" /></a>
+      <a href="skype:********?call"><img ng-if="contact.skype" src="http://findicons.com/files/icons/727/leopard/128/skype.png" alt="Skype Icon" /></a>
       <br>
-      <img ng-if="contact.skype" src="http://findicons.com/files/icons/727/leopard/128/skype.png" alt="Skype Icon" />
-      <img ng-if="contact.email" src="http://www.kozmikanafor.com/wp-content/uploads/2000/12/email-icon.png" alt="Email Icon" />
-      <img ng-if="contact.phone" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Phone-icon.png" alt="Phone Icon" />
+      <a ng-href="{{ contact.linkedIn }}" target="_blank"><img ng-if="contact.linkedIn" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png" alt="LinkedIn Icon" /></a>
+      <a ng-href="{{ contact.facebook }}" target="_blank"><img ng-if="contact.facebook" src="http://www.iconarchive.com/download/i49146/yootheme/social-bookmark/social-facebook-box-blue.ico" alt="Facebook Icon" /></a>
+      <a ng-href="{{ contact.google }}" target="_blank"><img ng-if="contact.google" src="http://vignette4.wikia.nocookie.net/markiplier/images/7/7e/Google%2B_Icon.png/revision/latest?cb=20150104105518" alt="Google+ Icon" /></a>
     </div>
   </div>
   <img src="http://s9.postimg.org/42jxt0jb3/edit.png" class="edit" ng-click="vm.editContact(contact);" alt="Edit Icon" />
