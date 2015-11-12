@@ -15,7 +15,10 @@
 		<div class="row">
 			<div class="col-sm-9"></div>
 			<div class="col-sm-3">
-				Hello, {{ glob.status._id }} <span style="margin: .5em 1em;">|</span> <a href="#" ui-sref="Profile">Account</a> <span style="margin: .5em .5em;">/</span> <a href="#" ng-click="glob.logout();">Log Out</a>
+				Hello, {{ glob.status._id }} <span style="margin: .5em 1em;">|</span> 
+				<a href="#" ui-sref="Account({id: glob.status._id})">Account</a> 
+				<span style="margin: .5em .5em;">/</span> 
+				<a href="#" ng-click="glob.logout();">Log Out</a>
 			</div>
 		</div>
 	</div>
@@ -60,6 +63,7 @@
 	<script src="/javascript/controllers/GlobalController.js"></script>
 	<script src="/javascript/controllers/HomeController.js"></script>
 	<script src="/javascript/controllers/ProfileController.js"></script>
+	<script src="/javascript/controllers/AccountController.js"></script>
 	<script src="/javascript/controllers/RequestsController.js"></script>
 	<script src="/javascript/controllers/CirclesController.js"></script>
 	<script src="/javascript/controllers/ContactsController.js"></script>

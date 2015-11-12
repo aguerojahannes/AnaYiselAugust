@@ -1,0 +1,96 @@
+<div ng-controller="AccountController as vm" layout layout-align="center">
+
+	<div id="account" layout="column" flex="70">
+		<div>
+		<h1>Account</h1>
+		</div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>NAME</p>
+		  </div>
+		  <div flex="60">
+		  	<p>{{vm.account.firstName}} {{vm.account.lastName || "Change your name."}}</p>
+		  </div>
+		  <div flex>
+		  	<a href="vm.changeName()">Edit</a>
+		  </div>
+		 </div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>EMAIL</p>
+		  </div>
+		  <div flex="60">
+		  	<p>{{vm.account.email || "Change your email address."}}</p>
+		  </div>
+		  <div flex>
+		  	<a href="vm.changePassword()">Edit</a>
+		  </div>
+		</div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>PASSWORD</p>
+		  </div>
+		  <div flex="60">
+		  	<p>Last updated on {{vm.account.passwordDate || "Change your password."}}.</p>
+		  </div>
+		  <div flex>
+		  	<a ui-sref="ResetPassword">Edit</a>
+		  </div>
+		 </div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>LANGUAGE</p>
+		  </div>
+		  <div flex="60">
+		  	<p>What language do you want to use app in?</p>
+		  </div>
+		  <div flex>
+		  	<a ng-click="vm.changeLanguage()">Edit</a>
+		  </div>
+		 </div>
+
+		 <div layout="row">
+		  <div flex="20">
+		  	<p>PROFILE</p>
+		  </div>
+		  <div flex="60">
+		  	<p>Change your public profile.</p>
+		  </div>
+		  <div flex>
+		  	<a ui-sref="Profile">Edit</a> <!-- by id -->
+		  </div>
+		</div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>DELETE ACCOUNT</p>
+		  </div>
+		  <div flex="60">
+		  	<p>Choose whether you want to keep your account or permanently delete it.</p>
+		  </div>
+		  <div flex>
+		  	<a ng-click="vm.showConfirmDelete()">Edit</a> <!-- modal to select "Are you sure you want to permanently delete your account?" -->
+<!-- 		  	<a ng-click="vm.showConfirmDelete(vm.ev)">Edit</a> modal to select "Are you sure you want to permanently delete your account?" -->
+		  </div>
+		 </div>
+
+		<div layout="column" ng-if="vm.confirmDelete">
+			    <span>Are you sure you want to permanently delete your account?</span>
+			    <md-button ng-click="vm.deleteAccount()">Yes, delete my account.</md-button>
+			    <md-button ng-click="vm.confirmDelete=false">Nevermind. I was rushing into a bad decision.</md-button>
+  		</div>
+
+<!-- 		<div layout="row" ng-if="vm.status">
+			    <br>
+			    <b layout="row" layout-align="center center" class="md-padding">
+			      {{vm.status || "Status"}}
+			    </b>
+  		</div> -->
+		
+	</div> <!-- end layout row-->
+
+</div> <!-- end layout row-->
