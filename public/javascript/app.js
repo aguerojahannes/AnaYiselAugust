@@ -4,67 +4,100 @@
 	.config(Config);
 
 	function Config($stateProvider, $urlRouterProvider, $httpProvider) {
-		$stateProvider.state('Home',{
+		$stateProvider
+
+//----------- HOME - DASHBOARD STATES --------------------
+		.state('Home',{
 			url: '/',
 			templateUrl: 'views/home.html'
-		}).state('Account',{
+		})
+		.state('Dashboard',{
+			url: '/dashboard',
+			templateUrl: 'views/dashboard.html'
+		})
+//---------------- CONTACTS STATES ------------------------
+
+		.state('Account',{
 			url: '/account/:id',
 			templateUrl: 'views/account.html'
 		}).state('Contacts',{
 			url: '/contacts',
 			templateUrl: 'views/contacts.html'
-		}).state('AddContact',{
+		})
+		.state('AddContact',{
 			url: '/addcontact',
 			templateUrl: 'views/addContact.html'
-		}).state('EditContact',{
+		})
+		.state('EditContact',{
 			url: '/editcontact',
 			templateUrl: 'views/editContact.html'
-		}).state('Dashboard',{
-			url: '/dashboard',
-			templateUrl: 'views/dashboard.html'
-		}).state('Circles',{
-			url: '/circles',
-			templateUrl: 'views/circles.html'
-		}).state('AddCircle',{
-			url: '/addcircle',
-			templateUrl: 'views/addCircle.html'
-		}).state('EditCircle',{
+		})
+//---------------- CIRCLES STATES ------------------------
+		.state('DisplayCircle',{
+			url: '/displaycircle',
+			templateUrl: 'views/displayCircle.html'
+		})
+		.state('CreateCircle',{
+			url: '/createcircle',
+			templateUrl: 'views/createCircle.html'
+		})
+		.state('AddContactCircle',{
+			url: '/addcontactcircle',
+			templateUrl: 'views/addContactCircle.html'
+		})
+		.state('EditCircle',{
 			url: '/editcircle',
 			templateUrl: 'views/editCircle.html'
-		}).state('Requests',{
+		})
+//---------------- REQUEST STATES ------------------------
+		.state('Requests',{
 			url: '/requests',
 			templateUrl: 'views/requests.html'
-		}).state('AddRequest',{
+		})
+		.state('AddRequest',{
 			url: '/addrequest',
 			templateUrl: 'views/addRequest.html'
-		}).state('EditRequest',{
+		})
+		.state('EditRequest',{
 			url: '/editrequest',
 			templateUrl: 'views/editRequest.html'
-		}).state('SignUp',{
-			url: '/signup',
-			templateUrl: 'views/signup.html'
-		}).state('Profile',{
+		})
+//---------------- USER PROFILE STATES ------------------------
+		.state('Profile',{
 			url: '/profile/:id',
 			templateUrl: 'views/profile.html'
-		}).state('SignUpEs',{
-			url: '/registrar',
-			templateUrl: 'views/signupEs.html'
-		}).state('ProfileEs',{
+		})
+		.state('ProfileEs',{
 			url: '/perfil/:id',
 			templateUrl: 'views/profileEs.html'
-		}).state('SignIn',{
+		})
+//---------------- SIGN UP - SIGN IN STATES ------------------------
+		.state('SignUpEs',{
+			url: '/registrar',
+			templateUrl: 'views/signupEs.html'
+		})
+		.state('SignUp',{
+			url: '/signup',
+			templateUrl: 'views/signup.html'
+		})
+		.state('SignIn',{
 			url: '/signIn',
 			templateUrl: 'views/signIn.html'
-		}).state('SignInEs',{
+		})
+		.state('SignInEs',{
 			url: '/signInEs',
 			templateUrl: 'views/signInEs.html'
-		}).state('ForgotPassword',{
+		})
+//---------------- RESET-FORGOT PASSWORD STATES ---------------
+		.state('ForgotPassword',{
 			url: '/forgotPassword',
 			templateUrl: 'views/forgotPassword.html'
-		}).state('ResetPassword',{
+		})
+		.state('ResetPassword',{
 			url: '/resetPassword/:id',
 			templateUrl: 'views/resetPassword.html'
 		});
+//---------------- LINKEDIN OAUTH STATES -----------------------
 		// .state("LinkedInAuth", {
 		//       	url: '/auth/token/:token',
 		//     		template: "<h1>Authenticating</h1>",

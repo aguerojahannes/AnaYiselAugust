@@ -38,8 +38,17 @@
 			<div class="col-sm-6 text-left small">
 				You have a new notification!
 			</div>
-			<div class="col-sm-6 small">
-				{{ glob.status.username }} <span style="margin: .5em 1em;">|</span> <a href="#" ui-sref="Profile">Account</a> <span style="margin: .5em .5em;">/</span> <a href="#" ng-click="glob.logout();">Log Out</a>
+			<div class="col-sm-6">
+				<select>
+				   <option value="Global">{{ glob.status.username }}</option>
+				   <option value="Contacts">My Profile</option>
+				   <option value="Babysitters">My Account</option>
+				   <option value="Logout">Logout</option>
+				</select>
+					{{ glob.status.username }} <span style="margin: .5em 1em;">|</span> 
+					<a href="#" ui-sref="Account({id: glob.status._id})">Account</a> 
+					<span style="margin: .5em .5em;">/</span> 
+					<a href="#" ng-click="glob.logout();">Log Out</a>
 			</div>
 		</div>
 	</div>
@@ -56,7 +65,7 @@
 				<img src="http://s27.postimg.org/b8lr1tkv7/contacts.png" alt="Contacts Icon" />
 				<p>Contacts</p>
 			</div>
-			<div class="col-xs-3 navlink" ui-sref="Circles">
+			<div class="col-xs-3 navlink" ui-sref="DisplayCircle">
 				<img src="http://s27.postimg.org/73fftncgz/circles.png" alt="Circles Icon" />
 			  <p>Circles</p>
 			</div>
@@ -79,6 +88,7 @@
 	<!-- Factories -->
 	<script src="/javascript/services/GlobalFactory.js"></script>
 	<script src="/javascript/services/HomeFactory.js"></script>
+	<script src="/javascript/services/CirclesFactory.js"></script>
 	<script src="/javascript/services/AuthInterceptor.js"></script>
 
 	<!-- Controllers -->

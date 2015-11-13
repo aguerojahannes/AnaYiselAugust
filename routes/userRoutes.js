@@ -130,4 +130,16 @@ router.post('/signIn', function(req, res, next){
 });
 
 
+// ------------- ACCOUNT ROUTES ----------------------------
+router.delete("/:id", function(req, res, next){
+	User.remove({_id: req.params.id}, function(err, result){
+		if(err) return next(err);
+		res.send(result);
+	console.log("result: " + result);
+
+	});
+});
+
+
+
 module.exports = router;

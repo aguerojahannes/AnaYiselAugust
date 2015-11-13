@@ -52,12 +52,12 @@
 
 			GlobalFactory.signIn(glob.user).then(function(){
 				console.log("made it back to controller.")
-				$state.go('Dashboard');
+				$state.go('Dashboard', {id: glob.status._id});
 			});
 		};
 		glob.signInEs = function() {
 			GlobalFactory.signIn(glob.user).then(function(){
-				$state.go('Dashboard');
+				$state.go('Dashboard', {id: glob.user._id});
 			});
 		};
 
