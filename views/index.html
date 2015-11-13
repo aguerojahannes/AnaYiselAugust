@@ -45,9 +45,9 @@
 				   <option value="Babysitters">My Account</option>
 				   <option value="Logout">Logout</option>
 				</select>
-					{{ glob.status.username }} <span style="margin: .5em 1em;">|</span> 
-					<a href="#" ui-sref="Account({id: glob.status._id})">Account</a> 
-					<span style="margin: .5em .5em;">/</span> 
+					
+					<a href="#" ui-sref="Account({id: glob.status._id})">Account</a> |
+					<a href="#" ui-sref="Profile({id: glob.status._id})">Profile</a> |
 					<a href="#" ng-click="glob.logout();">Log Out</a>
 			</div>
 		</div>

@@ -6,6 +6,7 @@
 	function ProfileController(GlobalFactory, $state, $stateParams) {
 		var vm = this;
 		vm.profile = {};
+		vm.status = GlobalFactory.status;
 
 
 		// vm.displayProfile = function(){
@@ -27,6 +28,7 @@
 		vm.updateProfile = function(){
 			GlobalFactory.updateUser($stateParams.id, vm.profile).then(function(res){
 				vm.profile = res.data; // need this?
+				$state.go("Profile", {id: vm.status._id});
 			});
 		};
 
