@@ -93,11 +93,12 @@ router.get('/auth/linkedin',
   passport.authenticate('linkedin', {scope: ["r_basicprofile", "r_emailaddress"]})); // this is a callback
 console.log("Made it after the first get");
 
-// result 
-router.get('/auth/linkedin/callback', 
+// result
+router.get('/auth/linkedin/callback',
 	passport.authenticate('linkedin', {failureRedirect: '/'}),
 	function(req, res){
 		if(req.user){
+			console.log(req);
 			req.user.createToken(); // generating token
 			res.redirect("/#/profile/" + req.user._id);
 		} else {

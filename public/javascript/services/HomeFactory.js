@@ -49,6 +49,15 @@
 			return q.promise;
 		}
 
+		/* Get LinkedIn Connections */
+		o.getLinkedIn = function() {
+			var q = $q.defer();
+			$http.get('https://api.linkedin.com/v1/people/id=12345/connections').then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
+
 		/* -------------------- Circles ---------------------------*/
 
 		/* Get Circles */

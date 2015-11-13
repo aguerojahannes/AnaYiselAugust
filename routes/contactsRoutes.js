@@ -6,7 +6,7 @@ var passport = require('passport');
 
 // Get All Contacts
 router.get('/', function(req, res, next) {
-  Contact.find({}).exec(function(err, result) {
+  Contact.find({}).sort({ "firstName": 'ascending'}).exec(function(err, result) {
     if(err) return next(err);
     res.send(result);
   });

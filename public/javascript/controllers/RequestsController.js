@@ -10,6 +10,8 @@
 		vm.requests = HomeFactory.requests;
 		vm.newRequest = { privacy: 'Global' };
 		vm.tempRequest = HomeFactory.tempRequest;
+		vm.modalOn = false;
+		vm.viewRequest = {};
 
 		// On Load Scroll Window To Top
 		window.scrollTo(0, 0);
