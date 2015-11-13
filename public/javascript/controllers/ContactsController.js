@@ -7,9 +7,13 @@
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
 		vm.tempContact = HomeFactory.tempContact;
+		vm.viewContact = {};
+		vm.modalOn = false;
+
 
 		// On Load Scroll Window To Top
 		window.scrollTo(0, 0);
+
 
 		// Get Contacts
 		vm.getContacts = function() {
@@ -18,6 +22,7 @@
 			});
 		};
 		vm.getContacts();
+
 
 		// Add Contact
 		vm.addContact = function() {
@@ -36,6 +41,7 @@
 			});
 		};
 
+
 		// Delete Contact
 		vm.deleteContact = function(id) {
 			HomeFactory.deleteContact(id).then(function(res) {
@@ -43,11 +49,13 @@
 			});
 		};
 
+
 		// Edit Contact
 		vm.editContact = function(contact) {
 				HomeFactory.tempContact = contact;
 				$state.go('EditContact');
 		};
+
 
 		// Save Contact
 		vm.saveContact = function(contact) {
@@ -63,6 +71,14 @@
 			});
 		};
 
+
+ /* -------------------- LinkedIn ----------------------------------------------*/
+		// Get LinkedIn Contacts
+		vm.getLinkedIn = function() {
+			HomeFactory.getLinkedIn().then(function(res){
+				console.log(res);
+			});
+		};
 
 	}
 })();

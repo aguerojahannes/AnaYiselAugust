@@ -1,0 +1,20 @@
+<div ng-controller="ProfileController as vm" layout layout-align="center">
+<div layout="column" flex="75">
+	<form ng-submit="vm.updateProfile();">
+	<div layout="column">
+		<h1>Edit Profile</h1>
+		<input ng-model="vm.profile.firstName" placeholder="First Name"/><br/>
+		<input ng-model="vm.profile.lastName" placeholder="Last Name"/><br/>
+		<input ng-model="vm.profile.profilePic" placeholder="Profile Pic"/><br/>
+		<input ng-model="vm.profile.phoneNumber" placeholder="Phone Number"/><br/>
+		<input ng-model="vm.profile.skills" placeholder="Skills"/><br/>
+		<textarea ng-model="vm.profile.bio" placeholder="Bio"></textarea><br/>
+		<input ng-model="vm.profile.linkedInUrl" placeholder="LinkedIn Url"/><br/>
+
+		<md-button type="submit">Update Profile</md-button>
+	</div>
+
+	</form>
+	</div>
+
+</div>

@@ -13,7 +13,7 @@ body {
   height: auto;
   margin: 0;
   padding-bottom: 15vh;
-  background: url("http://s24.postimg.org/spbpdevh1/image.jpg");
+  background: url("/assets/bg-flipped.jpg");
   background-size: cover;
   background-attachment: fixed;
   overflow-y: auto;
@@ -133,7 +133,17 @@ select option {
    font-style: italic;
    font-weight: 100;
 }
-
+::-webkit-scrollbar {
+    width: 1.8em;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
 
 
 
@@ -148,7 +158,7 @@ select option {
   padding: 0;
   position: fixed;
   height: 7vh;
-  background: url("http://s24.postimg.org/spbpdevh1/image.jpg");
+  background: url("/assets/bg-flipped.jpg");
   background-size: cover;
   z-index: 999999;
   box-shadow: 0px 0px 35px rgba(0,0,0,.2);
@@ -294,15 +304,20 @@ nav {
   max-width: 10vw;
   margin: .5em auto;
 }
+.contactBio {
+  height:10vh;
+  line-height:2em; /* Height / no. of lines to display */
+  overflow:hidden;
+}
 .socialIcons {
   position: absolute;
-  top: 3em;
+  top: 3.5em;
   right: 1em;
 }
 .socialIcons img {
   max-height: 2em;
   max-width: 2em;
-  margin: .25em 0;
+  margin: .5em .25em;
   cursor: pointer;
 }
 
@@ -355,23 +370,97 @@ nav {
 .request {
   background: rgba(0,0,0,.1);
   margin: 1em auto;
-  padding: 1em;
+  padding: 2em;
   color: #FFFF9D;
   position: relative;
   text-align: left;
 }
 .request:hover {
   background: rgba(0,0,0,.2);
+  cursor: pointer;
+
 }
-.request img {
+.visibility img {
   max-width: 1.5em;
   max-height: 1.5em;
+}
+.visibility {
+  position: absolute;
+  top: 3em;
+  right: 1em;
+}
+
+
+/* Modal */
+#Modal {
+  background: rgba(0,0,0,.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 4;
+}
+#ModalBox {
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  width: 40vw;
+  height: auto;
+  min-height: 55vh;
+  max-height: 65vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: url("http://s24.postimg.org/spbpdevh1/image.jpg");
+  background-size: contain;
+  background-attachment: fixed;
+  z-index: 5;
+  padding: 2em;
+  padding-bottom: 3em;
+}
+#ModalBox h1 {
+  padding-bottom: 0;
+}
+#modalBox .row img {
+  padding-top: 15em !important;
+
+}
+#ModalBox hr {
+  width: 85%;
+}
+#modalButtons {
+    position: absolute;
+    bottom: 2em;
+    width: 100%;
+    text-align: center;
+}
+.modalIcons {
+  padding-right: 1vw;
+}
+.modalIcons img{
+  max-height: 2vh;
+  max-width: 2vw;
+  margin-left: .5vw;
+}
+.modalIcons a {
+  color: white;
+  text-decoration: none;
+}
+.modalIcons a:hover {
+  color: #FFFF9D;
+  text-decoration: none;
+}
+.modelButton {
+  position: relative;
+  bottom: 1vh;
 }
 
 /* Account */
 #account {
-  
+
 }
+
+
 
 .dialogdemoBasicUsage #popupContainer {
   position: relative; }
@@ -409,10 +498,12 @@ img.edit {
   max-height: 1.5em;
   max-width: 1.5em;
 }
-.visibility {
+img.close {
   position: absolute;
-  top: 3em;
+  top: 1em;
   right: 1em;
+  max-height: 1.5em;
+  max-width: 1.5em;
 }
 .searchBar {
   width: 75% !important;
@@ -424,7 +515,7 @@ img.edit {
 
 
 /* Responsive Fixes */
-@media (min-width: 868px) {
+@media (min-width: 950px) {
   nav {
     display: none;
   }

@@ -98,6 +98,7 @@ router.get('/auth/linkedin/callback',
 	passport.authenticate('linkedin', {failureRedirect: '/'}),
 	function(req, res){
 		if(req.user){
+			console.log(req);
 			req.user.createToken(); // generating token
 			res.redirect("/#/profile/" + req.user._id);
 		} else {
@@ -136,6 +137,22 @@ router.delete("/:id", function(req, res, next){
 		res.send(result);
 	console.log("result: " + result);
 
+	});
+});
+
+// --------------- PROFILE ROUTES -----------------
+// --------------------------------------------------------------
+router.get("/:id", function(req, res, next){
+	User.findOne({_id: req.params.id}, function(err, result){
+		if(err) return next(err);
+		res.send(result);
+	});
+});
+
+router.put("/:id", function(req, res, next){
+	User.update({_id: req.params.id}, req.body, function(err, result){
+		if(err) return next(err);
+		res.send(result);
 	});
 });
 
