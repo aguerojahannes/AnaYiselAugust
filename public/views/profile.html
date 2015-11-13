@@ -1,20 +1,23 @@
-<!-- what controller?-->
-
-<p> this page is the user's public profile page. it includes. it is different from their account page where they can access their profile, but also access other settings, and delete their acct, and logout and change their password.</p
-
-<div ng-controller="ProfileController as vm">Profile
+<div ng-controller="ProfileController as vm" layout layout-align="center">
+<div layout="column" flex="75">
+	<div layout>
+		<h1>{{ vm.profile.firstName || "first name"}} {{ vm.profile.lastName || "last name"}}</h1>
+	</div>
 	<div class="profile" layout>
-	  <div style="border:1px">
-	  	<img src="img.jpg" width="150px"/>
-	  	<img src="{{ profile.profilePic }}"/>
-	  </div>
-	  <div>
-		  <p>{{ vm.profile.firstName || "first name"}} {{ vm.profile.lastName || "last name"}}</p>
-		  <p>{{ vm.profile.skills }}</p>
-		  <md-button type="button" ng-click="vm.editProfile();">Edit Profile</md-button>
-	  </div>
+	  	<div style="border:1px">
+	  		<img src="{{ vm.profile.profilePic || 'https://www.k-state.edu/hcs/images/anonymous_silhouette.jpg' }}"/ height="250px"><br/>
+	  		<span><img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/512/Email-icon.png" height="20px"/> {{ vm.profile.email || "Email address is hidden." }}<br/>
+	  		<img src="https://cdn4.iconfinder.com/data/icons/social-icons-6/40/phone-512.png" height="20px"/> {{ vm.profile.phoneNumber || "Phone number is hidden."}}</span>
+	  	</div>
+	  	<div>
+			  <p ng-repeat="skill in vm.profile.skills"><span>{{ skills }}</span></p>
+			  <p>{{ vm.profile.bio}}</p>
+			  <p>{{ vm.profile.linkedInUrl }}</p>
+		</div>
+	</div>
+	<div>
+		<md-button type="button" ng-click="vm.editProfile();">Edit Profile</md-button>
+	</div>
 	</div>
 
 </div>
-
-

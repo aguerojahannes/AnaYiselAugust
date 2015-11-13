@@ -8,11 +8,20 @@
 		vm.profile = {};
 
 
+		// vm.displayProfile = function(){
+		// 	GlobalFactory.getUser($stateParams.id).then(function(res){
+		// 		vm.profile = res.data;
+		// 		console.log(vm.profile);
+		// 	});
+		// };
+
 		function displayProfile(){
 			GlobalFactory.getUser($stateParams.id).then(function(res){
 				vm.profile = res.data;
+				console.log(vm.profile);
 			});
 		};
+		displayProfile();
 
 
 		vm.updateProfile = function(){

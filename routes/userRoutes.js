@@ -140,6 +140,22 @@ router.delete("/:id", function(req, res, next){
 	});
 });
 
+// --------------- PROFILE ROUTES -----------------
+// --------------------------------------------------------------
+router.get("/:id", function(req, res, next){
+	User.findOne({_id: req.params.id}, function(err, result){
+		if(err) return next(err);
+		res.send(result);
+	});
+});
+
+router.put("/:id", function(req, res, next){
+	User.update({_id: req.params.id}, req.body, function(err, result){
+		if(err) return next(err);
+		res.send(result);
+	});
+});
+
 
 
 module.exports = router;
