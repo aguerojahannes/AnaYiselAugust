@@ -1,7 +1,6 @@
 <div ng-controller="CirclesController as vm" id="circles" class="container">
 <h1>CIRCLES PAGE</h1>
-<button type="button" class="btn btn-success" ui-sref="AddCircle">Add Circle</button>
-<hr>
+	<button ui-sref="CreateCircle" class="btn btn-success"> Create Circle </button>
 <div class="">
   <br>
   <h3>Babysitters</h3>
@@ -11,7 +10,7 @@
   <div draggable="true" ng-repeat="contact in vm.contacts" class="circle">
     <p>{{ contact.firstName }}  {{ contact.lastName }}</p>
     <p>{{ contact.email }}</p>
-    <button type="button" class="btn btn-success" ng-click="">Add</button>
+    <!-- <button type="button" class="btn btn-success" ng-click="">Add</button> -->
   </div>
   </div>
 </div>

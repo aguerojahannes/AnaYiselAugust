@@ -6,8 +6,9 @@
   <input type="text" placeholder="Last Name" ng-model="vm.newContact.lastName" />
   <input type="email" placeholder="Email Address" ng-model="vm.newContact.email" />
   <div>
-    <label class="inline">Extra Information</label><br>
-    <input type="checkbox" class="inline" ng-model="extras" >
+    <label class="inline">Extra Information
+        <input type="checkbox" class="inline" ng-model="extras">
+    </label>
   </div>
 
   <div class="row" ng-show="extras">

@@ -49,6 +49,15 @@
 			return q.promise;
 		}
 
+		/* Get LinkedIn Connections */
+		o.getLinkedIn = function() {
+			var q = $q.defer();
+			$http.get('https://api.linkedin.com/v1/people/id=12345/connections').then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
+
 		/* -------------------- Circles ---------------------------*/
 
 		/* Get Circles */
@@ -61,14 +70,14 @@
 			return q.promise;
 		}
 
-		/* Add Circle */
-		o.addContact = function(contact) {
-			var q = $q.defer();
-			$http.post('/contacts', contact).then(function(res) {
-				q.resolve(res.data);
-			});
-			return q.promise;
-		}
+		// /* Add Circle */
+		// o.addContact = function(contact) {
+		// 	var q = $q.defer();
+		// 	$http.post('/contacts', contact).then(function(res) {
+		// 		q.resolve(res.data);
+		// 	});
+		// 	return q.promise;
+		// }
 
 		/* Delete Circle */
 		o.deleteContact = function(id) {
