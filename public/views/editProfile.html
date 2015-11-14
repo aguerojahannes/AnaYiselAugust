@@ -5,11 +5,32 @@
 		<h1>Edit Profile</h1>
 		<input ng-model="vm.profile.firstName" placeholder="First Name"/><br/>
 		<input ng-model="vm.profile.lastName" placeholder="Last Name"/><br/>
-		<input ng-model="vm.profile.profilePic" placeholder="Profile Pic"/><br/>
 		<input ng-model="vm.profile.phoneNumber" placeholder="Phone Number"/><br/>
 		<input ng-model="vm.profile.skills" placeholder="Skills"/><br/>
 		<textarea ng-model="vm.profile.bio" placeholder="Bio"></textarea><br/>
 		<input ng-model="vm.profile.linkedInUrl" placeholder="LinkedIn Url"/><br/>
+		<input ng-model="vm.profile.profilePic" placeholder="Profile Pic"/><br/> <!-- PHOTO WITH URL -->
+
+<!-- THIS WORKS WITH UPLOAD PHOTO - CLOUDINARY -->
+		<!-- <md-button ng-click="photoUpload = true;"> Upload Profile Image </md-button> -->
+
+			<div>
+				<ng-form name="form">
+						<div>
+							<md-button class=" md-raised" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" ngf-resize="{width: 600, height: 600}" THIS APPLIES MAX SIZE TO PHOTO ngf-min-height="100">Select Photo</md-button>
+						</div>
+
+						<h4>Photo Preview</h4>
+						<img style="width: 200px; height: 200px;" ngf-thumbnail="file || '/thumb.jpg'"><br/>
+						<md-button ng-click="submit()"> Upload Photo </md-button>
+				</ng-form>
+
+				<div style="margin: auto;" ng-show='vm.loading' layout='row' layout-sm='column' layout-align='space-around'>
+					<md-progress-circular md-mode='indeterminate' md-diameter='80'></md-progress-circular>
+				</div>
+
+			</div>
+<!-- END UPLOAD PHOTO w CLOUDINARY -->
 
 		<md-button type="submit">Update Profile</md-button>
 	</div>

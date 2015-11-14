@@ -4,6 +4,9 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var jwt = require('express-jwt');
 var passport = require('passport');
+var cloudinary = require('cloudinary'); //Works with UPLOAD PHOTO
+var fileParser = require('connect-multiparty')();
+var multiparty = require('multiparty'); //Works with UPLOAD PHOTO
 var linkedIn = require("passport-linkedin-oauth2");
 var nodemailer = require('nodemailer') ;
 
@@ -17,6 +20,64 @@ var auth = jwt({
 	secret: "ThisIsASecretCode"
 });
 // -----------------------------END-----------------------------------
+
+//--------------------CLOUDINARY - UPLOAD PHOTO----------------------------------
+cloudinary.config({
+	cloud_name: process.env.CLOUDINARY_NAME || env.CLOUDINARY_NAME,
+	api_key: process.env.CLOUDINARY_KEY || env.CLOUDINARY_KEY,
+	api_secret: process.env.CLOUDINARY_SECRET || env.CLOUDINARY_SECRET
+});
+
+router.post('/uploadPhoto', function(req, res){
+	var form = new multiparty.Form();
+	form.parse(req, function(err, data, fileObject){
+		cloudinary.uploader.upload(fileObject.file[0].path, function(picInfo){
+			User.update({_id: data.userId[0]}, {profilePic: picInfo.url}, function(err, updateUser){
+				if(err) return res.status(500).send({err: "Sorry, could not find that user."});
+				if(!updateUser) return res.status(500).send({err: "Error."});
+				res.send(updateUser);
+				console.log(updateUser);
+			})
+		})
+	})
+})
+
+// router.post('/upload', fileParser, function(req, res){
+//   /* The `req.files` property will be populated because we
+//    * used the 'fileParser' middleware for this route.
+//    *
+//    * The 'name' attribute from the file input in your form will match the
+//    * property name on `req.files`.
+//    * So since we have <input type='file' name='image' /> in our form,
+//    * there is a `req.files.image` property available.
+//    */
+//   var imageFile = req.files.image;
+//
+//   cloudinary.uploader.upload(imageFile.path, function(result){
+//     /*
+//      * After a successful upload, the callback's `result` argument
+//      * will be a hash (javascript object) with a property `url`
+//      * that you can use to display the uploaded image.
+//      * To learn more about the format of the `result` hash, see:
+//      *   http://cloudinary.com/documentation/node_image_upload
+//      */
+//
+//     if (result.url) {
+//       /*
+//        * This would be a good spot to save this url (perhaps into a
+//        * mongo database) so that you can display it later.
+//        */
+//       res.render('upload', {url: result.url});
+//     } else {
+//       /*
+//        * There was an error and the file did not upload.
+//        */
+//
+//       console.log('Error uploading to cloudinary: ',result);
+//       res.send('did not get url');
+//     }
+//   });
+// });
 
 
 //-------------------------NODEMAILER - FORGOT PASSWORD- Look at Jose's Project ----------------

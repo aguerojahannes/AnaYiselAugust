@@ -16,16 +16,17 @@
 	  		<a href="{{ vm.profile.facebokUrl }}"><img src="http://sites.showitfast.com/17943/7894/facebook_icon_grey.png_tn.png" height="20px"/></a> <!-- used for mock up -->
 	  		<a href="{{ vm.profile.googleUrl }}"><img ng-show="vm.profile.facebookUrl" src="http://porschecentrebrisbane.com.au/images/PCB/icon-google-plus-grey.png" height="23px"/></a>
 	  		<a href="{{ vm.profile.googleUrl }}"><img src="http://porschecentrebrisbane.com.au/images/PCB/icon-google-plus-grey.png" height="23px"/></a> <!-- used for mock up -->
-	  		<a href="{{ vm.profile.linkedInUrl }}"><img ng-show="vm.profile.linkedInUrl" src="http://3.bp.blogspot.com/-1UYbuG_3iTA/VOvjXVDNLJI/AAAAAAAAASU/wuUw9UMIcWs/s1600/LinkedIn-gray.png" height="20px"/></a> 
+	  		<a href="{{ vm.profile.linkedInUrl }}"><img ng-show="vm.profile.linkedInUrl" src="http://3.bp.blogspot.com/-1UYbuG_3iTA/VOvjXVDNLJI/AAAAAAAAASU/wuUw9UMIcWs/s1600/LinkedIn-gray.png" height="20px"/></a>
 		</div>
 	</div>
 	<div style="text-align:center">
   		<span class="button">skills</span><p ng-repeat="skill in vm.profile.skills"><span class="well">{{ skills }}</span></p><br/><hr/>
-		 
+
 		 <p>{{ vm.profile.bio || "We'd love to know a bit more about you. Please write a bit about you here."}}</p>
 	</div>
 	<div style="text-align:right">
 		<md-button type="button" ui-sref="EditProfile({id: glob.status._id})">Update Profile</md-button>
+
 	</div>
 	</div>
 </div>
