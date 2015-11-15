@@ -38,6 +38,7 @@ $scope.submit = function() {
 //------------------------ END CLOUDINARY -------------------------------
 
 
+//--------------------------DISPLAY PUBLIC PROFILE -----------------------------------
 		// vm.displayProfile = function(){
 		// 	GlobalFactory.getUser($stateParams.id).then(function(res){
 		// 		vm.profile = res.data;
@@ -53,15 +54,21 @@ $scope.submit = function() {
 		};
 		displayProfile();
 
-
+//------------------- EDIT PROFILE ---------------------------------------------
 		vm.updateProfile = function(){
 			GlobalFactory.updateUser($stateParams.id, vm.profile).then(function(res){
 				vm.profile = res.data; // need this?
 				$state.go("Profile", {id: vm.status._id});
 			});
 		};
+		vm.updateProfileEs = function(){
+			GlobalFactory.updateUser($stateParams.id, vm.profile).then(function(res){
+				vm.profile = res.data; // need this?
+				$state.go("ProfileEs", {id: vm.status._id});
+			});
+		};
 
-// On Load Scroll Window To Top
+//-------------- On Load Scroll Window To Top----------------------------------
 		window.scrollTo(0, 0);
 
 

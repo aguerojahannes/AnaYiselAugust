@@ -13,13 +13,19 @@
 		console.log(glob.status);
 //------------------------------------------------------
 
-		// On Load Scroll Window To Top
+//----------------- On Load Scroll Window To Top-------------
 		window.scrollTo(0, 0);
 
-// FORGOT PASSWORD? SEND EMAIL TO UPDATE
+//--------------- FORGOT PASSWORD? SEND EMAIL TO UPDATE------------------
 		glob.forgot = function() {
 			GlobalFactory.forgot(glob.user).then(function() {
 				$state.go('SignIn') ;
+			}) ;
+		};
+
+		glob.forgotEs = function() {
+			GlobalFactory.forgot(glob.user).then(function() {
+				$state.go('SignInEs') ;
 			}) ;
 		};
 
@@ -31,8 +37,14 @@
 			});
 		};
 
+		glob.resetPasswordEs = function(){
+			glob.user.id = $stateParams.id ;
+			GlobalFactory.resetPassword(glob.user).then(function(res){
+				$state.go('Home'); //login again.
+			});
+		};
 
-// REGISTER
+//-------------------- REGISTER --------------------------------
 		glob.signUp = function() {
 			GlobalFactory.signUp(glob.user).then(function(){
 				$state.go("Dashboard");
@@ -49,16 +61,16 @@
 			alert();
 		}
 
-// LOG IN
+//------------------------ LOG IN -----------------------------
 		glob.signIn = function() {
 			console.log("email: " + glob.user.email);
 			console.log("password: " + glob.user.password);
-
 			GlobalFactory.signIn(glob.user).then(function(){
 				console.log("made it back to controller.")
 				$state.go('Dashboard', {id: glob.status._id});
 			});
 		};
+
 		glob.signInEs = function() {
 			GlobalFactory.signIn(glob.user).then(function(){
 				$state.go('Dashboard', {id: glob.user._id});
@@ -67,7 +79,7 @@
 
 
 
-// LOG OUT
+//------------------------- LOG OUT---------------------------
 		glob.logout = function(){
 			GlobalFactory.logout();
 			$state.go('Home');

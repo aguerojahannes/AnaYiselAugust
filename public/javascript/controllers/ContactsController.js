@@ -73,7 +73,6 @@
 
 		// Save Contact
 		vm.saveContact = function(contact) {
-
 			// If No ProfilePic, Assign Default Picture
 			if(!contact.profilePic) {
 				contact.profilePic = "https://www.k-state.edu/hcs/images/anonymous_silhouette.jpg";
