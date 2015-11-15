@@ -1,20 +1,32 @@
-<!-- what controller?-->
-
-<p> this page is the user's public profile page. it includes. it is different from their account page where they can access their profile, but also access other settings, and delete their acct, and logout and change their password.</p
-
-<div ng-controller="ProfileController as vm">Profile
-	<div class="profile" layout>
-	  <div style="border:1px">
-	  	<img src="img.jpg" width="150px"/>
-	  	<img src="{{ profile.profilePic }}"/>
-	  </div>
-	  <div>
-		  <p>{{ vm.profile.firstName || "first name"}} {{ vm.profile.lastName || "last name"}}</p>
-		  <p>{{ vm.profile.skills }}</p>
-		  <md-button type="button" ng-click="vm.editProfile();">Edit Profile</md-button>
-	  </div>
+<div ng-controller="ProfileController as vm" layout layout-align="center">
+<div layout="column" style="width:75%">
+	<div>
+		<h1>{{ vm.profile.firstName || "first name"}} {{ vm.profile.lastName || "last name"}}</h1>
 	</div>
+	<div style="background-color:grey">
+		<img src="{{ vm.profile.profilePic || 'https://www.k-state.edu/hcs/images/anonymous_silhouette.jpg' }}" class="img-responsive"/><br/>
+	</div>
+	<div layout="row" layout-sm="column" layout-padding>
+		<div flex>
+	  		<span><img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/512/Email-icon.png" height="20px"/> {{ vm.profile.email || "Email address is hidden." }}<br/>
+	  		<img src="https://cdn4.iconfinder.com/data/icons/social-icons-6/40/phone-512.png" height="20px"/> {{ vm.profile.phoneNumber || "Phone number is hidden."}}</span>
+		</div>
+		<div flex style="text-align:right"> <!-- figure out how to get all the links appropriately from the input - http:// or unshift or what? -->
+	  		<a href="{{ vm.profile.facebokUrl }}"><img ng-show="vm.profile.facebookUrl" src="http://sites.showitfast.com/17943/7894/facebook_icon_grey.png_tn.png" height="20px"/></a>
+	  		<a href="{{ vm.profile.facebokUrl }}"><img src="http://sites.showitfast.com/17943/7894/facebook_icon_grey.png_tn.png" height="20px"/></a> <!-- used for mock up -->
+	  		<a href="{{ vm.profile.googleUrl }}"><img ng-show="vm.profile.facebookUrl" src="http://porschecentrebrisbane.com.au/images/PCB/icon-google-plus-grey.png" height="23px"/></a>
+	  		<a href="{{ vm.profile.googleUrl }}"><img src="http://porschecentrebrisbane.com.au/images/PCB/icon-google-plus-grey.png" height="23px"/></a> <!-- used for mock up -->
+	  		<a href="{{ vm.profile.linkedInUrl }}"><img ng-show="vm.profile.linkedInUrl" src="http://3.bp.blogspot.com/-1UYbuG_3iTA/VOvjXVDNLJI/AAAAAAAAASU/wuUw9UMIcWs/s1600/LinkedIn-gray.png" height="20px"/></a>
+		</div>
+	</div>
+	<div style="text-align:center">
+  		<span class="button">skills</span><p ng-repeat="skill in vm.profile.skills"><span class="well">{{ skills }}</span></p><br/><hr/>
 
+		 <p>{{ vm.profile.bio || "We'd love to know a bit more about you. Please write a bit about you here."}}</p>
+	</div>
+	<div style="text-align:right">
+		<md-button type="button" ui-sref="EditProfile({id: glob.status._id})">Update Profile</md-button>
+
+	</div>
+	</div>
 </div>
-
-
