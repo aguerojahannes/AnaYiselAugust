@@ -61,9 +61,9 @@
 			setToken(res.data);
 			setUser();
 			var user = o.getUser();
-			console.log(user);
-			o.status.username = user.email;
-			o.status._id = user._id;
+			console.log(res.data);
+			o.status.username = res.data.email;
+			o.status._id = res.data._id;
 			q.resolve(res.data);
 		});
 		return q.promise;
@@ -115,7 +115,7 @@
 	    };
 
 //-------- ACCOUNT--------------------------------------------
-			
+
 	o.deleteAccount = function(userId){
 		var q = $q.defer();
 		$http.delete("/api/user/" + userId).then(function(res){

@@ -6,7 +6,7 @@ var passport = require('passport');
 
 // Get All Requests
 router.get('/', function(req, res, next) {
-  Request.find({}).exec(function(err, result) {
+  Request.find({ 'privacy': 'Global'}).exec(function(err, result) {
     if(err) return next(err);
     res.send(result);
   });

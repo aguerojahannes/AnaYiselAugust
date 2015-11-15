@@ -2,15 +2,23 @@
 <h1>Edit Contact</h1>
 
 <form ng-submit="vm.saveContact(vm.tempContact);">
-  <input type="text" placeholder="First Name" ng-model="vm.tempContact.firstName" />
-  <input type="text" placeholder="Last Name" ng-model="vm.tempContact.lastName" />
+  <div class="col-xs-6">
+      <input type="text" placeholder="First Name" ng-model="vm.tempContact.firstName" />
+  </div>
+  <div class="col-xs-6">
+      <input type="text" placeholder="Last Name" ng-model="vm.tempContact.lastName" />
+  </div>
   <input type="email" placeholder="Email Address" ng-model="vm.tempContact.email" />
+  <input type="text" placeholder="Job Title" ng-model="vm.tempContact.title" />
+  {{ vm.tempContact.skills }}
+  <form>
+    <input type="text" placeholder="Skills" ng-model="vm.tempContact.skills" />
+  </form>
   <div ng-init="extras = true">
     <label class="inline">Extra Information</label><br>
     <input type="checkbox" class="inline" ng-model="extras" >
   </div>
   <div class="row" ng-show="extras">
-    <input type="text" placeholder="Job Title" ng-model="vm.tempContact.title" />
     <div class="col-sm-6">
       <input type="text" ng-disabled="!extras" placeholder="Profile Picture" ng-model="vm.tempContact.profilePic" />
       <input type="text" ng-disabled="!extras" placeholder="Phone Number" ng-model="vm.tempContact.phone" />
@@ -23,6 +31,7 @@
     </div>
     <textarea ng-disabled="!extras" ng-model="vm.tempContact.bio" placeholder="Bio"></textarea>
   </div>
+  <br>
   <button type="submit" class="btn btn-success">Save Contact</button>
   <button type="button" class="btn btn-danger" ui-sref="Contacts" ng-click="vm.tempContact = {};">Cancel</button>
 </form>

@@ -45,6 +45,10 @@
 			});
 		};
 
+		glob.alert = function() {
+			alert();
+		}
+
 // LOG IN
 		glob.signIn = function() {
 			console.log("email: " + glob.user.email);
