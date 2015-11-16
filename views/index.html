@@ -22,7 +22,7 @@
 				<img class="img img-responsive inline" src="http://s27.postimg.org/b8lr1tkv7/contacts.png" alt="Contacts Icon" />
 				<p class="inline">Contacts</p>
 			</div>
-			<div class="col-xs-3 desknav" ui-sref="Circles">
+			<div class="col-xs-3 desknav" ui-sref="DisplayCircle">
 				<img class="img img-responsive inline" src="http://s27.postimg.org/73fftncgz/circles.png" alt="Circles Icon" />
 				<p class="inline">Circles</p>
 			</div>
@@ -33,25 +33,29 @@
 		</div>
 	</div>
 
-	<div id="userbar" ng-show="glob.status._id" class="text-center">
-		<div class="row container" style="margin: 0 auto;">
-			<div class="col-sm-6 text-left small">
-				You have a new notification!
+	<div id="userbar" ng-show="glob.status._id" class="text-center" ng-init="clickedButton = false;">
+		<div class="row container" style="margin: 0 auto; padding-top: 0;">
+			<div class="col-sm-6 text-left small" style="padding-top:.75em;">
+				<p>You have a new notification!</p>
 			</div>
-			<div class="col-sm-6">
-				<select>
-				   <option value="Global">{{ glob.status.username }}</option>
-				   <option value="Contacts">My Profile</option>
-				   <option value="Babysitters">My Account</option>
-				   <option value="Logout">Logout</option>
-				</select>
-					
-					<a href="#" ui-sref="Account({id: glob.status._id})">Account</a> |
-					<a href="#" ui-sref="Profile({id: glob.status._id})">Profile</a> |
-					<a href="#" ng-click="glob.logout();">Log Out</a>
+			<div class="col-sm-6" style="padding-top: .25em; ">
+				<div class="small" style="display: inline; padding-top: 3em;">
+						 <p ng-click="clickedButton = !clickedButton;">{{ glob.status.username}}</p>
+				</div>
+				<img src="http://flaticons.net/icons/Mobile%20Application/Settings-02.png" ng-click="clickedButton = !clickedButton;" alt="Settings Icon" />
 			</div>
 		</div>
 	</div>
+	<div class="container" id="dropDownWrapper">
+		<div ng-show="clickedButton && glob.status._id" id="userbarDropDown">
+			<ul>
+				<li ui-sref="Profile" ng-click="">My Profile</li>
+				<li ui-sref="Account" ng-click="">My Account</li>
+				<li ng-click="glob.logout();" ng-click="">Logout</li>
+			</ul>
+		</div>
+	</div>
+
 
 	<ui-view></ui-view>
 
@@ -81,9 +85,11 @@
 	<script src="angular-material/angular-material.min.js"></script>
 	<script src="angular-aria/angular-aria.min.js"></script>
 	<script src="angular-animate/angular-animate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/10.0.2/ng-file-upload.js"></script>
 
 	<!-- Global Src -->
 	<script src="/javascript/app.js"></script>
+
 
 	<!-- Factories -->
 	<script src="/javascript/services/GlobalFactory.js"></script>

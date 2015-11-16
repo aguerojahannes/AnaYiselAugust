@@ -10,7 +10,7 @@
 			setUser();
 		}
 
-//FORGOT PASSWORD? SEND EMAIL
+//------------FORGOT PASSWORD? SEND EMAIL--------------------------
 	o.forgot = function(user) {
 			var q = $q.defer() ;
 			$http.post('/api/user/forgot', user).success(function(res) {
@@ -21,7 +21,7 @@
 		} ;
 
 
-	//Update PASSWORD
+	//--------------------Update PASSWORD----------------------------------
 	o.resetPassword = function(editedUser) {
 		var q = $q.defer();
 		$http.put('/api/user/resetPassword/' + editedUser.id, editedUser).success(
@@ -61,9 +61,9 @@
 			setToken(res.data);
 			setUser();
 			var user = o.getUser();
-			console.log(user);
-			o.status.username = user.email;
-			o.status._id = user._id;
+			console.log(res.data);
+			o.status.username = res.data.email;
+			o.status._id = res.data._id;
 			q.resolve(res.data);
 		});
 		return q.promise;
@@ -115,7 +115,7 @@
 	    };
 
 //-------- ACCOUNT--------------------------------------------
-			
+
 	o.deleteAccount = function(userId){
 		var q = $q.defer();
 		$http.delete("/api/user/" + userId).then(function(res){
@@ -141,6 +141,17 @@
 		});
 		return q.promise;
 	};
+
+	//------------------CLOUDINARY PROFILE PIC UPLOAD --------------
+
+	o.addProfileImage = function(image) {
+		console.log(image);
+		var q = $q.defer();
+		$http.post("", image).success(function(res) {
+			q.resolve(res);
+		});
+		return q.promise;
+	}
 
 
 		return o;

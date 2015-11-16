@@ -1,13 +1,13 @@
 <div ng-controller="CirclesController as vm" id="circles" class="container">
-<h1>Create Circles</h1>
+<h1>Crear Círculos</h1>
       <!-- ________This Input Is to Add a Circle(choose pieces) and title _____________ -->
 <form ng-submit="vm.createCircle()">
      <md-input-container>
-       <label> What is the Title of your Circle? </label>
+       <label> Cuál es el título de tu círculo? </label>
        <input ng-model="vm.circle.title" type="text" ng-required="true">
      </md-input-container>
      <md-input-container>
-        <label>How many pieces do you want in your Contacts Circle?</label>
+        <label>Cuántas piezas tiene tu círculo?</label>
         <md-select ng-model="vm.circle.pieces" ng-required="true">
             <md-option value='2'>2</md-option>
             <md-option value='4'>4</md-option>
@@ -20,7 +20,7 @@
             <md-option value='30'>30</md-option>
        </md-select>
       </md-input-container>
-  <button type="submit" class="btn btn-success">Next Step, add people!</button>
+  <button type="submit" class="btn btn-success">Próximo paso, añadir Contactos</button>
 </form>
 
 </div>

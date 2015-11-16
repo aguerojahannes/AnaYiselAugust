@@ -1,0 +1,96 @@
+<div ng-controller="AccountController as vm" layout layout-align="center">
+
+	<div id="account" layout="column" flex="70">
+		<div>
+		<h1>Cuenta</h1>
+		</div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>Nombre</p>
+		  </div>
+		  <div flex="60">
+		  	<p>{{vm.account.firstName}} {{vm.account.lastName || "Change your name."}}</p>
+		  </div>
+		  <div flex>
+		  	<a href="vm.changeName()">Editar</a>
+		  </div>
+		 </div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>Correo Electrónico</p>
+		  </div>
+		  <div flex="60">
+		  	<p>{{vm.account.email || "Change your email address."}}</p>
+		  </div>
+		  <div flex>
+		  	<a href="vm.changePassword()">Editar</a>
+		  </div>
+		</div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>Contraseña</p>
+		  </div>
+		  <div flex="60">
+		  	<p>Actualizado en {{vm.account.passwordDate || "Change your password."}}.</p>
+		  </div>
+		  <div flex>
+		  	<a ui-sref="ResetPassword">Editar</a>
+		  </div>
+		 </div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>Idioma</p>
+		  </div>
+		  <div flex="60">
+		  	<p>Qué Idioma deseas utilizar??</p>
+		  </div>
+		  <div flex>
+		  	<a ng-click="vm.changeLanguage()">Editar</a>
+		  </div>
+		 </div>
+
+		 <div layout="row">
+		  <div flex="20">
+		  	<p>Perfíl</p>
+		  </div>
+		  <div flex="60">
+		  	<p>Actualiza tu Perfíl Público.</p>
+		  </div>
+		  <div flex>
+		  	<a ui-sref="Profile">Editar</a> <!-- by id -->
+		  </div>
+		</div>
+
+		<div layout="row">
+		  <div flex="20">
+		  	<p>Cerrar Cuenta</p>
+		  </div>
+		  <div flex="60">
+		  	<p>Puedes cerrar tu cuenta permanente o temporeramente, tú decides.</p>
+		  </div>
+		  <div flex>
+		  	<a ng-click="vm.showConfirmDelete()">Editar</a> <!-- modal to select "Are you sure you want to permanently delete your account?" -->
+<!-- 		  	<a ng-click="vm.showConfirmDelete(vm.ev)">Edit</a> modal to select "Are you sure you want to permanently delete your account?" -->
+		  </div>
+		 </div>
+
+		<div layout="column" ng-if="vm.confirmDelete">
+			    <span>Seguro deseas Cerrar tu cuenta?</span>
+			    <md-button ng-click="vm.deleteAccount()">Sí, deseo cerrar mi cuenta.</md-button>
+			    <md-button ng-click="vm.confirmDelete=false">Olvídale, me apresuré a tomar una mala decisión..</md-button>
+  		</div>
+
+<!-- 		<div layout="row" ng-if="vm.status">
+			    <br>
+			    <b layout="row" layout-align="center center" class="md-padding">
+			      {{vm.status || "Status"}}
+			    </b>
+  		</div> -->
+
+	</div> <!-- end layout row-->
+
+</div> <!-- end layout row-->

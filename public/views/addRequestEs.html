@@ -1,0 +1,21 @@
+<div ng-controller="RequestsController as vm" id="requests" class="container">
+<h1>Añadir Solicitud</h1>
+
+<form ng-submit="vm.addRequest(vm.newRequest);">
+  <label>Quién puede ver mi solicitud?</label>
+  <select ng-model="vm.newRequest.privacy">
+   <option value="Global">Todos</option>
+   <option value="Contacts">Solo mis contactos</option>
+   <option value="Babysitters">Babysitters Only</option>
+   <option value="Select">Seleccionar Personas...</option>
+  </select>
+  <input type="text" placeholder="Título" ng-model="vm.newRequest.title" />
+  <textarea ng-model="vm.newRequest.body" placeholder="Detalles"></textarea>
+  <br>
+  <input type="text" placeholder="Habilidades" ng-model="vm.newRequest.skills" />
+  <br>
+  <button type="submit" class="btn btn-success">Publicar Solicitud</button>
+  <button type="button" class="btn btn-danger" ui-sref="Requests" ng-click="vm.newRequest = {};">Cancelar</button>
+</form>
+
+</div>

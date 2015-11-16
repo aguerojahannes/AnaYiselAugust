@@ -1,7 +1,21 @@
 (function() {
 	'use strict';
 	angular.module('app')
-	.controller('ContactsController', ContactsController);
+	.controller('ContactsController', ContactsController)
+	// Custom Directive For Handling Enter Key For Skills -- Usage: ng-enter="doSomething()"
+	.directive('ngEnter', function() {
+        return function(scope, element, attrs) {
+            element.bind("keydown keypress", function(event) {
+                if(event.which === 13) {
+                    scope.$apply(function(){
+                        scope.$eval(attrs.ngEnter, {'event': event});
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    });;
 
 	function ContactsController(HomeFactory, $state, $stateParams) {
 		var vm = this;
@@ -59,7 +73,6 @@
 
 		// Save Contact
 		vm.saveContact = function(contact) {
-
 			// If No ProfilePic, Assign Default Picture
 			if(!contact.profilePic) {
 				contact.profilePic = "https://www.k-state.edu/hcs/images/anonymous_silhouette.jpg";

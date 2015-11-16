@@ -12,6 +12,8 @@
     "body-parser": "^1.12.4",
     "bower": "^1.6.5",
     "chart.js": "^1.0.2",
+    "cloudinary": "^1.2.5",
+    "connect-multiparty": "^2.0.0",
     "crypto": "0.0.3",
     "dotenv": "^1.2.0",
     "ejs": "^2.3.1",
@@ -20,6 +22,8 @@
     "express-session": "^1.12.1",
     "jsonwebtoken": "^5.4.1",
     "mongoose": "^4.2.3",
+    "multiparty": "^4.1.2",
+    "ng-file-upload": "^10.0.2",
     "nodemailer": "^0.7.1",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0"
