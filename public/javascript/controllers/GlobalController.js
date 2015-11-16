@@ -3,16 +3,16 @@
 	angular.module('app')
 	.controller('GlobalController', GlobalController);
 
-	function GlobalController(GlobalFactory, $state, $stateParams, $scope) {
+	function GlobalController(GlobalFactory, $state, $stateParams, $scope, $window) {
 		var glob = this;
 		glob.user = {};
 //--------------- ADD THIS TO CHECK -----------------
 		glob.isLogin = true; //switch between the login and register view on the login_register.html page
     glob.user = {};
     glob.status = GlobalFactory.status;
-		console.log(glob.status);
 //------------------------------------------------------
 
+		console.log(Math.random());
 		// On Load Scroll Window To Top
 		window.scrollTo(0, 0);
 
@@ -51,11 +51,7 @@
 
 // LOG IN
 		glob.signIn = function() {
-			console.log("email: " + glob.user.email);
-			console.log("password: " + glob.user.password);
-
 			GlobalFactory.signIn(glob.user).then(function(){
-				console.log("made it back to controller.")
 				$state.go('Dashboard', {id: glob.status._id});
 			});
 		};
@@ -70,7 +66,8 @@
 // LOG OUT
 		glob.logout = function(){
 			GlobalFactory.logout();
-			$state.go('Home');
+			$state.go("Home");
+			$window.location.href=("/");
 		};
 
 		// Bring State To Document
