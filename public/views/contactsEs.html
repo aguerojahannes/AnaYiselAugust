@@ -1,0 +1,80 @@
+<div ng-controller="ContactsController as vm" id="contacts" class="container">
+<h1>Contactos</h1>
+<div class="row">
+  <div class="col-xs-4 text-left">
+      <button type="button" ui-sref="AddContact" class="btn btn-success">Añadir contacto</button>
+  </div>
+  <div class="col-xs-8 text-right">
+    <label>Sincronizar Contactos vía: &nbsp;</label>
+    <button type="button" ng-click="vm.getLinkedIn();" class="btn btn-success">LinkedIn</button>
+    <button type="button" ui-sref="AddContact" class="btn btn-success">Facebook</button>
+    <button type="button" ui-sref="AddContact" class="btn btn-success">Google+</button>
+  </div>
+</div>
+
+<hr>
+<br>
+<input type="text" ng-model="searchContacts" class="searchBar" placeholder="Search Contacts"/>
+<br>
+<div ng-repeat="contact in vm.contacts | filter:searchContacts" style="position: relative;">
+  <div class="row contact" ng-click="vm.modalOn = true; vm.viewContact = contact;">
+    <div class="col-xs-3">
+      <img ng-src="{{contact.profilePic}}" alt="Profile Picture" class="img img-responsive" />
+    </div>
+    <div class="col-xs-7">
+      <h3>{{ contact.firstName }}  {{ contact.lastName }}</h3>
+      <h4>{{ contact.title }}</h4>
+      <p>{{ contact.skills }}</p>
+      <p class="contactBio">{{ contact.bio }}</p>
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="socialIcons">
+    <a href="callto://"><img ng-if="contact.phone" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Phone-icon.png" alt="Phone Icon" /></a>
+    <a href="mailto:"><img ng-if="contact.email" src="http://www.kozmikanafor.com/wp-content/uploads/2000/12/email-icon.png" alt="Email Icon" /></a>
+    <a href="skype:********?call"><img ng-if="contact.skype" src="http://findicons.com/files/icons/727/leopard/128/skype.png" alt="Skype Icon" /></a>
+    <br>
+    <a ng-href="{{ contact.linkedIn }}" target="_blank"><img ng-if="contact.linkedIn" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png" alt="LinkedIn Icon" /></a>
+    <a ng-href="{{ contact.facebook }}" target="_blank"><img ng-if="contact.facebook" src="http://www.iconarchive.com/download/i49146/yootheme/social-bookmark/social-facebook-box-blue.ico" alt="Facebook Icon" /></a>
+    <a ng-href="{{ contact.google }}" target="_blank"><img ng-if="contact.google" src="http://vignette4.wikia.nocookie.net/markiplier/images/7/7e/Google%2B_Icon.png/revision/latest?cb=20150104105518" alt="Google+ Icon" /></a>
+  </div>
+  <img src="http://s9.postimg.org/42jxt0jb3/edit.png" class="edit" ng-click="vm.editContact(contact);" alt="Edit Icon" />
+  <img src="http://s9.postimg.org/4e1e5rzr3/delete.png" class="delete" ng-click="vm.deleteContact(contact._id);" alt="Delete Icon" />
+</div>
+
+<!-- Modal -->
+<div ng-show="vm.modalOn === true">
+  <div id="Modal" ng-click="vm.modalOn = false">
+  </div>
+  <div id="ModalBox">
+      <div class="row">
+        <div class="col-xs-2">
+          <img ng-src="{{vm.viewContact.profilePic}}" alt="Profile Picture" class="img img-responsive" style="padding-top: 2.5em;"/>
+        </div>
+        <div class="col-xs-10 text-left">
+          <h1>{{ vm.viewContact.firstName }} {{ vm.viewContact.lastName }}</h1>
+          <h4>{{ vm.viewContact.title }}</h4>
+          <p>{{ vm.viewContact.skills }}</p>
+          <hr style="margin: 1em 0;">
+          <div class="row">
+            <div class="col-xs-6" style="padding-top: .5em;">
+              <p>{{ vm.viewContact.bio }}</p>
+            </div>
+            <div class="col-xs-6 modalIcons text-right">
+              <p><a ng-href="{{ contact.linkedIn }}" target="_blank">{{ vm.viewContact.linkedIn }} <img ng-if="vm.viewContact.linkedIn" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png" alt="LinkedIn Icon" /></a></p>
+              <p><a ng-href="{{ contact.google }}" target="_blank">{{ vm.viewContact.google }} <img ng-if="vm.viewContact.google" src="http://vignette4.wikia.nocookie.net/markiplier/images/7/7e/Google%2B_Icon.png/revision/latest?cb=20150104105518" alt="Google+ Icon" /></a></p>
+              <p><a ng-href="{{ contact.facebook }}" target="_blank">{{ vm.viewContact.facebook }} <img ng-if="vm.viewContact.facebook" src="http://www.iconarchive.com/download/i49146/yootheme/social-bookmark/social-facebook-box-blue.ico" alt="Facebook Icon" /></a></p>
+              <p><a href="skype:********?call">{{ vm.viewContact.skype }} <img ng-if="vm.viewContact.skype" src="http://findicons.com/files/icons/727/leopard/128/skype.png" alt="Skype Icon" /></a></p>
+              <p><a href="mailto:">{{ vm.viewContact.email }} <img ng-if="vm.viewContact.email" src="http://www.kozmikanafor.com/wp-content/uploads/2000/12/email-icon.png" alt="Email Icon" /></a></p>
+              <p><a href="callto://">{{ vm.viewContact.phone }} <img ng-if="vm.viewContact.phone" src="http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Phone-icon.png" alt="Phone Icon" /></a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <button type="button" class="btn btn-danger modelButton" ng-click="vm.modalOn = false">Close</button>
+      <img src="http://justinsarnik.com/img/global/close.png" class="close" ng-click="vm.modalOn = false" alt="Close Icon" />
+  </div>
+</div>
+
+</div>
