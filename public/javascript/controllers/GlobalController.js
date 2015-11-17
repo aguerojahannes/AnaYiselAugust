@@ -8,8 +8,8 @@
 		glob.user = {};
 //--------------- ADD THIS TO CHECK -----------------
 		glob.isLogin = true; //switch between the login and register view on the login_register.html page
-    glob.user = {};
-    glob.status = GlobalFactory.status;
+    		glob.user = {};
+   		glob.status = GlobalFactory.status;
 
 		// On Load Scroll Window To Top
 		window.scrollTo(0, 0);
