@@ -15,7 +15,7 @@
                 }
             });
         };
-    });;
+    });
 
 	function ContactsController(HomeFactory, $state, $stateParams) {
 		var vm = this;

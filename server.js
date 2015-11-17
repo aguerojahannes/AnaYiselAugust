@@ -17,14 +17,14 @@ require("./models/Circle");
 require("./config/passport");
 
 // DATABASE CONNECTION
-mongoose.connect("mongodb://localhost/anayiselaugust");
-// var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
-// console.log(database);
-// mongoose.connect(database, function(err){
-// 	console.log("Connect");
-// 	if(err) return console.log('error connecting to %s', database);
-// 	console.log('connected to %s', database);
-// });
+// mongoose.connect("mongodb://localhost/anayiselaugust");
+var database = process.env.MONGOLAB || "mongodb://localhost/FailedMongoLab";
+console.log(database);
+mongoose.connect(database, function(err){
+	console.log("Connect");
+	if(err) return console.log('error connecting to %s', database);
+	console.log('connected to %s', database);
+});
 
 
 
@@ -58,6 +58,15 @@ var requestsRoutes = require('./routes/requestsRoutes');
 app.get('/', function(req, res) {
 	res.render('index');
 });
+
+//-------to allow remote access--------------------------------------------------------
+// using this for ionic http req
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 
 // Use Routes
 
