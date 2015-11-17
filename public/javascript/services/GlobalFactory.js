@@ -54,16 +54,10 @@
 
 	//---------SIGN IN--------------------------------
 	o.signIn = function(user){
-		console.log("user.email: " + user.email);
-		console.log("user.password: " + user.password);
 		var q = $q.defer();
 		$http.post('/api/user/signIn', user).then(function(res){
 			setToken(res.data);
 			setUser();
-			var user = o.getUser();
-			console.log(res.data);
-			o.status.username = res.data.email;
-			o.status._id = res.data._id;
 			q.resolve(res.data);
 		});
 		return q.promise;
@@ -73,7 +67,7 @@
 
 //-------------------TOKEN------------------------------
 
-	function setUser(){
+			function setUser(){
 	      var user = JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 	      o.status.username = user.email;
 	      o.status._id = user._id;
@@ -126,13 +120,13 @@
 
 
 //-------- PROFILE--------------------------------------------
-	o.getUser = function(userId){ // used to get user information on account page and the public profile
-		var q = $q.defer();
-		$http.get("/api/user/" + userId).then(function(res){
-			q.resolve(res);
-		});
-		return q.promise;
-	};
+	// o.getUser = function(userId){ // used to get user information on account page and the public profile
+	// 	var q = $q.defer();
+	// 	$http.get("/api/user/" + userId).then(function(res){
+	// 		q.resolve(res);
+	// 	});
+	// 	return q.promise;
+	// };
 
 	o.updateUser = function(userId, user){  // used to update user information on account page or on the public profile
 		var q = $q.defer();

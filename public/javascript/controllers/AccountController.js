@@ -20,7 +20,7 @@
 
 		vm.status = '';
 		vm.showConfirmDelete = function(){
-			vm.confirmDelete = "confirm"
+			vm.confirmDelete = "confirm";
 		};
 
 // vm.showConfirmDelete = function(ev){
@@ -67,7 +67,7 @@
 		//     $mdDialog.hide(answer);
 		//   };
 // };
-		
+
 		vm.deleteAccount = function(){
 			GlobalFactory.deleteAccount($stateParams.id).then(function(res){
 				console.log("delete res: " + res);

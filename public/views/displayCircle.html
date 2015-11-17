@@ -1,16 +1,43 @@
-<div ng-controller="CirclesController as vm" id="circles" class="container">
-<h1>CIRCLES PAGE</h1>
-	<button ui-sref="CreateCircle" class="btn btn-success"> Create Circle </button>
-<div class="">
+<div ng-controller="CirclesController as vm" id="circles" class="container" ng-init="creatingCircle = false;">
+
+	<h1>Create a Circle</h1>
+
+	<!-- Buttons -->
+	<div class="circleOptions" ng-show="creatingCircle === false">
+		<button ng-click="creatingCircle = true;" class="btn btn-success">New Circle </button>
+		<button ng-click="vm.deleteCircle(); creatingCircle = false;" class="btn btn-danger">Delete Circle </button>
+	</div>
+
+	<div class="circleOptions" ng-show="creatingCircle === true">
+		<input type="text" ng-model="vm.newCircle.name" placeholder="Circle Name">
+		<input type="number" min="1" max="20" value="1" placeholder="Number Of Members" ng-model="vm.newCircle.slices">
+		<button ng-click="vm.createCircle(); creatingCircle = false;" class="btn btn-success">Create Circle </button>
+		<button ng-click="vm.newCircle= {}; creatingCircle = false;" class="btn btn-danger">Cancel </button>
+	</div>
+  <hr>
+
   <br>
-  <h3>Babysitters</h3>
-  <br>
-  <br>
-  <div style="height: 20em; width: 20em; border-radius: 50%; background-color: rgba(0,0,0,.1); margin: 0 auto;"></div>
-  <div draggable="true" ng-repeat="contact in vm.contacts" class="circle">
-    <p>{{ contact.firstName }}  {{ contact.lastName }}</p>
-    <p>{{ contact.email }}</p>
-    <!-- <button type="button" class="btn btn-success" ng-click="">Add</button> -->
-  </div>
-  </div>
+
+	<!-- Canvas -->
+  <canvas id="Canvas" ondrop="drop(event)" ondragover="allowDrop(event)"></canvas>
+
+	<!-- Sidebar -->
+	<div id="addToCircleBar">
+		<div id="circleBarContent">
+			<input type="text" placeholder="Add Contacts" class="small" ng-model="searchCircles" style="margin: 3vh auto; padding: 1em;">
+			<hr style="width: 80%;">
+			<div draggable="true" ondragstart="drag(event)" ng-repeat="contact in vm.contacts | filter:searchCircles" class="circle greyscale" ng-class="{greyscale: hover}" ng-mouseenter="hover = false" ng-mouseleave="hover = true" ng-style="{'background-image': 'url(' + contact.profilePic + ')'}">
+				<p>{{ contact.firstName }}  {{ contact.lastName }}</p>
+				<p>{{ contact.email }}</p>
+				<!-- <button type="button" class="btn btn-success" ng-click="">Add</button> -->
+			</div>
+		</div>
+		<div id="circleBarMenuText">
+			<h3>M</h3>
+			<h3>E</h3>
+			<h3>N</h3>
+			<h3>U</h3>
+		</div>
+	</div>
+
 </div>
