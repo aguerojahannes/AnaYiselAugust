@@ -29,8 +29,10 @@ cloudinary.config({
 });
 
 router.post('/uploadPhoto', function(req, res){
+	console.log("hit photo");
 	var form = new multiparty.Form();
 	form.parse(req, function(err, data, fileObject){
+		console.log(fileObject);
 		cloudinary.uploader.upload(fileObject.file[0].path, function(picInfo){
 			User.update({_id: data.userId[0]}, {profilePic: picInfo.url}, function(err, updateUser){
 				if(err) return res.status(500).send({err: "Sorry, could not find that user."});

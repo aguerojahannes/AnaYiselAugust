@@ -120,13 +120,13 @@
 
 
 //-------- PROFILE--------------------------------------------
-	// o.getUser = function(userId){ // used to get user information on account page and the public profile
-	// 	var q = $q.defer();
-	// 	$http.get("/api/user/" + userId).then(function(res){
-	// 		q.resolve(res);
-	// 	});
-	// 	return q.promise;
-	// };
+	o.displayProfile = function(userId){ // used to get user information on account page and the public profile
+		var q = $q.defer();
+		$http.get("/api/user/" + userId).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	};
 
 	o.updateUser = function(userId, user){  // used to update user information on account page or on the public profile
 		var q = $q.defer();
