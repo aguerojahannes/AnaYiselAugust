@@ -27,8 +27,10 @@
 			<input type="text" placeholder="Add Contacts" class="small" ng-model="searchCircles" style="margin: 3vh auto; padding: 1em;">
 			<hr style="width: 80%;">
 			<div draggable="true" ondragstart="drag(event)" ng-repeat="contact in vm.contacts | filter:searchCircles" class="circle greyscale" ng-class="{greyscale: hover}" ng-mouseenter="hover = false" ng-mouseleave="hover = true" ng-style="{'background-image': 'url(' + contact.profilePic + ')'}">
-				<p>{{ contact.firstName }}  {{ contact.lastName }}</p>
-				<p>{{ contact.email }}</p>
+				<div class="shade">
+					<p>{{ contact.firstName }}</p>
+					<p>{{ contact.lastName }}</p>
+				</div>
 				<!-- <button type="button" class="btn btn-success" ng-click="">Add</button> -->
 			</div>
 		</div>
