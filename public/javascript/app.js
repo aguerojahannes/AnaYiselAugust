@@ -156,6 +156,11 @@
 		.state('ResetPasswordEs',{
 			url: '/resetPasswordEs/:id',
 			templateUrl: 'views/resetPasswordEs.html'
+		})
+//----------------  TOKEN FOR 3RD PARTY AUTH ---------------
+		.state('Token',{
+			url: '/token/:token',
+			templateUrl: 'views/token.html'
 		});
 //----------------- OTHER ------------------------------------------------------
 		$urlRouterProvider.otherwise('/');
