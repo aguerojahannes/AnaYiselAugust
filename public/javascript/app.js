@@ -161,6 +161,11 @@
 		.state('Notifications',{
 			url: '/notifications',
 			templateUrl: 'views/notifications.html'
+
+//----------------  TOKEN FOR 3RD PARTY AUTH ---------------
+		.state('Token',{
+			url: '/token/:token',
+			templateUrl: 'views/token.html'
 		});
 
 //----------------- OTHER ------------------------------------------------------
