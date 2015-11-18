@@ -17,12 +17,27 @@
         };
     });
 
-	function ContactsController(HomeFactory, $state, $stateParams) {
+	function ContactsController(HomeFactory, $state, $stateParams, $scope) {
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
 		vm.tempContact = HomeFactory.tempContact;
 		vm.viewContact = {};
 		vm.modalOn = false;
+
+
+		// Makes the input box lowercase
+  	$scope.query = '';
+  	$scope.$watch('query', function() {
+  	    $scope.query = $scope.query.toLowerCase();
+  	});
+
+  	// Only search certain properties
+    vm.searchContacts = function(contact) {
+        return (
+          angular.lowercase(contact.firstName).indexOf($scope.query || '') !== -1 ||
+					angular.lowercase(contact.lastName).indexOf($scope.query || '') !== -1 ||
+          angular.lowercase(contact.title).indexOf($scope.query || '') !== -1);
+    };
 
 
 		// On Load Scroll Window To Top
@@ -35,7 +50,7 @@
 				vm.contacts = HomeFactory.contacts;
 			});
 		};
-		vm.getContacts();
+		vm.getContacts(); // Fire Initially
 
 
 		// Add Contact
