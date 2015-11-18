@@ -29,7 +29,10 @@
 <div ng-repeat="request in vm.requests | filter:searchRequests" style="position: relative;">
   <div class="request" ng-click="vm.modalOn = true; vm.viewRequest = request;">
     <h3>{{ request.title }}</h3>
-    <p>soggust@gmail.com</p>
+    <h5 class="inline" ng-repeat="skill in request.skills" style="margin-right: 1vw;">{{ skill }}</h5>
+    <br>
+    <br>
+    <p class="small" style="color: white;">{{ request.email }}</p>
   </div>
   <div class="visibility">
     <img src="http://www.cedar-health.com/assets/images/ethos-icons/ethos-attention-eye-icon.png" alt="Visibility Icon" />

@@ -10,11 +10,20 @@
    <option ng-value="'Select'">Select People...</option>
   </select>
   <div class="" ng-show="vm.newRequest.privacy === 'Select'">
-    <input type="text" placeholder="Add Contact" ng-model="searchContact" />
-    <br>
-    <div class="" ng-repeat="contact in vm.contacts | filter:searchContact">
-
+    <input type="text" placeholder="Add Contact" ng-model="vm.searchContact" />
+    <div style="border: solid 1px #fff; margin-bottom: 5vh;" ng-if="vm.searchContact">
+      <div ng-repeat="contact in vm.contacts | filter:vm.searchContact" ng-mouseover="mouseOver = true;" ng-mouseout="mouseOver = false;">
+        <p ng-class="{shade: mouseOver}" ng-click="vm.addSelectPrivacy(contact);" style="display: inline-block; padding: 1vh 10vw;">{{ contact.firstName }}  {{ contact.lastName }}</p>
+      </div>
     </div>
+    <div class="text-left" ng-show="vm.selectPrivacy">
+      <h3 ng-show="vm.selectPrivacy.length > 0">Contacts: </h3>
+      <div class="skill" ng-repeat="member in vm.selectPrivacy" ng-click="vm.deleteMember(member);">
+        <h5 class="inline"  style="margin: 1em">{{ member.firstName }}  {{ member.lastName }}</h5>
+      </div>
+      <br>
+    </div>
+    <hr>
   </div>
 
   <input type="text" placeholder="Title" ng-model="vm.newRequest.title" />

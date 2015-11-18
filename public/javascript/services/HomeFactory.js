@@ -3,7 +3,7 @@
 	angular.module('app')
 	.factory('HomeFactory', HomeFactory);
 
-	function HomeFactory($http, $q) {
+	function HomeFactory($http, $q, GlobalFactory) {
 		var o = {};
 		o.contacts = [];
 		o.tempContact = {};
@@ -102,6 +102,7 @@
 
 		/* Add Request */
 		o.addRequest = function(request) {
+			request.email = GlobalFactory.status.username;
 			var q = $q.defer();
 			$http.post('/requests', request).then(function(res) {
 				q.resolve(res.data);

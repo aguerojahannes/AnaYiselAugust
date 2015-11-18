@@ -156,7 +156,13 @@
 		.state('ResetPasswordEs',{
 			url: '/resetPasswordEs/:id',
 			templateUrl: 'views/resetPasswordEs.html'
+		})
+//---------------- RESET-FORGOT PASSWORD STATES ---------------
+		.state('Notifications',{
+			url: '/notifications',
+			templateUrl: 'views/notifications.html'
 		});
+
 //----------------- OTHER ------------------------------------------------------
 		$urlRouterProvider.otherwise('/');
 		$httpProvider.interceptors.push("AuthInterceptor");
