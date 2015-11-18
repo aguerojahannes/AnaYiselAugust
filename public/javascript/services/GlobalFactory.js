@@ -103,9 +103,9 @@
 					      return decodeURIComponent(escape(window.atob(output))); //polifyll https://github.com/davidchambers/Base64.js
 					    }
 
-		// o.getUser = function() {
-	  //     return JSON.parse(urlBase64Decode(getToken().split('.')[1]));
-	  //   };
+		o.getUser = function() {
+	      return JSON.parse(urlBase64Decode(getToken().split('.')[1]));
+	    };
 
 //-------- ACCOUNT--------------------------------------------
 
@@ -119,11 +119,8 @@
 
 
 //-------- PROFILE--------------------------------------------
-<<<<<<< HEAD
-	o.displayProfile = function(userId){ // used to get user information on account page and the public profile
-=======
-	o.getUser = function(userId){ // used to get user information on account page and the public profile
->>>>>>> 0482aadb54d2826786ae6761343a4ae90e43ba85
+
+	o.getUserInfo = function(userId){ // used to get user information on account page and the public profile
 		var q = $q.defer();
 		$http.get("/api/user/" + userId).then(function(res){
 			q.resolve(res);

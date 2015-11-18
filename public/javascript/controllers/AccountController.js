@@ -18,6 +18,13 @@
 			// open modal
 		};
 
+//--------This is to load the User automaticly -------------------
+		// vm.getUserAcct = function(){
+		// 	GlobalFactory.getUserInfo().then(function(res){
+		//
+		// 	})
+		// };
+
 		vm.status = '';
 		vm.showConfirmDelete = function(){
 			vm.confirmDelete = "confirm";
