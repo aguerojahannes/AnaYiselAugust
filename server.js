@@ -59,6 +59,15 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
+//-------to allow remote access--------------------------------------------------------
+// using this for ionic http req
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 // Use Routes
 
 // app.use("/user", userRoutes);

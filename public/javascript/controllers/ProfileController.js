@@ -17,12 +17,13 @@ $scope.upload = function (file) {
     	vm.loading = true;
     	Upload.upload({
     		url: '/api/user/uploadPhoto',
-    		data: {file: file, 'userId': vm.status._user.id}
+    		data: {file: file, 'userId': vm.status._id}
     	}).then(function (resp) {
     		vm.loading = false;
 				$mdToast.show($mdToast.simple().content('Please relogin to show changes'))
     	}, function (resp) {
     		vm.loading = false;
+				console.log(resp);
     	}, function (evt) {
     		var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
     	});
@@ -47,7 +48,7 @@ $scope.submit = function() {
 		// };
 
 		function displayProfile(){
-			GlobalFactory.getUser($stateParams.id).then(function(res){
+			GlobalFactory.displayProfile($stateParams.id).then(function(res){
 				vm.profile = res.data;
 				console.log(vm.profile);
 			});
@@ -56,6 +57,7 @@ $scope.submit = function() {
 
 //------------------- EDIT PROFILE ---------------------------------------------
 		vm.updateProfile = function(){
+		//	$scope.submit();
 			GlobalFactory.updateUser($stateParams.id, vm.profile).then(function(res){
 				vm.profile = res.data; // need this?
 				$state.go("Profile", {id: vm.status._id});

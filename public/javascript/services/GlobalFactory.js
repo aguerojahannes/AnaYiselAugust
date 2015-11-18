@@ -10,6 +10,31 @@
 			setUser();
 		}
 
+// ----------------SIGN UP----------------------------
+	o.signUp = function(user){
+		var q = $q.defer();
+		$http.post("/api/user/signUp", user).then(function(res){
+			setToken(res.data);
+			setUser();
+			var user = o.getUser();
+			o.status.username = user.username;
+			o.status._id = user._id;
+			q.resolve(res.data);
+		});
+		return q.promise;
+	};
+
+//---------SIGN IN--------------------------------
+	o.signIn = function(user){
+		var q = $q.defer();
+		$http.post('http://localhost:3000/api/user/signIn', user).then(function(res){
+			setToken(res.data);
+			setUser();
+			q.resolve(res.data);
+		});
+		return q.promise;
+	};
+
 //------------FORGOT PASSWORD? SEND EMAIL--------------------------
 	o.forgot = function(user) {
 			var q = $q.defer() ;
@@ -37,32 +62,6 @@
 	      o.status.username = null;
 	      o.status._id = null;
 	    };
-
-// ----------------SIGN UP----------------------------
-	o.signUp = function(user){
-		var q = $q.defer();
-		$http.post("/api/user/signUp", user).then(function(res){
-			setToken(res.data);
-			setUser();
-			var user = o.getUser();
-			o.status.username = user.username;
-			o.status._id = user._id;
-			q.resolve(res.data);
-		});
-		return q.promise;
-	};
-
-	//---------SIGN IN--------------------------------
-	o.signIn = function(user){
-		var q = $q.defer();
-		$http.post('/api/user/signIn', user).then(function(res){
-			setToken(res.data);
-			setUser();
-			q.resolve(res.data);
-		});
-		return q.promise;
-	};
-
 
 
 //-------------------TOKEN------------------------------
@@ -120,7 +119,11 @@
 
 
 //-------- PROFILE--------------------------------------------
+<<<<<<< HEAD
+	o.displayProfile = function(userId){ // used to get user information on account page and the public profile
+=======
 	o.getUser = function(userId){ // used to get user information on account page and the public profile
+>>>>>>> 0482aadb54d2826786ae6761343a4ae90e43ba85
 		var q = $q.defer();
 		$http.get("/api/user/" + userId).then(function(res){
 			q.resolve(res);
