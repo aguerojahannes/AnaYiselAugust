@@ -14,8 +14,9 @@
       <img src="http://www.cedar-health.com/assets/images/ethos-icons/ethos-attention-eye-icon.png" alt="Visibility Icon" style="max-width: 1.5em;" />
       <p class="small inline"><em>{{ vm.viewRequest.privacy }}</em></p>
       <hr>
-      <p>{{ vm.viewRequest.body}}</p>
-      <p ng-if="vm.viewRequest.skills === true">{{ vm.viewRequest.skills}}</p>
+      <p style="color: #FFFF9D">{{ vm.viewRequest.body}}</p>
+      <hr>
+      <p ng-repeat="skill in vm.viewRequest.skills" class="inline" style="margin: 1em;">{{ skill }}</p>
       <br>
       <img src="http://justinsarnik.com/img/global/close.png" class="close" ng-click="vm.modalOn = false" alt="Close Icon" />
       <div id="modalButtons">
