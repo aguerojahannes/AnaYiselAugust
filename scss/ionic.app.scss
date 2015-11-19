@@ -3,16 +3,86 @@ To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file. If you're looking for some default colors, they are there.
 */
 
+// COLORS
+$burntorange: rgb(255,97,56);
+$yelloworange: rgb(242,177,50);
+$yellowgrey: rgb(255,255,157);
+$palemint: gb(190,235,159);
+$mint: rgb(121,189,143);
 $teal: rgb(0,163,136);
+$white: rgb(255,255,255);
+$lightgrey: rgb(241,241,242);
+//$medgrey;
+//$darkgrey:
+
+// IMAGES
 $bg: url('/assets/bg-flipped.jpg');
 
-ion-view {
-	background-color: yellow;
+// TEXT
+h1 {
+	color: $white !important;
+}
+h2 {
+	color: $white !important;
+}
+h3 {
+	color: $white !important;
+}
+h4 {
+	color: $white !important;
+}
+p {
+	color: $white !important;
+}
+a {
+	color: $white;	
+	text-transform: uppercase;
+}
+
+.center {
+	text-align: center;
+}
+.backdrop {
+	background-color: $lightgrey;
+}
+.top {
+	height:70%;
+	padding-top:100px;
+}
+.bottom {
+	height:30%;
+	vertical-align: baseline;
+	padding-bottom:75px;
+
+}
+
+.pane {
+	background-color: $teal;
+	background-image: $bg;
+	height: 100%;
+}
+body {
+	background-image: $bg;
 }
 
 ion-content {
 	background-color: $teal;
 	background-image: $bg;
+}
+
+.button {
+	background-color: $burntorange !important;
+	border-color: $burntorange !important;
+	color: $white !important;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 0px 20px 0px 20px !important;
+}
+img {
+	-webkit-filter: drop-shadow(12px 12px 25px rgba(0,0,0,0.5));
+	filter: url(#drop-shadow);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+	filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
 }
 
 .circle {
@@ -32,4 +102,20 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+
+
+/* DIDNT WORK AS EXPECTED
+body {
+	background-image: $bg;
+}
+
+.view-container {
+	background-image: $bg;
+}
+
+ion-nav-view {
+	background-image: $bg;
+}
+*/
 

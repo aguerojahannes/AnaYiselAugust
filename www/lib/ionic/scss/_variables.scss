@@ -3,14 +3,14 @@
 // -------------------------------
 
 $light:                           #fff !default;
-$stable:                          rgb(0,163,136) !default; // header with text
-$positive:                       rgb(242,177,50) !default; // position buttons
-$calm:                            #11c1f3 !default; // not used yet
-$balanced:                        #33cd5f !default; // not yet used
-$energized:                       #ffc900 !default; // not yet used
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            grey !default; // change this. used in negative icons.
+$dark:                            #444 !default;
 
 
 // Base

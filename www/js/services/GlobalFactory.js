@@ -67,44 +67,44 @@
 
 //-------------------TOKEN------------------------------
 
-			function setUser(){
+	function setUser(){
 	      var user = JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 	      o.status.username = user.email;
 	      o.status._id = user._id;
 	    }
-	    function removeUser(){
+	function removeUser(){
 	      o.status.username = null;
 	      o.status._id = null;
 
 	    }
-	    function getToken() {
+	function getToken() {
 	      return localStorage.getItem('token');
 	    }
-	    function setToken(token) {
+	function setToken(token) {
 	      return localStorage.setItem('token',token);
 	    }
-	    function removeToken() {
+	function removeToken() {
 	      return localStorage.removeItem('token');
 	    }
-	    function logout() {
+	function logout() {
 	      removeToken();
 	      removeUser();
 	    }
 
-			function urlBase64Decode(str) {
-					      var output = str.replace(/-/g, '+').replace(/_/g, '/');
-					      switch (output.length % 4) {
-					        case 0: { break; }
-					        case 2: { output += '=='; break; }
-					        case 3: { output += '='; break; }
-					        default: {
-					          throw 'Illegal base64url string!';
-					        }
-					      }
-					      return decodeURIComponent(escape(window.atob(output))); //polifyll https://github.com/davidchambers/Base64.js
-					    }
+	function urlBase64Decode(str) {
+	      var output = str.replace(/-/g, '+').replace(/_/g, '/');
+	      switch (output.length % 4) {
+	        case 0: { break; }
+	        case 2: { output += '=='; break; }
+	        case 3: { output += '='; break; }
+	        default: {
+	          throw 'Illegal base64url string!';
+	        }
+	      }
+	      return decodeURIComponent(escape(window.atob(output))); //polifyll https://github.com/davidchambers/Base64.js
+	    }
 
-		o.getUser = function() {
+	o.getUser = function() {
 	      return JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 	    };
 
@@ -112,7 +112,7 @@
 
 	o.deleteAccount = function(userId){
 		var q = $q.defer();
-		$http.delete("/api/user/" + userId).then(function(res){
+		$http.delete("http://localhost:3000/api/user/" + userId).then(function(res){
 			q.resolve(res);
 		});
 		return q.promise;
@@ -120,17 +120,17 @@
 
 
 //-------- PROFILE--------------------------------------------
-	// o.getUser = function(userId){ // used to get user information on account page and the public profile
-	// 	var q = $q.defer();
-	// 	$http.get("/api/user/" + userId).then(function(res){
-	// 		q.resolve(res);
-	// 	});
-	// 	return q.promise;
-	// };
+	o.getUserInfo = function(userId){ // used to get user information on account page and the public profile
+		var q = $q.defer();
+		$http.get("http://localhost:3000/api/user/" + userId).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	};
 
 	o.updateUser = function(userId, user){  // used to update user information on account page or on the public profile
 		var q = $q.defer();
-		$http.put("/api/user/" + userId, user).then(function(res){
+		$http.put("http://localhost:3000/api/user/" + userId, user).then(function(res){
 			q.resolve(res);
 		});
 		return q.promise;
@@ -141,7 +141,7 @@
 	o.addProfileImage = function(image) {
 		console.log(image);
 		var q = $q.defer();
-		$http.post("", image).success(function(res) {
+		$http.post("http://localhost:3000", image).success(function(res) {
 			q.resolve(res);
 		});
 		return q.promise;

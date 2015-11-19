@@ -1,19 +1,11 @@
-<div id="home" style="margin-top:100px;"> <!-- inside the global controller on Index -->
-  <h1>Welcome To OurApp</h1>
-  <hr>
-  <br>
-  <div class="col-xs-6">
-    <img src="http://a5.mzstatic.com/us/r30/Purple7/v4/77/31/4e/77314e10-98b9-80b3-a3b0-66a092c4975a/icon175x175.png" alt="English" /><br/>
-    <button ui-sref="SignIn">Sign In</button><br/>
-    <button ui-sref="SignUp">Register</button><br/>
-    <button href="/api/user/auth/linkedin">LinkedIn</button>
-  </div>
+<div class="center"> <!-- inside the global controller on Index -->
+	<div class="top">
+		<img src="/assets/circle-yelloworange.png"><br/>
+	</div>
+	<div class="bottom">
+		<button ui-sref="SignIn" class="button">Sign In</button><br/>
+		<button href="/api/user/auth/linkedin" class="button">Sign In<br>with LinkedIn</button><br/>
+		<a ui-sref="SignUp">Sign Up</a>
+	</div>
 
-  <div class="col-xs-6">
-    <img src="http://s10.postimg.org/rb9biq6np/image.png" alt="Spanish" /><br/>
-    <button ui-sref="SignInEs">Iniciar Sesión</button><br/>
-    <button ui-sref="SignUpEs">Registrar</button><br/>
-    <button href="/api/user/auth/linkedin">LinkedIn Español</button>
-
-  </div>
 </div>

@@ -16,14 +16,15 @@
 
 // --------- SIGN UP --------------------------
 		glob.signUp = function() {
+			console.log("sign up")
 			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("Tab.Dash");
+				$state.go("NewProfile");
 			});
 		};
 
 		glob.signUpEs = function() {
 			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("Tab.Dash");
+				$state.go("NewProfileEs");
 			});
 		};
 

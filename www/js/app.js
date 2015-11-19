@@ -1,11 +1,13 @@
-// Ionic Starter App
+
+
+    // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'app.controllers', 'app.services'])
+angular.module('app', ['ionic', 'app.controllers', 'app.services', 'ui.router', 'ngMaterial', 'ngFileUpload'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,13 +33,20 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services'])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-//----------- HOME - DASHBOARD STATES --------------------
-    .state('Home',{
+//----------- LANGUAGE &HOME STATES --------------------
+    .state('Language',{
       url: '/',
-      // abstract: true,
+      templateUrl: 'templates/language.html'
+    })
+        .state('Home',{
+      url: '/',
       templateUrl: 'templates/home.html'
     })
-//---------------- SIGN UP - SIGN IN STATES ------------------------
+        .state('HomeEs',{
+      url: '/',
+      templateUrl: 'templates/homeEs.html'
+    })
+//---------------- SIGN UP STATES ------------------------
     .state('SignUpEs',{
       url: '/registrar',
       templateUrl: 'templates/signupEs.html'
@@ -46,6 +55,15 @@ angular.module('app', ['ionic', 'app.controllers', 'app.services'])
       url: '/signup',
       templateUrl: 'templates/signup.html'
     })
+    .state('NewProfile',{
+      url: '/newProfile',
+      templateUrl: 'templates/newProfile.html'
+    })
+    .state('NewProfileEs',{
+      url: '/nuevoPerfil',
+      templateUrl: 'templates/newProfileEs.html'
+    })
+//---------------- SIGN IN STATES ------------------------
     .state('SignIn',{
       url: '/signIn',
       templateUrl: 'templates/signIn.html'
