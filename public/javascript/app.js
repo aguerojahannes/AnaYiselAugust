@@ -2,9 +2,14 @@
 	'use strict';
 	angular.module('app', ['ui.router', 'ngMaterial', 'ngFileUpload'])
 	.config(Config);
+	// .run(run);  // TESTING LANGUAGE SELECTION
 
 	function Config($stateProvider, $urlRouterProvider, $httpProvider) {
 		$stateProvider
+
+	// function run(){  // TESTING LANGUAGE SELECTION
+	// 	$rootscope.lang = 'EN';
+	// }
 
 //----------- HOME - DASHBOARD STATES --------------------
 		.state('Home',{
@@ -13,16 +18,16 @@
 		})
 		.state('OverviewEs',{
 			url: '/overviewEs',
-			templateUrl: 'views/overviewEs.html'
+			templateUrl: '/views/overviewEs.html'
 		})
 		.state('Overview',{
 			url: '/overview',
-			templateUrl: 'views/overview.html'
+			templateUrl: $rootscope + 'views/overview.html'
 		})
 //---------------- CONTACTS STATES ------------------------
 		.state('Contacts',{
 			url: '/contacts',
-			templateUrl: 'views/contacts.html'
+			templateUrl: $rootscope + 'views/contacts.html'
 		})
 		.state('ContactsEs',{
 			url: '/contactsEs',
@@ -30,7 +35,7 @@
 		})
 		.state('AddContact',{
 			url: '/addcontact',
-			templateUrl: 'views/addContact.html'
+			templateUrl: $rootscope + 'views/addContact.html'
 		})
 		.state('AddContactEs',{
 			url: '/addcontactEs',
@@ -38,7 +43,7 @@
 		})
 		.state('EditContact',{
 			url: '/editcontact',
-			templateUrl: 'views/editContact.html'
+			templateUrl: $rootscope + 'views/editContact.html'
 		})
 		.state('EditContactEs',{
 			url: '/editcontactEs',
@@ -47,7 +52,7 @@
 //---------------- CIRCLES STATES ------------------------
 		.state('DisplayCircle',{
 			url: '/displaycircle',
-			templateUrl: 'views/displayCircle.html'
+			templateUrl: $rootscope + 'views/displayCircle.html'
 		})
 		.state('DisplayCircleEs',{
 			url: '/displaycircleEs',
@@ -55,7 +60,7 @@
 		})
 		.state('CreateCircle',{
 			url: '/createcircle',
-			templateUrl: 'views/createCircle.html'
+			templateUrl: $rootscope + 'views/createCircle.html'
 		})
 		.state('CreateCircleEs',{
 			url: '/createcircleEs',
@@ -63,7 +68,7 @@
 		})
 		.state('AddContactCircle',{
 			url: '/addcontactcircle',
-			templateUrl: 'views/addContactCircle.html'
+			templateUrl: $rootscope + 'views/addContactCircle.html'
 		})
 		.state('AddContactCircleEs',{
 			url: '/addcontactcircleEs',
@@ -71,7 +76,7 @@
 		})
 		.state('EditCircle',{
 			url: '/editcircle',
-			templateUrl: 'views/editCircle.html'
+			templateUrl: $rootscope + 'views/editCircle.html'
 		})
 		.state('EditCircleEs',{
 			url: '/editcircleEs',
@@ -80,7 +85,7 @@
 //---------------- REQUEST STATES ------------------------
 		.state('Requests',{
 			url: '/requests',
-			templateUrl: 'views/requests.html'
+			templateUrl: $rootscope + 'views/requests.html'
 		})
 		.state('RequestsEs',{
 			url: '/requestsEs',
@@ -88,7 +93,7 @@
 		})
 		.state('AddRequest',{
 			url: '/addrequest',
-			templateUrl: 'views/addRequest.html'
+			templateUrl: $rootscope + 'views/addRequest.html'
 		})
 		.state('AddRequestEs',{
 			url: '/addrequestEs',
@@ -96,12 +101,12 @@
 		})
 		.state('EditRequest',{
 			url: '/editrequest',
-			templateUrl: 'views/editRequest.html'
+			templateUrl: $rootscope + 'views/editRequest.html'
 		})
 //---------------- USER PROFILE-ACCOUNT STATES ------------------------
 		.state('Profile',{
 			url: '/profile/:id',
-			templateUrl: 'views/profile.html'
+			templateUrl: $rootscope + 'views/profile.html'
 		})
 		.state('ProfileEs',{
 			url: '/perfil/:id',
@@ -109,7 +114,7 @@
 		})
 		.state('EditProfile',{
 			url: '/editProfile/:id',
-			templateUrl: 'views/editProfile.html'
+			templateUrl: $rootscope + 'views/editProfile.html'
 		})
 		.state('EditProfileEs',{
 			url: '/editProfile/:id',
@@ -117,7 +122,7 @@
 		})
 		.state('Account',{
 			url: '/account/:id',
-			templateUrl: 'views/account.html'
+			templateUrl: $rootscope + 'views/account.html'
 		})
 		.state('AccountEs',{
 			url: '/account/:id',
@@ -130,11 +135,11 @@
 		})
 		.state('SignUp',{
 			url: '/signup',
-			templateUrl: 'views/signup.html'
+			templateUrl: $rootscope + 'views/signup.html'
 		})
 		.state('SignIn',{
 			url: '/signIn',
-			templateUrl: 'views/signIn.html'
+			templateUrl: $rootscope + 'views/signIn.html'
 		})
 		.state('SignInEs',{
 			url: '/signInEs',
@@ -143,7 +148,7 @@
 //---------------- RESET-FORGOT PASSWORD STATES ---------------
 		.state('ForgotPassword',{
 			url: '/forgotPassword',
-			templateUrl: 'views/forgotPassword.html'
+			templateUrl: $rootscope + 'views/forgotPassword.html'
 		})
 		.state('ForgotPasswordEs',{
 			url: '/forgotPasswordEs',
@@ -151,22 +156,22 @@
 		})
 		.state('ResetPassword',{
 			url: '/resetPassword/:id',
-			templateUrl: 'views/resetPassword.html'
+			templateUrl: $rootscope + 'views/resetPassword.html'
 		})
 		.state('ResetPasswordEs',{
 			url: '/resetPasswordEs/:id',
 			templateUrl: 'views/resetPasswordEs.html'
 		})
-//---------------- RESET-FORGOT PASSWORD STATES ---------------
+//---------------- NOTIFICATIONS STATES ---------------
 		.state('Notifications',{
 			url: '/notifications',
-			templateUrl: 'views/notifications.html'
+			templateUrl: $rootscope + 'views/notifications.html'
 		})
 
 //----------------  TOKEN FOR 3RD PARTY AUTH ---------------
 		.state('Token',{
 			url: '/token/:token',
-			templateUrl: 'views/token.html'
+			templateUrl: $rootscope + 'views/token.html'
 		});
 
 //----------------- OTHER ------------------------------------------------------

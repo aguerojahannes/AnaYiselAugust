@@ -6,6 +6,7 @@
 	function GlobalController(GlobalFactory, $state, $stateParams, $scope, $window) {
 		var glob = this;
 		glob.user = {};
+		glob.user.language = '';  //Testing if this works with keep User's language selection.
 
 //--------------- ADD THIS TO CHECK -----------------
 		glob.isLogin = true; //switch between the login and register view on the login_register.html page
@@ -24,13 +25,6 @@
 
 //-----------UPDATE PASSWORD (LIKE EDIT)------------------
 		glob.resetPassword = function(){
-			glob.user.id = $stateParams.id ;
-			GlobalFactory.resetPassword(glob.user).then(function(res){
-				$state.go('Home');
-			});
-		};
-
-		glob.resetPasswordAccount = function(){
 			glob.user.id = $stateParams.id ;
 			GlobalFactory.resetPassword(glob.user).then(function(res){
 				$state.go('Home');
