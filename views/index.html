@@ -19,7 +19,19 @@
 		function drop(ev) {
 		    ev.preventDefault();
 		    var data = ev.dataTransfer.getData("text");
-		    alert(data);
+				var canvas = document.getElementById("Canvas");
+
+				// Create Blank Canvas To Check
+				var blank = document.createElement('canvas');
+		    blank.width = canvas.width;
+		    blank.height = canvas.height;
+
+				// Unicorn Magic
+				if(canvas.toDataURL() != blank.toDataURL()) {
+					alert();
+				}
+
+
 		}
 	</script>
 </head>
@@ -74,12 +86,12 @@
 
 	<div id="userbar" ng-show="glob.status._id" class="text-center">
 		<div class="row container" style="margin: 0 auto; padding-top: 0;">
-			<div class="col-sm-6 text-left small" style="padding-top:.75em;" ng-click="clickedButton = false;">
-				<p class="inline">You have a new notification!</p><a href="#"><p class="inline"><em>View</em></p></a>
+			<div class="col-sm-6 text-left small" style="padding-top:.75em; cursor: default;" ng-click="clickedButton = false;">
+				<p class="inline">You have a new notification!</p><a ui-sref="Notifications" href="#"><p class="inline"><em>View</em></p></a>
 			</div>
 			<div class="col-sm-6" style="padding-top: .25em; ">
 				<div class="small" style="display: inline; padding-top: 3em;">
-						 <p ng-click="clickedButton = true;">{{ glob.status.username }}</p>
+						 <p ng-click="clickedButton = !clickedButton;" class="highlight">{{ glob.status.username }}</p>
 				</div>
 				<img src="http://flaticons.net/icons/Mobile%20Application/Settings-02.png" ng-click="clickedButton = true;" alt="Settings Icon" />
 			</div>
@@ -98,8 +110,12 @@
 	</div>
 
 	<!-- Workaround to keep userbar dropdown closed unless it's supposed to be open -->
+<<<<<<< HEAD
 	<div ng-click="clickedButton = false;">
 		</div>
+=======
+	<div ng-click="clickedButton = false;" style="cursor: default;">
+>>>>>>> c60bc959e4c3f3ecd3ff5c044156e86989bdce2d
 			<ui-view></ui-view>
 
 
@@ -144,8 +160,8 @@
 
 	<!-- Controllers -->
 	<script src="/javascript/controllers/GlobalController.js"></script>
+	<script src="/javascript/controllers/NotifyController.js"></script>
 	<script src="/javascript/controllers/TokenController.js"></script>
-	<script src="/javascript/controllers/HomeController.js"></script>
 	<script src="/javascript/controllers/ProfileController.js"></script>
 	<script src="/javascript/controllers/AccountController.js"></script>
 	<script src="/javascript/controllers/RequestsController.js"></script>

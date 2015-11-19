@@ -1,0 +1,12 @@
+<div ng-controller="NotifyController as vm" id="notifications" class="container text-center">
+	<h1>Notifications</h1>
+
+  <hr>
+	<br>
+	<div class="shade notify" ng-repeat="request in vm.contactRequests">
+		<p class="inline">You have a new contact request from: <span class="highlight">{{ request.name }}</span></p>
+		<img src='http://justinsarnik.com/img/global/close.png' alt="Decline Friend Icon" class="declineIcon" />
+		<img src='http://production-assets2.autolist.com/assets/icon-check-f6dba31b0b161e9879e322b96b7cb11c.png' alt="Accept Friend Icon" class="acceptIcon" />
+	</div>
+
+</div>

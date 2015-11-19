@@ -13,7 +13,8 @@
 		vm.modalOn = false;
 		vm.viewRequest = {};
 		vm.errorText = '';
-
+		vm.selectPrivacy = [];
+		vm.searchContact = '';
 
 //-----------------On Load Scroll Window To Top---------------
 		window.scrollTo(0, 0);
@@ -36,17 +37,32 @@
 
 	};
 
+
+	// Handle Adding Specific Contacts To Privacy
+	vm.addSelectPrivacy = function(contact) {
+		for(var i = 0; i < vm.selectPrivacy.length; i++) {
+			if(vm.selectPrivacy.indexOf(contact) != -1) {
+				vm.errorText = 'Contact has already been added!';
+				vm.searchContact = '';
+				return null
+			}
+		}
+		vm.selectPrivacy.push(contact);
+		vm.errorText = '';
+		vm.searchContact = '';
+	};
+
 //-------------------------Get Requests------------------------
 		vm.getRequests = function() {
 			HomeFactory.getRequests().then(function(res){
 				vm.requests = HomeFactory.requests;
+				console.log(vm.requests);
 			});
 		};
 		vm.getRequests();
 
 //---------------------------- Add Request-----------------------
 		vm.addRequest = function (request) {
-			request.$username_1 = new Date();
 			HomeFactory.addRequest(request).then(function(res){
 				vm.newRequest = { privacy: 'Global', skills: [], skill: '' };
 				vm.getRequests();

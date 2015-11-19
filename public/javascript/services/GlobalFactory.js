@@ -79,19 +79,19 @@
 	      o.status._id = null;
 
 	    }
-	    
+
 	function getToken() {
 	      return localStorage.getItem('token');
 	    }
-	   
+
 	function setToken(token) {
 	      return localStorage.setItem('token',token);
 	    }
-	    
+
 	function removeToken() {
 	      return localStorage.removeItem('token');
 	    }
-	    
+
 	function logout() {
 	      removeToken();
 	      removeUser();
@@ -127,7 +127,9 @@
 
 //-------- PROFILE--------------------------------------------
 
-	o.getUserInfo = function(userId){ // used to get user information on account page and the public profile
+
+	o.displayProfile = function(userId){ // used to get user information on account page and the public profile
+	// o.getUser = function(userId){ // used to get user information on account page and the public profile
 		var q = $q.defer();
 		$http.get("/api/user/" + userId).then(function(res){
 			q.resolve(res);
