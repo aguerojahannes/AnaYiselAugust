@@ -111,8 +111,8 @@ router.post('/forgot', function(req, res, next) {
 
 		mailOptions = {
 			to: email,
-			subject: "Password Reset",
-			html : 'Please click on the link to reset your password.<a href="' + link + '">Click here to reset</a>'
+			subject: "NetFul Password Reset",
+			html : '<center><img src=""> </center> <div style="color:Gray;"><br/> Hi there, <br/><br/> You recently requested a Password Change for your NetFul account. Now, you can go at this link and Reset the Password.<br/><br/> <a href="' + link + '"> CHANGE YOUR PASSWORD HERE! </a> <br/><br/>Thanks!<br/>-The NetFul Team <br/></div>'
 		}
 
 		smtpTransport.sendMail(mailOptions, function(error, response) {
@@ -147,6 +147,24 @@ router.put('/resetPassword/:id', function(req, res) {
 		})
 		});
 	});
+
+	router.put('/:id', function(req, res) {
+		User.findOne({ _id : req.body.id }, function(err, user) {
+			if(err) console.log(err);
+			if(err) return res.status(500).send({ err: "Issues with the server" });
+			if (!user) {
+				return res.send("Error: Not found.");
+			}
+			console.log(req.body);
+			user.setPassword(req.body.password);
+			User.update({ _id: req.body.id }, user)
+			.exec(function(err, user) {
+				if(err);
+				if(!user);
+				res.send(user);
+			})
+			});
+		});
 
 
 //---------------------- SIGN UP WITH 3RD PARTY SERVICE----------------------

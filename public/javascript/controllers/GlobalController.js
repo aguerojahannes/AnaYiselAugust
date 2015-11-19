@@ -6,6 +6,7 @@
 	function GlobalController(GlobalFactory, $state, $stateParams, $scope, $window) {
 		var glob = this;
 		glob.user = {};
+
 //--------------- ADD THIS TO CHECK -----------------
 		glob.isLogin = true; //switch between the login and register view on the login_register.html page
     		glob.user = {};
@@ -14,7 +15,7 @@
 		// On Load Scroll Window To Top
 		window.scrollTo(0, 0);
 
-// FORGOT PASSWORD? SEND EMAIL TO UPDATE
+//------------FORGOT PASSWORD? SEND EMAIL TO UPDATE---------
 		glob.forgot = function() {
 			GlobalFactory.forgot(glob.user).then(function() {
 				$state.go('SignIn') ;
@@ -29,35 +30,42 @@
 			});
 		};
 
+		glob.resetPasswordAccount = function(){
+			glob.user.id = $stateParams.id ;
+			GlobalFactory.resetPassword(glob.user).then(function(res){
+				$state.go('Home');
+			});
+		};
 
-// REGISTER
+
+//----------------------- REGISTER-------------------------
 		glob.signUp = function() {
 			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("Dashboard");
+				$state.go("Overview");
 			});
 		};
 
 		glob.signUpEs = function() {
 			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("Dashboard");
+				$state.go("OverviewEs");
 			});
 		};
 
-// LOG IN
+//--------------------------LOG IN-----------------------
 		glob.signIn = function() {
 			GlobalFactory.signIn(glob.user).then(function(){
-				$state.go('Dashboard', {id: glob.status._id});
+				$state.go('Overview', {id: glob.status._id});
 			});
 		};
 		glob.signInEs = function() {
 			GlobalFactory.signIn(glob.user).then(function(){
-				$state.go('Dashboard', {id: glob.user._id});
+				$state.go("OverviewEs", {id: glob.user._id});
 			});
 		};
 
 
 
-// LOG OUT
+//------------------------ LOG OUT-------------------------
 		glob.logout = function(){
 			GlobalFactory.logout();
 			$state.go("Home");
