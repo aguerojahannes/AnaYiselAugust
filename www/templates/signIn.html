@@ -1,0 +1,29 @@
+<!-- GLOBAL CONTROLLER  -->
+<div id="home" style="margin-top:100px;"> <!-- inside the global controller on Index -->
+  <h1 style="color: black;" class="md-toolbar-tools">Sign In</h1>
+            <!-- <form ng-submit="glob.signIn()"> -->
+            <form class="list" ng-submit="glob.signIn()">
+                   <label class="item item-input">
+                    <!-- <span> Email </span><br/> -->
+                   <input ng-model="glob.user.email" type="text" placeholder="Email" ng-required="true">
+                   </label>
+                   <label class="item item-input">
+                   <!--  <span> Password </span><br/> -->
+                   <input ng-model="glob.user.password" type="password" placeholder="Password" ng-required="true">
+                   </label>
+
+                 <!-- Sign in, Close nav, register Buttons: Submit and Register -->
+                      <div style="text-align: center">
+                        <!-- <md-button ng-click="glob.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
+                        <button type="submit" class="button"> Sign In </button>
+                      </div>
+                </form>
+               <!-- </form> -->
+
+
+               <hr>
+               <div class="text-center">
+                 <button ui-sref="ForgotPassword" class="button"> Forgot Password? </button>
+                 <button ui-sref="Home" ng-click="glob.user = {};" class="button"> Cancel </button>
+               </div>
+</div>

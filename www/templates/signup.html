@@ -1,0 +1,34 @@
+<div> <!-- inside the Global Controller on index-->
+
+<form ng-submit="glob.signUp()">
+<h1>Sign Up</h1>
+	<md-input-container>
+		<label>First Name *</label>
+		<input ng-model="glob.user.firstName" type="text" ng-required="true"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Last Name *</label>
+		<input ng-model="glob.user.lastName" type="text" ng-required="true"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Email Address *</label>
+		<input ng-model="glob.user.email" type="email" ng-required="true" placeholder="You will sign in with your email address."/>
+	</md-input-container>
+	<md-input-container>
+		<label>Phone Number</label>
+		<input ng-model="glob.user.phoneNumber" type="text"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Password *</label>
+		<input ng-model="glob.user.password" type="password" ng-required="true"/>
+	</md-input-container>
+	<md-input-container>
+		<label>Confirm Password *</label>
+		<input ng-model="glob.user.confirmPassword" type="password" ng-required="true"/>
+	</md-input-container>
+	<div ng-show="!(glob.user.password === glob.user.confirmPassword)">Your passwords must match.</div>
+
+	<md-button type="submit" ng-disabled="!glob.user.firstName || !glob.user.lastName || !glob.user.email || !glob.user.password || !(glob.user.password === glob.user.confirmPassword)">Sign Up</md-button>
+</form>
+
+</div>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+  <body ng-app="app">
+
+
+    <!--
+      The nav bar that will be updated as we navigate between views.
+    -->
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-tabs class="teal"> <!-- will generate tab bar and include the content within // took out  tabs-color-active-positive class="tabs-icon-top tabs-positive"-->
+
+  <!-- Dashboard Tab --> <!-- ion-tab specifies the content of the tab -->
+  <ion-tab title="Dashboard" icon-off="ion-ios-keypad-outline" icon-on="ion-ios-keypad" href="#/tab/dash">
+    <ion-nav-view name="tab-dash"></ion-nav-view>
+  </ion-tab>
+
+    <!-- Circles Tab -->
+  <ion-tab title="Circles" icon-off="ion-contrast" icon-on="ion-record" href="#/tab/circles">
+    <ion-nav-view name="tab-circles"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Contacts Tab -->
+  <ion-tab title="Contacts" icon-off="ion-ios-people-outline" icon-on="ion-ios-people" href="#/tab/contacts">
+    <ion-nav-view name="tab-contacts"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Requests Tab -->
+  <ion-tab title="Requests" icon-off="ion-ios-list-outline" icon-on="ion-ios-list" href="#/tab/requests">
+    <ion-nav-view name="tab-requests"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>
+    <!--
+      The views will be rendered in the <ion-nav-view> directive below
+      Templates are in the /templates folder (but you could also
+      have templates inline in this html file if you'd like).
+    -->
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

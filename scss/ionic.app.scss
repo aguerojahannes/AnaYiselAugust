@@ -1,0 +1,35 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file. If you're looking for some default colors, they are there.
+*/
+
+$teal: rgb(0,163,136);
+$bg: url('/assets/bg-flipped.jpg');
+
+ion-view {
+	background-color: yellow;
+}
+
+ion-content {
+	background-color: $teal;
+	background-image: $bg;
+}
+
+.circle {
+  display: inline-block;
+  padding: 4em 0 0 0;
+  text-align: center;
+  width: 15em;
+  height: 15em;
+  margin: 2.5%;
+  color: #FFFF9D;
+  border-radius: 50%;
+  background: rgba(0,0,0,.1);
+}
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+
