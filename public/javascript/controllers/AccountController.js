@@ -5,13 +5,17 @@
 
 	function AccountController(GlobalFactory, $state, $stateParams, $mdDialog) {
 		var vm = this;
+		vm.status = GlobalFactory.status;
+		vm.account = {};
 
 		vm.changeName  = function(){
 
 		};
 
-		vm.changePassword = function(){
-
+		vm.resetPassword = function(){
+			GlobalFactory.resetPassword(vm.status._id).then(function(res){
+				$state.go('Home');
+			});
 		};
 
 		vm.changeLanguage = function(){

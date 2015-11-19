@@ -60,6 +60,30 @@
 		</div>
 	</div>
 
+	<!-- Desktop Nav WITH SPANISH LINKS-->
+	<div id="desktopNav" ng-show="glob.status._id" ng-click="clickedButton = false;">
+		<div class="container text-center">
+			<div class="col-xs-3 desknav" ui-sref="Dashboard" style="border-left: none;">
+				<img class="img img-responsive inline" src="http://s27.postimg.org/nd10isxr7/dashboard.png" alt="Dashboard Icon" />
+				<p class="inline">Dashboard</p>
+			</div>
+			<div class="col-xs-3 desknav" ui-sref="Contacts">
+				<img class="img img-responsive inline" src="http://s27.postimg.org/b8lr1tkv7/contacts.png" alt="Contacts Icon" />
+				<p class="inline">Contacts</p>
+			</div>
+			<div class="col-xs-3 desknav" ui-sref="DisplayCircle">
+				<img class="img img-responsive inline" src="http://s27.postimg.org/73fftncgz/circles.png" alt="Circles Icon" />
+				<p class="inline">Circles</p>
+			</div>
+			<div class="col-xs-3 desknav" ui-sref="Requests">
+				<img class="img img-responsive inline" src="http://s27.postimg.org/5ygsaj0mb/requests.png" alt="Requests Icon" />
+				<p class="inline">Requests</p>
+			</div>
+		</div>
+	</div>
+<!-- END OF SPANISH LINKS -->
+
+
 	<div id="userbar" ng-show="glob.status._id" class="text-center">
 		<div class="row container" style="margin: 0 auto; padding-top: .5vh;">
 			<div class="col-sm-6 text-left" style="cursor: default;" ng-click="clickedButton = false;">
@@ -73,6 +97,8 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- SETTINGS DROPDOWN -->
 	<div class="container" id="dropDownWrapper" ng-init="clickedButton = false;">
 		<div ng-if="glob.status._id" ng-show="clickedButton === true" id="userbarDropDown">
 			<ul>
@@ -84,9 +110,14 @@
 	</div>
 
 	<!-- Workaround to keep userbar dropdown closed unless it's supposed to be open -->
+<<<<<<< HEAD
+	<div ng-click="clickedButton = false;">
+		</div>
+=======
 	<div ng-click="clickedButton = false;" style="cursor: default;">
+>>>>>>> c60bc959e4c3f3ecd3ff5c044156e86989bdce2d
 			<ui-view></ui-view>
-	</div>
+
 
 
 	<!-- Mobile / Tablet Nav -->

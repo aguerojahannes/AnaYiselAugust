@@ -11,13 +11,13 @@
 			url: '/',
 			templateUrl: 'views/home.html'
 		})
-		.state('Dashboard',{
-			url: '/dashboard',
-			templateUrl: 'views/dashboard.html'
+		.state('OverviewEs',{
+			url: '/overviewEs',
+			templateUrl: 'views/overviewEs.html'
 		})
-		.state('DashboardEs',{
-			url: '/dashboardEs',
-			templateUrl: 'views/dashboardEs.html'
+		.state('Overview',{
+			url: '/overview',
+			templateUrl: 'views/overview.html'
 		})
 //---------------- CONTACTS STATES ------------------------
 		.state('Contacts',{
