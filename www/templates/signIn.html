@@ -1,0 +1,28 @@
+<div class="center"> 
+
+  <h1>Sign In</h1>
+  <div style="width:90%">
+      <form class="list" ng-submit="glob.signUp()">
+      <label class="item item-input">
+      <input ng-model="glob.user.email" placeholder="Email Address" type="text" ng-required="true"/>
+      </label>
+
+      <label class="item item-input">
+      <input ng-model="glob.user.password" placeholder="Password" type="password" ng-required="true"/>
+      </label>
+
+      <div style="text-align: center">
+        <!-- <md-button ng-click="glob.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
+        <button type="submit" class="button"> Sign In </button>
+      </div>
+
+      </form>
+      </div>
+
+  <hr>
+  <div class="text-center">
+     <button ui-sref="ForgotPassword" class="button"> Forgot Password? </button>
+     <button ui-sref="Home" ng-click="glob.user = {};" class="button"> Cancel </button>
+  </div>
+
+</div>

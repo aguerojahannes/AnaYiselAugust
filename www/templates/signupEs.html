@@ -1,0 +1,35 @@
+<div> <!-- inside the Global Controller on index-->
+
+	<form class="list" ng-submit="glob.signUpEs()">
+	<h1>Registrar</h1>
+		<md-input-container>
+			<label class="item item-input">
+			<input ng-model="glob.user.firstName" placeholder="Nombre*" type="text" ng-required="true"/>
+			</label>
+		</md-input-container>
+		<md-input-container>
+			<label class="item item-input">
+			<input ng-model="glob.user.lastName" placeholder="Apellido*" type="text" ng-required="true"/>
+			</label>
+		</md-input-container>
+		<md-input-container>
+			<label class="item item-input">
+			<input ng-model="glob.user.email" placeholder="Dirección de Correo* Vas a iniciar tu sesión con tu dirección de correo." type="email" ng-required="true"/>
+			</label>
+		</md-input-container>
+		<md-input-container>
+			<label class="item item-input">
+			<input ng-model="glob.user.password" placeholder="Contraseña*" type="password" ng-required="true"/>
+			</label>
+		</md-input-container>
+		<md-input-container>
+			<label class="item item-input">
+			<input ng-model="glob.user.confirmPassword" placeholder="Confirmar Contraseña*" type="password" ng-required="true"/>
+			</label>
+		</md-input-container>
+		<div ng-show="!(glob.user.password === glob.user.confirmPassword)">Tu contraseña debe parear.</div>
+
+		<button type="submit" class="button" ng-disabled="!glob.user.firstName || !glob.user.lastName || !glob.user.email || !glob.user.password || !(glob.user.password === glob.user.confirmPassword)">Registrar</button>
+	</form>
+
+</div>
