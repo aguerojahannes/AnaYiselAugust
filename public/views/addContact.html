@@ -1,6 +1,9 @@
 <div ng-controller="ContactsController as vm" id="contacts" class="container">
 <h1>Add Contact</h1>
 
+<input type="email" placeholder="Email Address" ng-model="email" />
+<button type="button" ng-click="vm.sendRequest(email)">Send Notification</button>
+
 <form ng-submit="vm.addContact(vm.newContact);">
   <input type="text" placeholder="First Name" ng-model="vm.newContact.firstName" />
   <input type="text" placeholder="Last Name" ng-model="vm.newContact.lastName" />

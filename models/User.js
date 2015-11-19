@@ -46,6 +46,7 @@ var UserSchema = new mongoose.Schema({
   keyword: [{name: String, description: String}],
   bio: String,
   circles: Array,
+  notifications: Array,
   friends: Array,
   joined: String
 });
@@ -64,6 +65,7 @@ UserSchema.methods.checkPassword = function(password){
 UserSchema.methods.createToken = function(){
    return jwt.sign({
       _id: this._id,
+      profilePic: this.profilePic,
       username: this.username,
       email: this.email
    }, "ThisIsASecretCode");

@@ -1,21 +1,46 @@
 
 <div ng-controller="NotifyController as vm" id="dashboard" class="container">
   <h1>Dashboard</h1>
-  <hr>
   <br>
   <div class="row">
-    <div class="col-xs-6">
-      <h3>User Snapshot</h3>
-      <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
+      <h4>User Snapshot</h4>
+      <hr>
+      <div class="col-xs-6 text-left" style="padding: 0;">
         <img src="http://ratter.com/images/default/userpic-original.png" alt="profile pic" />
       </div>
-      <div class="col-xs-6">
+      <div class="col-xs-6 text-left" style="padding: 0;">
         <br>
         <p ng-repeat="(key,value) in glob.status"><strong>{{ key }}</strong>: {{ value }}</p>
       </div>
+      <br>
+      <div class="clearfix"></div>
+      <br>
+      <div class="text-left">
+        <button type="button" class="btn btn-info" ui-sref="Profile" style="margin: 0 auto;">Edit Profile</button>
+      </div>
+
+      <div class="">
+        <br>
+        <br>
+        <h4>Recent Activity </h4>
+        <hr>
+        <br>
+        <ul class="text-left" style="padding: 0;">
+           <li><p><span class="small" style="color: #ffff9d" >Darth Maul<span style="color: white;"> posted a new request. -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Maul<span style="color: white;"> became friends with </span>Princess Leia</span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Vader<span style="color: white;"> posted a new request. -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Sithious<span style="color: white;"> referred you to someone else! -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Luke Skywalker<span style="color: white;"> posted a new request. -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Vader<span style="color: white;"> posted a new request. -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Maul<span style="color: white;"> became friends with </span>Darth Sithious</span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Maul<span style="color: white;"> became friends with </span>Darth Vader</span></p></li>
+        </ul>
+      </div>
     </div>
-    <div class="col-xs-6">
-      <h4>Recent Circles</h4>
+    <div class="col-xs-12 col-sm-6">
+      <h4>Recent Circles </h4>
+      <hr>
       <div class="text-left" style="position: relative; padding: 1em;">
         <div class="circle"></div>
         <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Family <span class="small" style="color: #ffff9d" >(<span style="color: white;">11</span> Contacts)</span></p>
@@ -30,7 +55,8 @@
       </div>
       <br>
       <br>
-      <h4>Suggested Circles: </h4>
+      <h4>Suggested Circles </h4>
+      <hr>
       <div class="text-left" style="position: relative; padding: 1em; padding-top: 0;">
         <div class="circle"></div>
         <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Babysitters <span class="small" style="color: #ffff9d" >(<span style="color: white;">3</span> Contacts With <span style="color: white;">"Babysitter"</span> Skill)</span></p>

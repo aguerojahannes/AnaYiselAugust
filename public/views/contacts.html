@@ -2,7 +2,8 @@
 <h1>View Contacts</h1>
 <div class="row">
   <div class="col-xs-4 text-left">
-      <button type="button" ui-sref="AddContact" class="btn btn-success">Add Contact</button>
+      <button type="button" ui-sref="AddContact" class="btn btn-info">Add GetFul Contact</button>
+      <button type="button" ui-sref="AddContact" class="btn btn-info">Add Contact</button>
   </div>
   <div class="col-xs-8 text-right">
     <label>Sync Contacts Via: &nbsp;</label>
@@ -76,7 +77,7 @@
         </div>
       </div>
       <br>
-      <button type="button" class="btn btn-danger modelButton" ng-click="vm.modalOn = false">Close</button>
+      <button type="button" class="btn btn-danger" id="modalButtons" style="margin-left: 4vw;"ng-click="vm.modalOn = false">Close</button>
       <img src="http://justinsarnik.com/img/global/close.png" class="close" ng-click="vm.modalOn = false" alt="Close Icon" />
   </div>
 </div>

@@ -219,6 +219,12 @@ router.put("/:id", function(req, res, next){
 	});
 });
 
+// ------------- Friend Requests ----------------------------
+
+router.post('/friendRequest', function(req, res, next){
+	console.log(req.body);
+	res.send();
+});
 
 
 module.exports = router;

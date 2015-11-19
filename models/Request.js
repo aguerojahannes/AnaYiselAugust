@@ -7,7 +7,8 @@ var RequestSchema = new mongoose.Schema({
   title: String,
   body: String,
   skills: Array,
-  privacy: String
+  privacy: String,
+  selectPrivacy: Array // Additional list of people who can see this
 });
 
 mongoose.model('Request', RequestSchema);

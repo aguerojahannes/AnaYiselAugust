@@ -32,12 +32,14 @@
 
 // REGISTER
 		glob.signUp = function() {
+			glob.status = GlobalFactory.status;
 			GlobalFactory.signUp(glob.user).then(function(){
 				$state.go("Dashboard");
 			});
 		};
 
 		glob.signUpEs = function() {
+			glob.status = GlobalFactory.status;
 			GlobalFactory.signUp(glob.user).then(function(){
 				$state.go("Dashboard");
 			});

@@ -128,7 +128,7 @@
 //-------- PROFILE--------------------------------------------
 
 
-	o.displayProfile = function(userId){ // used to get user information on account page and the public profile
+	o.getUser = function(userId){ // used to get user information on account page and the public profile
 	// o.getUser = function(userId){ // used to get user information on account page and the public profile
 		var q = $q.defer();
 		$http.get("/api/user/" + userId).then(function(res){
