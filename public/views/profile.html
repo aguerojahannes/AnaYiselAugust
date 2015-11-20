@@ -1,7 +1,7 @@
 <div ng-controller="ProfileController as vm" layout layout-align="center">
 <div layout="column" style="width:75%">
 	<div>
-		<h1>{{ glob.firstName }} {{ vm.user.lastName }}</h1> <!-- CHECK HOW WE CAN DISPLAY USER'S FULL NAME -->
+		<h1>{{ vm.profile.firstName || "first name"}} {{ vm.profile.lastName || "last name"}}</h1> <!-- CHECK HOW WE CAN DISPLAY USER'S FULL NAME -->
 	</div>
 <center>
 	<div style="background-color:grey">

@@ -1,0 +1,33 @@
+<div ng-controller="ProfileController as vm"> 
+	<form class="list" ng-submit="vm.updateProfile()">
+		<h1>Create Profile</h1>
+		<a ui-sref="tab.DashEs">Skip ></a>
+
+		<div>
+			<ng-form name="form">
+					<div>
+						<md-button class=" md-raised" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" ngf-resize="{width: 600, height: 600}" THIS APPLIES MAX SIZE TO PHOTO ngf-min-height="100">Select Photo</md-button>
+					</div>
+
+					<h4>Photo Preview</h4>
+					<img style="width: 200px; height: 200px;" ngf-thumbnail="file || '/assets/circle-yelloworange.png'"><br/>
+					<md-button ng-click="submit()"> Upload Photo </md-button>
+			</ng-form>
+
+			<div style="margin: auto;" ng-show='vm.loading' layout='row' layout-sm='column' layout-align='space-around'>
+				<md-progress-circular md-mode='indeterminate' md-diameter='80'></md-progress-circular>
+			</div>
+
+		</div>
+		<div>
+				<label class="item item-input">
+				<input ng-model="vm.profile.skills" placeholder="Skills | List all the wonderful things you're good at (ie. swimming, front end development, facilitation, CPR" type="text" ng-required="true"/>
+				</label>
+				<label class="item item-input">
+				<input ng-model="vm.profile.bio" placeholder="Bio | Let your extended circles know a little bit about you." type="text" ng-required="true"/>
+				</label>
+
+			<button type="submit" class="button">Update Profile</button>
+		</div>
+	</form>
+</div>

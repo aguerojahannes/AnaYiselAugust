@@ -87,7 +87,7 @@ router.post('/forgot', function(req, res, next) {
 	var smtpTransport = nodemailer.createTransport("SMTP", {
 		service: "Gmail",
 		auth: {
-			user: "anayiselaugust@gmail.com",
+			user: "getful.team@gmail.com",
 			pass: "anayiselaugust123"
 		}
 	}) ;
@@ -107,13 +107,23 @@ router.post('/forgot', function(req, res, next) {
 		host = req.get('host') ;
 		link = 'http://' + host + '/#/resetPassword/' + user._id ;
 		console.log("user._id: " + user._id);
+// // SPANISH LINK
+// 		host = req.get('host') ;
+// 		link = 'http://' + host + '/#/resetPasswordEs/' + user._id ;
+// 		console.log("user._id: " + user._id);
 
 
 		mailOptions = {
 			to: email,
-			subject: "NetFul Password Reset",
-			html : '<center><img src=""></center> <div style="color:Gray;"><br/> Hi there, <br/><br/> You recently requested a Password Change for your NetFul account. Now, you can go at this link and Reset the Password.<br/><br/> <a href="' + link + '"> CHANGE YOUR PASSWORD HERE! </a> <br/><br/>Thanks!<br/>-The NetFul Team <br/></div>'
+			subject: "GetFul Password Reset",
+			html : '<div style="color:Gray;"><br/> Hi there, <br/><br/> You recently requested a Password Change for your GetFul account. Now, you can go at this link and Reset the Password.<br/><br/> <center><a href="' + link + '"> CHANGE YOUR PASSWORD HERE! </a></center> <br/><br/>Thanks!<br/>-The GetFul Team <br/></div>'
 		}
+// // EMAIL IN SPANISH
+// 		mailOptions = {
+// 			to: email,
+// 			subject: "GetFul - Cambiar Contraseña",
+// 			html : '<div style="color:Gray;"><br/> Hola, <br/><br/> Recientemente solicitó un cambio de Contraseña para su cuenta de GetFul. Puede modificar su contraseña a una nueva a través del siguiente enlace.<br/><br/> <center><a href="' + link + '"> CAMBIAR CONTRASEÑA AQUÍ </a></center> <br/><br/>Gracias!<br/>-El Equipo de GetFul <br/></div>'
+// 		}
 
 		smtpTransport.sendMail(mailOptions, function(error, response) {
 			if(error) {
