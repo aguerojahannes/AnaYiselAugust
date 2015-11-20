@@ -73,11 +73,27 @@
 	      o.status.username = user.email;
 	      o.status._id = user._id;
 				o.status.notifications = user.notifications;
+	      o.status.email = user.email;
+	      o.status.firstName = user.firstName;
+	      o.status.lastName = user.lastName;
+	      o.status.keyword = user.keyword; //skills
+	      o.status.profilePic = user.profilePic;
+	      o.status.circles = user.circles;
+	      // o.status.friends = user.contacts;
 	    }
+
 	function removeUser(){
+
 	      o.status.username = null;
 	      o.status._id = null;
 				o.status.notifications = null;
+	      o.status.email = null;
+	      o.status.firstName = null;
+	      o.status.lastName = null;
+	      o.status.keyword = null; //skills
+	      o.status.profilePic = null;
+	      o.status.circles = null;
+	      o.status.friends = null;
 	    }
 
 	function getToken() {
@@ -126,8 +142,6 @@
 
 
 //-------- PROFILE--------------------------------------------
-
-
 	o.getUser = function(userId){ // used to get user information on account page and the public profile
 	// o.getUser = function(userId){ // used to get user information on account page and the public profile
 		var q = $q.defer();

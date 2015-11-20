@@ -13,7 +13,7 @@ var UserSchema = new mongoose.Schema({
   language: String,
   linkedIn: {
     id: String,
-    token: String,
+    token: String, // delete this later. don't want client to be able to access this.
     email: String,
     firstName: String,
     lastName: String,
@@ -43,7 +43,7 @@ var UserSchema = new mongoose.Schema({
     profileUrl: String,
   },
   jobTitle: String,
-  keyword: [{name: String, description: String}],
+  keyword: [{name: String, description: String}], //skills
   bio: String,
   circles: Array,
   notifications: Array,
@@ -65,10 +65,15 @@ UserSchema.methods.checkPassword = function(password){
 UserSchema.methods.createToken = function(){
    return jwt.sign({
       _id: this._id,
+      email: this.email,
+      firstName: this.firstName,
+      lastName: this.lastName,
+      keyword: this.keyword, //skills
       profilePic: this.profilePic,
       username: this.username,
       notifications: this.notifications,
-      email: this.email
+      circles: this.circles,
+      friends: this.contacts
    }, "ThisIsASecretCode");
 };
 

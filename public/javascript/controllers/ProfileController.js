@@ -11,6 +11,30 @@
 
 		// vm.userInfoLoaded = false; //add to work with cloudinary
 
+//--------------------------DISPLAY PUBLIC PROFILE -----------------------------------
+		function displayProfile(){
+			GlobalFactory.getUser($stateParams.id).then(function(res){
+				vm.profile = res.data;
+				console.log(vm.profile);
+			});
+		};
+		displayProfile();
+
+//------------------- EDIT PROFILE ---------------------------------------------
+		vm.updateProfile = function(){
+		//	$scope.submit();
+			GlobalFactory.updateUser($stateParams.id, vm.profile).then(function(res){
+				vm.profile = res.data; // need this?
+				$state.go("Profile", {id: vm.status._id});
+			});
+		};
+		vm.updateProfileEs = function(){
+			GlobalFactory.updateUser($stateParams.id, vm.profile).then(function(res){
+				vm.profile = res.data; // need this?
+				$state.go("ProfileEs", {id: vm.status._id});
+			});
+		};
+
 //--------------- Upload Photo w. Cloudinary --------------------------
 //Select or drop file to upload function
 $scope.upload = function (file) {
@@ -38,37 +62,6 @@ $scope.submit = function() {
 		};
 //------------------------ END CLOUDINARY -------------------------------
 
-
-//--------------------------DISPLAY PUBLIC PROFILE -----------------------------------
-		// vm.displayProfile = function(){
-		// 	GlobalFactory.getUser($stateParams.id).then(function(res){
-		// 		vm.profile = res.data;
-		// 		console.log(vm.profile);
-		// 	});
-		// };
-
-		function displayProfile(){
-			GlobalFactory.getUser($stateParams.id).then(function(res){
-				vm.profile = res.data;
-				console.log(vm.profile);
-			});
-		};
-		displayProfile();
-
-//------------------- EDIT PROFILE ---------------------------------------------
-		vm.updateProfile = function(){
-		//	$scope.submit();
-			GlobalFactory.updateUser($stateParams.id, vm.profile).then(function(res){
-				vm.profile = res.data; // need this?
-				$state.go("Profile", {id: vm.status._id});
-			});
-		};
-		vm.updateProfileEs = function(){
-			GlobalFactory.updateUser($stateParams.id, vm.profile).then(function(res){
-				vm.profile = res.data; // need this?
-				$state.go("ProfileEs", {id: vm.status._id});
-			});
-		};
 
 //-------------- On Load Scroll Window To Top----------------------------------
 		window.scrollTo(0, 0);
