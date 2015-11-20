@@ -17,12 +17,14 @@
         };
     });
 
-	function ContactsController(HomeFactory, $state, $stateParams, $scope) {
+	function ContactsController(HomeFactory, $state, $stateParams, $scope, GlobalFactory) {
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
 		vm.tempContact = HomeFactory.tempContact;
 		vm.viewContact = {};
 		vm.modalOn = false;
+		vm.emailReq = '';
+		vm.errorText = '';
 
 
 		// Makes the input box lowercase
@@ -56,7 +58,7 @@
 		// Add Contact
 		vm.addContact = function() {
 			vm.newContact.createdOn = new Date();
-			vm.newContact.username = new Date();
+			vm.newContact.creator = GlobalFactory.status.username;
 
 			// If No ProfilePic, Assign Default Picture
 			if(!vm.newContact.profilePic) {
@@ -98,7 +100,18 @@
 				$state.go("Contacts");
 			});
 		};
+ /* -------------------- Send Friend Request ----------------------------------------------*/
 
+ 	vm.sendRequest = function(email) {
+		  if(email === undefined || email === '') {
+				vm.errorText = "Please enter a valid email address";
+				return null;
+			}
+			HomeFactory.sendRequest(email).then(function(res) {1
+				alert("Request Sent!");
+				vm.emailReq = '';
+			});
+	}
 
  /* -------------------- LinkedIn ----------------------------------------------*/
 		// Get LinkedIn Contacts

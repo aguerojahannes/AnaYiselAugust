@@ -9,7 +9,7 @@
 
 		var x = $stateParams.token
 
-		GlobalFactory.setToken(token);
+		GlobalFactory.setToken(x);
 		GlobalFactory.setUser();
 		$state.go("Dashboard");
 

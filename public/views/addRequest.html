@@ -5,8 +5,8 @@
   <label>Who Can See My Request?</label>
   <select ng-model="vm.newRequest.privacy">
    <option ng-value="'Global'" value="Global">Everyone</option>
-   <option ng-value="'Contacts'">Contacts Only</option>
-   <option ng-value="'Babysitters'">Babysitters Only</option>
+   <option ng-value="'Contacts'">Contacts</option>
+   <option ng-value="'Circles'">### GENERATED BASED ON CIRCLES ###</option>
    <option ng-value="'Select'">Select People...</option>
   </select>
   <div class="" ng-show="vm.newRequest.privacy === 'Select'">
@@ -19,7 +19,7 @@
     <div class="text-left" ng-show="vm.selectPrivacy">
       <h3 ng-show="vm.selectPrivacy.length > 0">Contacts: </h3>
       <div class="skill" ng-repeat="member in vm.selectPrivacy" ng-click="vm.deleteMember(member);">
-        <h5 class="inline"  style="margin: 1em">{{ member.firstName }}  {{ member.lastName }}</h5>
+        <h5 class="inline"  style="margin: 1em">{{ member }}</h5>
       </div>
       <br>
     </div>
@@ -44,7 +44,7 @@
     <p style="color: #ffff9d" id="errorText">{{ vm.errorText }}</p>
   </div>
   <br>
-  <button type="submit" class="btn btn-success">Save Request</button>
+  <button type="submit" class="btn btn-success" ng-disabled="vm.newRequest.privacy === 'Select' && vm.selectPrivacy < 1">Save Request</button>
   <button type="button" class="btn btn-danger" ui-sref="Requests" ng-click="vm.newRequest = {};">Cancel</button>
 </form>
 

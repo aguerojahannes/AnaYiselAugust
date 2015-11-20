@@ -1,7 +1,16 @@
-<div ng-controller="ContactsController as vm" id="contacts" class="container">
+<div ng-controller="ContactsController as vm" id="contacts" class="container" ng-init="isMember = true;">
 <h1>Add Contact</h1>
 
-<form ng-submit="vm.addContact(vm.newContact);">
+<div ng-show="isMember === true">
+  <input type="email" placeholder="Email Address" ng-model="vm.emailReq" />
+  <p ng-show="vm.errorText">{{ vm.errorText }}</p>
+  <button type="button" class="btn btn-success" ng-click="vm.sendRequest(vm.emailReq)">Send Request</button>
+  <hr>
+  <button type="button" class="btn btn-danger" ng-click="isMember = false;">Not A Member?</button>
+</div>
+
+
+<form ng-if="isMember === false" ng-submit="vm.addContact(vm.newContact);">
   <input type="text" placeholder="First Name" ng-model="vm.newContact.firstName" />
   <input type="text" placeholder="Last Name" ng-model="vm.newContact.lastName" />
   <input type="email" placeholder="Email Address" ng-model="vm.newContact.email" />

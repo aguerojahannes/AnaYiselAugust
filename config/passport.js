@@ -31,7 +31,7 @@ passport.use(new LinkedInStrategy({
   consumerSecret: "JEZ516oAC8ARyDgR",
   callbackURL: "/api/user/auth/linkedin/callback", // going to the routes
   // state: true,
-  profileFields: ['id', 'first-name', 'last-name', 'email-address', 'summary', 'picture-urls::(original)', 'public-profile-url'],
+  profileFields: ['id', 'first-name', 'last-name', 'email-address', 'summary', 'picture-urls::(original)', 'public-profile-url', 'connections'],
   // state: true,
   // passReqToCallback: true
 }, function(accessToken, refreshToken, profile, done) {
@@ -49,16 +49,12 @@ passport.use(new LinkedInStrategy({
           return done(err);
         }
         if (user) {
-          console.log('DEBUG: Current user');
-          console.log('profile.emails[0].value: ' + profile.emails[0].value);
-
           return done(null, user);
         }
         // Else no user is found. We need to create a new user.
         else {
         	console.log("DEBUG: New User.");
-        	console.log("profile: " + profile);
-        	console.log("profile.id: " + profile.id);
+        	console.log("THIS IS THE profile: " + profile);
 
           var newUser = new User();
           // console.log("newUser: " + newUser);
@@ -77,6 +73,10 @@ passport.use(new LinkedInStrategy({
           // setting username to email from linkedIn
           newUser.email = newUser.linkedIn.email;
 
+          // console.log("line 80 profile:" + profile);
+          newUser.linkedIn.friends = profile.name.connections;
+
+
           // Photo
           // Photo returned by linkedIn is 200x2000, because of picture.type(large) in profileFrields above.
 	// console.log(profile.pictureUrls);
@@ -84,17 +84,15 @@ passport.use(new LinkedInStrategy({
 	// newUser.pic = newUser.linkedin.photo;
 	// Getting bigger photo URL from linkedin
 	// Sending size 300x300.
-	console.log("profile.publicProfileUrl: " + profile.publicProfileUrl); //undefined
+	// console.log("profile.publicProfileUrl: " + profile.publicProfileUrl); //undefined
           newUser.linkedIn.profileUrl = profile.publicProfileUrl;
           newUser.linkedInUrl = newUser.linkedIn.profileUrl;
 
-          newUser.linkedIn.summary = profile.summary;
-          console.log("profile again: " + profile);
-          // newUser.summary = newUser.linkedIn.summary;
+          newUser.linkedIn.summary = profile._json.summary;
+          newUser.summary = newUser.linkedIn.summary;
 
           // Created stores date created in the database.
           newUser.joined = new Date();
-          console.log("newUser: " + newUser);
 
           // Save the newUser to the database.
           newUser.save(function(err) {

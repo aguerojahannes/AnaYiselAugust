@@ -26,6 +26,10 @@
 			url: '/overview',
 			templateUrl:  'views/overview'+ language +'.html'
 		})
+		.state('Dashboard',{
+			url: '/dashboard',
+			templateUrl: 'views/dashboard.html'
+		})
 //---------------- CONTACTS STATES ------------------------
 		.state('Contacts',{
 			url: '/contacts',
@@ -104,6 +108,10 @@
 		.state('EditRequest',{
 			url: '/editrequest',
 			templateUrl: 'views/editRequest'+ language +'.html'
+		})
+		.state('Refer',{
+			url: '/refer',
+			templateUrl: 'views/refer.html'
 		})
 //---------------- USER PROFILE-ACCOUNT STATES ------------------------
 		.state('Profile',{

@@ -2,7 +2,7 @@
 <h1>View Contacts</h1>
 <div class="row">
   <div class="col-xs-4 text-left">
-      <button type="button" ui-sref="AddContact" class="btn btn-success">Add Contact</button>
+      <button type="button" ui-sref="AddContact" class="btn btn-info">Add Contact</button>
   </div>
   <div class="col-xs-8 text-right">
     <label>Sync Contacts Via: &nbsp;</label>
@@ -61,10 +61,10 @@
           </div>
          <hr style="margin: 1em 0;">
           <div class="row">
-            <div class="col-xs-8" style="padding-top: .5em;">
+            <div class="col-xs-12 col-sm-8" style="padding-top: .5em;">
               <p>{{ vm.viewContact.bio }}</p>
             </div>
-            <div class="col-xs-4 modalIcons text-right shade">
+            <div class="col-xs-12 col-sm-4 modalIcons text-right shade">
               <p><a ng-href="{{ vm.viewContact.linkedIn }}" target="_blank"><p class="inline" ng-if="vm.viewContact.linkedIn">LinkedIn Profile</p><img ng-if="vm.viewContact.linkedIn" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Linkedin_icon.svg/2000px-Linkedin_icon.svg.png" alt="LinkedIn Icon" /></a></p>
               <p><a ng-href="{{ vm.viewContact.google }}" target="_blank"><p class="inline" ng-if="vm.viewContact.google">Google+ Profile</p><img ng-if="vm.viewContact.google" src="http://vignette4.wikia.nocookie.net/markiplier/images/7/7e/Google%2B_Icon.png/revision/latest?cb=20150104105518" alt="Google+ Icon" /></a></p>
               <p><a ng-href="{{ vm.viewContact.facebook }}" target="_blank"><p class="inline" ng-if="vm.viewContact.facebook">Facebook Profile</p><img ng-if="vm.viewContact.facebook" src="http://www.iconarchive.com/download/i49146/yootheme/social-bookmark/social-facebook-box-blue.ico" alt="Facebook Icon" /></a></p>
@@ -76,7 +76,7 @@
         </div>
       </div>
       <br>
-      <button type="button" class="btn btn-danger modelButton" ng-click="vm.modalOn = false">Close</button>
+      <button type="button" class="btn btn-danger" id="modalButtons" style="margin-left: 4vw;"ng-click="vm.modalOn = false">Close</button>
       <img src="http://justinsarnik.com/img/global/close.png" class="close" ng-click="vm.modalOn = false" alt="Close Icon" />
   </div>
 </div>

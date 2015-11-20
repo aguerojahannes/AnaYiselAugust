@@ -11,78 +11,77 @@ var linkedIn = require("passport-linkedin-oauth2");
 var nodemailer = require('nodemailer') ;
 
 
-//---------------ADD THIS TO WORK WITH RESET PASSWORD ------------------
-// var async = require('async');
-var crypto = require('crypto');
 
-var auth = jwt({
-	userProperty: "payload",
-	secret: "ThisIsASecretCode"
+//---------------------- SIGN UP WITH 3RD PARTY SERVICE----------------------
+
+// this is the check to see if we have proper linkedin credentials
+router.get('/auth/linkedin',
+  passport.authenticate('linkedin', {scope: ["r_basicprofile", "r_emailaddress"]})); // this is a callback
+
+// result
+router.get('/auth/linkedin/callback',
+	passport.authenticate('linkedin', {failureRedirect: '/'}),
+	function(req, res){
+		if(req.user){
+			console.log(req);
+			 // generating token
+			res.redirect("/#/token/" + req.user.createToken());
+		} else {
+			res.send("You are not authenticated.");
+		}
+	});
+
+
+// -------------------------SIGN UP---------------------------------------
+router.post('/signUp', function(req, res, next){
+	var user = new User(req.body);
+	user.setPassword(req.body.password);
+	user.save(function(err,result){
+		if(err) return next(err);
+		if(!result) return next("There was an issue signing up that user.");
+		res.send(result.createToken());
+	});
 });
-// -----------------------------END-----------------------------------
 
-//--------------------CLOUDINARY - UPLOAD PHOTO----------------------------------
-cloudinary.config({
-	cloud_name: process.env.CLOUDINARY_NAME || env.CLOUDINARY_NAME,
-	api_key: process.env.CLOUDINARY_KEY || env.CLOUDINARY_KEY,
-	api_secret: process.env.CLOUDINARY_SECRET || env.CLOUDINARY_SECRET
+//-------------------------- SIGN IN -------------------------------
+router.post('/signIn', function(req, res, next){
+	// console.log("req.body.email: " + req.body.email); // successful
+ // 	console.log("req.body.password: " + req.body.password); // successful
+    passport.authenticate('local', function(err, user){
+        if(err) return next(err);
+				console.log("inside sign in");
+        res.send(user.createToken());
+    })(req, res, next);
 });
 
-router.post('/uploadPhoto', function(req, res){
-	console.log("hit photo");
-	var form = new multiparty.Form();
-	form.parse(req, function(err, data, fileObject){
-		console.log(fileObject);
-		cloudinary.uploader.upload(fileObject.file[0].path, function(picInfo){
-			User.update({_id: data.userId[0]}, {profilePic: picInfo.url}, function(err, updateUser){
-				if(err) return res.status(500).send({err: "Sorry, could not find that user."});
-				if(!updateUser) return res.status(500).send({err: "Error."});
-				res.send(updateUser);
-				console.log(updateUser);
-			})
-		})
-	})
-})
 
-// router.post('/upload', fileParser, function(req, res){
-//   /* The `req.files` property will be populated because we
-//    * used the 'fileParser' middleware for this route.
-//    *
-//    * The 'name' attribute from the file input in your form will match the
-//    * property name on `req.files`.
-//    * So since we have <input type='file' name='image' /> in our form,
-//    * there is a `req.files.image` property available.
-//    */
-//   var imageFile = req.files.image;
-//
-//   cloudinary.uploader.upload(imageFile.path, function(result){
-//     /*
-//      * After a successful upload, the callback's `result` argument
-//      * will be a hash (javascript object) with a property `url`
-//      * that you can use to display the uploaded image.
-//      * To learn more about the format of the `result` hash, see:
-//      *   http://cloudinary.com/documentation/node_image_upload
-//      */
-//
-//     if (result.url) {
-//       /*
-//        * This would be a good spot to save this url (perhaps into a
-//        * mongo database) so that you can display it later.
-//        */
-//       res.render('upload', {url: result.url});
-//     } else {
-//       /*
-//        * There was an error and the file did not upload.
-//        */
-//
-//       console.log('Error uploading to cloudinary: ',result);
-//       res.send('did not get url');
-//     }
-//   });
-// });
+// ------------- ACCOUNT ROUTES ----------------------------
+router.delete("/:id", function(req, res, next){
+	User.remove({_id: req.params.id}, function(err, result){
+		if(err) return next(err);
+		res.send(result);
+	console.log("result: " + result);
 
+	});
+});
 
-//-------------------------NODEMAILER - FORGOT PASSWORD- Look at Jose's Project ----------------
+// --------------- PROFILE ROUTES -----------------
+// --------------------------------------------------------------
+router.get("/:id", function(req, res, next){
+	User.findOne({_id: req.params.id}, function(err, result){
+		if(err) return next(err);
+		res.send(result);
+	});
+});
+
+router.put("/:id", function(req, res, next){
+	User.update({_id: req.params.id}, req.body, function(err, result){
+		if(err) return next(err);
+		res.send(result);
+	});
+});
+
+//-------------------------NODEMAILER - FORGOT PASSWORD ----------------
 router.post('/forgot', function(req, res, next) {
 	var smtpTransport = nodemailer.createTransport("SMTP", {
 		service: "Gmail",
@@ -158,6 +157,7 @@ router.put('/resetPassword/:id', function(req, res) {
 		});
 	});
 
+<<<<<<< HEAD
 	// router.put('/:id', function(req, res) {
 	// 	User.findOne({ _id : req.body.id }, function(err, user) {
 	// 		if(err) console.log(err);
@@ -175,6 +175,31 @@ router.put('/resetPassword/:id', function(req, res) {
 	// 		})
 	// 		});
 	// 	});
+=======
+
+//---------------ADD THIS TO WORK WITH RESET PASSWORD ------------------
+// var async = require('async');
+var crypto = require('crypto');
+
+	router.put('/:id', function(req, res) {
+		User.findOne({ _id : req.body.id }, function(err, user) {
+			if(err) console.log(err);
+			if(err) return res.status(500).send({ err: "Issues with the server" });
+			if (!user) {
+				return res.send("Error: Not found.");
+			}
+			console.log(req.body);
+			user.setPassword(req.body.password);
+			User.update({ _id: req.body.id }, user)
+			.exec(function(err, user) {
+				if(err);
+				if(!user);
+				res.send(user);
+			})
+			});
+		});
+>>>>>>> ce7a162eb06b9b8400839950e35b2ecc100e3dd5
+
 
 
 //---------------------- SIGN UP WITH 3RD PARTY SERVICE----------------------
@@ -182,7 +207,7 @@ router.put('/resetPassword/:id', function(req, res) {
 // this is the check to see if we have proper linkedin credentials
 router.get('/auth/linkedin',
   passport.authenticate('linkedin', {scope: ["r_basicprofile", "r_emailaddress"]})); // this is a callback
-console.log("Made it after the first get");
+
 
 // result
 router.get('/auth/linkedin/callback',
@@ -209,44 +234,110 @@ router.post('/signUp', function(req, res, next){
 	});
 });
 
-//-------------------------- SIGN IN -------------------------------
-router.post('/signIn', function(req, res, next){
-	// console.log("req.body.email: " + req.body.email); // successful
- // 	console.log("req.body.password: " + req.body.password); // successful
-    passport.authenticate('local', function(err, user){
-        if(err) return next(err);
-				console.log("inside sign in");
-        res.send(user.createToken());
-    })(req, res, next);
+var auth = jwt({
+	userProperty: "payload",
+	secret: "ThisIsASecretCode"
+});
+// -----------------------------END-----------------------------------
+
+//--------------------CLOUDINARY - UPLOAD PHOTO----------------------------------
+cloudinary.config({
+	cloud_name: process.env.CLOUDINARY_NAME || env.CLOUDINARY_NAME,
+	api_key: process.env.CLOUDINARY_KEY || env.CLOUDINARY_KEY,
+	api_secret: process.env.CLOUDINARY_SECRET || env.CLOUDINARY_SECRET
 });
 
 
-// ------------- ACCOUNT ROUTES ----------------------------
-router.delete("/:id", function(req, res, next){
-	User.remove({_id: req.params.id}, function(err, result){
-		if(err) return next(err);
-		res.send(result);
-	console.log("result: " + result);
+router.post('/uploadPhoto', function(req, res){
+	var form = new multiparty.Form();
+	form.parse(req, function(err, data, fileObject){
+		cloudinary.uploader.upload(fileObject.file[0].path, function(picInfo){
+			User.update({_id: data.userId[0]}, {profilePic: picInfo.url}, function(err, updateUser){
+				if(err) return res.status(500).send({err: "Sorry, could not find that user."});
+				if(!updateUser) return res.status(500).send({err: "Error."});
+				res.send(updateUser);
+				console.log(updateUser);
+			})
+		})
+	})
+})
 
+// ------------- Friend Requests ----------------------------
+
+// Get Friends
+router.post('/getFriends', function(req, res, next){
+	User.find({friends: req.body.user}, function (err, result) {
+		if (err) return next(err);
+		res.send(result);
 	});
 });
 
-// --------------- PROFILE ROUTES -----------------
-// --------------------------------------------------------------
-router.get("/:id", function(req, res, next){
-	User.findOne({_id: req.params.id}, function(err, result){
-		if(err) return next(err);
-		res.send(result);
+// Send Friend Request
+router.post('/friendRequest', function(req, res, next){
+	User.findOne({email: req.body.sendingTo}, function (err, user) {
+		user.notifications.push(req.body.sendingFrom);
+		user.save();
+		if (err) return next(err);
+		res.send(user);
 	});
 });
 
-router.put("/:id", function(req, res, next){
-	User.update({_id: req.params.id}, req.body, function(err, result){
-		if(err) return next(err);
-		res.send(result);
+// Confirm Friend Request
+router.post('/acceptRequest', function(req, res, next){
+	User.findOne({email: req.body.sendingTo}, function (err, user) {
+		user.friends.push(req.body.sendingFrom);
+		user.save();
+		if (err) return next(err);
+		res.send();
 	});
 });
 
+// Decline Friend Request
+router.post('/declineRequest', function(req, res, next){
+	User.findOne({email: req.body.user}, function (err, user) {
+		console.log(user);
+		user.notifications.splice(user.notifications.indexOf(req.body.declined), 1);
+		user.save();
+		if (err) return next(err);
+		res.send();
+	});
+});
 
+// router.post('/upload', fileParser, function(req, res){
+//   /* The `req.files` property will be populated because we
+//    * used the 'fileParser' middleware for this route.
+//    *
+//    * The 'name' attribute from the file input in your form will match the
+//    * property name on `req.files`.
+//    * So since we have <input type='file' name='image' /> in our form,
+//    * there is a `req.files.image` property available.
+//    */
+//   var imageFile = req.files.image;
+//
+//   cloudinary.uploader.upload(imageFile.path, function(result){
+//     /*
+//      * After a successful upload, the callback's `result` argument
+//      * will be a hash (javascript object) with a property `url`
+//      * that you can use to display the uploaded image.
+//      * To learn more about the format of the `result` hash, see:
+//      *   http://cloudinary.com/documentation/node_image_upload
+//      */
+//
+//     if (result.url) {
+//       /*
+//        * This would be a good spot to save this url (perhaps into a
+//        * mongo database) so that you can display it later.
+//        */
+//       res.render('upload', {url: result.url});
+//     } else {
+//       /*
+//        * There was an error and the file did not upload.
+//        */
+//
+//       console.log('Error uploading to cloudinary: ',result);
+//       res.send('did not get url');
+//     }
+//   });
+// });
 
 module.exports = router;
