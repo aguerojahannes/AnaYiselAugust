@@ -67,6 +67,7 @@ UserSchema.methods.createToken = function(){
       _id: this._id,
       profilePic: this.profilePic,
       username: this.username,
+      notifications: this.notifications,
       email: this.email
    }, "ThisIsASecretCode");
 };

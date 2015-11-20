@@ -146,25 +146,21 @@ select option {
    color: #FFFF9D;
    font-style: italic;
    font-weight: 100;
-   font-size: 1vw;
 }
 :-moz-placeholder { /* Firefox 18- */
    color: #FFFF9D;
    font-style: italic;
    font-weight: 100;
-   font-size: .7vw;
 }
 ::-moz-placeholder {  /* Firefox 19+ */
    color: #FFFF9D;
    font-style: italic;
    font-weight: 100;
-   font-size: .7vw;
 }
 :-ms-input-placeholder {
    color: #FFFF9D;
    font-style: italic;
    font-weight: 100;
-   font-size: 1.1vw;
 }
 ::-webkit-scrollbar {
     width: 1.8em;
@@ -229,10 +225,12 @@ select option {
 nav {
   position: fixed;
   width: 100%;
+  height: 12.5vh;
   bottom: 0;
   margin: 0;
   text-align: center;
   border-top: solid 2px #fff;
+  font-size: 2vw;
 }
 .navlink {
   background: #79BD8F;
@@ -249,6 +247,7 @@ nav {
 }
 .navlink img {
   position: relative;
+  margin: 0 auto;
   max-height: 80%;
   max-width: 80%;
 }
@@ -429,9 +428,9 @@ nav {
 }
 #addToCircleBar {
   position: fixed;
-  height: 89vh;
+  height: 65vh;
   width: auto;
-  top: 11vh;
+  bottom: 12.5vh;
   left: 0;
 }
 #circleBarContent {
@@ -439,9 +438,9 @@ nav {
     box-shadow: 0px 0px 30px rgba(0,0,0,.3);
     background: url("/assets/bg-flipped.jpg");
     background-size: cover;
-    left: -30vw;
-    width: 30vw;
-    height: 89vh;
+    left: -50vw;
+    width: 50vw;
+    height: 65vh;
     transition: .2s;
     overflow-x: hidden;
     overflow-y: auto;
@@ -450,10 +449,26 @@ nav {
     transition: .5s;
     left: 0;
 }
+#circleBarContent .content {
+    position: relative;
+    height: 100vw;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    bottom: 9;
+}
+#circleBarContent input {
+  width: 85%;
+}
+#circleBarContent button {
+    position: absolute;
+    left: 20vw;
+    bottom: 3vw;
+}
 #circleBarMenuText {
     width: 5vw;
     position: absolute;
-    top: 25vh;
+    bottom: 25vh;
 }
 .circlesContact:hover {
   cursor: move; /* fallback if grab cursor is unsupported */
@@ -463,7 +478,12 @@ nav {
   color: #ffff9d;
   background: rgba(0,0,0,.1);
 }
-
+#createContainer {
+  height: 65vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
 
 
@@ -592,13 +612,8 @@ nav {
 .notify img:hover {
   cursor: pointer;
 }
-.acceptIcon {
-  position: absolute;
-  right: 1vw;
-}
-.declineIcon {
-  position: absolute;
-  right: 3vw;
+.notify em:hover {
+  color: #ffff9d;
 }
 
 /* Account */

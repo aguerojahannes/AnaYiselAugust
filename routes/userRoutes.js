@@ -172,7 +172,6 @@ router.put('/resetPassword/:id', function(req, res) {
 // this is the check to see if we have proper linkedin credentials
 router.get('/auth/linkedin',
   passport.authenticate('linkedin', {scope: ["r_basicprofile", "r_emailaddress"]})); // this is a callback
-console.log("Made it after the first get");
 
 // result
 router.get('/auth/linkedin/callback',
@@ -239,10 +238,43 @@ router.put("/:id", function(req, res, next){
 
 // ------------- Friend Requests ----------------------------
 
-router.post('/friendRequest', function(req, res, next){
-	console.log(req.body);
-	res.send();
+// Get Friends
+router.post('/getFriends', function(req, res, next){
+	User.find({friends: req.body.user}, function (err, result) {
+		if (err) return next(err);
+		res.send(result);
+	});
 });
 
+// Send Friend Request
+router.post('/friendRequest', function(req, res, next){
+	User.findOne({email: req.body.sendingTo}, function (err, user) {
+		user.notifications.push(req.body.sendingFrom);
+		user.save();
+		if (err) return next(err);
+		res.send(user);
+	});
+});
+
+// Confirm Friend Request
+router.post('/acceptRequest', function(req, res, next){
+	User.findOne({email: req.body.sendingTo}, function (err, user) {
+		user.friends.push(req.body.sendingFrom);
+		user.save();
+		if (err) return next(err);
+		res.send();
+	});
+});
+
+// Decline Friend Request
+router.post('/declineRequest', function(req, res, next){
+	User.findOne({email: req.body.user}, function (err, user) {
+		console.log(user);
+		user.notifications.splice(user.notifications.indexOf(req.body.declined), 1);
+		user.save();
+		if (err) return next(err);
+		res.send();
+	});
+});
 
 module.exports = router;

@@ -19,8 +19,6 @@
 			setToken(res.data);
 			setUser();
 			var user = o.getUser();
-			o.status.username = user.username;
-			o.status._id = user._id;
 			q.resolve(res.data);
 		});
 		return q.promise;
@@ -61,8 +59,9 @@
 //------------------LOGOUT------------------------------
 	o.logout = function() {
 	      removeToken();
-	      o.status.username = null;
+				o.status.username = null;
 	      o.status._id = null;
+				o.status.notifications = null;
 	    };
 
 
@@ -73,11 +72,12 @@
 	      var user = JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 	      o.status.username = user.email;
 	      o.status._id = user._id;
+				o.status.notifications = user.notifications;
 	    }
 	function removeUser(){
 	      o.status.username = null;
 	      o.status._id = null;
-
+				o.status.notifications = null;
 	    }
 
 	function getToken() {
@@ -156,7 +156,48 @@
 		return q.promise;
 	}
 
+	//------------------Friend Requests -------------------------------------
 
-		return o;
+	// Get Friends
+	o.getFriends = function() {
+		var q = $q.defer();
+		var parcel = {
+			user: o.status.username
+		}
+		$http.post("/api/user/getFriends", parcel).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	}
+
+	// Accept Request
+	o.acceptRequest = function(request) {
+		var q = $q.defer();
+		var parcel = {
+			user: o.status.username,
+			acccepted: request
+		}
+		$http.post("/api/user/acceptRequest", parcel).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	}
+
+	// Decline Request
+	o.declineRequest = function(request) {
+		o.status.notifications.splice(o.status.notifications.indexOf(request), 1);
+
+		var q = $q.defer();
+		var parcel = {
+			user: o.status.username,
+			declined: request
+		}
+		$http.post("/api/user/declineRequest", parcel).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	}
+
+	return o;
 	}
 })();

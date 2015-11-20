@@ -7,33 +7,6 @@
 	<link rel="stylesheet" type="text/css" href="/angular-material/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
-	<script>
-		function allowDrop(ev) {
-		    ev.preventDefault();
-		}
-
-		function drag(ev) {
-		    ev.dataTransfer.setData("text", ev.target.id);
-		}
-
-		function drop(ev) {
-		    ev.preventDefault();
-		    var data = ev.dataTransfer.getData("text");
-				var canvas = document.getElementById("Canvas");
-
-				// Create Blank Canvas To Check
-				var blank = document.createElement('canvas');
-		    blank.width = canvas.width;
-		    blank.height = canvas.height;
-
-				// Unicorn Magic
-				if(canvas.toDataURL() != blank.toDataURL()) {
-					alert();
-				}
-
-
-		}
-	</script>
 </head>
 
 <body ng-controller="GlobalController as glob">
@@ -110,32 +83,27 @@
 	</div>
 
 	<!-- Workaround to keep userbar dropdown closed unless it's supposed to be open -->
-<<<<<<< HEAD
-	<div ng-click="clickedButton = false;">
-		</div>
-=======
 	<div ng-click="clickedButton = false;" style="cursor: default;">
->>>>>>> c60bc959e4c3f3ecd3ff5c044156e86989bdce2d
 			<ui-view></ui-view>
 
 
 
 	<!-- Mobile / Tablet Nav -->
 	<nav ng-show="glob.status._id">
-			<div class="col-xs-3 navlink" ui-sref="Dashboard" style="border-left: none;">
-				<img src="http://s27.postimg.org/nd10isxr7/dashboard.png" alt="Dashboard Icon" />
+			<div class="col-xs-3 navlink" ui-sref="Dashboard" style="border-left: none; position: relative;">
+				<img src="http://s27.postimg.org/nd10isxr7/dashboard.png" alt="Dashboard Icon" class="img-responsive" />
 				<p>Dashboard</p>
 			</div>
 			<div class="col-xs-3 navlink" ui-sref="Contacts">
-				<img src="http://s27.postimg.org/b8lr1tkv7/contacts.png" alt="Contacts Icon" />
+				<img src="http://s27.postimg.org/b8lr1tkv7/contacts.png" alt="Contacts Icon" style="position: relative;" class="img-responsive" />
 				<p>Contacts</p>
 			</div>
 			<div class="col-xs-3 navlink" ui-sref="DisplayCircle">
-				<img src="http://s27.postimg.org/73fftncgz/circles.png" alt="Circles Icon" />
+				<img src="http://s27.postimg.org/73fftncgz/circles.png" alt="Circles Icon" style="position: relative;" class="img-responsive" />
 			  <p>Circles</p>
 			</div>
-			<div class="col-xs-3 navlink" ui-sref="Requests">
-				<img src="http://s27.postimg.org/5ygsaj0mb/requests.png" alt="Requests Icon" />
+			<div class="col-xs-3 navlink" ui-sref="Requests" style="position: relative;">
+				<img src="http://s27.postimg.org/5ygsaj0mb/requests.png" alt="Requests Icon" class="img-responsive" />
 				<p>Requests</p>
 			</div>
 	</nav>

@@ -4,7 +4,6 @@ var jwt = require('jsonwebtoken');
 var ContactSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  username: {type: String, lowercase: true, trim: true, required: true},
   email: {type: String, lowercase: true, trim: true, unique: true, required: true},
   profilePic: String,
   phone: String,
@@ -13,11 +12,10 @@ var ContactSchema = new mongoose.Schema({
   facebook: String,
   google: String,
   bio: String,
-//  businessCardPic: String       //ADD BUSINESS CARD PHOTO IN THE SCHEMA.
-
+  creator: String,
   title: String,
   bio: String
-
+  //  businessCardPic: String       //ADD BUSINESS CARD PHOTO IN THE SCHEMA.
 
 });
 

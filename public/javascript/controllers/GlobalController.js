@@ -40,15 +40,15 @@
 
 //----------------------- REGISTER-------------------------
 		glob.signUp = function() {
-			glob.status = GlobalFactory.status;
 			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("Overview");
+				glob.status = GlobalFactory.status;
+				$state.go("Dashboard");
 			});
 		};
 
 		glob.signUpEs = function() {
-			glob.status = GlobalFactory.status;
 			GlobalFactory.signUp(glob.user).then(function(){
+				glob.status = GlobalFactory.status;
 				$state.go("OverviewEs");
 			});
 		};

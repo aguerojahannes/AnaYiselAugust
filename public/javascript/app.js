@@ -19,6 +19,10 @@
 			url: '/overview',
 			templateUrl: 'views/overview.html'
 		})
+		.state('Dashboard',{
+			url: '/dashboard',
+			templateUrl: 'views/dashboard.html'
+		})
 //---------------- CONTACTS STATES ------------------------
 		.state('Contacts',{
 			url: '/contacts',
