@@ -48,7 +48,7 @@ $scope.submit = function() {
 		// };
 
 		function displayProfile(){
-			GlobalFactory.displayProfile($stateParams.id).then(function(res){
+			GlobalFactory.getUser($stateParams.id).then(function(res){
 				vm.profile = res.data;
 				console.log(vm.profile);
 			});

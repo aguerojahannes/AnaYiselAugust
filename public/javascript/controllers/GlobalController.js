@@ -30,16 +30,17 @@
 		};
 
 
-// REGISTER
+// SIGN UP
 		glob.signUp = function() {
-			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("Dashboard");
+			GlobalFactory.signUp(glob.user).then(function(res){
+				// golb.user = res.data;
+				$state.go("Dashboard", {id: glob.status._id});
 			});
 		};
 
 		glob.signUpEs = function() {
-			GlobalFactory.signUp(glob.user).then(function(){
-				$state.go("Dashboard");
+			GlobalFactory.signUp(glob.user).then(function(res){
+				$state.go("Dashboard", {id: glob.status._id});
 			});
 		};
 

@@ -73,11 +73,27 @@
 	      var user = JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 	      o.status.username = user.email;
 	      o.status._id = user._id;
+	      o.status._id =user._id;
+	      o.status.email = user.email;
+	      o.status.firstName = user.firstName;
+	      o.status.lastName = user.lastName;
+	      o.status.keyword = user.keyword; //skills
+	      o.status.profilePic = user.profilePic;
+	      o.status.circles = user.circles;
+	      o.status.friends = user.contacts;
 	    }
+	    
 	function removeUser(){
-	      o.status.username = null;
-	      o.status._id = null;
-
+	      o.status.username = user.email;
+	      o.status._id = user._id;
+	      o.status._id =user._id;
+	      o.status.email = user.email;
+	      o.status.firstName = user.firstName;
+	      o.status.lastName = user.lastName;
+	      o.status.keyword = user.keyword; //skills
+	      o.status.profilePic = user.profilePic;
+	      o.status.circles = user.circles;
+	      o.status.friends = user.contacts;
 	    }
 	    
 	function getToken() {
@@ -126,11 +142,8 @@
 
 
 //-------- PROFILE--------------------------------------------
-<<<<<<< HEAD
-	o.displayProfile = function(userId){ // used to get user information on account page and the public profile
-=======
+
 	o.getUser = function(userId){ // used to get user information on account page and the public profile
->>>>>>> 0482aadb54d2826786ae6761343a4ae90e43ba85
 		var q = $q.defer();
 		$http.get("/api/user/" + userId).then(function(res){
 			q.resolve(res);
