@@ -3,7 +3,7 @@
 	angular.module('app')
 	.controller('RequestsController', RequestsController);
 
-	function RequestsController(HomeFactory, $state, $stateParams, $scope, $timeout) {
+	function RequestsController(HomeFactory, $state, $stateParams, $scope, $timeout, GlobalFactory) {
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
 		vm.circles = HomeFactory.circles;
@@ -13,7 +13,8 @@
 		vm.modalOn = false;
 		vm.viewRequest = {};
 		vm.errorText = '';
-
+		vm.selectPrivacy = [];
+		vm.searchContact = '';
 
 //-----------------On Load Scroll Window To Top---------------
 		window.scrollTo(0, 0);
@@ -36,17 +37,52 @@
 
 	};
 
+
+	// Handle Adding Specific Contacts To Privacy
+	vm.addSelectPrivacy = function(contact) {
+		for(var i = 0; i < vm.selectPrivacy.length; i++) {
+			if(vm.selectPrivacy.indexOf(contact) != -1) {
+				vm.errorText = 'Contact has already been added!';
+				vm.searchContact = '';
+				return null
+			}
+		}
+		vm.selectPrivacy.push(contact.email);
+		vm.errorText = '';
+		vm.searchContact = '';
+	};
+
+
+	vm.deleteMember = function(member){
+		vm.selectPrivacy.splice(vm.selectPrivacy.indexOf(member), 1);
+	};
+
+
 //-------------------------Get Requests------------------------
 		vm.getRequests = function() {
-			HomeFactory.getRequests().then(function(res){
+			HomeFactory.getRequests(GlobalFactory.status.username).then(function(res){
 				vm.requests = HomeFactory.requests;
+				console.log(vm.requests);
 			});
 		};
 		vm.getRequests();
 
 //---------------------------- Add Request-----------------------
 		vm.addRequest = function (request) {
-			request.$username_1 = new Date();
+			// If Specific Privacy, Add It
+			if(vm.selectPrivacy.length > 0) {
+				request.selectPrivacy = vm.selectPrivacy;
+				vm.selectPrivacy = [];
+			}
+
+			if(request.privacy === "Contacts") {
+				request.selectPrivacy = [];
+				for (var x = 0; x < vm.contacts.length; x++) {
+					request.selectPrivacy.push(vm.contacts[x].email);
+				}
+			}
+			console.log(request);
+
 			HomeFactory.addRequest(request).then(function(res){
 				vm.newRequest = { privacy: 'Global', skills: [], skill: '' };
 				vm.getRequests();

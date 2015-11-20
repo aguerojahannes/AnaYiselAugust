@@ -1,22 +1,78 @@
 
-<div ng-controller="HomeController as vm" id="dashboard" class="container">
-  <h1>DASHBOARD PAGE</h1>
-  <hr>
+<div ng-controller="NotifyController as vm" id="dashboard" class="container">
+  <h1>Dashboard</h1>
   <br>
   <div class="row">
-    <div class="col-xs-6">
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+    <div class="col-xs-12 col-sm-6">
+      <h4>User Snapshot</h4>
+      <hr>
+      <div class="col-xs-6 text-left" style="padding: 0;">
+        <img src="http://ratter.com/images/default/userpic-original.png" alt="profile pic" />
+      </div>
+      <div class="col-xs-6 text-left" style="padding: 0;">
+        <br>
+        <p ng-repeat="(key,value) in glob.status"><strong>{{ key }}</strong>: {{ value }}</p>
+      </div>
+      <br>
+      <div class="clearfix"></div>
+      <br>
+      <div class="text-left">
+        <button type="button" class="btn btn-info" ui-sref="Profile" style="margin: 0 auto;">Edit Profile</button>
+      </div>
+
+      <div class="">
+        <br>
+        <br>
+        <h4>Recent Activity </h4>
+        <hr>
+        <br>
+        <ul class="text-left" style="padding: 0;">
+           <li><p><span class="small" style="color: #ffff9d" >Darth Maul<span style="color: white;"> posted a new request. -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Maul<span style="color: white;"> became friends with </span>Princess Leia</span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Vader<span style="color: white;"> posted a new request. -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Sithious<span style="color: white;"> referred you to someone else! -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Luke Skywalker<span style="color: white;"> posted a new request. -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Vader<span style="color: white;"> posted a new request. -- </span><a ui-sref="Notifications" href="#">View</a></span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Maul<span style="color: white;"> became friends with </span>Darth Sithious</span></p></li>
+           <li><p><span class="small" style="color: #ffff9d" >Darth Maul<span style="color: white;"> became friends with </span>Darth Vader</span></p></li>
+        </ul>
+      </div>
     </div>
-    <div class="col-xs-6">
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-    </div>
+    <div class="col-xs-12 col-sm-6">
+      <h4>Recent Circles </h4>
+      <hr>
+      <div class="text-left" style="position: relative; padding: 1em;">
+        <div class="circle"></div>
+        <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Family <span class="small" style="color: #ffff9d" >(<span style="color: white;">11</span> Contacts)</span></p>
+      </div>
+      <div class="text-left" style="position: relative; padding: 1em;">
+        <div class="circle"></div>
+        <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Car Repair <span class="small" style="color: #ffff9d" >(<span style="color: white;">4</span> Contacts)</span></p>
+      </div>
+      <div class="text-left" style="position: relative; padding: 1em;">
+        <div class="circle"></div>
+        <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Sales Reps <span class="small" style="color: #ffff9d" >(<span style="color: white;">7</span> Contacts)</span></p>
+      </div>
+      <br>
+      <br>
+      <h4>Suggested Circles </h4>
+      <hr>
+      <div class="text-left" style="position: relative; padding: 1em; padding-top: 0;">
+        <div class="circle"></div>
+        <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Babysitters <span class="small" style="color: #ffff9d" >(<span style="color: white;">3</span> Contacts With <span style="color: white;">"Babysitter"</span> Skill)</span></p>
+      </div>
+      <div class="text-left" style="position: relative; padding: 1em;">
+        <div class="circle"></div>
+        <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Web Designers <span class="small" style="color: #ffff9d" >(<span style="color: white;">8</span> Contacts With <span style="color: white;">"Web Design"</span> Skill)</span></p>
+      </div>
+      <div class="text-left" style="position: relative; padding: 1em;">
+        <div class="circle"></div>
+        <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Backend Developers <span class="small" style="color: #ffff9d" >(<span style="color: white;">2</span> Contacts With <span style="color: white;">"Backend Developer"</span> Job Title)</span></p>
+      </div>
+      <div class="text-left" style="position: relative; padding: 1em;">
+        <div class="circle"></div>
+        <p class="inline" style="position: absolute; top: 35%; margin-left: 2%">Spanish Fluent <span class="small" style="color: #ffff9d" >(<span style="color: white;">9</span> Contacts With <span style="color: white;">"Spanish"</span> Skill)</span></p>
+      </div>
   </div>
     <br>
-<div class="row">
-  <div class="col-xs-12">
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-  </div>
-</div>
-
-
 </div>

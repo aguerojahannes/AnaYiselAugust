@@ -11,13 +11,13 @@
 			url: '/',
 			templateUrl: 'views/home.html'
 		})
-		.state('Dashboard',{
-			url: '/dashboard',
-			templateUrl: 'views/dashboard.html'
+		.state('OverviewEs',{
+			url: '/overviewEs',
+			templateUrl: 'views/overviewEs.html'
 		})
-		.state('DashboardEs',{
-			url: '/dashboardEs',
-			templateUrl: 'views/dashboardEs.html'
+		.state('Overview',{
+			url: '/overview',
+			templateUrl: 'views/overview.html'
 		})
 //---------------- CONTACTS STATES ------------------------
 		.state('Contacts',{
@@ -98,6 +98,10 @@
 			url: '/editrequest',
 			templateUrl: 'views/editRequest.html'
 		})
+		.state('Refer',{
+			url: '/refer',
+			templateUrl: 'views/refer.html'
+		})
 //---------------- USER PROFILE-ACCOUNT STATES ------------------------
 		.state('Profile',{
 			url: '/profile/:id',
@@ -157,11 +161,18 @@
 			url: '/resetPasswordEs/:id',
 			templateUrl: 'views/resetPasswordEs.html'
 		})
+//---------------- RESET-FORGOT PASSWORD STATES ---------------
+		.state('Notifications',{
+			url: '/notifications',
+			templateUrl: 'views/notifications.html'
+		})
+
 //----------------  TOKEN FOR 3RD PARTY AUTH ---------------
 		.state('Token',{
 			url: '/token/:token',
 			templateUrl: 'views/token.html'
 		});
+
 //----------------- OTHER ------------------------------------------------------
 		$urlRouterProvider.otherwise('/');
 		$httpProvider.interceptors.push("AuthInterceptor");

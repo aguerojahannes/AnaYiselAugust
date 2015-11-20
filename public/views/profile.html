@@ -2,10 +2,13 @@
 <div layout="column" style="width:75%">
 	<div>
 		<h1>{{ vm.status.firstName || vm.profile.firstName || "first name"}} {{ vm.status.lastName || vm.profile.lastName || "last name"}}</h1>
+		<h1>{{ glob.firstName }} {{ vm.user.lastName }}</h1> <!-- CHECK HOW WE CAN DISPLAY USER'S FULL NAME -->
 	</div>
+<center>
 	<div style="background-color:grey">
 		<img src="{{ vm.status.profilePic || vm.profile.profilePic || 'https://www.k-state.edu/hcs/images/anonymous_silhouette.jpg' }}" class="img-responsive"/><br/>
 	</div>
+</center>
 	<div layout="row" layout-sm="column" layout-padding>
 		<div flex>
 	  		<span><img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/512/Email-icon.png" height="20px"/> {{ vm.profile.email || "Email address is hidden." }}<br/>

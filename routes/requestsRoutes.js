@@ -5,8 +5,8 @@ var Request = mongoose.model('Request');
 var passport = require('passport');
 
 // Get All Requests
-router.get('/', function(req, res, next) {
-  Request.find({ 'privacy': 'Global'}).exec(function(err, result) {
+router.patch('/', function(req, res, next) {
+  Request.find().or([{ 'privacy': 'Global' }, {'selectPrivacy': req.body.email }, {'email': req.body.email }]).exec(function(err, result) {
     if(err) return next(err);
     res.send(result);
   });

@@ -98,7 +98,14 @@
 				$state.go("Contacts");
 			});
 		};
+ /* -------------------- Send Friend Request ----------------------------------------------*/
 
+ 	vm.sendRequest = function(email) {
+			HomeFactory.sendRequest(email).then(function(res) {
+				alert("Request Sent!");
+			});
+			console.log(vm.contacts);
+	}
 
  /* -------------------- LinkedIn ----------------------------------------------*/
 		// Get LinkedIn Contacts

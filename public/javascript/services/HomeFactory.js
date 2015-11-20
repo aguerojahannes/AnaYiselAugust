@@ -3,7 +3,7 @@
 	angular.module('app')
 	.factory('HomeFactory', HomeFactory);
 
-	function HomeFactory($http, $q) {
+	function HomeFactory($http, $q, GlobalFactory) {
 		var o = {};
 		o.contacts = [];
 		o.tempContact = {};
@@ -11,6 +11,22 @@
 
 
 		/* -------------------- Contacts ---------------------------*/
+
+		/* Send Friend Request */
+		o.sendRequest = function(email) {
+
+			var q = $q.defer();
+			var friendRequest = {
+				sendingTo: email,
+				sendingFrom: GlobalFactory.status.username
+			}
+			$http.post('/api/user/friendRequest', friendRequest).then(function(res) {
+				console.log("Made It Back To Factory From Routes");
+				console.log(res.data);
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
 
 		/* Get Contacts */
 		o.getContacts = function() {
@@ -91,9 +107,10 @@
 		/* -------------------- Requests ---------------------------*/
 
 		/* Get Requests */
-		o.getRequests = function() {
+		o.getRequests = function(email) {
 			var q = $q.defer();
-			$http.get('/requests').then(function(res) {
+			var x = {email: email};
+			$http.patch('/requests', x).then(function(res) {
 				o.requests = res.data;
 				q.resolve(res.data);
 			});
@@ -102,6 +119,7 @@
 
 		/* Add Request */
 		o.addRequest = function(request) {
+			request.email = GlobalFactory.status.username;
 			var q = $q.defer();
 			$http.post('/requests', request).then(function(res) {
 				q.resolve(res.data);

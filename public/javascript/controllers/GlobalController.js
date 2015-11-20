@@ -10,6 +10,7 @@
 		glob.isLogin = true; //switch between the login and register view on the login_register.html page
     		glob.user = {};
    		glob.status = GlobalFactory.status;
+   		glob.user.language = "";
 
 		// On Load Scroll Window To Top
 		window.scrollTo(0, 0);
@@ -32,6 +33,7 @@
 
 // SIGN UP
 		glob.signUp = function() {
+			glob.user.language = "english";
 			GlobalFactory.signUp(glob.user).then(function(res){
 				// golb.user = res.data;
 				$state.go("Dashboard", {id: glob.status._id});

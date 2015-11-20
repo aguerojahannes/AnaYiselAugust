@@ -10,7 +10,7 @@
 		  	<p>NAME</p>
 		  </div>
 		  <div flex="60">
-		  	<p>{{vm.account.firstName}} {{vm.account.lastName || "Change your name."}}</p>
+		  	<p>{{ vm.account.firstName}} {{ vm.account.lastName || "Change your email address." }}</p>
 		  </div>
 		  <div flex>
 		  	<a href="vm.changeName()">Edit</a>
@@ -25,7 +25,7 @@
 		  	<p>{{vm.account.email || "Change your email address."}}</p>
 		  </div>
 		  <div flex>
-		  	<a href="vm.changePassword()">Edit</a>
+		  	<a href="vm.changeEmail()">Edit</a>
 		  </div>
 		</div>
 
@@ -37,7 +37,7 @@
 		  	<p>Last updated on {{vm.account.passwordDate || "Change your password."}}.</p>
 		  </div>
 		  <div flex>
-		  	<a ui-sref="ResetPassword">Edit</a>
+		  	<md-button type="button" ui-sref="ResetPassword({id: glob.status._id})">Edit</md-button>
 		  </div>
 		 </div>
 
@@ -90,7 +90,7 @@
 			      {{vm.status || "Status"}}
 			    </b>
   		</div> -->
-		
+
 	</div> <!-- end layout row-->
 
 </div> <!-- end layout row-->

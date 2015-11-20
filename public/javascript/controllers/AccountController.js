@@ -5,18 +5,29 @@
 
 	function AccountController(GlobalFactory, $state, $stateParams, $mdDialog) {
 		var vm = this;
+		vm.status = GlobalFactory.status;
+		vm.account = {};
 
 		vm.changeName  = function(){
 
 		};
 
-		vm.changePassword = function(){
-
+		vm.resetPassword = function(){
+			GlobalFactory.resetPassword(vm.status._id).then(function(res){
+				$state.go('Home');
+			});
 		};
 
 		vm.changeLanguage = function(){
 			// open modal
 		};
+
+//--------This is to load the User automaticly -------------------
+		// vm.getUserAcct = function(){
+		// 	GlobalFactory.getUserInfo().then(function(res){
+		//
+		// 	})
+		// };
 
 		vm.status = '';
 		vm.showConfirmDelete = function(){

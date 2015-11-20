@@ -1,19 +1,17 @@
-<div ng-controller="CirclesController as vm" id="circles" class="container" ng-init="creatingCircle = false;">
-	<br>
-	<button ng-click="vm.makeCircle();" class="btn btn-info">MakeChart </button>
+<div ng-controller="CirclesController as vm" id="circles" class="container" ng-init="creatingCircle = false; menuOpen = false">
 	<h1>Create a Circle</h1>
 
 
 	<!-- Buttons -->
 	<div class="circleOptions" ng-show="creatingCircle === false">
-		<button ng-click="creatingCircle = true;" class="btn btn-success">New Circle </button>
+		<button ng-click="creatingCircle = true;" class="btn btn-info">New Circle </button>
 		<button ng-click="vm.deleteCircle(); creatingCircle = false;" class="btn btn-danger">Delete Circle </button>
 	</div>
 
 	<div class="circleOptions" ng-show="creatingCircle === true">
 		<input type="text" ng-model="vm.newCircle.name" placeholder="Circle Name">
-		<input type="number" min="1" max="20" value="1" placeholder="Number Of Members" ng-model="vm.newCircle.slices">
-		<button ng-click="vm.createCircle(); creatingCircle = false;" class="btn btn-success">Create Circle </button>
+		<input type="text" min="1" max="20" value="1" placeholder="Number Of Members" ng-model="vm.newCircle.slices">
+		<button ng-click="vm.makeCircle(); creatingCircle = false;" class="btn btn-success">MakeChart </button>
 		<button ng-click="vm.newCircle= {}; creatingCircle = false;" class="btn btn-danger">Cancel </button>
 	</div>
   <hr>
@@ -25,22 +23,25 @@
 
 	<!-- Sidebar -->
 	<div id="addToCircleBar">
-		<div id="circleBarContent" onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
-			<input type="text" placeholder="Add Contacts" class="small" ng-model="searchCircles" style="margin: 3vh auto; padding: 1em;">
+		<div id="circleBarContent" ng-class="{menuOpen: menuOpen}" onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
+			<input type="text" placeholder="Search" class="small" ng-model="searchCircles" style="margin: 3vh auto; padding: 2em; font-size: 1.1em;">
 			<hr style="width: 80%;">
-			<div draggable="true" ondragstart="drag(event)" ng-repeat="contact in vm.contacts | filter:searchCircles" class="circle greyscale" ng-class="{greyscale: hover}" ng-mouseenter="hover = false" ng-mouseleave="hover = true" ng-style="{'background-image': 'url(' + contact.profilePic + ')'}">
-				<div class="shade">
-					<p>{{ contact.firstName }}</p>
-					<p>{{ contact.lastName }}</p>
-				</div>
-				<!-- <button type="button" class="btn btn-success" ng-click="">Add</button> -->
+			<div class="row text-left circlesContact" draggable="true" ondragstart="drag(event)" ng-repeat="contact in vm.contacts | filter:searchCircles" ng-mouseenter="hover = false" ng-mouseleave="hover = true" style="padding-left: 2vw;">
+				<div class="circle greyscale inline" ng-class="{greyscale: hover}"  ng-style="{'background-image': 'url(' + contact.profilePic + ')'}" style="background-size: contain; background-repeat: no-repeat;"></div>
+				<p class="inline" style="vertical-align: 5vh; margin-left: 1vw; font-size: 1.2em;">{{ contact.firstName }}  {{ contact.lastName }}</p>
 			</div>
+			<br>
+			<button type="button" class="btn btn-danger" ng-click="menuOpen = false">Close</button>
 		</div>
-		<div id="circleBarMenuText">
-			<h3>M</h3>
-			<h3>E</h3>
+		<div id="circleBarMenuText" ng-show="menuOpen === false" ng-click="menuOpen = true;  ">
+			<h3>C</h3>
+			<h3>O</h3>
 			<h3>N</h3>
-			<h3>U</h3>
+			<h3>T</h3>
+			<h3>A</h3>
+			<h3>C</h3>
+			<h3>T</h3>
+			<h3>S</h3>
 		</div>
 	</div>
 

@@ -26,6 +26,7 @@
 		<label>Confirm Password *</label>
 		<input ng-model="glob.user.confirmPassword" type="password" ng-required="true"/>
 	</md-input-container>
+
 	<div ng-show="!(glob.user.password === glob.user.confirmPassword)">Your passwords must match.</div>
 
 	<md-button type="submit" ng-disabled="!glob.user.firstName || !glob.user.lastName || !glob.user.email || !glob.user.password || !(glob.user.password === glob.user.confirmPassword)">Sign Up</md-button>
