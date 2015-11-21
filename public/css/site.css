@@ -45,7 +45,6 @@ a:focus, a:active {
   text-decoration: none;
 }
 
-
 /* Headings */
 
 h1 {
@@ -716,9 +715,14 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
   background: rgba(0,0,0,.1);
   background-position: top center;
 }
+.selected {
+  border: solid 2px #fff;
+}
 
 /* Ids */
-
+#pieChart {
+  margin: 0 auto;
+}
 
 /* Responsive Fixes */
 @media (min-width: 950px) {
@@ -746,36 +750,3 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
     height: 65vh;
   }
 }
-
-
-/* PIE CHART CSS */
-body {
-    font-size: 0.9em;
-}
-pie-chart {
-}
-.bottom {
-    clear: both;
-    font-size: 0.9em;
-    color: grey;
-    padding: 2em 1em 0 1em;
-}
-h2 {
-    font-size: 1.3em;
-    margin: 0.8em 0.5em 0.1em 0.5em;
-}
-input {
-    font-size: 0.8em;
-    width: 6em;
-}
-input.title {
-    width: 12em;
-}
-tr.selected td {
-    background-color: red;
-}
-.left {
-    float: left;
-    margin-right: 4em;
-}
-/* END OF THE PIE CHART */

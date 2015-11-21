@@ -70,10 +70,12 @@ angular.module('app')
                         var options = {
                             'title': $scope.title,
                                 'width': $scope.width,
+                                'backgroundColor': 'transparent',
+                                'is3D': true,
                                 'height': $scope.height
                         };
                         chart.draw(data, options);
-                        // No raw selected
+                        // No row selected
                         $scope.selectFn({
                             selectedRowIndex: undefined
                         });
