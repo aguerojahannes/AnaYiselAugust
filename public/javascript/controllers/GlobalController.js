@@ -6,16 +6,12 @@
 	function GlobalController(GlobalFactory, $state, $stateParams, $scope, $window) {
 		var glob = this;
 		glob.user = {};
-<<<<<<< HEAD
-		glob.user.language = '';  //Testing if this works with keep User's language selection.
 
-=======
->>>>>>> ce7a162eb06b9b8400839950e35b2ecc100e3dd5
 //--------------- ADD THIS TO CHECK -----------------
 		glob.isLogin = true; //switch between the login and register view on the login_register.html page
     		glob.user = {};
    		glob.status = GlobalFactory.status;
-   		glob.user.language = "";
+
 
 		// On Load Scroll Window To Top
 		window.scrollTo(0, 0);
@@ -38,7 +34,7 @@
 
 // SIGN UP
 		glob.signUp = function() {
-			glob.user.language = "english";
+			
 			GlobalFactory.signUp(glob.user).then(function(res){
 				// golb.user = res.data;
 				$state.go("Dashboard", {id: glob.status._id});

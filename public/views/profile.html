@@ -1,12 +1,10 @@
 <div ng-controller="ProfileController as vm" layout layout-align="center">
 <div layout="column" style="width:75%">
 	<div>
-<<<<<<< HEAD
-		<h1>{{ vm.profile.firstName || "first name"}} {{ vm.profile.lastName || "last name"}}</h1> <!-- CHECK HOW WE CAN DISPLAY USER'S FULL NAME -->
-=======
-		<h1>{{ vm.status.firstName || vm.profile.firstName || "first name"}} {{ vm.status.lastName || vm.profile.lastName || "last name"}}</h1>
-		<h1>{{ glob.firstName }} {{ vm.user.lastName }}</h1> <!-- CHECK HOW WE CAN DISPLAY USER'S FULL NAME -->
->>>>>>> ce7a162eb06b9b8400839950e35b2ecc100e3dd5
+
+		<h1>Welcome, {{ vm.status.firstName || vm.profile.firstName || "first name"}} {{ vm.status.lastName || vm.profile.lastName || "last name"}}</h1>
+
+
 	</div>
 <center>
 	<div style="background-color:grey">

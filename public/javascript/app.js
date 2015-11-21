@@ -2,154 +2,139 @@
 	'use strict';
 	angular.module('app', ['ui.router', 'ngMaterial', 'ngFileUpload'])
 	.config(Config);
-	// .run(run);  // TESTING LANGUAGE SELECTION
 
 	function Config($stateProvider, $urlRouterProvider, $httpProvider) {
 		$stateProvider
-
-		var language = "Es"
-
-	// function run(){  // TESTING LANGUAGE SELECTION
-	// 	$rootScope.lang = 'Es';
-	}
 
 //----------- HOME - DASHBOARD STATES --------------------
 		.state('Home',{
 			url: '/',
 			templateUrl: 'views/home.html'
 		})
-		// .state('OverviewEs',{
-		// 	url: '/overviewEs',
-		// 	templateUrl: '/views/overviewEs.html'
-		// })
-		.state('Overview',{
-			url: '/overview',
-			templateUrl:  'views/overview'+ language +'.html'
-		})
 		.state('Dashboard',{
 			url: '/dashboard',
 			templateUrl: 'views/dashboard.html'
 		})
+		.state('DashboardEs',{
+			url: '/dashboardEs',
+			templateUrl: 'views/dashboardEs.html'
+		})
 //---------------- CONTACTS STATES ------------------------
 		.state('Contacts',{
 			url: '/contacts',
-			templateUrl: 'views/contacts'+ language +'.html'
+			templateUrl: 'views/contacts.html'
 		})
-		// .state('ContactsEs',{
-		// 	url: '/contactsEs',
-		// 	templateUrl: 'views/contactsEs.html'
-		// })
+		.state('ContactsEs',{
+			url: '/contactsEs',
+			templateUrl: 'views/contactsEs.html'
+		})
 		.state('AddContact',{
 			url: '/addcontact',
-			templateUrl: 'views/addContact'+ language +'.html'
+			templateUrl: 'views/addContact.html'
 		})
-		// .state('AddContactEs',{
-		// 	url: '/addcontactEs',
-		// 	templateUrl: 'views/addContactEs.html'
-		// })
+		.state('AddContactEs',{
+			url: '/addcontactEs',
+			templateUrl: 'views/addContactEs.html'
+		})
 		.state('EditContact',{
 			url: '/editcontact',
-			templateUrl: 'views/editContact'+ language +'.html'
+			templateUrl: 'views/editContact.html'
 		})
-		// .state('EditContactEs',{
-		// 	url: '/editcontactEs',
-		// 	templateUrl: 'views/editContactEs.html'
-		// })
+		.state('EditContactEs',{
+			url: '/editcontactEs',
+			templateUrl: 'views/editContactEs.html'
+		})
 //---------------- CIRCLES STATES ------------------------
 		.state('DisplayCircle',{
 			url: '/displaycircle',
-			templateUrl: 'views/displayCircle'+ language +'.html'
+			templateUrl: 'views/displayCircle.html'
 		})
-		// .state('DisplayCircleEs',{
-		// 	url: '/displaycircleEs',
-		// 	templateUrl: 'views/displayCircleEs.html'
-		// })
+		.state('DisplayCircleEs',{
+			url: '/displaycircleEs',
+			templateUrl: 'views/displayCircleEs.html'
+		})
 		.state('CreateCircle',{
 			url: '/createcircle',
-			templateUrl: 'views/createCircle'+ language +'.html'
+			templateUrl: 'views/createCircle.html'
 		})
-		// .state('CreateCircleEs',{
-		// 	url: '/createcircleEs',
-		// 	templateUrl: 'views/createCircleEs.html'
-		// })
+		.state('CreateCircleEs',{
+			url: '/createcircleEs',
+			templateUrl: 'views/createCircleEs.html'
+		})
 		.state('AddContactCircle',{
 			url: '/addcontactcircle',
-			templateUrl: 'views/addContactCircle'+ language +'.html'
+			templateUrl: 'views/addContactCircle.html'
 		})
-		// .state('AddContactCircleEs',{
-		// 	url: '/addcontactcircleEs',
-		// 	templateUrl: 'views/addContactCircleEs.html'
-		// })
+		.state('AddContactCircleEs',{
+			url: '/addcontactcircleEs',
+			templateUrl: 'views/addContactCircleEs.html'
+		})
 		.state('EditCircle',{
 			url: '/editcircle',
-			templateUrl: 'views/editCircle'+ language +'.html'
+			templateUrl: 'views/editCircle.html'
 		})
-		// .state('EditCircleEs',{
-		// 	url: '/editcircleEs',
-		// 	templateUrl: 'views/editCircleEs.html'
-		// })
+		.state('EditCircleEs',{
+			url: '/editcircleEs',
+			templateUrl: 'views/editCircleEs.html'
+		})
 //---------------- REQUEST STATES ------------------------
 		.state('Requests',{
 			url: '/requests',
-			templateUrl: 'views/requests'+ language +'.html'
+			templateUrl: 'views/requests.html'
 		})
-		// .state('RequestsEs',{
-		// 	url: '/requestsEs',
-		// 	templateUrl: 'views/requestsEs.html'
-		// })
+		.state('RequestsEs',{
+			url: '/requestsEs',
+			templateUrl: 'views/requestsEs.html'
+		})
 		.state('AddRequest',{
 			url: '/addrequest',
-			templateUrl: 'views/addRequest'+ language +'.html'
+			templateUrl: 'views/addRequest.html'
 		})
-		// .state('AddRequestEs',{
-		// 	url: '/addrequestEs',
-		// 	templateUrl: 'views/addRequestEs.html'
-		// })
+		.state('AddRequestEs',{
+			url: '/addrequestEs',
+			templateUrl: 'views/addRequestEs.html'
+		})
 		.state('EditRequest',{
 			url: '/editrequest',
-			templateUrl: 'views/editRequest'+ language +'.html'
-		})
-		.state('Refer',{
-			url: '/refer',
-			templateUrl: 'views/refer.html'
+			templateUrl: 'views/editRequest.html'
 		})
 //---------------- USER PROFILE-ACCOUNT STATES ------------------------
 		.state('Profile',{
 			url: '/profile/:id',
-			templateUrl: 'views/profile'+ language +'.html'
+			templateUrl: 'views/profile.html'
 		})
-		// .state('ProfileEs',{
-		// 	url: '/perfil/:id',
-		// 	templateUrl: 'views/profileEs.html'
-		// })
+		.state('ProfileEs',{
+			url: '/perfil/:id',
+			templateUrl: 'views/profileEs.html'
+		})
 		.state('EditProfile',{
 			url: '/editProfile/:id',
-			templateUrl: 'views/editProfile'+ language +'.html'
+			templateUrl: 'views/editProfile.html'
 		})
-		// .state('EditProfileEs',{
-		// 	url: '/editProfile/:id',
-		// 	templateUrl: 'views/editProfileEs.html'
-		// })
+		.state('EditProfileEs',{
+			url: '/editProfile/:id',
+			templateUrl: 'views/editProfileEs.html'
+		})
 		.state('Account',{
 			url: '/account/:id',
-			templateUrl: 'views/account'+ language +'.html'
+			templateUrl: 'views/account.html'
 		})
-		// .state('AccountEs',{
-		// 	url: '/account/:id',
-		// 	templateUrl: 'views/accountEs.html'
-		// })
+		.state('AccountEs',{
+			url: '/account/:id',
+			templateUrl: 'views/accountEs.html'
+		})
 //---------------- SIGN UP - SIGN IN STATES ------------------------
-		// .state('SignUpEs',{
-		// 	url: '/registrar',
-		// 	templateUrl: 'views/signupEs.html'
-		// })
+		.state('SignUpEs',{
+			url: '/registrar',
+			templateUrl: 'views/signupEs.html'
+		})
 		.state('SignUp',{
 			url: '/signup',
-			templateUrl: 'views/signup'+ language +'.html'
+			templateUrl: 'views/signup.html'
 		})
 		.state('SignIn',{
 			url: '/signIn',
-			templateUrl: 'views/signIn'+ language +'.html'
+			templateUrl: 'views/signIn.html'
 		})
 		.state('SignInEs',{
 			url: '/signInEs',
@@ -158,7 +143,7 @@
 //---------------- RESET-FORGOT PASSWORD STATES ---------------
 		.state('ForgotPassword',{
 			url: '/forgotPassword',
-			templateUrl: $rootScope + 'views/forgotPassword.html'
+			templateUrl: 'views/forgotPassword.html'
 		})
 		.state('ForgotPasswordEs',{
 			url: '/forgotPasswordEs',
@@ -166,16 +151,16 @@
 		})
 		.state('ResetPassword',{
 			url: '/resetPassword/:id',
-			templateUrl: $rootScope + 'views/resetPassword.html'
+			templateUrl: 'views/resetPassword.html'
 		})
 		.state('ResetPasswordEs',{
 			url: '/resetPasswordEs/:id',
 			templateUrl: 'views/resetPasswordEs.html'
 		})
-//---------------- NOTIFICATIONS STATES ---------------
+//---------------- RESET-FORGOT PASSWORD STATES ---------------
 		.state('Notifications',{
 			url: '/notifications',
-			templateUrl: 'views/notifications'+ language +'.html'
+			templateUrl: 'views/notifications.html'
 		})
 
 //----------------  TOKEN FOR 3RD PARTY AUTH ---------------

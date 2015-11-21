@@ -157,7 +157,7 @@ router.put('/resetPassword/:id', function(req, res) {
 		});
 	});
 
-<<<<<<< HEAD
+
 	// router.put('/:id', function(req, res) {
 	// 	User.findOne({ _id : req.body.id }, function(err, user) {
 	// 		if(err) console.log(err);
@@ -175,7 +175,7 @@ router.put('/resetPassword/:id', function(req, res) {
 	// 		})
 	// 		});
 	// 	});
-=======
+
 
 //---------------ADD THIS TO WORK WITH RESET PASSWORD ------------------
 // var async = require('async');
@@ -198,7 +198,7 @@ var crypto = require('crypto');
 			})
 			});
 		});
->>>>>>> ce7a162eb06b9b8400839950e35b2ecc100e3dd5
+
 
 
 
