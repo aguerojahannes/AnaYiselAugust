@@ -12,22 +12,19 @@
 		window.scrollTo(0, 0);
 
 		vm.acceptRequest = function(request) {
-			console.log(request);
-			vm.contactRequests.splice(vm.contactRequests.indexOf(request), 1);
-
 			GlobalFactory.acceptRequest(request).then(function() {
 				alert("Accepted!");
+				vm.contactRequests.splice(vm.contactRequests.indexOf(request), 1);
 			});
 		};
 
 		vm.declineRequest = function(request) {
-			console.log(request);
-			vm.contactRequests.splice(vm.contactRequests.indexOf(request), 1);
-
 			GlobalFactory.declineRequest(request).then(function() {
 				alert("Declined!");
+				vm.contactRequests.splice(vm.contactRequests.indexOf(request), 1);
 			});
 		};
+
 
 	}
 })();

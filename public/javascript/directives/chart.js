@@ -62,17 +62,22 @@ angular.module('app')
                         data.removeRows(0, data.getNumberOfRows());
                         angular.forEach($scope.data, function (row) {
                             label = row[0];
-                            value = parseFloat(row[1], 10);
+                            value = 1;
                             if (!isNaN(value)) {
                                 data.addRow([row[0], value]);
                             }
                         });
                         var options = {
                             'title': $scope.title,
-                                'width': $scope.width,
-                                'backgroundColor': 'transparent',
-                                'is3D': true,
-                                'height': $scope.height
+                            'width': $scope.width,
+                            'backgroundColor': 'transparent',
+                            'is3D': false,
+                            'pieHole': .75,
+                            'chartArea':{width:'100%',height:'75%'},
+                            'legend': {
+                              'textStyle': { color: 'white', bold: false, italic: true }
+                            },
+                            'height': $scope.height
                         };
                         chart.draw(data, options);
                         // No row selected

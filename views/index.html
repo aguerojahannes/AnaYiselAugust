@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
-	<title></title>
+	<title>GetFul | Create A Circle Of Help</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://www.google.com/jsapi?ext.js"></script> <!-- 	WORK WITH PIE CHART -->
 	<link rel="stylesheet" type="text/css" href="/angular-material/angular-material.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/animate.css">
 	<link rel="stylesheet" type="text/css" href="/css/site.css">
-
+	<link rel="shortcut icon" href="http://s22.postimg.org/evat6yha5/favicon.png" type="image/x-icon" />
 </head>
 
 <body ng-controller="GlobalController as glob">
@@ -62,13 +62,16 @@
 	<div id="userbar" ng-show="glob.status._id" class="text-center">
 		<div class="row container" style="margin: 0 auto; padding-top: .5vh;">
 			<div class="col-sm-6 text-left" style="cursor: default;" ng-click="clickedButton = false;">
-				<p class="inline">You have a new notification!</p><a ui-sref="Notifications" href="#"><p class="inline"><em>View</em></p></a>
+				<div ng-show="glob.status.notifications.length > 0" class="inline" style="padding-top: 3vh">
+					<p>You have a new notification!</p><a ui-sref="Notifications" href="#"><p class="inline"><em>View</em></p></a>
+				</div>
+				<p></p>
 			</div>
 			<div class="col-sm-6">
 				<div class="inline">
 						 <p ng-click="clickedButton = !clickedButton;" class="highlight">{{ glob.status.username }}</p>
 				</div>
-				<img src="http://flaticons.net/icons/Mobile%20Application/Settings-02.png" ng-click="clickedButton = true;" alt="Settings Icon" />
+				<img src="http://s27.postimg.org/cga7kd7kz/circle_yelloworange.png" ng-click="clickedButton = true;" alt="Settings Icon" />
 			</div>
 		</div>
 	</div>
@@ -143,7 +146,7 @@
 	<script src="/javascript/controllers/ContactsController.js"></script>
 
 	<!-- Directive -->
-	<script src="/javascript/directives/directives.js"></script>
+	<script src="/javascript/directives/chart.js"></script>
 
 </body>
 </html>

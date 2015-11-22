@@ -3,36 +3,27 @@
 
 
 	<!-- Buttons -->
-	<div class="circleOptions" ng-show="creatingCircle === false">
-		<button ng-click="creatingCircle = true;" class="btn btn-info">New Circle </button>
-		<!-- <button ng-click="creatingCircle = false;" class="btn btn-danger">Delete Circle </button> -->
-	</div>
-
-	<div class="circleOptions" ng-show="creatingCircle === true">
+	<div class="circleOptions">
+		<input ng-model="chartTitle" placeholder="Circle Name" class="title">
 		<button ng-click="creatingCircle = false;" class="btn btn-info">Save Circle </button>
-		<button ng-click="creatingCircle = false;" class="btn btn-danger">Cancel</button>
+		<button ui-sref="DisplayCircle" class="btn btn-danger">Cancel</button>
 	</div>
+	<hr>
 
 	<!-- Circle & Options -->
-	<div ng-if="creatingCircle === true">
-		<pie-chart data="chartData" title="{{chartTitle}}" width="{{chartWidth}}" height="{{chartHeight}}" select="selectRow(selectedRowIndex)" id="pieChart"></pie-chart>
-		<br>
-		<div class="col-xs-12" style="border: solid 2px #fff; margin-top: 2vh; padding: 2vh;">
-				 <h2>Chart Data</h2>
+
+		<div class="col-xs-12" style="border: solid 2px #fff; margin-top: 2vh; padding: 2vh">
+			<pie-chart data="chartData" title="{{chartTitle}}" width="{{chartWidth}}" height="{{chartHeight}}" select="selectRow(selectedRowIndex)" id="pieChart"></pie-chart>
+			<!-- <br>
+			<div ng-repeat="row in chartData" ng-class="rowClass($index)" style="display: inline-block; width: 30%; border: solid 2px white;">
 					<div>
-							<input ng-model="chartTitle" placeholder="Circle Name" class="title">
-							<div ng-repeat="row in chartData" ng-class="rowClass($index)" style="display: inline-block; width: 30%;">
-									<div>
-											<input ng-model="row[0]">
-											<input ng-model="row[1]">
-											<button type="button" ng-click="deleteRow($index)" class="btn btn-danger">&times;</button>
-									</div>
-							</div>
+							<input ng-model="row[0]">
+							<button type="button" ng-click="deleteRow($index)" class="btn btn-danger">&times;</button>
 					</div>
-					<br>
-					<button ng-click="addRow();" class="btn btn-success">Add New Slice</button>
 			</div>
-	</div>
+			<br>
+			<button ng-click="addRow();" class="btn btn-success">Add New Slice</button> -->
+		</div>
 
 
 	<!-- Sidebar -->
@@ -41,7 +32,7 @@
 			<div class="content">
 				<input type="text" placeholder="Search" class="small" ng-model="searchCircles" style="margin: 3vh auto; padding: 2em; font-size: 1.1em;">
 				<hr style="width: 80%;">
-				<div class="row text-left circlesContact" ng-repeat="contact in vm.contacts | filter:searchCircles" style="padding-left: 2vw;">
+				<div class="row text-left circlesContact" ng-click="$parent.menuOpen = false" ng-repeat="contact in vm.contacts | filter:searchCircles" style="padding-left: 2vw;">
 					<div class="circle greyscale inline" ng-class="{greyscale: hover}"  ng-style="{'background-image': 'url(' + contact.profilePic + ')'}" style="background-size: contain; background-repeat: no-repeat; height: 15vw; width: 15vw; margin-left: 2vw;"></div>
 					<p class="inline" style="vertical-align: 5vh; margin-left: 1vw; font-size: 1.2em;">{{ contact.firstName }}  {{ contact.lastName }}</p>
 				</div>
