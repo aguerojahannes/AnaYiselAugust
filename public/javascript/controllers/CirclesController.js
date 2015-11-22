@@ -2,19 +2,19 @@
 	'use strict';
 	angular.module('app')
 	.controller('CirclesController', CirclesController);
-	function CirclesController(HomeFactory, $scope) {
+	function CirclesController(HomeFactory, $scope, $state) {
 		var vm = this;
-
+// PIE CHART - Code looked on: http://jsfiddle.net/i_heart_php/zh1g5305/
 		// Initial chart data
-		    $scope.chartTitle = "Lead Sources";
-		    $scope.chartWidth = 500;
-		    $scope.chartHeight = 320;
+		    $scope.chartTitle = "Give a Name to your Circle";
+		    $scope.chartWidth = 600;
+		    $scope.chartHeight = 600;
 		    $scope.chartData = [
-		        ['Ad Flyers', 1],
-		        ['Web (Organic)', 1],
-		        ['Web (PPC)', 1],
-		        ['Yellow Pages', 1],
-		        ['Showroom', 1]
+		        ['Name 1', 1],
+		        ['Name 2', 1],
+		        ['Name 3', 1],
+		        ['Name 4', 1],
+		        ['Name 5', 1]
 		    ];
 
 		    $scope.deleteRow = function (index) {
@@ -29,6 +29,20 @@
 		    $scope.rowClass = function (index) {
 		        return ($scope.selected === index) ? "selected" : "";
 		    };
+
+//Submit-Create Circle
+				vm.submitCircle = function(){
+					console.log($scope.chartData, $scope.chartTitle);
+					HomeFactory.submitCircle($scope.chartData, $scope.chartTitle).then(function(res){
+						console.log(res.data);
+						$state.go('CreateCircle');
+					});
+				};
+
+//DISPLAY CIRCLES
+				HomeFactory.getAllCircles().then(function(res){
+					vm.pieChart = res;
+				});
 
 
 

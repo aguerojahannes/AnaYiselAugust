@@ -1,3 +1,4 @@
+// PIE CHART - Code looked on: http://jsfiddle.net/i_heart_php/zh1g5305/
 google.setOnLoadCallback(function () {
     // angular.bootstrap(document.body, ['app']);
 });
@@ -21,7 +22,7 @@ angular.module('app')
 
             // Create the data table and instantiate the chart
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Label');
+            data.addColumn('string', 'contact');
             data.addColumn('number', 'Value');
             var chart = new google.visualization.PieChart($elm[0]);
 
@@ -62,15 +63,15 @@ angular.module('app')
                         data.removeRows(0, data.getNumberOfRows());
                         angular.forEach($scope.data, function (row) {
                             label = row[0];
-                            value = parseFloat(row[1], 10);
+                            value = (row[1], 5);
                             if (!isNaN(value)) {
-                                data.addRow([row[0], value]);
-                            }
+                                data.addRow([row[0], 1]);
+                            } //parseFloat
                         });
                         var options = {
                             'title': $scope.title,
-                                'width': $scope.width,
-                                'height': $scope.height
+                                'width': 800,   //$scope.width and $scope.height
+                                'height': 600
                         };
                         chart.draw(data, options);
                         // No raw selected

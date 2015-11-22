@@ -1,14 +1,21 @@
 <div ng-controller="CirclesController as vm" id="circles" class="container" ng-init="creatingCircle = false; menuOpen = false; vm.creating = true;">
-	<h1>Create Circle</h1>
+	<h1>Your Circles</h1>
 
 
 	<!-- Buttons -->
 	<div class="circleOptions" ng-show="creatingCircle === false">
-		<button ng-click="creatingCircle = true;" class="btn btn-info">New Circle </button>
+		<button ng-click="creatingCircle = true;" class="btn btn-info">Edit Circle </button>
 		<button ng-click="circle = 0; creatingCircle = false;" class="btn btn-danger">Delete Circle </button>
 	</div>
+	<hr>
+	<div class="right" ng-repeat="c in vm.pieChar">
+		<pie-chart class="PIE" data="{{c.chartData}}" title="{{c.chartTitle}}" width="{{chartWidth}}" height="{{chartHeight}}" select="selectRow(selectedRowIndex)"></pie-chart>
+	</div>
 
-	<div class="circleOptions" ng-show="creatingCircle === true">
+
+
+</div>
+	<!-- <div class="circleOptions" ng-show="creatingCircle === true">
 		<input type="text" ng-model="vm.newCircle.name" placeholder="Circle Name">
 		<input type="text" min="1" max="20" value="1" placeholder="Number Of Members" ng-model="vm.newCircle.slices">
 		<button ng-click="circle= 1; creatingCircle = false;" class="btn btn-success">MakeChart </button>
@@ -17,15 +24,16 @@
   <hr>
 
   <br>
+	<
 
   <div id="createContainer" ng-init="circle = 0">
     <div class="circle" ng-if="circle === 1" style="width: 80vw; height: 80vw;">
 
     </div>
-  </div>
+  </div> -->
 
 	<!-- Sidebar -->
-	<div id="addToCircleBar">
+	<!-- <div id="addToCircleBar">
 		<div id="circleBarContent" ng-class="{menuOpen: menuOpen}" onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
 			<div class="content">
 				<input type="text" placeholder="Search" class="small" ng-model="searchCircles" style="margin: 3vh auto; padding: 2em; font-size: 1.1em;">
@@ -50,28 +58,4 @@
 		</div>
 	</div>
 
-</div>
-
-
-
-<!-- <form ng-submit="vm.createCircle()">
-     <md-input-container>
-       <label> What is the Title of your Circle? </label>
-       <input ng-model="vm.circle.title" type="text" ng-required="true">
-     </md-input-container>
-     <md-input-container>
-        <label>How many pieces do you want in your Contacts Circle?</label>
-        <md-select ng-model="vm.circle.pieces" ng-required="true">
-            <md-option value='2'>2</md-option>
-            <md-option value='4'>4</md-option>
-            <md-option value='6'>6</md-option>
-            <md-option value='8'>8</md-option>
-            <md-option value='10'>10</md-option>
-            <md-option value='14'>14</md-option>
-            <md-option value='18'>18</md-option>
-            <md-option value='24'>24</md-option>
-            <md-option value='30'>30</md-option>
-       </md-select>
-      </md-input-container>
-  <button type="submit" class="btn btn-success">Next Step, add people!</button>
-</form> -->
+</div> -->

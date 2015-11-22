@@ -753,10 +753,12 @@ body {
     font-size: 0.9em;
 }
 pie-chart {
+  font-size: 0;
+  stroke: "none"
 }
 .bottom {
     clear: both;
-    font-size: 0.9em;
+    font-size: 0.9em ;
     color: grey;
     padding: 2em 1em 0 1em;
 }

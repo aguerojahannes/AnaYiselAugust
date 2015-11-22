@@ -151,6 +151,25 @@
 			return q.promise;
 		}
 
+		o.submitCircle = function(chartData, chartTitle){
+			var q = $q.defer();
+			$http.post('/api/circles', chartData, chartTitle);
+			console.log(chartData);
+			.then(function(res){
+
+				q.resolve();
+			});
+			return q.promise;
+		};
+
+		o.getAllCircles = function(){
+			var q = $q.defer();
+			$http.get('api/circles').then(function(res){
+				q.resolve(res.data);
+			});
+			return q.promise;
+		};
+
 		return o;
 	}
 })();
