@@ -11,7 +11,6 @@
 		if(getToken()){
 			setUser();
 		}
-		console.log(o.status.notifications);
 
 // ----------------SIGN UP----------------------------
 	o.signUp = function(user){

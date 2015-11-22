@@ -28,17 +28,11 @@ angular.module('app')
 
             draw();
 
-            // Watches, to refresh the chart when its data, title or dimensions change
+            // Watches, to refresh the chart when its data or title changes
             $scope.$watch('data', function () {
                 draw();
             }, true); // true is for deep object equality checking
             $scope.$watch('title', function () {
-                draw();
-            });
-            $scope.$watch('width', function () {
-                draw();
-            });
-            $scope.$watch('height', function () {
                 draw();
             });
 
@@ -62,17 +56,23 @@ angular.module('app')
                         var label, value;
                         data.removeRows(0, data.getNumberOfRows());
                         angular.forEach($scope.data, function (row) {
+<<<<<<< HEAD
                             label = row[0];
                             value = (row[1], 5);
 
                             // value = 1;
 
+=======
+                            label = row.firstName + " " + row.lastName;
+                            value = 1;
+>>>>>>> 380fa35c1f67cc3be43098fe70e4c68d9d077593
                             if (!isNaN(value)) {
-                                data.addRow([row[0], 1]);
-                            } //parseFloat
+                                data.addRow([label, value]);
+                            }
                         });
                         var options = {
                             'title': $scope.title,
+<<<<<<< HEAD
                             'width': 800,   //$scope.width and $scope.height
                             'height': 600,
                             // 'backgroundColor': 'transparent',
@@ -82,6 +82,20 @@ angular.module('app')
                             // 'legend': {
                             //   'textStyle': { color: 'white', bold: false, italic: true }
                             // },
+=======
+                            'width': $scope.width,
+                            'titlePosition': 'none',
+                            'backgroundColor': 'transparent',
+                            'is3D': false,
+                            'pieHole': .75,
+                            'colors': ['#F2B132', '#F69634', '#FB7C36', '#FF6138'],
+                            'legend': {
+                              'alignment': 'end',
+                              'position': 'right',
+                              'textStyle': { color: 'white', bold: false, italic: true }
+                            },
+                            'height': $scope.height
+>>>>>>> 380fa35c1f67cc3be43098fe70e4c68d9d077593
                         };
 
 

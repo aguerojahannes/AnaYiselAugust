@@ -58,7 +58,7 @@ var requestsRoutes = require('./routes/requestsRoutes');
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH");
   next();
 });
 
@@ -71,7 +71,7 @@ app.get('/', function(req, res) {
 
 // app.use("/user", userRoutes);
 app.use("/contacts", contactsRoutes);
-app.use("/api/circles", circlesRoutes);
+app.use("/circles", circlesRoutes);
 app.use("/requests", requestsRoutes);
 app.use("/api/user", userRoutes);
 
