@@ -718,9 +718,9 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 }
 
 /* Ids */
-#pieChart {
+/*#pieChart {
   margin: 0 auto;
-}
+}*/
 
 /* Responsive Fixes */
 @media (min-width: 950px) {
@@ -748,7 +748,7 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
     height: 65vh;
   }
 }
-<<<<<<< HEAD
+
 
 
 /* PIE CHART CSS */
@@ -784,5 +784,3 @@ tr.selected td {
     margin-right: 4em;
 }
 /* END OF THE PIE CHART */
-=======
->>>>>>> 9dfae5cc646c6a098d0574746b43d99861e9b9b5

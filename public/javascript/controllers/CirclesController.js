@@ -4,7 +4,7 @@
 	.controller('CirclesController', CirclesController);
 	function CirclesController(HomeFactory, $scope, $state) {
 		var vm = this;
-<<<<<<< HEAD
+
 // PIE CHART - Code looked on: http://jsfiddle.net/i_heart_php/zh1g5305/
 		// Initial chart data
 		    $scope.chartTitle = "Give a Name to your Circle";
@@ -17,24 +17,17 @@
 		        ['Name 4', 1],
 		        ['Name 5', 1]
 		    ];
-=======
-		vm.contacts = HomeFactory.contacts;
 
-		// Get Contacts
-		HomeFactory.getContacts().then(function() {
-			vm.contacts = HomeFactory.contacts;
-			console.log(vm.contacts);
-		});
 
-		console.log(vm.contacts);
-		// Initial chart data
-		    $scope.chartTitle = "";
-		    $scope.chartWidth = 1000;
-		    $scope.chartHeight = 500;
-		    $scope.chartData = [
-					['New Contact']
-				];
->>>>>>> 9dfae5cc646c6a098d0574746b43d99861e9b9b5
+		// console.log(vm.contacts);
+		// // Initial chart data
+		//     $scope.chartTitle = "";
+		//     $scope.chartWidth = 1000;
+		//     $scope.chartHeight = 500;
+		//     $scope.chartData = [
+		// 			['New Contact']
+		// 		];
+
 
 		    $scope.deleteRow = function (index) {
 		        $scope.chartData.splice(index, 1);
@@ -63,6 +56,13 @@
 					vm.pieChart = res;
 				});
 
+				// vm.contacts = HomeFactory.contacts;
+
+				// // Get Contacts
+				// HomeFactory.getContacts().then(function() {
+				// 	vm.contacts = HomeFactory.contacts;
+				// 	console.log(vm.contacts);
+				// });
 
 
 
