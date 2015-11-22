@@ -6,6 +6,7 @@ var User = mongoose.model('User');
 var passport = require('passport');
 
 
+
 // Get All Circles
 router.post('/get', function(req, res, next) {
   Circle.find({creator: req.body.user}).sort({ "firstName": 'ascending'}).exec(function(err, result) {

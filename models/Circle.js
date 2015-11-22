@@ -2,8 +2,13 @@ var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 
 var CircleSchema = new mongoose.Schema({
-  title: String,
-  addContact: String,  //add existing Contact - add person from Social Pages (LinkedIn, FB, Google)
+  // pieChart: [{
+  //   chartTitle: String,
+  //   chartData: String
+  // }],
+  chartTitle: String,
+  row: String,
+  contact: String,  //add existing Contact - add person from Social Pages (LinkedIn, FB, Google)
   newContact: [{ //add a new person
     firstName: String,
     lastName: String,

@@ -1,3 +1,4 @@
+// PIE CHART - Code looked on: http://jsfiddle.net/i_heart_php/zh1g5305/
 google.setOnLoadCallback(function () {
     // angular.bootstrap(document.body, ['app']);
 });
@@ -21,7 +22,7 @@ angular.module('app')
 
             // Create the data table and instantiate the chart
             var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Label');
+            data.addColumn('string', 'contact');
             data.addColumn('number', 'Value');
             var chart = new google.visualization.PieChart($elm[0]);
 
@@ -62,13 +63,9 @@ angular.module('app')
                             }
                         });
                         var options = {
-                            'titlePosition': 'none',
-                            'titleTextStyle': {
-                              'color': 'white',
-                              'bold': true,
-                              'fontSize': '30'
-                            },
+                            'title': $scope.title,
                             'width': $scope.width,
+                            'titlePosition': 'none',
                             'backgroundColor': 'transparent',
                             'is3D': false,
                             'pieHole': .75,

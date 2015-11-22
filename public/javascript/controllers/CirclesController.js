@@ -2,6 +2,7 @@
 	'use strict';
 	angular.module('app')
 	.controller('CirclesController', CirclesController);
+
 	function CirclesController(HomeFactory, $scope, GlobalFactory) {
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
@@ -32,7 +33,6 @@
 
 
 
-
 		// Google Charts
 	    $scope.deleteRow = function (index) {
 	        $scope.chartData.splice(index, 1);
@@ -46,7 +46,6 @@
 	    $scope.rowClass = function (index) {
 	        return ($scope.selected === index) ? "selected" : "";
 		  };
-
 
 
 	}
