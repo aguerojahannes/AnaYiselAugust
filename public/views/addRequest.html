@@ -6,7 +6,7 @@
   <select ng-model="vm.newRequest.privacy">
    <option ng-value="'Global'" value="Global">Everyone</option>
    <option ng-value="'Contacts'">Contacts</option>
-   <option ng-value="'Circles'">### GENERATED BASED ON CIRCLES ###</option>
+   <option ng-repeat="circle in vm.circles" ng-value="'Circle'">{{ circle.chartTitle }}</option>
    <option ng-value="'Select'">Select People...</option>
   </select>
   <div class="" ng-show="vm.newRequest.privacy === 'Select'">

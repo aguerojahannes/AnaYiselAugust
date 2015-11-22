@@ -215,6 +215,20 @@
 		return q.promise;
 	}
 
+
+	// Send Referral
+	o.sendReferral = function (referral, target){
+		var q = $q.defer();
+		var parcel = {
+			referral: referral,
+			sendingTo: target
+		}
+		$http.post("/api/user/referral", parcel).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	};
+
 	return o;
 	}
 })();

@@ -303,41 +303,14 @@ router.post('/declineRequest', function(req, res, next){
 	});
 });
 
-// router.post('/upload', fileParser, function(req, res){
-//   /* The `req.files` property will be populated because we
-//    * used the 'fileParser' middleware for this route.
-//    *
-//    * The 'name' attribute from the file input in your form will match the
-//    * property name on `req.files`.
-//    * So since we have <input type='file' name='image' /> in our form,
-//    * there is a `req.files.image` property available.
-//    */
-//   var imageFile = req.files.image;
-//
-//   cloudinary.uploader.upload(imageFile.path, function(result){
-//     /*
-//      * After a successful upload, the callback's `result` argument
-//      * will be a hash (javascript object) with a property `url`
-//      * that you can use to display the uploaded image.
-//      * To learn more about the format of the `result` hash, see:
-//      *   http://cloudinary.com/documentation/node_image_upload
-//      */
-//
-//     if (result.url) {
-//       /*
-//        * This would be a good spot to save this url (perhaps into a
-//        * mongo database) so that you can display it later.
-//        */
-//       res.render('upload', {url: result.url});
-//     } else {
-//       /*
-//        * There was an error and the file did not upload.
-//        */
-//
-//       console.log('Error uploading to cloudinary: ',result);
-//       res.send('did not get url');
-//     }
-//   });
-// });
+// Send Referral
+router.post("/referral", function(req, res, next) {
+  User.findOne({email: req.body.sendingTo}, function (err, user) {
+    if (err) return next(err);
+		user.notifications.push(req.body.referral);
+		user.save();
+		res.send(user);
+	});
+});
 
 module.exports = router;

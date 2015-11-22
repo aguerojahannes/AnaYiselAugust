@@ -522,7 +522,7 @@ nav {
   right: 1.5em;
 }
 #refer input {
-  width: 50%;
+  width: 100%;
 }
 #refer .select:hover {
   background: rgba(0,0,0,.1);

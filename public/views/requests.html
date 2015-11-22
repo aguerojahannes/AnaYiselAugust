@@ -44,7 +44,7 @@
       <br>
       <img src="http://justinsarnik.com/img/global/close.png" class="close" ng-click="vm.modalOn = false" alt="Close Icon" />
       <div id="modalButtons">
-        <button type="button" class="btn btn-success" ui-sref="Refer">Refer Someone</button>
+        <button type="button" class="btn btn-success" ui-sref="Refer" ng-click="vm.setEmail(vm.viewRequest.email);">Refer Someone</button>
         <button type="button" class="btn btn-danger" ng-click="vm.modalOn = false">Cancel</button>
       </div>
   </div>
