@@ -63,18 +63,34 @@ angular.module('app')
                         data.removeRows(0, data.getNumberOfRows());
                         angular.forEach($scope.data, function (row) {
                             label = row[0];
+<<<<<<< HEAD:public/javascript/directives/directives.js
                             value = (row[1], 5);
+=======
+                            value = 1;
+>>>>>>> 9dfae5cc646c6a098d0574746b43d99861e9b9b5:public/javascript/directives/chart.js
                             if (!isNaN(value)) {
                                 data.addRow([row[0], 1]);
                             } //parseFloat
                         });
                         var options = {
                             'title': $scope.title,
+<<<<<<< HEAD:public/javascript/directives/directives.js
                                 'width': 800,   //$scope.width and $scope.height
                                 'height': 600
+=======
+                            'width': $scope.width,
+                            'backgroundColor': 'transparent',
+                            'is3D': false,
+                            'pieHole': .75,
+                            'chartArea':{width:'100%',height:'75%'},
+                            'legend': {
+                              'textStyle': { color: 'white', bold: false, italic: true }
+                            },
+                            'height': $scope.height
+>>>>>>> 9dfae5cc646c6a098d0574746b43d99861e9b9b5:public/javascript/directives/chart.js
                         };
                         chart.draw(data, options);
-                        // No raw selected
+                        // No row selected
                         $scope.selectFn({
                             selectedRowIndex: undefined
                         });

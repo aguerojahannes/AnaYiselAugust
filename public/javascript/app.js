@@ -98,6 +98,10 @@
 			url: '/editrequest',
 			templateUrl: 'views/editRequest.html'
 		})
+		.state('Refer',{
+			url: '/refer',
+			templateUrl: 'views/refer.html'
+		})
 //---------------- USER PROFILE-ACCOUNT STATES ------------------------
 		.state('Profile',{
 			url: '/profile/:id',

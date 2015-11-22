@@ -32,6 +32,7 @@
 				user: GlobalFactory.status.username
 			}
 			$http.post('/contacts/get', parcel).then(function(res) {
+				console.log(res.data);
 				o.contacts = res.data;
 				GlobalFactory.getFriends().then(function(res){
 					for(var i = 0; i < res.data.length; i++) {

@@ -1,21 +1,7 @@
 (function() {
 	'use strict';
 	angular.module('app')
-	.controller('ContactsController', ContactsController)
-	// Custom Directive For Handling Enter Key For Skills -- Usage: ng-enter="doSomething()"
-	.directive('ngEnter', function() {
-        return function(scope, element, attrs) {
-            element.bind("keydown keypress", function(event) {
-                if(event.which === 13) {
-                    scope.$apply(function(){
-                        scope.$eval(attrs.ngEnter, {'event': event});
-                    });
-
-                    event.preventDefault();
-                }
-            });
-        };
-    });
+	.controller('ContactsController', ContactsController);
 
 	function ContactsController(HomeFactory, $state, $stateParams, $scope, GlobalFactory) {
 		var vm = this;

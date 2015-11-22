@@ -11,6 +11,7 @@
 		if(getToken()){
 			setUser();
 		}
+		console.log(o.status.notifications);
 
 // ----------------SIGN UP----------------------------
 	o.signUp = function(user){
@@ -191,6 +192,7 @@
 			user: o.status.username,
 			acccepted: request
 		}
+		o.status.notifications.splice(o.status.notifications.indexOf(request), 1);
 		$http.post("/api/user/acceptRequest", parcel).then(function(res){
 			q.resolve(res);
 		});
@@ -200,7 +202,7 @@
 	// Decline Request
 	o.declineRequest = function(request) {
 		o.status.notifications.splice(o.status.notifications.indexOf(request), 1);
-
+		o.status.notifications.splice(o.status.notifications.indexOf(request), 1);
 		var q = $q.defer();
 		var parcel = {
 			user: o.status.username,
