@@ -15,6 +15,11 @@
 		vm.errorText = '';
 		vm.selectPrivacy = [];
 		vm.searchContact = '';
+		vm.referral = {};
+		vm.refContacts= [];
+		vm.new = {};
+		vm.newMembers = [];
+
 
 //-----------------On Load Scroll Window To Top---------------
 		window.scrollTo(0, 0);
@@ -38,7 +43,7 @@
 		if (vm.newRequest.skill === '') {
 			vm.addRequest(request);
 		} else {
-			vm.addNewSkill(skill)
+			vm.addNewSkill(skill);
 		}
 
 	};
@@ -129,11 +134,29 @@
 			vm.newRequest.skills.push(skill);
 			vm.newRequest.skill = "";
 			vm.errorText = "";
-		}
+		};
 
 		//------------------Delete New Skill ------------------------------------
 		vm.deleteSkill = function(skill) {
 			vm.newRequest.skills.splice(vm.newRequest.skills.indexOf(skill), 1);
+		};
+
+
+		//-------------------------Handle Dropdown------------------------
+		vm.pushContact = function(contact) {
+			vm.new = contact;
+			$scope.searchContact =  "";
+		};
+
+		vm.addContact = function (contact) {
+			if(vm.refContacts.indexOf(contact) != -1) {
+				vm.errorText = "You have already added this contact!";
+				return null;
+			}
+			vm.refContacts.push(contact);
+			vm.errorText = '';
 		}
+
+		console.log(vm.circles);
 	}
 })();

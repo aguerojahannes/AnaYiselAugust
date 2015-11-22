@@ -48,6 +48,7 @@ var UserSchema = new mongoose.Schema({
   circles: Array,
   notifications: Array,
   friends: Array,
+  skills: Array,
   joined: String
 });
 

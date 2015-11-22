@@ -14,6 +14,7 @@ var ContactSchema = new mongoose.Schema({
   bio: String,
   creator: String,
   title: String,
+  skills: Array,
   bio: String
   //  businessCardPic: String       //ADD BUSINESS CARD PHOTO IN THE SCHEMA.
 

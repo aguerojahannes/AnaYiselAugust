@@ -79,6 +79,7 @@
 	      o.status.keyword = user.keyword; //skills
 	      o.status.profilePic = user.profilePic;
 	      o.status.circles = user.circles;
+				o.status.skills = user.skills;
 	      // o.status.friends = user.contacts;
 	    }
 
@@ -94,6 +95,7 @@
 	      o.status.profilePic = null;
 	      o.status.circles = null;
 	      o.status.friends = null;
+				o.status.skills = null;
 	    }
 
 	function getToken() {

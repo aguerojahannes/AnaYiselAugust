@@ -29,9 +29,6 @@
   <input type="text" placeholder="Title" ng-model="vm.newRequest.title" />
   <textarea ng-model="vm.newRequest.body" placeholder="Comments"></textarea>
   <input type="text" placeholder="Skills" ng-model="vm.newRequest.skill" />
-  <div ng-show="vm.newRequest.skill233">
-    <button ng-click="vm.addNewSkill(vm.newRequest.skill);" type="button" class="btn btn-success">Add Skill</button>
-  </div>
   <div class="text-left" ng-show="vm.newRequest.skills.length > 0">
     <h3>Skills: </h3>
   </div>

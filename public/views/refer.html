@@ -1,44 +1,78 @@
 <div ng-controller="RequestsController as vm" class="container text-center" id="refer">
 
-  <h1>Refer</h1>
+  <h1>Refer Contacts</h1>
 
   <div class="row">
     <div class="col-xs-6 text-right">
-      <div class="circle" style="height: 17.5vh; width: 17.5vh"></div>
+      <div class="circle" ng-if="!vm.new.profilePic" style="height: 17.5vh; width: 17.5vh; background: rgba(0,0,0,.1);"></div>
+      <div class="circle" ng-if="vm.new.profilePic" style="height: 17.5vh; width: 17.5vh; background: url('{{ vm.new.profilePic }}'); border:solid 2px white;"></div>
     </div>
     <div class="col-xs-6 text-left">
-      <input type="text" placeholder="Name" ng-model="vm.referral.name" style="margin: 1em 0">
-      <input type="text" placeholder="Job Title" ng-model="vm.referral.title" style="margin: 1em 0">
-      <input type="email" placeholder="Email" ng-model="vm.referral.email" style="margin: 1em 0">
+      <input type="text" placeholder="Name" ng-model="vm.new.firstName" class="inline" style="margin: 1em .5vw 0 0; width: 23.5%;">
+      <input type="text" placeholder="Name" ng-model="vm.new.lastName" class="inline" style="margin: 1em 0 0 0; width: 23.5%;">
+      <input type="text" placeholder="Job Title" ng-model="vm.new.title" style="margin: 1em 0">
+      <input type="email" placeholder="Email" ng-model="vm.new.email" style="margin: 1em 0">
+      <input type="checkbox" value="" style="margin: 0;">
+      <div class="col-xs-6 text-center">
+        <p>More Options</p>
+      </div>
+      <div class="col-xs-6 text-center">
+        <p>&nbsp;</p>
+      </div>
+      <div class="col-xs-6 text-center">
+        <p ng-show="vm.errorText" style="color: #ffff9d;">{{ vm.errorText }}</p>
+        <button type="button" class="btn btn-success" ng-click="vm.addContact(vm.new);" ng-disabled="vm.new === {}">Add Contact</button>
+      </div>
+      <div class="col-xs-6 text-center">
+        <p>&nbsp;</p>
+      </div>
+
     </div>
   </div>
 
-
-
-  <br>
   <br>
 
-
-  <!-- NOT WORKING GIVING ME THA TRUBZ -->
-  <div class="">
-    <div class="circle" ng-click="openCircle = true" ng-repeat="circle in vm.circles" style="height: 7.5vh; width: 7.5vh"> {{ circle.chartTitle}}</div>
-
+  <div ng-if="vm.refContacts.length > 0" class="text-left">
+    <h3>Contacts: </h3>
+    <div ng-repeat="refContact in vm.refContacts">
+      <p class="inline" style="margin: 1em;">{{ vm.new.firstName }} {{ vm.new.lastName }}</p>
+      <button type="button" ng-click="vm.removeContact">X</button>
+    </div>
   </div>
 
+  <hr>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <div ng-show="!openCircle">
+      <div ng-repeat="circle in vm.circles" class="inline" style="position: relative; width: 100%; margin: 3%;">
+        <div class="circle" style="height: 7.5vh; width: 7.5vh" ng-click="$parent.openCircle = !$parent.openCircle; vm.newMembers = circle.members;" ></div>
+        {{circle.chartTitle}}
+      </div>
+    </div>
+    <div ng-show="openCircle" >
+      <div ng-repeat="member in vm.newMembers">
+        <div class="circle"  ng-click="$parent.openCircle = !$parent.openCircle; vm.new = member" style="height: 2vw; width: 2vw; background-image: url('{{ member.profilePic }}'); background-size: contain; background-repeat: no-repeat;"></div>
+        {{ member.firstName }} {{ member.lastName }}
+      </div>
 
+    </div>
+
+
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <input type="text" placeholder="Search" ng-model="searchContact" style="margin: 0;">
+    <div class="shade" style="border: solid 2px white; width: 50%; padding: 1em; margin: 0;" ng-show="searchContact">
+      <div ng-repeat="contact in vm.contacts | filter:searchContact" class="select" ng-click="vm.pushContact(contact)">
+        <!-- <div class="circle" style="height: 5vh; width: 5vh"></div> -->
+        {{ contact.email }}
+      </div>
+    </div>
+  </div>
+</div>
 
   <hr>
 
-  <input type="text" placeholder="Search" ng-model="searchContact" style="margin: 0 auto">
-
-  <div class="shade" style="border: solid 2px white; width: 11vw; padding: 1em; margin: 0 auto;" ng-show="searchContact">
-    <div ng-repeat="contact in vm.contacts | filter:searchContact" >
-      <div class="circle" style="height: 5vh; width: 5vh"></div><br />
-      {{ contact.email }}
-    </div>
-  </div>
-
-  <br>
+  <textarea placeholder="Comments" ng-model="vm.referral.comments"></textarea>
 
   <button type="button" ui-sref="Requests" class="btn btn-success">Send Referral</button>
   <button type="button" ui-sref="Requests" class="btn btn-danger">Cancel</button>
