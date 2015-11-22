@@ -15,6 +15,11 @@
 		vm.errorText = '';
 		vm.selectPrivacy = [];
 		vm.searchContact = '';
+		vm.referral = {};
+		vm.refContacts= [];
+		vm.new = {};
+		vm.newMembers = [];
+
 
 //-----------------On Load Scroll Window To Top---------------
 		window.scrollTo(0, 0);
@@ -38,7 +43,7 @@
 		if (vm.newRequest.skill === '') {
 			vm.addRequest(request);
 		} else {
-			vm.addNewSkill(skill)
+			vm.addNewSkill(skill);
 		}
 
 	};
@@ -86,7 +91,13 @@
 					request.selectPrivacy.push(vm.contacts[x].email);
 				}
 			}
-			console.log(request);
+
+			if(request.privacy === "Contacts") {
+				request.selectPrivacy = [];
+				for (var x = 0; x < vm.contacts.length; x++) {
+					request.selectPrivacy.push(vm.contacts[x].email);
+				}
+			}
 
 			HomeFactory.addRequest(request).then(function(res){
 				vm.newRequest = { privacy: 'Global', skills: [], skill: '' };
@@ -129,11 +140,51 @@
 			vm.newRequest.skills.push(skill);
 			vm.newRequest.skill = "";
 			vm.errorText = "";
-		}
+		};
 
 		//------------------Delete New Skill ------------------------------------
 		vm.deleteSkill = function(skill) {
 			vm.newRequest.skills.splice(vm.newRequest.skills.indexOf(skill), 1);
+		};
+
+
+		//-------------------------Handle Dropdown------------------------
+		vm.pushContact = function(contact) {
+			vm.new = contact;
+			$scope.searchContact =  "";
+		};
+
+
+		// Referral Adding / Removing Contacts
+		vm.addContact = function (contact) {
+			if(vm.refContacts.indexOf(contact) != -1) {
+				vm.errorText = "You have already added this contact!";
+				return null;
+			}
+			vm.refContacts.push(contact);
+			vm.errorText = '';
 		}
+
+		vm.removeContact = function(contact) {
+			vm.refContacts.splice(vm.refContacts.indexOf(contact), 1);
+		};
+
+
+		// Send Referral
+		vm.sendReferral = function() {
+			var target = HomeFactory.tempRequest.email;
+			vm.referral.contacts = vm.refContacts;
+			vm.referral.sender = GlobalFactory.status.username;
+			GlobalFactory.sendReferral(vm.referral, target).then(function(res) {
+				alert("Referral Sent!");
+				$state.go("Requests");
+			});
+		};
+
+		// Email Fix
+		vm.setEmail = function(email) {
+			HomeFactory.tempRequest.email = email;
+		};
+
 	}
 })();

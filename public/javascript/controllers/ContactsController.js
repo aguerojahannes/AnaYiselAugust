@@ -11,6 +11,7 @@
 		vm.modalOn = false;
 		vm.emailReq = '';
 		vm.errorText = '';
+		vm.newContact = { skills: [], skill: '' };
 
 
 		// Makes the input box lowercase
@@ -18,6 +19,18 @@
   	$scope.$watch('query', function() {
   	    $scope.query = $scope.query.toLowerCase();
   	});
+
+		// Handle Form Submission
+		vm.handleAddForm = function(request, skill){
+
+			// Handle Nesting Forms
+			if (vm.newContact.skill === '') {
+				vm.addContact(request);
+			} else {
+				vm.addNewSkill(skill);
+			}
+		};
+
 
   	// Only search certain properties
     vm.searchContacts = function(contact) {
@@ -107,5 +120,24 @@
 			});
 		};
 
+
+		//------------------Add New Skill ------------------------------------
+				vm.addNewSkill = function (skill) {
+					for (var x=0; x < vm.newContact.skills.length; x++) {
+						if(skill === vm.newContact.skills[x]) {
+							vm.errorText = "You have already added " + vm.newContact.skills[x] + " as a skill!";
+							vm.newContact.skill = "";
+							return null;
+						}
+					}
+					vm.newContact.skills.push(skill);
+					vm.newContact.skill = "";
+					vm.errorText = "";
+				};
+
+		//------------------Delete New Skill ------------------------------------
+		vm.deleteSkill = function(skill) {
+			vm.newContact.skills.splice(vm.newContact.skills.indexOf(skill), 1);
+		};
 	}
 })();

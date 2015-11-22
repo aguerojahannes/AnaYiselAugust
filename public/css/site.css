@@ -82,6 +82,7 @@ textarea {
   padding: .5em;
   background: rgba(0,0,0,.1);
   color: white;
+  resize: none;
 }
 select {
   outline: none;
@@ -510,7 +511,6 @@ nav {
 .request:hover {
   background: rgba(0,0,0,.2);
   cursor: pointer;
-
 }
 .visibility img {
   max-width: 1.5em;
@@ -521,8 +521,17 @@ nav {
   top: 1em;
   right: 1.5em;
 }
-
-
+#refer input {
+  width: 100%;
+}
+#refer .select:hover {
+  background: rgba(0,0,0,.1);
+}
+#refer textarea {
+  width: 50%;
+  margin: 0 auto 2em auto;
+  height: 15vh;
+}
 
 
 /* Modal */

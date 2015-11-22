@@ -5,10 +5,10 @@
       <button type="button" ui-sref="AddContact" class="btn btn-info">Add Contact</button>
   </div>
   <div class="col-xs-8 text-right">
-    <label>Sync Contacts Via: &nbsp;</label>
+    <!-- <label>Sync Contacts Via: &nbsp;</label>
     <button type="button" ng-click="vm.getLinkedIn();" class="btn btn-success">LinkedIn</button>
     <button type="button" ui-sref="AddContact" class="btn btn-success">Facebook</button>
-    <button type="button" ui-sref="AddContact" class="btn btn-success">Google+</button>
+    <button type="button" ui-sref="AddContact" class="btn btn-success">Google+</button> -->
   </div>
 </div>
 
@@ -24,7 +24,7 @@
     <div class="col-xs-7">
       <h3> <img src="http://s30.postimg.org/932xzp7b5/circle_yelloworange.png" alt="orange circle" style="width: 1vw; height: 1vw;"/> {{ contact.firstName }}  {{ contact.lastName }}</h3>
       <h4>{{ contact.title }}</h4>
-      <p>{{ contact.skills }}</p>
+      <p class="inline" ng-repeat="skill in contact.skills" style="margin-right: 1em;">{{ skill }} </p>
 
       <!-- <p class="contactBio">{{ contact.bio }}</p> -->
     </div>
@@ -57,7 +57,7 @@
             <div class="col-xs-10 text-left">
               <h1>{{ vm.viewContact.firstName }} {{ vm.viewContact.lastName }}</h1>
               <h4>{{ vm.viewContact.title }}</h4>
-              <p>{{ vm.viewContact.skills }}</p>
+              <p class="inline" ng-repeat="skill in vm.viewContact.skills" style="margin-right: 1em;">{{ skill }} </p>
             </div>
           </div>
          <hr style="margin: 1em 0;">
