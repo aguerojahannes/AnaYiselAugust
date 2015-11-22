@@ -56,33 +56,22 @@ angular.module('app')
                         var label, value;
                         data.removeRows(0, data.getNumberOfRows());
                         angular.forEach($scope.data, function (row) {
-<<<<<<< HEAD
-                            label = row[0];
-                            value = (row[1], 5);
+                            // label = row[0];
+                            // value = (row[1], 5);
 
                             // value = 1;
 
-=======
+
                             label = row.firstName + " " + row.lastName;
                             value = 1;
->>>>>>> 380fa35c1f67cc3be43098fe70e4c68d9d077593
+
                             if (!isNaN(value)) {
                                 data.addRow([label, value]);
                             }
                         });
                         var options = {
                             'title': $scope.title,
-<<<<<<< HEAD
-                            'width': 800,   //$scope.width and $scope.height
-                            'height': 600,
-                            // 'backgroundColor': 'transparent',
-                            // 'is3D': false,
-                            // 'pieHole': .75,
-                            // 'chartArea':{width:'100%',height:'75%'},
-                            // 'legend': {
-                            //   'textStyle': { color: 'white', bold: false, italic: true }
-                            // },
-=======
+
                             'width': $scope.width,
                             'titlePosition': 'none',
                             'backgroundColor': 'transparent',
@@ -95,7 +84,7 @@ angular.module('app')
                               'textStyle': { color: 'white', bold: false, italic: true }
                             },
                             'height': $scope.height
->>>>>>> 380fa35c1f67cc3be43098fe70e4c68d9d077593
+
                         };
 
 
