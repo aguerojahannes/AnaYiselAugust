@@ -718,9 +718,9 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
 }
 
 /* Ids */
-#pieChart {
+/*#pieChart {
   margin: 0 auto;
-}
+}*/
 
 /* Responsive Fixes */
 @media (min-width: 950px) {

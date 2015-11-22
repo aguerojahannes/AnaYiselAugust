@@ -56,14 +56,22 @@ angular.module('app')
                         var label, value;
                         data.removeRows(0, data.getNumberOfRows());
                         angular.forEach($scope.data, function (row) {
+                            // label = row[0];
+                            // value = (row[1], 5);
+
+                            // value = 1;
+
+
                             label = row.firstName + " " + row.lastName;
                             value = 1;
+
                             if (!isNaN(value)) {
                                 data.addRow([label, value]);
                             }
                         });
                         var options = {
                             'title': $scope.title,
+
                             'width': $scope.width,
                             'titlePosition': 'none',
                             'backgroundColor': 'transparent',
@@ -76,7 +84,10 @@ angular.module('app')
                               'textStyle': { color: 'white', bold: false, italic: true }
                             },
                             'height': $scope.height
+
                         };
+
+
                         chart.draw(data, options);
                         // No row selected
                         $scope.selectFn({
