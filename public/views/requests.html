@@ -1,6 +1,8 @@
 <div ng-controller="RequestsController as vm" id="requests" class="container">
 <h1>View Requests</h1>
-<button type="button" ui-sref="AddRequest" class="btn btn-success">Add Request</button>
+<div class="text-left">
+  <button type="button" ui-sref="AddRequest" class="btn btn-success">Add Request</button>
+</div>
 <hr>
 <br>
 <input type="text" ng-model="searchRequests" class="searchBar" placeholder="Search Requests"/>
@@ -20,7 +22,7 @@
     <img src="http://www.cedar-health.com/assets/images/ethos-icons/ethos-attention-eye-icon.png" alt="Visibility Icon" />
     <p class="small inline"><em>{{ request.privacy }}</em></p>
   </div>
-  <div>
+  <div ng-if="request.email === glob.status.username">
     <img src="http://s9.postimg.org/42jxt0jb3/edit.png" class="edit" ng-click="vm.editRequest(request);" alt="Edit Icon" />
     <img src="http://s9.postimg.org/4e1e5rzr3/delete.png" class="delete" ng-click="vm.deleteRequest(request._id);" alt="Delete Icon" />
   </div>
@@ -32,7 +34,7 @@
   </div>
   <div id="ModalBox">
       <h1>{{ vm.viewRequest.title}}</h1>
-      <h4 style="color: white;">{{ glob.status.username }}</h4> <!-- Change this to show the user's email, like PostedBy -->
+      <h4 style="color: white;">{{ vm.viewRequest.email }}</h4> <!-- Change this to show the user's email, like PostedBy -->
       <img src="http://www.cedar-health.com/assets/images/ethos-icons/ethos-attention-eye-icon.png" alt="Visibility Icon" style="max-width: 1.5em;" />
       <p class="small inline"><em>{{ vm.viewRequest.privacy }}</em></p>
       <hr>
@@ -47,25 +49,5 @@
       </div>
   </div>
 </div>
-
-
-<div ng-repeat="request in vm.requests | filter:searchRequests" style="position: relative;">
-  <div class="request" ng-click="vm.modalOn = true; vm.viewRequest = request;">
-    <h3>{{ request.title }}</h3>
-    <h5 class="inline" ng-repeat="skill in request.skills" style="margin-right: 1vw;">{{ skill }}</h5>
-    <br>
-    <br>
-    <p class="small" style="color: white;">{{ request.email }}</p>
-  </div>
-  <div class="visibility">
-    <img src="http://www.cedar-health.com/assets/images/ethos-icons/ethos-attention-eye-icon.png" alt="Visibility Icon" />
-    <p class="small inline"><em>{{ request.privacy }}</em></p>
-  </div>
-  <div>
-    <img src="http://s9.postimg.org/42jxt0jb3/edit.png" class="edit" ng-click="vm.editRequest(request);" alt="Edit Icon" />
-    <img src="http://s9.postimg.org/4e1e5rzr3/delete.png" class="delete" ng-click="vm.deleteRequest(request._id);" alt="Delete Icon" />
-  </div>
-</div>
-
 
 </div>

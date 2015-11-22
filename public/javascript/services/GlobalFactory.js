@@ -11,6 +11,7 @@
 		if(getToken()){
 			setUser();
 		}
+		console.log(o.status.notifications);
 
 // ----------------SIGN UP----------------------------
 	o.signUp = function(user){
@@ -19,8 +20,6 @@
 			setToken(res.data);
 			setUser();
 			var user = o.getUser();
-			o.status.username = user.username;
-			o.status._id = user._id;
 			q.resolve(res.data);
 		});
 		return q.promise;
@@ -61,8 +60,9 @@
 //------------------LOGOUT------------------------------
 	o.logout = function() {
 	      removeToken();
-	      o.status.username = null;
+				o.status.username = null;
 	      o.status._id = null;
+				o.status.notifications = null;
 	    };
 
 
@@ -73,27 +73,28 @@
 	      var user = JSON.parse(urlBase64Decode(getToken().split('.')[1]));
 	      o.status.username = user.email;
 	      o.status._id = user._id;
-	      o.status._id =user._id;
+				o.status.notifications = user.notifications;
 	      o.status.email = user.email;
 	      o.status.firstName = user.firstName;
 	      o.status.lastName = user.lastName;
 	      o.status.keyword = user.keyword; //skills
 	      o.status.profilePic = user.profilePic;
 	      o.status.circles = user.circles;
-	      o.status.friends = user.contacts;
+	      // o.status.friends = user.contacts;
 	    }
-	    
+
 	function removeUser(){
-	      o.status.username = user.email;
-	      o.status._id = user._id;
-	      o.status._id =user._id;
-	      o.status.email = user.email;
-	      o.status.firstName = user.firstName;
-	      o.status.lastName = user.lastName;
-	      o.status.keyword = user.keyword; //skills
-	      o.status.profilePic = user.profilePic;
-	      o.status.circles = user.circles;
-	      o.status.friends = user.contacts;
+
+	      o.status.username = null;
+	      o.status._id = null;
+				o.status.notifications = null;
+	      o.status.email = null;
+	      o.status.firstName = null;
+	      o.status.lastName = null;
+	      o.status.keyword = null; //skills
+	      o.status.profilePic = null;
+	      o.status.circles = null;
+	      o.status.friends = null;
 	    }
 
 	function getToken() {
@@ -170,7 +171,49 @@
 		return q.promise;
 	}
 
+	//------------------Friend Requests -------------------------------------
 
-		return o;
+	// Get Friends
+	o.getFriends = function() {
+		var q = $q.defer();
+		var parcel = {
+			user: o.status.username
+		}
+		$http.post("/api/user/getFriends", parcel).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	}
+
+	// Accept Request
+	o.acceptRequest = function(request) {
+		var q = $q.defer();
+		var parcel = {
+			user: o.status.username,
+			acccepted: request
+		}
+		o.status.notifications.splice(o.status.notifications.indexOf(request), 1);
+		$http.post("/api/user/acceptRequest", parcel).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	}
+
+	// Decline Request
+	o.declineRequest = function(request) {
+		o.status.notifications.splice(o.status.notifications.indexOf(request), 1);
+		o.status.notifications.splice(o.status.notifications.indexOf(request), 1);
+		var q = $q.defer();
+		var parcel = {
+			user: o.status.username,
+			declined: request
+		}
+		$http.post("/api/user/declineRequest", parcel).then(function(res){
+			q.resolve(res);
+		});
+		return q.promise;
+	}
+
+	return o;
 	}
 })();

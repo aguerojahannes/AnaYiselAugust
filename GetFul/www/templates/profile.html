@@ -1,0 +1,37 @@
+<div layout layout-align="center" ng-controller="ProfileController as vm">
+<div layout="column" style="width:75%">
+	<div>
+		<br/>
+		<h3>Welcome, {{ vm.profile.firstName || "first name"}} {{ vm.profile.lastName || "last name"}}</h3>
+	</div>
+	<br/>
+	<br/>
+
+	<center>
+	<div>
+		<img src="{{ vm.profile.profilePic || 'https://cdn3.iconfinder.com/data/icons/ballicons-free/128/man.png' }}" style="width: 150px; height:150px;" class="img-responsive"/><br/>
+	</div>
+		<center/>
+	<div layout="row" layout-sm="column" layout-padding>
+		<div flex>
+	  		<span><img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/512/Email-icon.png" height="20px"/> {{ vm.profile.email || "Email address is hidden." }}<br/>
+	  		<img src="https://cdn4.iconfinder.com/data/icons/social-icons-6/40/phone-512.png" height="20px"/> {{ vm.profile.phoneNumber || "Phone number is hidden."}}</span>
+		</div>
+		<div flex style="text-align:right"> <!-- figure out how to get all the links appropriately from the input - http:// or unshift or what? -->
+	  		<a href="{{ vm.profile.facebokUrl }}"><img ng-show="vm.profile.facebookUrl" src="http://sites.showitfast.com/17943/7894/facebook_icon_grey.png_tn.png" height="20px"/></a>
+	  		<a href="{{ vm.profile.facebokUrl }}"><img src="http://sites.showitfast.com/17943/7894/facebook_icon_grey.png_tn.png" height="20px"/></a> <!-- used for mock up -->
+	  		<a href="{{ vm.profile.googleUrl }}"><img ng-show="vm.profile.facebookUrl" src="http://porschecentrebrisbane.com.au/images/PCB/icon-google-plus-grey.png" height="23px"/></a>
+	  		<a href="{{ vm.profile.googleUrl }}"><img src="http://porschecentrebrisbane.com.au/images/PCB/icon-google-plus-grey.png" height="23px"/></a> <!-- used for mock up -->
+	  		<a href="{{ vm.profile.linkedInUrl }}"><img ng-show="vm.profile.linkedInUrl" src="http://3.bp.blogspot.com/-1UYbuG_3iTA/VOvjXVDNLJI/AAAAAAAAASU/wuUw9UMIcWs/s1600/LinkedIn-gray.png" height="20px"/></a>
+		</div>
+	</div>
+	<div style="text-align:center">
+  		<span class="button">skills</span><p ng-repeat="skill in vm.profile.skills"><span class="well">{{ skills }}</span></p><br/><hr/>
+
+		 <p>{{ vm.profile.bio || "We'd love to know a bit more about you. Please write a bit about you here."}}</p>
+	</div>
+	<div style="text-align:right">
+		<md-button type="button" ui-sref="editprofile({id: glob.status._id})">Update Profile</md-button>
+	</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<div ng-controller="RequestsController as vm" id="requests" class="container" ng-init="selectPeople = false;">
+<h1>Add Request</h1>
+
+<form ng-submit="vm.handleAddForm(vm.newRequest, vm.newRequest.skill);" >
+  <label>Who Can See My Request?</label>
+  <select ng-model="vm.newRequest.privacy">
+   <option ng-value="'Global'" value="Global">Everyone</option>
+   <option ng-value="'Contacts'">Contacts</option>
+   <option ng-value="'Circles'">### GENERATED BASED ON CIRCLES ###</option>
+   <option ng-value="'Select'">Select People...</option>
+  </select>
+  <div class="" ng-show="vm.newRequest.privacy === 'Select'">
+    <input type="text" placeholder="Add Contact" ng-model="vm.searchContact" />
+    <div style="border: solid 1px #fff; margin-bottom: 5vh;" ng-if="vm.searchContact">
+      <div ng-repeat="contact in vm.contacts | filter:vm.searchContact" ng-mouseover="mouseOver = true;" ng-mouseout="mouseOver = false;">
+        <p ng-class="{shade: mouseOver}" ng-click="vm.addSelectPrivacy(contact);" style="display: inline-block; padding: 1vh 10vw;">{{ contact.firstName }}  {{ contact.lastName }}</p>
+      </div>
+    </div>
+    <div class="text-left" ng-show="vm.selectPrivacy">
+      <h3 ng-show="vm.selectPrivacy.length > 0">Contacts: </h3>
+      <div class="skill" ng-repeat="member in vm.selectPrivacy" ng-click="vm.deleteMember(member);">
+        <h5 class="inline"  style="margin: 1em">{{ member }}</h5>
+      </div>
+      <br>
+    </div>
+    <hr>
+  </div>
+
+  <input type="text" placeholder="Title" ng-model="vm.newRequest.title" />
+  <textarea ng-model="vm.newRequest.body" placeholder="Comments"></textarea>
+  <input type="text" placeholder="Skills" ng-model="vm.newRequest.skill" />
+  <div ng-show="vm.newRequest.skill233">
+    <button ng-click="vm.addNewSkill(vm.newRequest.skill);" type="button" class="btn btn-success">Add Skill</button>
+  </div>
+  <div class="text-left" ng-show="vm.newRequest.skills.length > 0">
+    <h3>Skills: </h3>
+  </div>
+  <div class="skill" ng-repeat="skill in vm.newRequest.skills" ng-click="vm.deleteSkill(skill);">
+    <h5 class="inline" style="margin: 1em;">{{ skill }}</h5>
+  </div>
+  <br>
+  <br>
+  <div ng-show="vm.errorText" class="text-center">
+    <p style="color: #ffff9d" id="errorText">{{ vm.errorText }}</p>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-success" ng-disabled="vm.newRequest.privacy === 'Select' && vm.selectPrivacy < 1">Save Request</button>
+  <button type="button" class="btn btn-danger" ui-sref="Requests" ng-click="vm.newRequest = {};">Cancel</button>
+</form>
+
+</div>

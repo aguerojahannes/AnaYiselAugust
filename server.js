@@ -53,12 +53,6 @@ var contactsRoutes = require('./routes/contactsRoutes');
 var circlesRoutes = require('./routes/circlesRoutes');
 var requestsRoutes = require('./routes/requestsRoutes');
 
-
-//on homepage load, render the index page
-app.get('/', function(req, res) {
-	res.render('index');
-});
-
 //-------to allow remote access--------------------------------------------------------
 // using this for ionic http req
 app.use(function(req, res, next) {
@@ -68,6 +62,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+//on homepage load, render the index page
+app.get('/', function(req, res) {
+	res.render('index');
+});
 
 // Use Routes
 

@@ -23,7 +23,8 @@ var passport = require('passport');
 
 //------- POST Circle Form to the Data Base.-------------
 router.post('/', function(req, res, next){
-  console.log(req.body);
+  console.log(req.body.chartData);
+  console.log(req.body.chartTitle);
   var circle = new Circle(req.body);
       circle.created = new Date;
       circle.save(function(err, result){
@@ -32,6 +33,13 @@ router.post('/', function(req, res, next){
       });
     });
 
+//-----------GET CIRCLES FROM DATA BASE -------------------
+router.get('/', function(req, res, next){
+  Circle.find({}, function(err, result){
+    if(err) return(err);
+    res.send(result);
+  });
+});
 
 
 module.exports = router;

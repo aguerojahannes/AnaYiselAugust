@@ -1,0 +1,17 @@
+<!-- GLOBAL CONTROLLER  -->
+<h1>Iniciar Sesión</h1>
+          <form ng-submit="glob.signInEs()">
+               <md-input-container>
+                 <label> Correo Electrónico </label>
+                 <input ng-model="glob.user.email" type="text" ng-required="true">
+               </md-input-container>
+               <md-input-container>
+                 <label> Contraseña </label>
+                 <input ng-model="glob.user.password" type="password" ng-required="true">
+               </md-input-container>
+                    <div style="text-align: center">
+                      <!-- <md-button ng-click="nav.isLogin = false;" class="md-accent md-raised"> Sign Up</md-button> -->
+                      <button type="submit" class="button"> Iniciar </button><br/><br/>
+                        <a ui-sref="ForgotPasswordEs"> Olvidaste tu contraseña? </a>
+                    </div>
+             </form>

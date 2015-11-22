@@ -13,7 +13,7 @@ var UserSchema = new mongoose.Schema({
   language: String,
   linkedIn: {
     id: String,
-    token: String, // delete this later. don't want client to be able to access this. 
+    token: String, // delete this later. don't want client to be able to access this.
     email: String,
     firstName: String,
     lastName: String,
@@ -70,6 +70,8 @@ UserSchema.methods.createToken = function(){
       lastName: this.lastName,
       keyword: this.keyword, //skills
       profilePic: this.profilePic,
+      username: this.username,
+      notifications: this.notifications,
       circles: this.circles,
       friends: this.contacts
    }, "ThisIsASecretCode");

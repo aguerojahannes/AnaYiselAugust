@@ -86,7 +86,7 @@ router.post('/forgot', function(req, res, next) {
 	var smtpTransport = nodemailer.createTransport("SMTP", {
 		service: "Gmail",
 		auth: {
-			user: "anayiselaugust@gmail.com",
+			user: "getful.team@gmail.com",
 			pass: "anayiselaugust123"
 		}
 	}) ;
@@ -106,13 +106,23 @@ router.post('/forgot', function(req, res, next) {
 		host = req.get('host') ;
 		link = 'http://' + host + '/#/resetPassword/' + user._id ;
 		console.log("user._id: " + user._id);
+// // SPANISH LINK
+// 		host = req.get('host') ;
+// 		link = 'http://' + host + '/#/resetPasswordEs/' + user._id ;
+// 		console.log("user._id: " + user._id);
 
 
 		mailOptions = {
 			to: email,
-			subject: "NetFul Password Reset",
-			html : '<center><img src=""> </center> <div style="color:Gray;"><br/> Hi there, <br/><br/> You recently requested a Password Change for your NetFul account. Now, you can go at this link and Reset the Password.<br/><br/> <a href="' + link + '"> CHANGE YOUR PASSWORD HERE! </a> <br/><br/>Thanks!<br/>-The NetFul Team <br/></div>'
+			subject: "GetFul Password Reset",
+			html : '<div style="color:Gray;"><br/> Hi there, <br/><br/> You recently requested a Password Change for your GetFul account. Now, you can go at this link and Reset the Password.<br/><br/> <center><a href="' + link + '"> CHANGE YOUR PASSWORD HERE! </a></center> <br/><br/>Thanks!<br/>-The GetFul Team <br/></div>'
 		}
+// // EMAIL IN SPANISH
+// 		mailOptions = {
+// 			to: email,
+// 			subject: "GetFul - Cambiar Contraseña",
+// 			html : '<div style="color:Gray;"><br/> Hola, <br/><br/> Recientemente solicitó un cambio de Contraseña para su cuenta de GetFul. Puede modificar su contraseña a una nueva a través del siguiente enlace.<br/><br/> <center><a href="' + link + '"> CAMBIAR CONTRASEÑA AQUÍ </a></center> <br/><br/>Gracias!<br/>-El Equipo de GetFul <br/></div>'
+// 		}
 
 		smtpTransport.sendMail(mailOptions, function(error, response) {
 			if(error) {
@@ -148,6 +158,25 @@ router.put('/resetPassword/:id', function(req, res) {
 	});
 
 
+	// router.put('/:id', function(req, res) {
+	// 	User.findOne({ _id : req.body.id }, function(err, user) {
+	// 		if(err) console.log(err);
+	// 		if(err) return res.status(500).send({ err: "Issues with the server" });
+	// 		if (!user) {
+	// 			return res.send("Error: Not found.");
+	// 		}
+	// 		console.log(req.body);
+	// 		user.setPassword(req.body.password);
+	// 		User.update({ _id: req.body.id }, user)
+	// 		.exec(function(err, user) {
+	// 			if(err);
+	// 			if(!user);
+	// 			res.send(user);
+	// 		})
+	// 		});
+	// 	});
+
+
 //---------------ADD THIS TO WORK WITH RESET PASSWORD ------------------
 // var async = require('async');
 var crypto = require('crypto');
@@ -171,6 +200,39 @@ var crypto = require('crypto');
 		});
 
 
+
+
+//---------------------- SIGN UP WITH 3RD PARTY SERVICE----------------------
+
+// this is the check to see if we have proper linkedin credentials
+router.get('/auth/linkedin',
+  passport.authenticate('linkedin', {scope: ["r_basicprofile", "r_emailaddress"]})); // this is a callback
+
+
+// result
+router.get('/auth/linkedin/callback',
+	passport.authenticate('linkedin', {failureRedirect: '/'}),
+	function(req, res){
+		if(req.user){
+			console.log(req);
+			req.user.createToken(); // generating token
+			res.redirect("/#/profile/" + req.user._id);
+		} else {
+			res.send("You are not authenticated.");
+		}
+	});
+
+
+// -------------------------SIGN UP---------------------------------------
+router.post('/signUp', function(req, res, next){
+	var user = new User(req.body);
+	user.setPassword(req.body.password);
+	user.save(function(err,result){
+		if(err) return next(err);
+		if(!result) return next("There was an issue signing up that user.");
+		res.send(result.createToken());
+	});
+});
 
 var auth = jwt({
 	userProperty: "payload",
@@ -202,11 +264,44 @@ router.post('/uploadPhoto', function(req, res){
 
 // ------------- Friend Requests ----------------------------
 
-router.post('/friendRequest', function(req, res, next){
-	console.log(req.body);
-	res.send();
+// Get Friends
+router.post('/getFriends', function(req, res, next){
+	User.find({friends: req.body.user}, function (err, result) {
+		if (err) return next(err);
+		res.send(result);
+	});
 });
 
+// Send Friend Request
+router.post('/friendRequest', function(req, res, next){
+	User.findOne({email: req.body.sendingTo}, function (err, user) {
+		user.notifications.push(req.body.sendingFrom);
+		user.save();
+		if (err) return next(err);
+		res.send(user);
+	});
+});
+
+// Confirm Friend Request
+router.post('/acceptRequest', function(req, res, next){
+	User.findOne({email: req.body.sendingTo}, function (err, user) {
+		user.friends.push(req.body.sendingFrom);
+		user.save();
+		if (err) return next(err);
+		res.send();
+	});
+});
+
+// Decline Friend Request
+router.post('/declineRequest', function(req, res, next){
+	User.findOne({email: req.body.user}, function (err, user) {
+		console.log(user);
+		user.notifications.splice(user.notifications.indexOf(req.body.declined), 1);
+		user.save();
+		if (err) return next(err);
+		res.send();
+	});
+});
 
 // router.post('/upload', fileParser, function(req, res){
 //   /* The `req.files` property will be populated because we

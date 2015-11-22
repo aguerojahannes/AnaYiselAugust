@@ -1,0 +1,70 @@
+<div ng-controller="RequestsController as vm" id="requests" class="container">
+<h1>View Requests</h1>
+<button type="button" ui-sref="AddRequest" class="btn btn-success">Add Request</button>
+<hr>
+<br>
+<input type="text" ng-model="searchRequests" class="searchBar" placeholder="Search Requests"/>
+<br>
+<div ng-show="vm.modalOn">
+  <div id="Modal" ng-click="vm.modalOn = false">
+  </div>
+  <div id="ModalBox">
+      <h1>{{ vm.viewRequest.title}}</h1>
+      <h4 style="color: white;">{{ glob.status.username }}</h4>
+      <img src="http://www.cedar-health.com/assets/images/ethos-icons/ethos-attention-eye-icon.png" alt="Visibility Icon" style="max-width: 1.5em;" />
+      <p class="small inline"><em>{{ vm.viewRequest.privacy }}</em></p>
+      <hr>
+      <p>{{ vm.viewRequest.body}}</p>
+      <p ng-if="vm.viewRequest.skills === true">{{ vm.viewRequest.skills}}</p>
+      <br>
+      <img src="http://justinsarnik.com/img/global/close.png" class="close" ng-click="vm.modalOn = false" alt="Close Icon" />
+      <div id="modalButtons">
+        <button type="button" class="btn btn-success" ng-click="">Refer Someone</button>
+        <button type="button" class="btn btn-danger" ng-click="vm.modalOn = false">Cancel</button>
+      </div>
+  </div>
+</div>
+
+<div ng-repeat="request in vm.requests | filter:searchRequests" style="position: relative;">
+  <div class="request" ng-click="vm.modalOn = true; vm.viewRequest = request;">
+    <h3>{{ request.title }}</h3>
+    <p>{{ glob.status.username }}</p>
+  </div>
+  <div class="visibility">
+    <img src="http://www.cedar-health.com/assets/images/ethos-icons/ethos-attention-eye-icon.png" alt="Visibility Icon" />
+    <p class="small inline"><em>{{ request.privacy }}</em></p>
+  </div>
+  <div>
+    <img src="http://s9.postimg.org/42jxt0jb3/edit.png" class="edit" ng-click="vm.editRequest(request);" alt="Edit Icon" />
+    <img src="http://s9.postimg.org/4e1e5rzr3/delete.png" class="delete" ng-click="vm.deleteRequest(request._id);" alt="Delete Icon" />
+  </div>
+</div>
+
+<ion-view view-title="Requests">
+  <ion-content class="padding">
+    <div class="list card">
+      <div class="item item-divider">Babysitter</div>
+      <div class="item item-body">
+        <div>
+          Hey, yall. Looking for a babysitter to watch my 3 year old on Friday nights. I need a break, ya feel me? Do you have any recommendations, fam?
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Business Coach</div>
+      <div class="item item-body">
+        <div>
+          You ate an apple today!
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-divider">Breakdancer</div>
+      <div class="item item-body">
+        <div>
+          You have <b>29</b> meetings on your calendar tomorrow.
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

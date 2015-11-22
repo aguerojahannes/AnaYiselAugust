@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "appname",
   "version": "0.0.0",
   "authors": [
@@ -15,6 +16,14 @@
     "angular-ui-router": "~0.2.15",
     "angular-material": "~0.11.4",
     "chart.js": "~0.1.0",
+=======
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.1.1"
+  },
+  "dependencies": {
+>>>>>>> 2da9e1dca3755fbea22545d54778633c8ae5143e
     "ng-file-upload": "~10.0.2"
   }
 }

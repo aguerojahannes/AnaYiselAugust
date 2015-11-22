@@ -2,115 +2,67 @@
 	'use strict';
 	angular.module('app')
 	.controller('CirclesController', CirclesController);
-
-	function CirclesController(HomeFactory, CirclesFactory, $state, $stateParams) {
+	function CirclesController(HomeFactory, $scope, $state) {
 		var vm = this;
-		vm.circle = {};
-		vm.canvas = document.getElementById('Canvas');
-		vm.context = vm.canvas.getContext('2d');
+<<<<<<< HEAD
+// PIE CHART - Code looked on: http://jsfiddle.net/i_heart_php/zh1g5305/
+		// Initial chart data
+		    $scope.chartTitle = "Give a Name to your Circle";
+		    $scope.chartWidth = 600;
+		    $scope.chartHeight = 600;
+		    $scope.chartData = [
+		        ['Name 1', 1],
+		        ['Name 2', 1],
+		        ['Name 3', 1],
+		        ['Name 4', 1],
+		        ['Name 5', 1]
+		    ];
+=======
+		vm.contacts = HomeFactory.contacts;
 
-		// Circle Data
-		var data = [60, 60, 60, 60, 60, 60];
-		var labels = ["60", "60", "60", "60", "60", "60"];
-		var colors = ["rgba(0,0,0,.1)", "rgba(0,0,0,.2)", "rgba(0,0,0,.1)", "rgba(0,0,0,.2)", "rgba(0,0,0,.1)", "rgba(0,0,0,.2)"];
-		vm.canvasEmpty = true;
-
-		// On Load Get Contacts
-		HomeFactory.getContacts().then(function(res) {
-				vm.contacts = HomeFactory.contacts;
+		// Get Contacts
+		HomeFactory.getContacts().then(function() {
+			vm.contacts = HomeFactory.contacts;
+			console.log(vm.contacts);
 		});
 
+		console.log(vm.contacts);
+		// Initial chart data
+		    $scope.chartTitle = "";
+		    $scope.chartWidth = 1000;
+		    $scope.chartHeight = 500;
+		    $scope.chartData = [
+					['New Contact']
+				];
+>>>>>>> 9dfae5cc646c6a098d0574746b43d99861e9b9b5
 
-		// On Load Scroll Window To Top
-		window.scrollTo(0, 0);
+		    $scope.deleteRow = function (index) {
+		        $scope.chartData.splice(index, 1);
+		    };
+		    $scope.addRow = function () {
+		        $scope.chartData.push([]);
+		    };
+		    $scope.selectRow = function (index) {
+		        $scope.selected = index;
+		    };
+		    $scope.rowClass = function (index) {
+		        return ($scope.selected === index) ? "selected" : "";
+		    };
 
+//Submit-Create Circle
+				vm.submitCircle = function(){
+					console.log($scope.chartData, $scope.chartTitle);
+					HomeFactory.submitCircle($scope.chartData, $scope.chartTitle).then(function(res){
+						console.log(res.data);
+						$state.go('CreateCircle');
+					});
+				};
 
-		// Make Circle
-		vm.createCircle = function (canvas, context, i) {
+//DISPLAY CIRCLES
+				HomeFactory.getAllCircles().then(function(res){
+					vm.pieChart = res;
+				});
 
-			context.save();
-	    var centerX = canvas.width / 2;
-	    var centerY = canvas.height / 2;
-	    vm.radius = canvas.height / 2 - 2;
-
-	    var startingAngle = degreesToRadians(sumTo(data, i));
-	    var arcSize = degreesToRadians(data[i]);
-	    var endingAngle = startingAngle + arcSize;
-
-	    context.beginPath();
-	    context.moveTo(centerX, centerY);
-	    context.arc(centerX, centerY, vm.radius,
-	                startingAngle, endingAngle, false);
-	    context.closePath();
-
-	    context.fillStyle = colors[i];
-	    context.fill();
-			context.lineWidth = 4;
-			context.strokeStyle = '#fff';
-			context.stroke();
-
-	    context.restore();
-
-	    // drawSegmentLabel(canvas, context, i);
-
-			vm.canvasEmpty = false;
-		}
-
-		vm.deleteCircle = function() {
-
-			// Clear Canvas
-			vm.context.clearRect(0, 0, vm.canvas.width, vm.canvas.height);
-
-			// Set Empty Variable To True
-			vm.canvasEmpty = true;
-		};
-
-
-
-		/* Helper Functions */
-
-		function degreesToRadians(degrees) {
-    	return (degrees * Math.PI)/180;
-		}
-
-		function sumTo(a, i) {
-		  var sum = 0;
-		  for (var j = 0; j < i; j++) {
-		    sum += a[j];
-		  }
-		  return sum;
-		}
-
-		function drawSegmentLabel(canvas, context, i) {
-		   context.save();
-		   var x = Math.floor(canvas.width / 2);
-		   var y = Math.floor(canvas.height / 2);
-		   var angle = degreesToRadians(sumTo(data, i));
-
-		   context.translate(x, y);
-		   context.rotate(angle);
-		   var dx = Math.floor(canvas.width * 0.5) - 10;
-		   var dy = Math.floor(canvas.height * 0.05);
-
-		   context.textAlign = "center";
-		   var fontSize = Math.floor(canvas.height / 25);
-		   context.font = fontSize + "pt Helvetica";
-
-		   context.fillText(labels[i], dx, dy);
-
-		   context.restore();
-		}
-
-
-		vm.makeCircle = function () {
-
-			vm.deleteCircle();
-
-			// Make Circle
-			for (var i = 0; i < data.length; i++) {
-				vm.createCircle(vm.canvas, vm.context, i);
-			}
-		}
 
 
 

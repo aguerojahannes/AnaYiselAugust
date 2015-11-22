@@ -1,28 +1,16 @@
 (function() {
 	'use strict';
 	angular.module('app')
-	.controller('ContactsController', ContactsController)
-	// Custom Directive For Handling Enter Key For Skills -- Usage: ng-enter="doSomething()"
-	.directive('ngEnter', function() {
-        return function(scope, element, attrs) {
-            element.bind("keydown keypress", function(event) {
-                if(event.which === 13) {
-                    scope.$apply(function(){
-                        scope.$eval(attrs.ngEnter, {'event': event});
-                    });
+	.controller('ContactsController', ContactsController);
 
-                    event.preventDefault();
-                }
-            });
-        };
-    });
-
-	function ContactsController(HomeFactory, $state, $stateParams, $scope) {
+	function ContactsController(HomeFactory, $state, $stateParams, $scope, GlobalFactory) {
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
 		vm.tempContact = HomeFactory.tempContact;
 		vm.viewContact = {};
 		vm.modalOn = false;
+		vm.emailReq = '';
+		vm.errorText = '';
 
 
 		// Makes the input box lowercase
@@ -56,7 +44,7 @@
 		// Add Contact
 		vm.addContact = function() {
 			vm.newContact.createdOn = new Date();
-			vm.newContact.username = new Date();
+			vm.newContact.creator = GlobalFactory.status.username;
 
 			// If No ProfilePic, Assign Default Picture
 			if(!vm.newContact.profilePic) {
@@ -101,10 +89,14 @@
  /* -------------------- Send Friend Request ----------------------------------------------*/
 
  	vm.sendRequest = function(email) {
-			HomeFactory.sendRequest(email).then(function(res) {
+		  if(email === undefined || email === '') {
+				vm.errorText = "Please enter a valid email address";
+				return null;
+			}
+			HomeFactory.sendRequest(email).then(function(res) {1
 				alert("Request Sent!");
+				vm.emailReq = '';
 			});
-			console.log(vm.contacts);
 	}
 
  /* -------------------- LinkedIn ----------------------------------------------*/

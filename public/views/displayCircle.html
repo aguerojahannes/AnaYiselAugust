@@ -1,48 +1,56 @@
-<div ng-controller="CirclesController as vm" id="circles" class="container" ng-init="creatingCircle = false; menuOpen = false">
-	<h1>Create a Circle</h1>
+<div ng-controller="CirclesController as vm" id="circles" class="container" >
+	<h1>View Circles</h1>
+	<!-- <button ui-sref="CreateCircle" class="btn btn-info">Create Circle </button> -->
+	<br/>
+	<div layout="row">
+		<div class="right">
+		<button ng-click="addRow();">Add new row</button>
+	 </div>
+	<div class="left">
+		<form ng-submit="vm.submitCircle();">
+			<lablel> Add a Title </label>
+			<input ng-model="chartTitle" class="title">
+			<!-- <br/>Width: -->
+			<!-- <input ng-model="chartWidth"> -->
+			<!-- <br/>Height: -->
+			<!-- <input ng-model="chartHeight"> -->
+
+	<br/>
+	<br/>
+
+<<<<<<< HEAD
+	<br/>
+			<table class="center">
+					<tr ng-repeat="row in chartData" ng-class="rowClass($index)">
+							<td>
+									<label> Add Contacts to your Circle!</label>
+									<input ng-model="row[0]">
+									<input ng-model="row[1]" ng-hide = true; >
+									<button type="button" ng-click="deleteRow($index)">&times;X</button>
 
 
-	<!-- Buttons -->
-	<div class="circleOptions" ng-show="creatingCircle === false">
-		<button ng-click="creatingCircle = true;" class="btn btn-info">New Circle </button>
-		<button ng-click="vm.deleteCircle(); creatingCircle = false;" class="btn btn-danger">Delete Circle </button>
+
+							</td>
+					</tr>
+			</table>
+			<button type="submit">Save your Circle!</button>
+		</form>
 	</div>
 
-	<div class="circleOptions" ng-show="creatingCircle === true">
-		<input type="text" ng-model="vm.newCircle.name" placeholder="Circle Name">
-		<input type="text" min="1" max="20" value="1" placeholder="Number Of Members" ng-model="vm.newCircle.slices">
-		<button ng-click="vm.makeCircle(); creatingCircle = false;" class="btn btn-success">MakeChart </button>
-		<button ng-click="vm.newCircle= {}; creatingCircle = false;" class="btn btn-danger">Cancel </button>
-	</div>
-  <hr>
 
-  <br>
 
-	<!-- Canvas -->
-  <canvas id="Canvas" ondrop="drop(event)" ondragover="allowDrop(event)" class='img-responsive' width="700" height="600" style="margin: 1em auto;"></canvas>
+<!-- PIE CHART FUNCTIONALITY -->
+<div class="right">
+	<pie-chart class="PIE" data="chartData" title="{{chartTitle}}" width="{{chartWidth}}" height="{{chartHeight}}" select="selectRow(selectedRowIndex)"></pie-chart>
+</div>
+<!-- select="selectRow(selectedRowIndex)" -->
+</div>
+<!-- PIE CHART FUNCTIONALITY -->
+=======
+	<hr>
 
-	<!-- Sidebar -->
-	<div id="addToCircleBar">
-		<div id="circleBarContent" ng-class="{menuOpen: menuOpen}" onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
-			<input type="text" placeholder="Search" class="small" ng-model="searchCircles" style="margin: 3vh auto; padding: 2em; font-size: 1.1em;">
-			<hr style="width: 80%;">
-			<div class="row text-left circlesContact" draggable="true" ondragstart="drag(event)" ng-repeat="contact in vm.contacts | filter:searchCircles" ng-mouseenter="hover = false" ng-mouseleave="hover = true" style="padding-left: 2vw;">
-				<div class="circle greyscale inline" ng-class="{greyscale: hover}"  ng-style="{'background-image': 'url(' + contact.profilePic + ')'}" style="background-size: contain; background-repeat: no-repeat;"></div>
-				<p class="inline" style="vertical-align: 5vh; margin-left: 1vw; font-size: 1.2em;">{{ contact.firstName }}  {{ contact.lastName }}</p>
-			</div>
-			<br>
-			<button type="button" class="btn btn-danger" ng-click="menuOpen = false">Close</button>
-		</div>
-		<div id="circleBarMenuText" ng-show="menuOpen === false" ng-click="menuOpen = true;  ">
-			<h3>C</h3>
-			<h3>O</h3>
-			<h3>N</h3>
-			<h3>T</h3>
-			<h3>A</h3>
-			<h3>C</h3>
-			<h3>T</h3>
-			<h3>S</h3>
-		</div>
-	</div>
+	<div class="circle" style="height: 15em; width: 15em; margin: 1em; display: inline-block;">saf</div>
+>>>>>>> 9dfae5cc646c6a098d0574746b43d99861e9b9b5
+
 
 </div>

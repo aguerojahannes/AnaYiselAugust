@@ -1,0 +1,20 @@
+<div class="center"> <!-- inside the global controller on Index -->
+	<div class="top">
+		<img src="/assets/circle-yelloworange.png"><br/>
+		<h1>GETFUL</h1>
+	</div>
+	<div class="bottom">
+		<button ui-sref="HomeEs" class="button">Español</button>
+		<button ui-sref="Home" class="button">English</button><br/><br/>
+		<a ng-click="glob.logout();">Logout</a> <!-- get rid of this -->
+		<br/>
+		<button class="button" ui-sref="profile({id: glob.status._id})">Profile</button> <!-- get rid of this -->
+		<button class="button" ui-sref="profileEs({id: glob.status._id})">Perfil</button> <!-- get rid of this -->
+		<a href="NewProfile">NEW PROFILE</a> <!-- get rid of this -->
+		<a href="NewProfileEs">PERFIL NUEVO</a> <!-- get rid of this -->
+		<a href="Account">Account Settings</a> <!-- get rid of this -->
+		<a href="AccountEs">Cuenta</a> <!-- get rid of this -->
+
+
+ 	</div>
+</div>

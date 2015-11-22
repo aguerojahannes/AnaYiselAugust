@@ -5,8 +5,8 @@ var Contact = mongoose.model('Contact');
 var passport = require('passport');
 
 // Get All Contacts
-router.get('/', function(req, res, next) {
-  Contact.find({}).sort({ "firstName": 'ascending'}).exec(function(err, result) {
+router.post('/get', function(req, res, next) {
+  Contact.find({creator: req.body.user}).sort({ "firstName": 'ascending'}).exec(function(err, result) {
     if(err) return next(err);
     res.send(result);
   });

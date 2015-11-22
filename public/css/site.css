@@ -19,8 +19,6 @@ body {
   background: url("/assets/bg-flipped.jpg");
   background-size: cover;
   background-attachment: fixed;
-  overflow-y: auto;
-  overflow-x: hidden;
   color: #fff;
   font-family: 'Poppins', sans-serif;
   cursor: default;
@@ -44,7 +42,6 @@ label {
 a:focus, a:active {
   text-decoration: none;
 }
-
 
 /* Headings */
 
@@ -146,25 +143,21 @@ select option {
    color: #FFFF9D;
    font-style: italic;
    font-weight: 100;
-   font-size: 1vw;
 }
 :-moz-placeholder { /* Firefox 18- */
    color: #FFFF9D;
    font-style: italic;
    font-weight: 100;
-   font-size: .7vw;
 }
 ::-moz-placeholder {  /* Firefox 19+ */
    color: #FFFF9D;
    font-style: italic;
    font-weight: 100;
-   font-size: .7vw;
 }
 :-ms-input-placeholder {
    color: #FFFF9D;
    font-style: italic;
    font-weight: 100;
-   font-size: 1.1vw;
 }
 ::-webkit-scrollbar {
     width: 1.8em;
@@ -229,10 +222,12 @@ select option {
 nav {
   position: fixed;
   width: 100%;
+  height: 12.5vh;
   bottom: 0;
   margin: 0;
   text-align: center;
   border-top: solid 2px #fff;
+  font-size: 2vw;
 }
 .navlink {
   background: #79BD8F;
@@ -249,6 +244,7 @@ nav {
 }
 .navlink img {
   position: relative;
+  margin: 0 auto;
   max-height: 80%;
   max-width: 80%;
 }
@@ -395,7 +391,7 @@ nav {
 }
 .socialIcons {
   position: absolute;
-  top: 3.5em;
+  top: .5em;
   right: 1em;
 }
 .socialIcons img {
@@ -429,9 +425,9 @@ nav {
 }
 #addToCircleBar {
   position: fixed;
-  height: 89vh;
+  height: 65vh;
   width: auto;
-  top: 11vh;
+  bottom: 12.5vh;
   left: 0;
 }
 #circleBarContent {
@@ -439,9 +435,9 @@ nav {
     box-shadow: 0px 0px 30px rgba(0,0,0,.3);
     background: url("/assets/bg-flipped.jpg");
     background-size: cover;
-    left: -30vw;
-    width: 30vw;
-    height: 89vh;
+    left: -100vw;
+    width: 100vw;
+    height: 65vh;
     transition: .2s;
     overflow-x: hidden;
     overflow-y: auto;
@@ -450,10 +446,26 @@ nav {
     transition: .5s;
     left: 0;
 }
+#circleBarContent .content {
+    position: relative;
+    height: 100vw;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    bottom: 9;
+}
+#circleBarContent input {
+  width: 85%;
+}
+#circleBarContent button {
+    position: absolute;
+    left: 45vw;
+    bottom: 3vw;
+}
 #circleBarMenuText {
     width: 5vw;
     position: absolute;
-    top: 25vh;
+    bottom: 25vh;
 }
 .circlesContact:hover {
   cursor: move; /* fallback if grab cursor is unsupported */
@@ -463,7 +475,12 @@ nav {
   color: #ffff9d;
   background: rgba(0,0,0,.1);
 }
-
+#createContainer {
+  height: 65vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
 
 
@@ -501,8 +518,8 @@ nav {
 }
 .visibility {
   position: absolute;
-  top: 3em;
-  right: 1em;
+  top: 1em;
+  right: 1.5em;
 }
 
 
@@ -592,13 +609,8 @@ nav {
 .notify img:hover {
   cursor: pointer;
 }
-.acceptIcon {
-  position: absolute;
-  right: 1vw;
-}
-.declineIcon {
-  position: absolute;
-  right: 3vw;
+.notify em:hover {
+  color: #ffff9d;
 }
 
 /* Account */
@@ -634,15 +646,15 @@ nav {
 }
 img.delete {
   position: absolute;
-  top: 1em;
+  bottom: 1.5em;
   right: 1.5em;
   max-height: 1.5em;
   max-width: 1.5em;
 }
 img.edit {
   position: absolute;
-  top: 1em;
-  right: 4em;
+  bottom: 1.5em;
+  right: 4.5em;
   max-height: 1.5em;
   max-width: 1.5em;
 }
@@ -701,9 +713,14 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
   background: rgba(0,0,0,.1);
   background-position: top center;
 }
+.selected {
+  border: solid 2px #fff;
+}
 
 /* Ids */
-
+#pieChart {
+  margin: 0 auto;
+}
 
 /* Responsive Fixes */
 @media (min-width: 950px) {
@@ -731,3 +748,41 @@ filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><
     height: 65vh;
   }
 }
+<<<<<<< HEAD
+
+
+/* PIE CHART CSS */
+body {
+    font-size: 0.9em;
+}
+pie-chart {
+  font-size: 0;
+  stroke: "none"
+}
+.bottom {
+    clear: both;
+    font-size: 0.9em ;
+    color: grey;
+    padding: 2em 1em 0 1em;
+}
+h2 {
+    font-size: 1.3em;
+    margin: 0.8em 0.5em 0.1em 0.5em;
+}
+input {
+    font-size: 0.8em;
+    width: 6em;
+}
+input.title {
+    width: 12em;
+}
+tr.selected td {
+    background-color: red;
+}
+.left {
+    float: left;
+    margin-right: 4em;
+}
+/* END OF THE PIE CHART */
+=======
+>>>>>>> 9dfae5cc646c6a098d0574746b43d99861e9b9b5

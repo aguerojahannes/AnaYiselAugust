@@ -4,9 +4,8 @@
   <hr>
 	<br>
 	<div class="shade notify" ng-repeat="request in vm.contactRequests">
-		<p class="inline">You have a new contact request from: <span class="highlight">{{ request.name }}</span></p>
-		<img src='http://justinsarnik.com/img/global/close.png' alt="Decline Friend Icon" class="declineIcon" />
-		<img src='http://production-assets2.autolist.com/assets/icon-check-f6dba31b0b161e9879e322b96b7cb11c.png' alt="Accept Friend Icon" class="acceptIcon" />
+		<p class="inline">You have a new contact request from: <span class="highlight">{{ request }}</span></p>
+		<p class="inline" style="position: absolute; right: 1vw;"><em ng-click="vm.acceptRequest(request)">Accept</em> / <em ng-click="vm.declineRequest(request)">Decline</em></p>
 	</div>
 
 </div>
