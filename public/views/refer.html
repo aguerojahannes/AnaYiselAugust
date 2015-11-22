@@ -1,4 +1,4 @@
-<div ng-controller="RequestsController as vm" class="container text-center">
+<div ng-controller="RequestsController as vm" class="container text-center" id="refer">
 
   <h1>Refer</h1>
 
@@ -7,9 +7,9 @@
       <div class="circle" style="height: 17.5vh; width: 17.5vh"></div>
     </div>
     <div class="col-xs-6 text-left">
-      <input type="text" placeholder="Name" ng-model="" style="margin: 1em 0">
-      <input type="text" placeholder="Job Title" ng-model="" style="margin: 1em 0">
-      <input type="email" placeholder="Email" ng-model="" style="margin: 1em 0">
+      <input type="text" placeholder="Name" ng-model="vm.referral.name" style="margin: 1em 0">
+      <input type="text" placeholder="Job Title" ng-model="vm.referral.title" style="margin: 1em 0">
+      <input type="email" placeholder="Email" ng-model="vm.referral.email" style="margin: 1em 0">
     </div>
   </div>
 
@@ -21,13 +21,8 @@
 
   <!-- NOT WORKING GIVING ME THA TRUBZ -->
   <div class="">
-    <div class="circle" ng-click="openCircle = true" ng-repeat="i in [1,2,3,4,5,6]" style="height: 7.5vh; width: 7.5vh"></div>
-    <div class="" ng-show="openCircle === true">
-      <br>
-      <div class="circle" style="height: 5vh; width: 5vh"></div>
-      <div class="circle" style="height: 5vh; width: 5vh"></div>
-      <div class="circle" style="height: 5vh; width: 5vh"></div>
-    </div>
+    <div class="circle" ng-click="openCircle = true" ng-repeat="circle in vm.circles" style="height: 7.5vh; width: 7.5vh"> {{ circle.chartTitle}}</div>
+
   </div>
 
 
@@ -45,7 +40,7 @@
 
   <br>
 
-  <button type="button" ui-sref="requests" class="btn btn-success">Send Referral</button>
+  <button type="button" ui-sref="Requests" class="btn btn-success">Send Referral</button>
   <button type="button" ui-sref="Requests" class="btn btn-danger">Cancel</button>
 
 </div>

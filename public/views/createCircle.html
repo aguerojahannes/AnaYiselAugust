@@ -1,15 +1,16 @@
 <div ng-controller="CirclesController as vm" id="circles" class="container" ng-init="creatingCircle = false; menuOpen = false; vm.creating = true;">
-	<h1>Your Circles</h1>
+
+	<!-- <h1>Your Circles</h1> -->
 
 
 
 	<!-- Buttons -->
 
-	<div class="circleOptions" ng-show="creatingCircle === false">
+	<!-- <div class="circleOptions" ng-show="creatingCircle === false">
 		<button ng-click="creatingCircle = true;" class="btn btn-info">Edit Circle </button>
 		<button ng-click="circle = 0; creatingCircle = false;" class="btn btn-danger">Delete Circle </button>
-	</div>
-	<hr>
+	</div> -->
+	
 	<div class="right" ng-repeat="c in vm.pieChar">
 		<pie-chart class="PIE" data="{{c.chartData}}" title="{{c.chartTitle}}" width="{{chartWidth}}" height="{{chartHeight}}" select="selectRow(selectedRowIndex)"></pie-chart>
 	</div>
@@ -34,17 +35,30 @@
     </div>
   </div> -->
 
+	<h1>Create Circle</h1>
+
+
+  <form ng-submit="creatingCircle = false; vm.saveCircle(chartData)">
 
 	<div class="circleOptions">
 		<div class="text-left">
-			<button ng-click="creatingCircle = false; vm.saveCircle(chartData);" class="btn btn-info">Save Circle </button>
-			<button ui-sref="DisplayCircle" class="btn btn-danger">Cancel</button>
+				<button type="submit" class="btn btn-info" ng-disabled="!chartTitle || chartData.length === 0">Save Circle </button>
+				<button ui-sref="DisplayCircle" class="btn btn-danger">Cancel</button>
 		</div>
 	</div>
 	<hr>
 
 	<!-- Circle & Options -->
 		<input ng-model="chartTitle" placeholder="Circle Name" class="title">
+		<br>
+		<div draggable="true" ng-repeat="row in chartData" ng-class="rowClass($index)" style="display: inline-block; margin: 1vh;">
+				<div>
+					<div class="circle" ng-click="deleteRow($index)" style="width: 2vw; height: 2vw; border: solid 2px white;">
+						<p style="font-size: 1.5vw; color: #fff;">&times;</p>
+					</div>
+						<h5>{{ row.firstName }} {{ row.lastName }}</h5>
+				</div>
+		</div>
 		<div class="col-xs-12" style="border: solid 2px #fff; margin-top: 2vh; padding: 2vh">
 			<div class="text-center">
 				<h3>{{ chartTitle }}</h3>
@@ -55,18 +69,10 @@
 			</div>
 			<pie-chart data="chartData" title="{{chartTitle}}" ng-show="chartData.length > 0" width="{{chartWidth}}" height="{{chartHeight}}" select="selectRow(selectedRowIndex)" id="pieChart"></pie-chart>
 			<br>
-			<div draggable="true" ng-repeat="row in chartData" ng-class="rowClass($index)" style="display: inline-block; margin: 1vh;">
-					<div style="padding: 1vw;">
-						<div class="circle" ng-click="deleteRow($index)" style="width: 6vw; height: 6vw; border: solid 2px white;">
-							<p style="font-size: 5vw; color: #fff;">&times;</p>
-						</div>
-							<h5>{{ row.firstName }} {{ row.lastName }}</h5>
-
-					</div>
-			</div>
 			<br>
 		</div>
 
+</form>
 
 
 	<!-- Sidebar -->

@@ -8,6 +8,7 @@
 		o.contacts = [];
 		o.tempContact = {};
 		o.tempRequest = {};
+		o.tempCircle = {};
 
 
 		/* Send Friend Request */
@@ -90,17 +91,20 @@
 			}
 			$http.post('/circles/get', parcel).then(function(res) {
 				o.circles = res.data;
-				console.log(res.data);
 				q.resolve(res.data);
 			});
 			return q.promise;
 		}
 
 		/* Save Circle */
-		o.saveCircle = function(circle) {
-			circle.creator = GlobalFactory.status.username;
+		o.saveCircle = function(circle, title) {
+			var parcel= {
+				chartTitle: title,
+				members: circle,
+				creator: GlobalFactory.status.username
+			}
 			var q = $q.defer();
-			$http.post('/circles', circle).then(function(res) {
+			$http.post('/circles', parcel).then(function(res) {
 				q.resolve(res.data);
 			});
 			return q.promise;
@@ -110,6 +114,21 @@
 		o.deleteCircle = function(id) {
 			var q = $q.defer();
 			$http.delete('/circles/' + id).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
+
+		/* Update Circle */
+		o.updateCircle = function(circle, title) {
+			var parcel= {
+				_id: o.tempCircle._id,
+				chartTitle: title,
+				members: circle,
+				creator: GlobalFactory.status.username
+			}
+			var q = $q.defer();
+			$http.put('/circles', parcel).then(function(res) {
 				q.resolve(res.data);
 			});
 			return q.promise;

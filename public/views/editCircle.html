@@ -1,1 +1,67 @@
-<h1>EDIT CIRCLE</h1>
+<div ng-controller="CirclesController as vm" id="circles" class="container" ng-init="creatingCircle = false; menuOpen = false; vm.creating = true; vm.initCircle();">
+	<h1>Edit Circle</h1>
+
+  <form ng-submit="creatingCircle = false; vm.updateCircle(chartData)">
+	<div class="circleOptions">
+		<div class="text-left">
+				<button type="submit" class="btn btn-info" ng-disabled="!chartTitle || chartData.length === 0">Save Circle </button>
+				<button ui-sref="DisplayCircle" class="btn btn-danger">Cancel</button>
+		</div>
+	</div>
+	<hr>
+
+	<!-- Circle & Options -->
+		<input ng-model="chartTitle" placeholder="Circle Name" class="title">
+		<br>
+		<p ng-if="vm.errorText != ''">{{ vm.errorText }}</p>
+		<div draggable="true" ng-repeat="row in chartData" ng-class="rowClass($index)" style="display: inline-block; margin: 1vh;">
+				<div>
+					<div class="circle" ng-click="deleteRow($index)" style="width: 2vw; height: 2vw; border: solid 2px white;">
+						<p style="font-size: 1.5vw; color: #fff;">&times;</p>
+					</div>
+						<h5>{{ row.firstName }} {{ row.lastName }}</h5>
+				</div>
+		</div>
+		<div class="col-xs-12" style="border: solid 2px #fff; margin-top: 2vh; padding: 2vh">
+			<div class="text-center">
+				<h3>{{ chartTitle }}</h3>
+			</div>
+			<div class="text-center" ng-show="chartData.length === 0">
+				<br>
+				<h5>Please Add Contacts To Create A Circle</h5>
+			</div>
+			<pie-chart data="chartData" title="{{chartTitle}}" ng-show="chartData.length > 0" width="{{chartWidth}}" height="{{chartHeight}}" select="selectRow(selectedRowIndex)" id="pieChart"></pie-chart>
+			<br>
+			<br>
+		</div>
+
+</form>
+
+
+	<!-- Sidebar -->
+	<div id="addToCircleBar">
+		<div id="circleBarContent" ng-class="{menuOpen: menuOpen}" onmouseover="document.body.style.overflow='hidden';" onmouseout="document.body.style.overflow='auto';">
+			<div class="content">
+				<input type="text" placeholder="Search" class="small" ng-model="searchCircles" style="margin: 3vh auto; padding: 2em; font-size: 1.1em;">
+				<hr style="width: 80%;">
+				<div class="row text-left circlesContact" ng-repeat="contact in vm.contacts | filter:searchCircles" ng-click="$parent.menuOpen = false; addRow(contact);" style="padding-left: 2vw;">
+					<div class="circle greyscale inline" ng-class="{greyscale: hover}"  ng-style="{'background-image': 'url(' + contact.profilePic + ')'}" style="background-size: contain; background-repeat: no-repeat; height: 5vw; width: 5vw; margin-left: 2vw;"></div>
+					<p class="inline" style="vertical-align: 5vh; margin-left: 1vw; font-size: 1.2em;">{{ contact.firstName }}  {{ contact.lastName }}</p>
+				</div>
+			</div>
+			<br>
+			<button type="button" class="btn btn-danger" ng-click="menuOpen = false">Close</button>
+		</div>
+		<div id="circleBarMenuText" ng-show="menuOpen === false" ng-click="menuOpen = true">
+			<h3>C</h3>
+			<h3>O</h3>
+			<h3>N</h3>
+			<h3>T</h3>
+			<h3>A</h3>
+			<h3>C</h3>
+			<h3>T</h3>
+			<h3>S</h3>
+		</div>
+	</div>
+
+</div>

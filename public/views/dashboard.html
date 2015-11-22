@@ -11,7 +11,7 @@
       </div>
       <div class="col-xs-6 text-left" style="padding: 0;">
         <br>
-        <p ng-repeat="(key,value) in glob.status"><strong>{{ key }}</strong>: {{ value }}</p>
+        <p ng-repeat="(key,value) in glob.status" ng-show="value && value.length > 0"><strong>{{ key }}</strong>: {{ value }}</p>
       </div>
       <br>
       <div class="clearfix"></div>

@@ -79,7 +79,7 @@ angular.module('app')
                             'pieHole': 0,
                             'colors': ['#F2B132', '#F69634', '#FB7C36', '#FF6138'],
                             'legend': {
-                              'alignment': 'end',
+                              'alignment': 'start',
                               'position': 'right',
                               'textStyle': { color: 'white', bold: false, italic: true }
                             },

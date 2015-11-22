@@ -1,64 +1,16 @@
 <div ng-controller="CirclesController as vm" id="circles" class="container" >
 	<h1>View Circles</h1>
 
-	<!-- <button ui-sref="CreateCircle" class="btn btn-info">Create Circle </button> -->
-	<br/>
-	<div layout="row">
-		<div class="right">
-		<button ng-click="addRow();">Add new row</button>
-	 </div>
-	<div class="left">
-		<form ng-submit="vm.submitCircle();">
-			<lablel> Add a Title </label>
-			<input ng-model="chartTitle" class="title">
-			<!-- <br/>Width: -->
-			<!-- <input ng-model="chartWidth"> -->
-			<!-- <br/>Height: -->
-			<!-- <input ng-model="chartHeight"> -->
-	<br/>
-	<br/>
-
-
-	<br/>
-			<table class="center">
-					<tr ng-repeat="row in chartData" ng-class="rowClass($index)">
-							<td>
-									<label> Add Contacts to your Circle!</label>
-									<input ng-model="row[0]">
-									<input ng-model="row[1]" ng-hide = true; >
-									<button type="button" ng-click="deleteRow($index)">&times;X</button>
-							</td>
-					</tr>
-			</table>
-			<button type="submit">Save your Circle!</button>
-		</form>
-	</div>
-
-
-
-<!-- PIE CHART FUNCTIONALITY -->
-<div class="right">
-	<pie-chart class="PIE" data="chartData" title="{{chartTitle}}" width="{{chartWidth}}" height="{{chartHeight}}" select="selectRow(selectedRowIndex)"></pie-chart>
-</div>
-<!-- select="selectRow(selectedRowIndex)" -->
-</div>
-<!-- PIE CHART FUNCTIONALITY -->
-
-	<hr>
-
-	<!-- <div class="circle" style="height: 15em; width: 15em; margin: 1em; display: inline-block;">saf</div>
- -->
-
-
 	<div class="text-left">
 		<button ui-sref="CreateCircle" class="btn btn-info">Create Circle </button>
 	</div>
 	<hr>
 
-	<p>
-		{{ vm.circles }}
-	</p>
-
-
-
+	<div class="circle shade" ng-repeat="circle in vm.circles" style="margin: 1em; height: 15em; width: 15em; padding-top: 5em;" ng-click="vm.editCircle(circle);">
+		<br>
+		<h3>
+			{{ circle.chartTitle }}
+		</h3>
+	</div>
+	
 </div>
