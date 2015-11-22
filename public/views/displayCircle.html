@@ -1,12 +1,13 @@
 <div ng-controller="CirclesController as vm" id="circles" class="container" >
 	<h1>View Circles</h1>
-	<button ui-sref="CreateCircle" class="btn btn-info">Create Circle </button>
-	<br/>
-	<br/>
-
+	<div class="text-left">
+		<button ui-sref="CreateCircle" class="btn btn-info">Create Circle </button>
+	</div>
 	<hr>
 
-	<div class="circle" style="height: 15em; width: 15em; margin: 1em; display: inline-block;">saf</div>
+	<p>
+		{{ vm.circles }}
+	</p>
 
 
 </div>

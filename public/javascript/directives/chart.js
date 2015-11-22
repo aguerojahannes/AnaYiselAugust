@@ -27,17 +27,11 @@ angular.module('app')
 
             draw();
 
-            // Watches, to refresh the chart when its data, title or dimensions change
+            // Watches, to refresh the chart when its data or title changes
             $scope.$watch('data', function () {
                 draw();
             }, true); // true is for deep object equality checking
             $scope.$watch('title', function () {
-                draw();
-            });
-            $scope.$watch('width', function () {
-                draw();
-            });
-            $scope.$watch('height', function () {
                 draw();
             });
 
@@ -61,20 +55,27 @@ angular.module('app')
                         var label, value;
                         data.removeRows(0, data.getNumberOfRows());
                         angular.forEach($scope.data, function (row) {
-                            label = row[0];
+                            label = row.firstName + " " + row.lastName;
                             value = 1;
                             if (!isNaN(value)) {
-                                data.addRow([row[0], value]);
+                                data.addRow([label, value]);
                             }
                         });
                         var options = {
-                            'title': $scope.title,
+                            'titlePosition': 'none',
+                            'titleTextStyle': {
+                              'color': 'white',
+                              'bold': true,
+                              'fontSize': '30'
+                            },
                             'width': $scope.width,
                             'backgroundColor': 'transparent',
                             'is3D': false,
                             'pieHole': .75,
-                            'chartArea':{width:'100%',height:'75%'},
+                            'colors': ['#F2B132', '#F69634', '#FB7C36', '#FF6138'],
                             'legend': {
+                              'alignment': 'end',
+                              'position': 'right',
                               'textStyle': { color: 'white', bold: false, italic: true }
                             },
                             'height': $scope.height

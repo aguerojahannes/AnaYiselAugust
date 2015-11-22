@@ -32,7 +32,6 @@
 				user: GlobalFactory.status.username
 			}
 			$http.post('/contacts/get', parcel).then(function(res) {
-				console.log(res.data);
 				o.contacts = res.data;
 				GlobalFactory.getFriends().then(function(res){
 					for(var i = 0; i < res.data.length; i++) {
@@ -83,33 +82,38 @@
 
 		/* -------------------- Circles ---------------------------*/
 
-		// /* Get Circles */
-		// o.getContacts = function() {
-		// 	var q = $q.defer();
-		// 	$http.get('/contacts').then(function(res) {
-		// 		o.contacts = res.data;
-		// 		q.resolve(res.data);
-		// 	});
-		// 	return q.promise;
-		// }
+		/* Get Circles */
+		o.getCircles = function() {
+			var q = $q.defer();
+			var parcel = {
+				user: GlobalFactory.status.username
+			}
+			$http.post('/circles/get', parcel).then(function(res) {
+				o.circles = res.data;
+				console.log(res.data);
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
 
-		// /* Add Circle */
-		// o.addContact = function(contact) {
-		// 	var q = $q.defer();
-		// 	$http.post('/contacts', contact).then(function(res) {
-		// 		q.resolve(res.data);
-		// 	});
-		// 	return q.promise;
-		// }
+		/* Save Circle */
+		o.saveCircle = function(circle) {
+			circle.creator = GlobalFactory.status.username;
+			var q = $q.defer();
+			$http.post('/circles', circle).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
 
-		// /* Delete Circle */
-		// o.deleteContact = function(id) {
-		// 	var q = $q.defer();
-		// 	$http.delete('/contacts/' + id).then(function(res) {
-		// 		q.resolve(res.data);
-		// 	});
-		// 	return q.promise;
-		// }
+		/* Delete Circle */
+		o.deleteCircle = function(id) {
+			var q = $q.defer();
+			$http.delete('/circles/' + id).then(function(res) {
+				q.resolve(res.data);
+			});
+			return q.promise;
+		}
 
 		/* -------------------- Requests ---------------------------*/
 

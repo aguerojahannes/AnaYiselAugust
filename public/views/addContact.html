@@ -8,7 +8,7 @@
   <button type="submit" class="btn btn-success" ng-disabled="!vm.emailReq">Send Request</button>
   <hr>
   <h3>Non-GetFul Members</h3>
-  <button type="button" class="btn btn-danger" ng-click="isMember = false;" style="margin-top: .5vh">Not A Member?</button>
+  <button type="button" class="btn btn-danger" ng-click="isMember = false;" style="margin-top: .5vh">Create Contact</button>
 </form>
 
 
@@ -38,7 +38,7 @@
   </div>
   <br>
   <button type="submit" class="btn btn-success">Save Contact</button>
-  <button type="button" class="btn btn-danger" ui-sref="Contacts" ng-click="vm.newContact = {};">Cancel</button>
+  <button type="button" class="btn btn-danger" ng-click="vm.newContact = {}; $parent.isMember = true;">Cancel</button>
 </form>
 
 </div>
