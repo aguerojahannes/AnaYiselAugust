@@ -76,7 +76,7 @@ angular.module('app')
                             'titlePosition': 'none',
                             'backgroundColor': 'transparent',
                             'is3D': false,
-                            'pieHole': .75,
+                            'pieHole': 0,
                             'colors': ['#F2B132', '#F69634', '#FB7C36', '#FF6138'],
                             'legend': {
                               'alignment': 'end',
