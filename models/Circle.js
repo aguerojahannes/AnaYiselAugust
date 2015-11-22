@@ -22,6 +22,7 @@ var CircleSchema = new mongoose.Schema({
     bio: String
   }],
   members: Array,
+  creator: String,
   pieces: String,
   created: Date
 });

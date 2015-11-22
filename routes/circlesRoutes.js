@@ -18,7 +18,9 @@ router.post('/get', function(req, res, next) {
 // Add Circles
 router.post('/', function(req, res, next) {
   var circle = new Circle();
-  circle.members = req.body;
+  circle.members = req.body.members;
+  circle.creator = req.body.creator;
+  circle.chartTitle = req.body.chartTitle;
   circle.save(function(err, result) {
     if(err) return next(err);
     res.send(result);

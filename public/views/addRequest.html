@@ -44,7 +44,7 @@
     <p style="color: #ffff9d" id="errorText">{{ vm.errorText }}</p>
   </div>
   <br>
-  <button type="submit" class="btn btn-success" ng-disabled="vm.newRequest.privacy === 'Select' && vm.selectPrivacy < 1">Save Request</button>
+  <button type="submit" class="btn btn-success" ng-disabled="!vm.newRequest.title || !vm.newRequest.body">Save Request</button>
   <button type="button" class="btn btn-danger" ui-sref="Requests" ng-click="vm.newRequest = {};">Cancel</button>
 </form>
 

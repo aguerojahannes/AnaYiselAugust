@@ -24,6 +24,12 @@
 				vm.contacts = HomeFactory.contacts;
 		});
 
+//------------------Grab Contacts When Page Loads--------------
+		HomeFactory.getCircles().then(function(res) {
+				vm.circles = HomeFactory.circles;
+				console.log(vm.circles);
+		});
+
 
 // Handle Form Submission
 	vm.handleAddForm = function(request, skill){
@@ -62,7 +68,6 @@
 		vm.getRequests = function() {
 			HomeFactory.getRequests(GlobalFactory.status.username).then(function(res){
 				vm.requests = HomeFactory.requests;
-				console.log(vm.requests);
 			});
 		};
 		vm.getRequests();

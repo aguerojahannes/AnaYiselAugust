@@ -6,9 +6,12 @@
 	</div>
 	<hr>
 
-	<p>
-		{{ vm.circles }}
-	</p>
+	<div class="circle shade" ng-repeat="circle in vm.circles" style="margin: 1em; height: 15em; width: 15em; padding-top: 5em;" ng-click="vm.editCircle(circle);">
+		<br>
+		<h3>
+			{{ circle.chartTitle }}
+		</h3>
+	</div>
 
 
 </div>
