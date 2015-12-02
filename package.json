@@ -1,5 +1,5 @@
 {
-<<<<<<< HEAD
+
   "name": "appname",
   "version": "0.0.0",
   "description": "An application for the Coder Camps FullStack JS course",
@@ -29,7 +29,6 @@
     "passport": "^0.3.0",
     "passport-local": "^1.0.0"
   }
-=======
   "name": "circles",
   "version": "1.1.1",
   "description": "Circles: An Ionic project",
@@ -58,5 +57,5 @@
   "cordovaPlatforms": [
     "ios"
   ]
->>>>>>> 2da9e1dca3755fbea22545d54778633c8ae5143e
+
 }
