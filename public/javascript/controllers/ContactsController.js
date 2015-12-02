@@ -1,17 +1,28 @@
 (function() {
 	'use strict';
 	angular.module('app')
-	.controller('ContactsController', ContactsController);
+	.controller('ContactsController', ContactsController)
+	// Custom Directive For Handling Enter Key For Skills -- Usage: ng-enter="doSomething()"
+	.directive('ngEnter', function() {
+        return function(scope, element, attrs) {
+            element.bind("keydown keypress", function(event) {
+                if(event.which === 13) {
+                    scope.$apply(function(){
+                        scope.$eval(attrs.ngEnter, {'event': event});
+                    });
 
-	function ContactsController(HomeFactory, $state, $stateParams, $scope, GlobalFactory) {
+                    event.preventDefault();
+                }
+            });
+        };
+    });
+
+	function ContactsController(HomeFactory, $state, $stateParams, $scope) {
 		var vm = this;
 		vm.contacts = HomeFactory.contacts;
 		vm.tempContact = HomeFactory.tempContact;
 		vm.viewContact = {};
 		vm.modalOn = false;
-		vm.emailReq = '';
-		vm.errorText = '';
-		vm.newContact = { skills: [], skill: '' };
 
 
 		// Makes the input box lowercase
@@ -19,18 +30,6 @@
   	$scope.$watch('query', function() {
   	    $scope.query = $scope.query.toLowerCase();
   	});
-
-		// Handle Form Submission
-		vm.handleAddForm = function(request, skill){
-
-			// Handle Nesting Forms
-			if (vm.newContact.skill === '') {
-				vm.addContact(request);
-			} else {
-				vm.addNewSkill(skill);
-			}
-		};
-
 
   	// Only search certain properties
     vm.searchContacts = function(contact) {
@@ -57,7 +56,7 @@
 		// Add Contact
 		vm.addContact = function() {
 			vm.newContact.createdOn = new Date();
-			vm.newContact.creator = GlobalFactory.status.username;
+			vm.newContact.username = new Date();
 
 			// If No ProfilePic, Assign Default Picture
 			if(!vm.newContact.profilePic) {
@@ -102,14 +101,10 @@
  /* -------------------- Send Friend Request ----------------------------------------------*/
 
  	vm.sendRequest = function(email) {
-		  if(email === undefined || email === '') {
-				vm.errorText = "Please enter a valid email address";
-				return null;
-			}
-			HomeFactory.sendRequest(email).then(function(res) {1
+			HomeFactory.sendRequest(email).then(function(res) {
 				alert("Request Sent!");
-				vm.emailReq = '';
 			});
+			console.log(vm.contacts);
 	}
 
  /* -------------------- LinkedIn ----------------------------------------------*/
@@ -120,24 +115,5 @@
 			});
 		};
 
-
-		//------------------Add New Skill ------------------------------------
-				vm.addNewSkill = function (skill) {
-					for (var x=0; x < vm.newContact.skills.length; x++) {
-						if(skill === vm.newContact.skills[x]) {
-							vm.errorText = "You have already added " + vm.newContact.skills[x] + " as a skill!";
-							vm.newContact.skill = "";
-							return null;
-						}
-					}
-					vm.newContact.skills.push(skill);
-					vm.newContact.skill = "";
-					vm.errorText = "";
-				};
-
-		//------------------Delete New Skill ------------------------------------
-		vm.deleteSkill = function(skill) {
-			vm.newContact.skills.splice(vm.newContact.skills.indexOf(skill), 1);
-		};
 	}
 })();

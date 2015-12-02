@@ -16,15 +16,15 @@
 				// 	return q.promise;
 				// }
 
-		// POST Circle Form to the Data Base.
-				o.createCircle = function(circle){
-					console.log(circle);
-					var q = $q.defer();
-					$http.post('api/circles', circle).then(function(){
-						q.resolve();
-					});
-					return q.promise;
-				};
+		// // POST Circle Form to the Data Base.
+		// 		o.createCircle = function(circle){
+		// 			console.log(circle);
+		// 			var q = $q.defer();
+		// 			$http.post('api/circles', circle).then(function(){
+		// 				q.resolve();
+		// 			});
+		// 			return q.promise;
+		// 		};
 
 
 

@@ -27,7 +27,7 @@
 //---------SIGN IN--------------------------------
 	o.signIn = function(user){
 		var q = $q.defer();
-		$http.post('http://localhost:3000/api/user/signIn', user).then(function(res){
+		$http.post('/api/user/signIn', user).then(function(res){
 			setToken(res.data);
 			setUser();
 			q.resolve(res.data);
